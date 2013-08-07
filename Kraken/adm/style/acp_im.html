@@ -1,0 +1,71 @@
+<!-- INCLUDE overall_header.html -->
+
+<a name="maincontent"></a>
+
+<h1>{L_ACP_IM_SETTINGS}</h1>
+
+<p>{L_ACP_IM_SETTINGS_EXPLAIN}</p>
+
+<form id="acp_im" method="post" action="{U_ACTION}">
+
+<fieldset>
+	<legend>{L_ACP_IM_SETTINGS}</legend>
+
+<dl>
+	<dt><label for="enable_gg">{L_ENABLE_GG}:</label><br /></dt>
+	<dd><label><input type="radio" class="radio" id="enable_gg" name="enable_gg" value="1"<!-- IF ENABLE_GG --> checked="checked"<!-- ENDIF --> /> {L_ENABLED}</label>
+		<label><input type="radio" class="radio" name="enable_gg" value="0"<!-- IF not ENABLE_GG --> checked="checked"<!-- ENDIF --> /> {L_DISABLED}</label></dd>
+</dl>
+
+<dl>
+	<dt><label for="enable_tlen">{L_ENABLE_TLEN}:</label><br /></dt>
+	<dd><label><input type="radio" class="radio" id="enable_tlen" name="enable_tlen" value="1"<!-- IF ENABLE_TLEN --> checked="checked"<!-- ENDIF --> /> {L_ENABLED}</label>
+		<label><input type="radio" class="radio" name="enable_tlen" value="0"<!-- IF not ENABLE_TLEN --> checked="checked"<!-- ENDIF --> /> {L_DISABLED}</label></dd>
+</dl>
+
+<dl>
+	<dt><label for="enable_skype">{L_ENABLE_SKYPE}:</label><br /></dt>
+	<dd><label><input type="radio" class="radio" id="enable_skype" name="enable_skype" value="1"<!-- IF ENABLE_SKYPE --> checked="checked"<!-- ENDIF --> /> {L_ENABLED}</label>
+		<label><input type="radio" class="radio" name="enable_skype" value="0"<!-- IF not ENABLE_SKYPE --> checked="checked"<!-- ENDIF --> /> {L_DISABLED}</label></dd>
+</dl>
+
+<dl>
+	<dt><label for="enable_icq">{L_ENABLE_ICQ}:</label><br /></dt>
+	<dd><label><input type="radio" class="radio" id="enable_icq" name="enable_icq" value="1"<!-- IF ENABLE_ICQ --> checked="checked"<!-- ENDIF --> /> {L_ENABLED}</label>
+		<label><input type="radio" class="radio" name="enable_icq" value="0"<!-- IF not ENABLE_ICQ --> checked="checked"<!-- ENDIF --> /> {L_DISABLED}</label></dd>
+</dl>
+
+<dl>
+	<dt><label for="enable_msn">{L_ENABLE_MSN}:</label><br /></dt>
+	<dd><label><input type="radio" class="radio" id="enable_msn" name="enable_msn" value="1"<!-- IF ENABLE_MSN --> checked="checked"<!-- ENDIF --> /> {L_ENABLED}</label>
+		<label><input type="radio" class="radio" name="enable_msn" value="0"<!-- IF not ENABLE_MSN --> checked="checked"<!-- ENDIF --> /> {L_DISABLED}</label></dd>
+</dl>
+
+<dl>
+	<dt><label for="enable_aim">{L_ENABLE_AIM}:</label><br /></dt>
+	<dd><label><input type="radio" class="radio" id="enable_aim" name="enable_aim" value="1"<!-- IF ENABLE_AIM --> checked="checked"<!-- ENDIF --> /> {L_ENABLED}</label>
+		<label><input type="radio" class="radio" name="enable_aim" value="0"<!-- IF not ENABLE_AIM --> checked="checked"<!-- ENDIF --> /> {L_DISABLED}</label></dd>
+</dl>
+
+<dl>
+	<dt><label for="enable_yim">{L_ENABLE_YIM}:</label><br /></dt>
+	<dd><label><input type="radio" class="radio" id="enable_yim" name="enable_yim" value="1"<!-- IF ENABLE_YIM --> checked="checked"<!-- ENDIF --> /> {L_ENABLED}</label>
+		<label><input type="radio" class="radio" name="enable_yim" value="0"<!-- IF not ENABLE_YIM --> checked="checked"<!-- ENDIF --> /> {L_DISABLED}</label></dd>
+</dl>
+
+<dl>
+	<dt><label for="enable_jabber">{L_ENABLE_JABBER}:</label><br /></dt>
+	<dd><label><input type="radio" class="radio" id="enable_jabber" name="enable_jabber" value="1"<!-- IF ENABLE_JABBER --> checked="checked"<!-- ENDIF --> /> {L_ENABLED}</label>
+		<label><input type="radio" class="radio" name="enable_jabber" value="0"<!-- IF not ENABLE_JABBER --> checked="checked"<!-- ENDIF --> /> {L_DISABLED}</label></dd>
+</dl>
+
+</fieldset>
+
+<fieldset class="submit-buttons">
+	<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+	<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	{S_FORM_TOKEN}
+</fieldset>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

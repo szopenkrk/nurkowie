@@ -1,0 +1,11 @@
+.gg-icon, .gg-icon a			{ background: none top left no-repeat; }
+.skype-icon, .skype-icon a			{ background: none top left no-repeat; }
+.tlen-icon, .tlen-icon a			{ background: none top left no-repeat; }
+
+ul.profile-icons li.gg-icon	{ width: {IMG_ICON_CONTACT_GG_WIDTH}px; height: {IMG_ICON_CONTACT_GG_HEIGHT}px; }
+ul.profile-icons li.skype-icon	{ width: {IMG_ICON_CONTACT_SKYPE_WIDTH}px; height: {IMG_ICON_CONTACT_SKYPE_HEIGHT}px; }
+ul.profile-icons li.tlen-icon	{ width: {IMG_ICON_CONTACT_TLEN_WIDTH}px; height: {IMG_ICON_CONTACT_TLEN_HEIGHT}px; }
+
+.gg-icon, .gg-icon a			{ background-image: url("{IMG_ICON_CONTACT_GG_SRC}"); }
+.tlen-icon, .tlen-icon a			{ background-image: url("{IMG_ICON_CONTACT_TLEN_SRC}"); }
+.skype-icon, .skype-icon a			{ background-image: url("{IMG_ICON_CONTACT_SKYPE_SRC}"); }
