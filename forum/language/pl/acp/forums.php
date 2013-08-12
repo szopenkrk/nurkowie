@@ -1,13 +1,12 @@
 <?php
-/** 
+/**
 *
 * acp_forums [Polski]
 *
 * @package language
-* @version $Id: forums.php 10558 2010-03-07 03:45:28Z git-gate $
-* @copyright (c) 2005 phpBB Group 
-* @license http://opensource.org/licenses/gpl-license.php GNU Public License 
-* @Polish locale 2011-11-25 20:29:43 Zespół Olympus.pl $
+* @copyright (c) 2006 - 2011 phpBB3.PL Group
+* @license http://opensource.org/licenses/gpl-license.php GNU Public License
+*
 */
 
 /**
@@ -23,9 +22,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// DEVELOPERS PLEASE NOTE
+// INFORMACJA
 //
-// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
+// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -37,124 +36,124 @@ if (empty($lang) || !is_array($lang))
 
 // Forum Admin
 $lang = array_merge($lang, array(
-	'AUTO_PRUNE_DAYS'			=> 'Czas od opublikowania ostatniego postu',
-	'AUTO_PRUNE_DAYS_EXPLAIN'	=> 'Liczba dni od opublikowania ostatniego postu, po których temat zostanie automatycznie usunięty.',
-	'AUTO_PRUNE_FREQ'			=> 'Częstotliwość czyszczenia tematów',
-	'AUTO_PRUNE_FREQ_EXPLAIN'	=> 'Liczba dni pomiędzy kolejnymi czyszczeniami.',
-	'AUTO_PRUNE_VIEWED'			=> 'Czas od ostatnich odwiedzin',
-	'AUTO_PRUNE_VIEWED_EXPLAIN'	=> 'Liczba dni od ostatnich odwiedzin tematu, po których zostanie on automatycznie usunięty.',
+	'AUTO_PRUNE_DAYS'			=> 'Czas od napisania ostatniego postu',
+	'AUTO_PRUNE_DAYS_EXPLAIN'	=> 'Liczba dni od napisania ostatniego postu w wątku, po jakiej wątek jest usuwany.',
+	'AUTO_PRUNE_FREQ'			=> 'Częstotliwość czyszczenia',
+	'AUTO_PRUNE_FREQ_EXPLAIN'	=> 'Liczba dni między kolejnymi czyszczeniami.',
+	'AUTO_PRUNE_VIEWED'			=> 'Czas od ostatniego zobaczenia wątku',
+	'AUTO_PRUNE_VIEWED_EXPLAIN'	=> 'Liczba dni od ostatniego zobaczenia wątku, po jakiej wątek jest usuwany.',
 
 	'CONTINUE'						=> 'Kontynuuj',
-	'COPY_PERMISSIONS'				=> 'Kopiuj uprawnienia z',
-	'COPY_PERMISSIONS_EXPLAIN'		=> 'Aby ułatwić sobie określanie uprawnień dla nowego forum, możesz skopiować uprawnienia istniejącego forum.',
-	'COPY_PERMISSIONS_ADD_EXPLAIN'	=> 'Tworzone forum będzie miało takie same uprawnienia, jak wybrane forum. Jeśli nie wybrano forum, utworzone forum do czasu określenia uprawnień nie będzie widoczne.',
-	'COPY_PERMISSIONS_EDIT_EXPLAIN'	=> 'Jeśli zostanie wybrana opcja skopiowania uprawnień, forum będzie miało takie same uprawnienia, jak wybrane forum. Operacja ta spowoduje zastąpienie uprawnień wcześniej określonych dla tego forum uprawnieniami wybranego forum. Jeśli nie wybrano forum, obecne uprawnienia zostaną zachowane.',
-	'COPY_TO_ACL'					=> 'Alternatywnie możesz %sokreślić nowe uprawnienia%s dla tego forum.',
-	'CREATE_FORUM'					=> 'Utwórz forum',
+	'COPY_PERMISSIONS'				=> 'Skopiuj uprawnienia z',
+	'COPY_PERMISSIONS_EXPLAIN'		=> 'W celu ułatwienia procesu ustawienia uprawnień dostępu do nowego działu, możesz skopiować uprawnienia z innego działu.',
+	'COPY_PERMISSIONS_ADD_EXPLAIN'	=> 'Po utworzeniu tego działu, wszyscy użytkownicy i grupy otrzymają takie same uprawnienia dostępu do tego działu, jakie mają do wybranego w tym polu. Jeśli nie wybierzesz żadnego działu, nowo utworzony dział nie będzie widoczny, póki nie przyznasz użytkownikom i grupom dostępu do niego.',
+	'COPY_PERMISSIONS_EDIT_EXPLAIN'	=> 'Jeśli postanowisz skopiować uprawnienia, wszyscy użytkownicy i grupy otrzymają takie same uprawnienia dostępu do tego działu, jakie mają do wybranego w tym polu. Spowoduje to nadpisanie wcześniej ustawionych uprawnień dostępu do tego działu wszystkich użytkowników i grup przez uprawnienia dostępu do wybranego tu działu. Jeśli nie wybierzesz żadnego działu, obecne uprawnienia zostaną zachowane.',
+	'COPY_TO_ACL'					=> 'Alternatywnie, możesz też %sustawić uprawnienia%s dostępu do tego forum.',
+	'CREATE_FORUM'					=> 'Utwórz nowy dział',
 
-	'DECIDE_MOVE_DELETE_CONTENT'		=> 'Usuń zawartość lub przenieś do forum',
-	'DECIDE_MOVE_DELETE_SUBFORUMS'		=> 'Usuń subfora lub przenieś do forum',
+	'DECIDE_MOVE_DELETE_CONTENT'		=> 'Usuń zawartość lub przenieś do działu',
+	'DECIDE_MOVE_DELETE_SUBFORUMS'		=> 'Usuń poddziały lub przenieś do działu',
 	'DEFAULT_STYLE'						=> 'Domyślny styl',
 	'DELETE_ALL_POSTS'					=> 'Usuń posty',
-	'DELETE_SUBFORUMS'					=> 'Usuń subfora i posty',
-	'DISPLAY_ACTIVE_TOPICS'				=> 'Wyświetlaj aktywne tematy',
-	'DISPLAY_ACTIVE_TOPICS_EXPLAIN'		=> 'Jeśli wybrano „Tak”, w wybranych subforach będą wyświetlane aktywne tematy.',
+	'DELETE_SUBFORUMS'					=> 'Usuń poddziały i posty',
+	'DISPLAY_ACTIVE_TOPICS'				=> 'Włącz aktywne wątki',
+	'DISPLAY_ACTIVE_TOPICS_EXPLAIN'		=> 'Jeśli włączone, aktywne wątki w wybranych poddziałach będą wyświetlane pod listą poddziałów przy wyświetlaniu zawartości kategorii.',
 
-	'EDIT_FORUM'					=> 'Edytuj forum',
-	'ENABLE_INDEXING'				=> 'Indeksowanie szukania',
-	'ENABLE_INDEXING_EXPLAIN'		=> 'Jeśli wybrano „Tak”, posty zamieszczone na tym forum będą indeksowane dla celów wyszukiwania.',
-	'ENABLE_POST_REVIEW'			=> 'Modyfikowanie postów',
-	'ENABLE_POST_REVIEW_EXPLAIN'	=> 'Jeśli wybrano „Tak”, użytkownicy będą mogli modyfikować swoje posty, jeśli w wątku, w trakcie pisania przez nich postu, zostały opublikowane inne posty. Funkcja ta powinna być wyłączona dla forów typu „czat”.',
-	'ENABLE_QUICK_REPLY'			=> 'Szybka odpowiedź',
-	'ENABLE_QUICK_REPLY_EXPLAIN'	=> 'Jeśli funkcja jest włączona, użytkownicy tego forum będą mieli dostęp do panelu szybkiej odpowiedzi. Aby ta funkcja działała, panel musi być włączony globalnie. Dostęp do panelu będą mieli tylko użytkownicy, którzy mają uprawnienia do zamieszczania postów na tym forum.',
-	'ENABLE_RECENT'					=> 'Wyświetlaj aktywne tematy',
-	'ENABLE_RECENT_EXPLAIN'			=> 'Jeśli wybrano „Tak”, tematy zamieszczone na tym forum – jeśli spełniają warunki aktywnych tematów – będą wyświetlane na liście aktywnych tematów.',
-	'ENABLE_TOPIC_ICONS'			=> 'Ikony tematów',
+	'EDIT_FORUM'					=> 'Edytuj dział',
+	'ENABLE_INDEXING'				=> 'Włącz indeksowanie',
+	'ENABLE_INDEXING_EXPLAIN'		=> 'Jeśli włączone, posty napisane w tym dziale będą indeksowane przez wyszukiwarkę.',
+	'ENABLE_POST_REVIEW'			=> 'Włącz przegląd postów',
+	'ENABLE_POST_REVIEW_EXPLAIN'	=> 'Jeśli włączone, użytkownik może przejrzeć jeszcze raz swój post, jeśli w wątku został(y) napisany/e nowy/e post(y), podczas, gdy on pisał swój post. Opcja ta powinna zostać wyłączona dla działów gawędziarskich.',
+	'ENABLE_QUICK_REPLY'			=> 'Włącz szybką odpowiedź',
+	'ENABLE_QUICK_REPLY_EXPLAIN'	=> 'Jeśli włączone, użytkownicy mogą odpisać w wątku za pomocą formularza szybkiej odpowiedzi. Jeśli globalne ustawienie szybkiej odpowiedzi jest wyłączone lub użytkownik nie ma uprawnień do pisania w danym dziale, szybka odpowiedź nie będzie wyświetlana, niezależnie od tego ustawienia.',
+	'ENABLE_RECENT'					=> 'Włącz aktywne wątki',
+	'ENABLE_RECENT_EXPLAIN'			=> 'Jeśli włączone, wątki napisane w tym dziale będą wyświetlane na liście aktywnych wątków.',
+	'ENABLE_TOPIC_ICONS'			=> 'Włącz ikony postów i wątków',
 
-	'FORUM_ADMIN'						=> 'Zarządzanie forami',
-	'FORUM_ADMIN_EXPLAIN'				=> 'W phpBB3 wszystko jest oparte na forach. Występują trzy typy forów: <em>Kategoria</em>, to forum specjalne – zawiera tylko subfora, nie można na nim umieszczać tematów ani pisać postów, działa podobnie, jak kategoria w skrypcie phpBB2, <em>Forum</em> – to fora, na których można tworzyć tematy, pisać posty, zamieszczać grafikę itp., <em>Odnośnik</em> – to fora odnośniki, po kliknięciu zawartego w nich odnośnika tylko przekierowują do podanego adresu URL. Każde forum może mieć nielimitowaną liczbę subforów. Można określić czy na danym forum można tworzyć tematy i zamieszczać posty. Tutaj można dodawać, edytować, usuwać, zamykać, otwierać oddzielne fora, jak również określać dodatkową kontrolę. Jeśli temat i posty zgubiły synchronizację, można wykonać ponowną synchronizację forum. <strong>Aby nowo utworzone fora były wyświetlane, należy skopiować lub określić dla nich odpowiednie uprawnienia</strong>.',
-	'FORUM_AUTO_PRUNE'					=> 'Czyść automatycznie tematy',
-	'FORUM_AUTO_PRUNE_EXPLAIN'			=> 'Włączenie tej funkcji spowoduje automatyczne czyszczenie tematów forum. Poniżej należy określić parametry (częstotliwość/okres czasu) czyszczenia.',
-	'FORUM_CREATED'						=> 'Forum zostało utworzone.',
-	'FORUM_DATA_NEGATIVE'				=> 'Parametry czyszczenia nie mogą być wartościami ujemnymi.',
-	'FORUM_DESC_TOO_LONG'				=> 'Opis forum jest za długi – może zawierać nie więcej niż 4000 znaków.',
-	'FORUM_DELETE'						=> 'Usuń forum',
-	'FORUM_DELETE_EXPLAIN'				=> 'Za pomocą tego formularza można usunąć forum. Jeśli na forum można zamieszczać tematy, posty i inne elementy, tutaj można określić gdzie umieścić wszystkie tematy lub fora, jakie ono zawiera.',
-	'FORUM_DELETED'						=> 'Forum zostało usunięte.',
+	'FORUM_ADMIN'						=> 'Zarządzanie działami',
+	'FORUM_ADMIN_EXPLAIN'				=> 'W phpBB3 wszystko jest oparte na działach. Kategoria to tylko specjalny typ działu. Każdy dział może mieć dowolną liczbę poddziałów i możesz wybrać czy ma być możliwość pisania w nim, czy nie (tzn. czy ma zachowywać się jak kategoria z phpBB2). Tutaj możesz dodawać, edytować, usuwać, blokować i odblokowywać pojedyncze działy oraz zmieniać ich ustawienia. Jeśli wątki i posty w nich uległy desynchronizacji, możesz też ponownie zsynchronizować dział. <br /><strong style="color:red;">Aby nowo utworzone działy były wyświetlane, musisz skopiować albo ustawić uprawnienia dostępu do nich!</strong>',
+	'FORUM_AUTO_PRUNE'					=> 'Włącz automatyczne oczyszczanie',
+	'FORUM_AUTO_PRUNE_EXPLAIN'			=> 'Oczyszcza dział z wątków, ustaw, na jakich zasadach to robić poniżej.',
+	'FORUM_CREATED'						=> 'Dział został utworzony.',
+	'FORUM_DATA_NEGATIVE'				=> 'Ustawienia oczyszczania nie mogą być ujemne.',
+	'FORUM_DESC_TOO_LONG'				=> 'Opis działu jest za długi, musi być krótszy niż 4 000 znaków.',
+	'FORUM_DELETE'						=> 'Usuń dział',
+	'FORUM_DELETE_EXPLAIN'				=> 'Za pomocą poniższego formularza możesz usunąć dział. Jeśli można w nim pisać, możesz też wybrać gdzie umieścić wszystkie wątki (lub poddziały), które zawiera.',
+	'FORUM_DELETED'						=> 'Dział został usunięty.',
 	'FORUM_DESC'						=> 'Opis',
-	'FORUM_DESC_EXPLAIN'				=> 'Wprowadzone tutaj znaczniki HTML będą wyświetlane tak, jak je widać w polu obok.',
-	'FORUM_EDIT_EXPLAIN'				=> 'Na poniższym formularzu można określić parametry tworzonego forum. Uprawnienia moderacyjne i uprawnienia na forum dla każdego użytkownika, czy grupy użytkowników są ustawiane z poziomu uprawnień forum.',
-	'FORUM_IMAGE'						=> 'Obrazek forum',
-	'FORUM_IMAGE_EXPLAIN'				=> 'Lokalizacja dodatkowego obrazka do skojarzenia z tym forum – relatywna do katalogu głównego phpB.',
-	'FORUM_IMAGE_NO_EXIST'				=> 'Nie ma takiego obrazka forum',
-	'FORUM_LINK_EXPLAIN'				=> 'Pełny adres URL zawierający protokół, np.: <samp>http://</samp> do lokalizacji, gdzie zostanie przekierowany użytkownik po kliknięciu nazwy forum typu „Odnośnik”, np.: <samp>http://www.phpbb.com/</samp>.',
-	'FORUM_LINK_TRACK'					=> 'Śledź przekierowania odnośnika',
-	'FORUM_LINK_TRACK_EXPLAIN'			=> 'Włączenie tej funkcji spowoduje zapisywanie kliknięć odnośnika i wyświetlanie na forum typu „Odnośnik” informacji o liczbie kliknięć.',
-	'FORUM_NAME'						=> 'Nazwa forum',
-	'FORUM_NAME_EMPTY'					=> 'Należy wprowadzić nazwę tego forum.',
-	'FORUM_PARENT'						=> 'Forum macierzyste',
-	'FORUM_PASSWORD'					=> 'Hasło forum',
-	'FORUM_PASSWORD_CONFIRM'			=> 'Potwierdź hasło',
-	'FORUM_PASSWORD_CONFIRM_EXPLAIN'	=> 'Potwierdzenie jest wymagane tylko w przypadku, gdy zostało wprowadzone hasło forum.',
-	'FORUM_PASSWORD_EXPLAIN'			=> 'Zdefiniuj hasło dla tego forum. Użyj systemu uprawnień w ustawieniach.',
-	'FORUM_PASSWORD_UNSET'				=> 'Usuń hasło forum',
-	'FORUM_PASSWORD_UNSET_EXPLAIN'		=> 'Sprawdź tutaj, jeśli chcesz usunąć hasło forum.',
-	'FORUM_PASSWORD_OLD'				=> 'Hasło forum używa starego sposobu szyfrowania i powinno zostać zmienione.',
-	'FORUM_PASSWORD_MISMATCH'			=> 'Wprowadzone hasło jest nieprawidłowe.',
-	'FORUM_PRUNE_SETTINGS'				=> 'Ustawienia czyszczenia forum',
-	'FORUM_RESYNCED'					=> 'Forum „%s” zostało ponownie zsynchronizowane',
-	'FORUM_RULES_EXPLAIN'				=> 'Regulamin forum jest wyświetlany na każdej stronie danego forum.',
-	'FORUM_RULES_LINK'					=> 'Odnośnik do regulaminu forum',
-	'FORUM_RULES_LINK_EXPLAIN'			=> 'Tutaj można wprowadzić adres URL strony/postu zawierającego regulamin forum. To ustawienie zastępuje standardowy regulamin forum.',
-	'FORUM_RULES_PREVIEW'				=> 'Przegląd regulaminu forum',
-	'FORUM_RULES_TOO_LONG'				=> 'Regulamin forum nie może mieć więcej niż 4000 znaków.',
-	'FORUM_SETTINGS'					=> 'Ustawienia forum',
-	'FORUM_STATUS'						=> 'Status forum',
-	'FORUM_STYLE'						=> 'Styl forum',
-	'FORUM_TOPICS_PAGE'					=> 'Liczba tematów na stronie',
-	'FORUM_TOPICS_PAGE_EXPLAIN'			=> 'Wartość zero (0) - domyślna liczba tematów na stronie.',
-	'FORUM_TYPE'						=> 'Typ forum',
-	'FORUM_UPDATED'						=> 'Dane forum zostały zaktualizowane.',
+	'FORUM_DESC_EXPLAIN'				=> 'Wprowadzony kod HTML zostanie wyświetlony tak, jak go wpiszesz.',
+	'FORUM_EDIT_EXPLAIN'				=> 'Poniższy formularz pozwoli Ci zmienić ustawienia tego działu. Pamiętaj, że wiele ustawień możesz też zmienić poprzez uprawnienia.',
+	'FORUM_IMAGE'						=> 'Obraz działu',
+	'FORUM_IMAGE_EXPLAIN'				=> 'Ścieżka od głównego katalogu phpBB do dodatkowego obrazka powiązanego z tym działem.',
+	'FORUM_IMAGE_NO_EXIST'				=> 'Podany obraz działu nie istnieje',
+	'FORUM_LINK_EXPLAIN'				=> 'Pełny adres URL (włącznie z protokołem, np.: <samp>http://</samp>) do miejsca, w które użytkownik zostanie przeniesiony po kliknięciu na ten dział, np.: <samp>http://www.phpbb.com/</samp>.',
+	'FORUM_LINK_TRACK'					=> 'Licz przekierowania',
+	'FORUM_LINK_TRACK_EXPLAIN'			=> 'Zapisuje liczbę kliknięć na ten dział-link.',
+	'FORUM_NAME'						=> 'Nazwa działu',
+	'FORUM_NAME_EMPTY'					=> 'Musisz podać nazwę dla tego działu.',
+	'FORUM_PARENT'						=> 'Dział nadrzędny',
+	'FORUM_PASSWORD'					=> 'Hasło do działu',
+	'FORUM_PASSWORD_CONFIRM'			=> 'Potwierdź hasło do działu',
+	'FORUM_PASSWORD_CONFIRM_EXPLAIN'	=> 'Ustaw tylko, jeśli podałeś hasło do działu.',
+	'FORUM_PASSWORD_EXPLAIN'			=> 'Ustawia hasło dla tego działu, lepiej jednak użyć systemu uprawnień.',
+	'FORUM_PASSWORD_UNSET'				=> 'Usuń hasło do działu',
+	'FORUM_PASSWORD_UNSET_EXPLAIN'		=> 'Zaznacz, jeśli chcesz usunąć hasło do działu.',
+	'FORUM_PASSWORD_OLD'				=> 'Hasło do działu używa starego szyfru i powinno zostać zmienione.',
+	'FORUM_PASSWORD_MISMATCH'			=> 'Wpisane hasła się nie zgadzają.',
+	'FORUM_PRUNE_SETTINGS'				=> 'Ustawienia oczyszczania działu',
+	'FORUM_RESYNCED'					=> 'Dział „%s” został ponownie zsynchronizowany.',
+	'FORUM_RULES_EXPLAIN'				=> 'Regulamin działu jest wyświetlany na wszystkich stronach w tym dziale.',
+	'FORUM_RULES_LINK'					=> 'Link do regulaminu działu',
+	'FORUM_RULES_LINK_EXPLAIN'			=> 'Możesz tutaj podać adres URL strony/postu zawierającego regulamin tego działu. Ustawienie to nadpisze podany tekst regulaminu działu.',
+	'FORUM_RULES_PREVIEW'				=> 'Podgląd regulaminu działu',
+	'FORUM_RULES_TOO_LONG'				=> 'Regulamin działu jest zbyt długi, musi być krótszy niż 4 000 znaków.',
+	'FORUM_SETTINGS'					=> 'Ustawienia działu',
+	'FORUM_STATUS'						=> 'Status działu',
+	'FORUM_STYLE'						=> 'Styl działu',
+	'FORUM_TOPICS_PAGE'					=> 'Wątków na stronę',
+	'FORUM_TOPICS_PAGE_EXPLAIN'			=> 'Wartość inna niż zero nadpisze domyślne ustawienie.',
+	'FORUM_TYPE'						=> 'Typ działu',
+	'FORUM_UPDATED'						=> 'Informacje o dziale zostały zmienione.',
 
-	'FORUM_WITH_SUBFORUMS_NOT_TO_LINK'		=> 'Zamierzasz zmienić forum mające subfora w forum typu „Odnośnik”. Przed wykonaniem tej operacji, należy przenieść wszystkie subfora w inne miejsce, ponieważ po wykonaniu zmiany w odnośnik nie będzie możliwości oglądania subforów powiązanych z tym forum.',
+	'FORUM_WITH_SUBFORUMS_NOT_TO_LINK'		=> 'Chcesz zmienić dział, w którym można pisać, w link. Przenieś wszystkie poddziały z tego działu zanim to zrobisz, ponieważ po zmianie tego działu na link nie będziesz mógł zobaczyć poddziałów mu przypisanych.',
 
-	'GENERAL_FORUM_SETTINGS'	=> 'Ogólne ustawienia forum',
+	'GENERAL_FORUM_SETTINGS'	=> 'Ogólne ustawienia działu',
 
-	'LINK'						=> 'Odnośnik',
-	'LIST_INDEX'				=> 'Wyświetlaj subforum w opisie macierzystego forum',
-	'LIST_INDEX_EXPLAIN'		=> 'Włączenie tej funkcji spowoduje wyświetlanie nazwy tego subforum jako odnośnika w opisie macierzystego forum na stronach indeksu witryny, forów i w innych miejscach. Aby nazwa tego subforum była wyświetlana, musi być także włączona funkcja „Wyświetlaj subfora w opisie”.',
-	'LIST_SUBFORUMS'			=> 'Wyświetlaj subfora w opisie',
-	'LIST_SUBFORUMS_EXPLAIN'	=> 'Włączenie tej funkcji spowoduje wyświetlanie nazw subforów tego forum jako odnośników w opisach forów na stronach indeksu witryny, forów i w innych miejscach. Aby nazwa danego forum była wyświetlana, musi być włączona funkcja „Wyświetlaj subforum w opisie macierzystego forum”.',
-	'LOCKED'					=> 'Zamknięte',
+	'LINK'						=> 'Link',
+	'LIST_INDEX'				=> 'Wymień poddział w opisie działu nadrzędnego',
+	'LIST_INDEX_EXPLAIN'		=> 'Wyświetla nazwę tego działu jako link na stronie głównej i w innych miejscach w opisie jego działu nadrzędnego.',
+	'LIST_SUBFORUMS'			=> 'Wyświetl poddziały w opisie',
+	'LIST_SUBFORUMS_EXPLAIN'	=> 'Jeśli poddziały tego działu mają włączoną opcję „Wymień poddział w opisie działu nadrzędnego”, wyświetla je pod jego opisem.',
+	'LOCKED'					=> 'Zablokowany',
 
-	'MOVE_POSTS_NO_POSTABLE_FORUM'	=> 'Na forum wybranym do przeniesienia postów nie można nic publikować. Wybierz inne forum.',
+	'MOVE_POSTS_NO_POSTABLE_FORUM'	=> 'Dział, do którego chciałeś przenieść posty, nie jest działem, w którym można pisać. Wybierz dział, w którym można pisać.',
 	'MOVE_POSTS_TO'					=> 'Przenieś posty do',
-	'MOVE_SUBFORUMS_TO'				=> 'Przenieś subfora do',
+	'MOVE_SUBFORUMS_TO'				=> 'Przenieś poddziały do',
 
-	'NO_DESTINATION_FORUM'			=> 'Nie określono forum do przeniesienia zawartości.',
-	'NO_FORUM_ACTION'				=> 'Nie określono, co się stanie z zawartością forum.',
-	'NO_PARENT'						=> 'Nie ma macierzystego forum',
+	'NO_DESTINATION_FORUM'			=> 'Nie wybrałeś działu, do którego zawartość ma zostać przeniesiona.',
+	'NO_FORUM_ACTION'				=> 'Nie wybrałeś, co ma się stać z zawartością forum',
+	'NO_PARENT'						=> 'Brak działu nadrzędnego',
 	'NO_PERMISSIONS'				=> 'Nie kopiuj uprawnień',
-	'NO_PERMISSION_FORUM_ADD'		=> 'Nie masz uprawnień do tworzenia forów.',
-	'NO_PERMISSION_FORUM_DELETE'	=> 'Nie masz uprawnień do usuwania forów.',
+	'NO_PERMISSION_FORUM_ADD'		=> 'Nie masz uprawnień do dodawania działów.',
+	'NO_PERMISSION_FORUM_DELETE'	=> 'Nie masz uprawnień do edytowania działów.',
 
-	'PARENT_IS_LINK_FORUM'		=> 'Forum wybrane jako forum macierzyste jest typu „Odnośnik”. Fora tego typu nie mogą zawierać innych forów. Jako forum macierzyste wybierz forum typu „Kategoria” lub „Forum”.',
-	'PARENT_NOT_EXIST'			=> 'Forum macierzyste nie istnieje.',
+	'PARENT_IS_LINK_FORUM'		=> 'Wybrany dział nadrzędny jest działem - linkiem. Działy - linki nie mogą zawierać innych działów, wybierz inny dział.',
+	'PARENT_NOT_EXIST'			=> 'Dział nadrzędny nie istnieje.',
 	'PRUNE_ANNOUNCEMENTS'		=> 'Usuwaj ogłoszenia',
-	'PRUNE_STICKY'				=> 'Usuwaj przyklejone tematy',
+	'PRUNE_STICKY'				=> 'Usuwaj przyklejone',
 	'PRUNE_OLD_POLLS'			=> 'Usuwaj stare ankiety',
-	'PRUNE_OLD_POLLS_EXPLAIN'	=> 'Włączenie tej funkcji spowoduje usuwanie tematów zawierających ankiety, w których nikt nie oddał głosu w czasie trwania ankiety.',
+	'PRUNE_OLD_POLLS_EXPLAIN'	=> 'Usuwa również wątki z ankietami.',
 
-	'REDIRECT_ACL'	=> 'Teraz można %sokreślić uprawnienia%s dla tego forum.',
+	'REDIRECT_ACL'	=> 'Teraz możesz %sustawić uprawnienia dostępu do tego działu%s.',
 
-	'SYNC_IN_PROGRESS'			=> 'Synchronizacja forum',
-	'SYNC_IN_PROGRESS_EXPLAIN'	=> 'Trwa ponowna synchronizacja tematów z zakresu %1$d/%2$d.',
+	'SYNC_IN_PROGRESS'			=> 'Synchronizacja działu',
+	'SYNC_IN_PROGRESS_EXPLAIN'	=> 'Aktualnie synchronizuję wątki %1$d/%2$d.',
 
 	'TYPE_CAT'			=> 'Kategoria',
 	'TYPE_FORUM'		=> 'Forum',
-	'TYPE_LINK'			=> 'Odnośnik',
+	'TYPE_LINK'			=> 'Link',
 
-	'UNLOCKED'			=> 'Otwarte',
+	'UNLOCKED'			=> 'Niezablokowany',
 ));
 
 ?>

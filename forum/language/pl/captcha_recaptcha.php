@@ -4,10 +4,9 @@
 * recaptcha [Polski]
 *
 * @package language
-* @version $Id: captcha_recaptcha.php 9933 2009-08-06 09:12:21Z marshalrusty $
-* @copyright (c) 2009 phpBB Group
+* @copyright (c) 2006 - 2011 phpBB3.PL Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* @Polish locale 9933 2011-06-16 15:34:14 Zespół Olympus.pl $
+*
 */
 
 /**
@@ -23,9 +22,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// DEVELOPERS PLEASE NOTE
+// INFORMACJA
 //
-// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
+// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -37,16 +36,16 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'RECAPTCHA_LANG'				=> 'pl',
-	'RECAPTCHA_NOT_AVAILABLE'		=> 'Aby używać reCAPTCHY, musisz utworzyć konto na <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
-	'CAPTCHA_RECAPTCHA'				=> 'reCAPTCHA',
-	'RECAPTCHA_INCORRECT'			=> 'Wysłany kod potwierdzenia wizualnego jest nieprawidłowy',
+	'RECAPTCHA_NOT_AVAILABLE'		=> 'Aby używać reCaptchy, musisz utworzyć konto na <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
+	'CAPTCHA_RECAPTCHA'				=> 'reCaptcha',
+	'RECAPTCHA_INCORRECT'			=> 'Wysłane potwierdzenie wizualne było nieprawidłowe',
 
-	'RECAPTCHA_PUBLIC'				=> 'Klucz publiczny reCAPTCHA',
-	'RECAPTCHA_PUBLIC_EXPLAIN'		=> 'Twój klucz publiczny reCAPTCHA. Klucze można otrzymać na witrynie <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
-	'RECAPTCHA_PRIVATE'				=> 'Klucz prywatny reCAPTCHA',
-	'RECAPTCHA_PRIVATE_EXPLAIN'		=> 'Twój klucz prywatny reCAPTCHA. Klucze można otrzymać na witrynie <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
+	'RECAPTCHA_PUBLIC'				=> 'Publiczny klucz reCaptcha',
+	'RECAPTCHA_PUBLIC_EXPLAIN'		=> 'Twój publiczny klucz reCaptcha. Klucze można otrzymać na <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
+	'RECAPTCHA_PRIVATE'				=> 'Prywatny klucz reCaptcha',
+	'RECAPTCHA_PRIVATE_EXPLAIN'		=> 'Twój prywatny klucz reCaptcha. Klucze można otrzymać na <a href="http://www.google.com/recaptcha">www.google.com/recaptcha</a>.',
 
-	'RECAPTCHA_EXPLAIN'				=> 'Jeśli chcesz zabezpieczyć się przed automatycznym publikowaniem postów, musisz wprowadzić oba widoczne słowa do znajdujących się tutaj pól tekstowych.',
+	'RECAPTCHA_EXPLAIN'				=> 'Aby zapobiec automatycznym rejestracjom, wymagamy, żebyś wpisał oba podane słowa do pola tekstowego umieszczonego pod nimi.',
 ));
 
 ?>

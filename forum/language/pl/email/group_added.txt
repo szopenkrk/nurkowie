@@ -1,9 +1,10 @@
-Subject: Przyjęto Cię do grupy „{GROUP_NAME}”
+Subject: {SITENAME} - Zostałeś/aś dodany/a do grupy {GROUP_NAME}
 
-Gratulujemy!
+Gratulujemy,
 
-Przyjęto Cię do grupy „{GROUP_NAME}” na witrynie „{SITENAME}”.
-Zrobił to lider tej grupy lub administrator forum. Aby uzyskać więcej informacji, skontaktuj się z nimi.
+Zostałeś/aś dodany/a do grupy "{GROUP_NAME}"!
+
+Dodał Cię do niej lider tej grupy lub administrator forum, skontaktuj się z nimi, aby uzyskać więcej informacji.
 
 Informacje o swoich grupach możesz zobaczyć tutaj:
 {U_GROUP}

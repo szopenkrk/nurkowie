@@ -1,11 +1,13 @@
-Subject: Aktywacja konta użytkownika
+Subject: {SITENAME} - Aktywuj konto użytkownika
 
-Witaj!
+Witaj,
 
-Zostało utworzone lub dezaktywowane konto „{USERNAME}”. Sprawdź – jeśli to konieczne – jego szczegóły i podejmij stosowne działanie.
+Konto "{USERNAME}" zostało utworzone lub deaktywowane, powinieneś przejrzeć jego szczegóły (jeśli to konieczne) i zrobić z nim to, co uznasz za stosowne.
 
-Użyj tego odnośnika, aby zobaczyć profil użytkownika:
+Użyj tego linku, aby zobaczyć profil użytkownika:
 {U_USER_DETAILS}
 
-Użyj tego odnośnika, aby aktywować konto:
+Użyj tego linku, żeby aktywować konto:
 {U_ACTIVATE}
+
+{EMAIL_SIG}

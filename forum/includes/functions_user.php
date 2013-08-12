@@ -528,12 +528,62 @@ function user_delete($mode, $user_id, $post_username = false)
 		WHERE session_user_id = ' . $user_id;
 	$db->sql_query($sql);
 
-	// Clean the private messages tables from the user
-	if (!function_exists('phpbb_delete_user_pms'))
+	// Remove any undelivered mails...
+	$sql = 'SELECT msg_id, user_id
+		FROM ' . PRIVMSGS_TO_TABLE . '
+		WHERE author_id = ' . $user_id . '
+			AND folder_id = ' . PRIVMSGS_NO_BOX;
+	$result = $db->sql_query($sql);
+
+	$undelivered_msg = $undelivered_user = array();
+	while ($row = $db->sql_fetchrow($result))
 	{
-		include($phpbb_root_path . 'includes/functions_privmsgs.' . $phpEx);
+		$undelivered_msg[] = $row['msg_id'];
+		$undelivered_user[$row['user_id']][] = true;
 	}
-	phpbb_delete_user_pms($user_id);
+	$db->sql_freeresult($result);
+
+	if (sizeof($undelivered_msg))
+	{
+		$sql = 'DELETE FROM ' . PRIVMSGS_TABLE . '
+			WHERE ' . $db->sql_in_set('msg_id', $undelivered_msg);
+		$db->sql_query($sql);
+	}
+
+	$sql = 'DELETE FROM ' . PRIVMSGS_TO_TABLE . '
+		WHERE author_id = ' . $user_id . '
+			AND folder_id = ' . PRIVMSGS_NO_BOX;
+	$db->sql_query($sql);
+
+	// Delete all to-information
+	$sql = 'DELETE FROM ' . PRIVMSGS_TO_TABLE . '
+		WHERE user_id = ' . $user_id;
+	$db->sql_query($sql);
+
+	// Set the remaining author id to anonymous - this way users are still able to read messages from users being removed
+	$sql = 'UPDATE ' . PRIVMSGS_TO_TABLE . '
+		SET author_id = ' . ANONYMOUS . '
+		WHERE author_id = ' . $user_id;
+	$db->sql_query($sql);
+
+	$sql = 'UPDATE ' . PRIVMSGS_TABLE . '
+		SET author_id = ' . ANONYMOUS . '
+		WHERE author_id = ' . $user_id;
+	$db->sql_query($sql);
+
+	foreach ($undelivered_user as $_user_id => $ary)
+	{
+		if ($_user_id == $user_id)
+		{
+			continue;
+		}
+
+		$sql = 'UPDATE ' . USERS_TABLE . '
+			SET user_new_privmsg = user_new_privmsg - ' . sizeof($ary) . ',
+				user_unread_privmsg = user_unread_privmsg - ' . sizeof($ary) . '
+			WHERE user_id = ' . $_user_id;
+		$db->sql_query($sql);
+	}
 
 	$db->sql_transaction('commit');
 
@@ -1508,7 +1558,8 @@ function validate_username($username, $allowed_username = false)
 			return 'INVALID_CHARS';
 		}
 	}
-
+  
+  /*        // LPADLO COMMENT
 	$sql = 'SELECT username
 		FROM ' . USERS_TABLE . "
 		WHERE username_clean = '" . $db->sql_escape($clean_username) . "'";
@@ -1532,7 +1583,20 @@ function validate_username($username, $allowed_username = false)
 	{
 		return 'USERNAME_TAKEN';
 	}
-
+  */
+  //LPADLO ADD
+ 
+  set_db('R'); 
+    $result = username_available_check($username, $clean_username);       
+  set_db('L'); 
+  if (!isset($result)) {        
+    $result = username_available_check($username, $clean_username);     
+  }    
+  if (isset($result)) {
+    return $result;
+  }         
+  //LPADLO END
+  
 	$bad_usernames = $cache->obtain_disallowed_usernames();
 
 	foreach ($bad_usernames as $bad_username)
@@ -1545,6 +1609,40 @@ function validate_username($username, $allowed_username = false)
 
 	return false;
 }
+
+//LPADLO ADD Function
+function username_available_check($username, $clean_username) {
+  
+  global $db;
+  
+  $sql = 'SELECT username
+		FROM ' . USERS_TABLE . "
+		WHERE username_clean = '" . $db->sql_escape($clean_username) . "'";
+	$result = $db->sql_query($sql);
+	$row = $db->sql_fetchrow($result);
+	$db->sql_freeresult($result);
+
+	if ($row)
+	{
+		return 'USERNAME_TAKEN';
+	}
+
+	$sql = 'SELECT group_name
+		FROM ' . GROUPS_TABLE . "
+		WHERE LOWER(group_name) = '" . $db->sql_escape(utf8_strtolower($username)) . "'";
+	$result = $db->sql_query($sql);
+	$row = $db->sql_fetchrow($result);
+	$db->sql_freeresult($result);
+
+	if ($row)
+	{
+		return 'USERNAME_TAKEN';
+	}
+
+}
+
+
+
 
 /**
 * Check to see if the password meets the complexity settings
@@ -1899,27 +1997,6 @@ function validate_jabber($jid)
 }
 
 /**
-* Verifies whether a style ID corresponds to an active style.
-*
-* @param int $style_id The style_id of a style which should be checked if activated or not.
-* @return boolean
-*/
-function phpbb_style_is_active($style_id)
-{
-	global $db;
-
-	$sql = 'SELECT style_active
-		FROM ' . STYLES_TABLE . '
-		WHERE style_id = '. (int) $style_id;
-	$result = $db->sql_query($sql);
-
-	$style_is_active = (bool) $db->sql_fetchfield('style_active');
-	$db->sql_freeresult($result);
-
-	return $style_is_active;
-}
-
-/**
 * Remove avatar
 */
 function avatar_delete($mode, $row, $clean_db = false)
@@ -1940,9 +2017,9 @@ function avatar_delete($mode, $row, $clean_db = false)
 		avatar_remove_db($row[$mode . '_avatar']);
 	}
 	$filename = get_avatar_filename($row[$mode . '_avatar']);
-	if (file_exists($phpbb_root_path . $config['avatar_path'] . '/' . $filename))
+	if (file_exists('http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_path'] . '/' . $filename))
 	{
-		@unlink($phpbb_root_path . $config['avatar_path'] . '/' . $filename);
+		@unlink('http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_path'] . '/' . $filename);
 		return true;
 	}
 
@@ -2108,7 +2185,7 @@ function avatar_gallery($category, $avatar_select, $items_per_column, $block_var
 
 	$avatar_list = array();
 
-	$path = $phpbb_root_path . $config['avatar_gallery_path'];
+	$path = 'http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_gallery_path'];
 
 	if (!file_exists($path) || !is_dir($path))
 	{
@@ -2187,13 +2264,13 @@ function avatar_gallery($category, $avatar_select, $items_per_column, $block_var
 		foreach ($avatar_row_ary as $avatar_col_ary)
 		{
 			$template->assign_block_vars($block_var . '.avatar_column', array(
-				'AVATAR_IMAGE'	=> $phpbb_root_path . $config['avatar_gallery_path'] . '/' . $avatar_col_ary['file'],
+				'AVATAR_IMAGE'	=> 'http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_gallery_path'] . '/' . $avatar_col_ary['file'],
 				'AVATAR_NAME'	=> $avatar_col_ary['name'],
 				'AVATAR_FILE'	=> $avatar_col_ary['filename'])
 			);
 
 			$template->assign_block_vars($block_var . '.avatar_option_column', array(
-				'AVATAR_IMAGE'	=> $phpbb_root_path . $config['avatar_gallery_path'] . '/' . $avatar_col_ary['file'],
+				'AVATAR_IMAGE'	=> 'http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_gallery_path'] . '/' . $avatar_col_ary['file'],
 				'S_OPTIONS_AVATAR'	=> $avatar_col_ary['filename'])
 			);
 		}
@@ -2216,11 +2293,11 @@ function avatar_get_dimensions($avatar, $avatar_type, &$error, $current_x = 0, $
 			break;
 
 		case AVATAR_UPLOAD :
-			$avatar = $phpbb_root_path . $config['avatar_path'] . '/' . get_avatar_filename($avatar);
+			$avatar = 'http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_path'] . '/' . get_avatar_filename($avatar);
 			break;
 
 		case AVATAR_GALLERY :
-			$avatar = $phpbb_root_path . $config['avatar_gallery_path'] . '/' . $avatar ;
+			$avatar = 'http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_gallery_path'] . '/' . $avatar ;
 			break;
 	}
 
@@ -2300,7 +2377,7 @@ function avatar_process_user(&$error, $custom_userdata = false, $can_upload = nu
 	// Can we upload?
 	if (is_null($can_upload))
 	{
-		$can_upload = ($config['allow_avatar_upload'] && file_exists($phpbb_root_path . $config['avatar_path']) && phpbb_is_writable($phpbb_root_path . $config['avatar_path']) && $change_avatar && (@ini_get('file_uploads') || strtolower(@ini_get('file_uploads')) == 'on')) ? true : false;
+		$can_upload = ($config['allow_avatar_upload'] && file_exists('http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_path']) && phpbb_is_writable('http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_path']) && $change_avatar && (@ini_get('file_uploads') || strtolower(@ini_get('file_uploads')) == 'on')) ? true : false;
 	}
 
 	if ((!empty($_FILES['uploadfile']['name']) || $data['uploadurl']) && $can_upload)
@@ -2319,7 +2396,7 @@ function avatar_process_user(&$error, $custom_userdata = false, $can_upload = nu
 		$sql_ary['user_avatar'] = $avatar_select;
 
 		// check avatar gallery
-		if (!is_dir($phpbb_root_path . $config['avatar_gallery_path'] . '/' . $category))
+		if (!is_dir('http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_gallery_path'] . '/' . $category))
 		{
 			$sql_ary['user_avatar'] = '';
 			$sql_ary['user_avatar_type'] = $sql_ary['user_avatar_width'] = $sql_ary['user_avatar_height'] = 0;
@@ -2603,7 +2680,7 @@ function group_correct_avatar($group_id, $old_entry)
 	$new_filename 	= $config['avatar_salt'] . "_g$group_id.$ext";
 	$new_entry 		= 'g' . $group_id . '_' . substr(time(), -5) . ".$ext";
 
-	$avatar_path = $phpbb_root_path . $config['avatar_path'];
+	$avatar_path = 'http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_path'];
 	if (@rename($avatar_path . '/'. $old_filename, $avatar_path . '/' . $new_filename))
 	{
 		$sql = 'UPDATE ' . GROUPS_TABLE . '
@@ -3556,39 +3633,6 @@ function remove_newly_registered($user_id, $user_data = false)
 	}
 
 	return $user_data['group_id'];
-}
-
-/**
-* Gets user ids of currently banned registered users.
-*
-* @param array $user_ids Array of users' ids to check for banning,
-*						leave empty to get complete list of banned ids
-* @return array	Array of banned users' ids if any, empty array otherwise
-*/
-function phpbb_get_banned_user_ids($user_ids = array())
-{
-	global $db;
-
-	$sql_user_ids = (!empty($user_ids)) ? $db->sql_in_set('ban_userid', $user_ids) : 'ban_userid <> 0';
-
-	// Get banned User ID's
-	// Ignore stale bans which were not wiped yet
-	$banned_ids_list = array();
-	$sql = 'SELECT ban_userid
-		FROM ' . BANLIST_TABLE . "
-		WHERE $sql_user_ids
-			AND ban_exclude <> 1
-			AND (ban_end > " . time() . '
-				OR ban_end = 0)';
-	$result = $db->sql_query($sql);
-	while ($row = $db->sql_fetchrow($result))
-	{
-		$user_id = (int) $row['ban_userid'];
-		$banned_ids_list[$user_id] = $user_id;
-	}
-	$db->sql_freeresult($result);
-
-	return $banned_ids_list;
 }
 
 ?>

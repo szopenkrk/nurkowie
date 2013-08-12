@@ -1,13 +1,12 @@
 <?php
-/** 
+/**
 *
 * acp_ban [Polski]
 *
 * @package language
-* @version $Id$
-* @copyright (c) 2005 phpBB Group
+* @copyright (c) 2006 - 2011 phpBB3.PL Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* @Polish locale  2012-06-17 21:31:25 Zespół Olympus.pl $
+*
 */
 
 /**
@@ -23,9 +22,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// DEVELOPERS PLEASE NOTE
+// INFORMACJA
 //
-// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
+// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -35,51 +34,53 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-// Banning
+// Banowanie
 $lang = array_merge($lang, array(
-	'1_HOUR'		=> '1 godzina',
-	'30_MINS'		=> '30 minut',
+	'1_HOUR'		=> 'godzina',
+	'30_MINS'		=> 'pół godziny',
 	'6_HOURS'		=> '6 godzin',
 
-	'ACP_BAN_EXPLAIN'	=> 'Tutaj można blokować użytkowników wg nazwy użytkownika, adresu e-mail lub IP. W ten sposób można uniemożliwić dostęp do dowolnej części witryny. Można także podać krótki (maksymalnie 3000 znaków) powód zablokowania. Informacja ta będzie wyświetlona w dzienniku administratora. Można również określić czas trwania blokady. Aby zamiast czasu trwania blokady określić datę zakończenia blokady, należy w menu wyboru czasu trwania blokady wybrać <span style="text-decoration: underline;">Do –&gt;</span> i wprowadzić datę zakończenia blokady w formacie <kbd>RRRR-MM-DD</kbd>.',
+	'ACP_BAN_EXPLAIN'	=> 'Tutaj możesz kontrolować banowanie użytkowników po nazwie, adresie IP albo e-mailu. Banowanie pozwala uniemożliwić użytkownikowi dostęp do wszystkich części forum. Jeśli chcesz, możesz podać krótki (maksymalnie 3 000 znaków) powód bana. Będzie wyświetlany w logu aktywności administratorów. Możesz też określić czas trwania bana. Jeśli chcesz, żeby ban się skończył konkretnego dnia, a nie po określonym czasie, z listy „Długość bana” wybierz <span style="text-decoration: underline;">Do</span> i wpisz datę w formacie <kbd>RRRR-MM-DD</kbd>.',
 
-	'BAN_EXCLUDE'			=> 'Wyklucz z blokowania',
-	'BAN_LENGTH'			=> 'Czas trwania blokady',
-	'BAN_REASON'			=> 'Powód zablokowania',
-	'BAN_GIVE_REASON'		=> 'Powód wyświetlany osobie zablokowanej',
-	'BAN_UPDATE_SUCCESSFUL'	=> 'Lista blokad została zaktualizowana.',
+	'BAN_EXCLUDE'			=> 'Wyłącz z bana',
+	'BAN_LENGTH'			=> 'Długość bana',
+	'BAN_REASON'			=> 'Powód bana',
+	'BAN_GIVE_REASON'		=> 'Powód wyświetlany zbanowanemu',
+	'BAN_UPDATE_SUCCESSFUL'	=> 'Lista banów została zmieniona.',
 	'BANNED_UNTIL_DATE'		=> 'do %s', // Example: "until Mon 13.Jul.2009, 14:44"
 	'BANNED_UNTIL_DURATION'	=> '%1$s (do %2$s)', // Example: "7 days (until Tue 14.Jul.2009, 14:44)"
 
-	'EMAIL_BAN'					=> 'Blokowanie adresów e-mail',
-	'EMAIL_BAN_EXCLUDE_EXPLAIN'	=> 'Włączenie tej funkcji spowoduje wykluczenie wprowadzonego adresu e-mail ze wszystkich blokad.',
-	'EMAIL_BAN_EXPLAIN'			=> 'Aby zablokować jednocześnie kilka adresów e-mail, należy wprowadzić każdy adres w nowym, osobnym wierszu. Można użyć gwiazdki (*) jako elementu zastępującego część adresu, np. <samp>*@hotmail.com</samp>, <samp>*@*.domain.tld</samp>, itp.',
-	'EMAIL_NO_BANNED'			=> 'Nie ma zablokowanych adresów e-mail',
-	'EMAIL_UNBAN'				=> 'Odblokowywanie lub usuwanie wykluczeń adresów e-mail',
-	'EMAIL_UNBAN_EXPLAIN'		=> 'Można usunąć blokadę lub wykluczenie wielu adresów e-mail w jednym kroku, używając odpowiednich kombinacji klawiszy myszy i klawiatury właściwych dla danego systemu operacyjnego i przeglądarki. Wykluczone adresy e-mail są wyróżnione.',
+	'EMAIL_BAN'					=> 'Zbanuj adres(y) e-mail',
+	'EMAIL_BAN_EXCLUDE_EXPLAIN'	=> 'Użyj tej funkcji, aby wyłączyć podany/e adres(y) e-mail ze wszystkich obecnych banów.',
+	'EMAIL_BAN_EXPLAIN'			=> 'Aby podać więcej, niż jeden adres e-mail, wpisz każdy w nowej linii. Aby za jednym razem zbanować pulę adresów, użyj *, np. <samp>*@hotmail.com</samp>, <samp>*@*.domain.tld</samp>',
+	'EMAIL_NO_BANNED'			=> 'Nie ma zbanowanych adresów e-mail',
+	'EMAIL_UNBAN'				=> 'Odbanuj lub anuluj wyłączenie adresów e-mail',
+	'EMAIL_UNBAN_EXPLAIN'		=> 'Możesz odbanować (lub anulować wyłączenie) wielu adresów e-mail naraz dzięki użyciu odpowiedniej dla Twojego komputera i przeglądarki kombinacji myszki i klawiatury (np. Ctrl + LPM). Wyłączone adresy e-mail są pogrubione.',
 
-	'IP_BAN'					=> 'Blokowanie adresów IP',
-	'IP_BAN_EXCLUDE_EXPLAIN'	=> 'Włączenie tej funkcji spowoduje wykluczenie wprowadzonego adresu IP ze wszystkich blokad.',
-	'IP_BAN_EXPLAIN'			=> 'Aby zablokować jednocześnie kilka różnych adresów IP lub nazw serwerów, należy wprowadzić każdy z nich w nowym, osobnym wierszu. Aby określić zakres adresów IP, należy oddzielić początek i koniec zakresu myślnikiem (–). Można używać gwiazdki (*) jako wieloznacznika.',
-	'IP_HOSTNAME'				=> 'Adresy IP lub nazwy serwerów',
-	'IP_NO_BANNED'				=> 'Nie ma zablokowanych adresów IP',
-	'IP_UNBAN'					=> 'Odblokowywanie lub usuwanie wykluczeń adresów IP',
-	'IP_UNBAN_EXPLAIN'			=> 'Można usunąć blokadę lub wykluczenie wielu adresów IP w jednym kroku, używając odpowiednich kombinacji klawiszy myszy i klawiatury właściwych dla danego systemu operacyjnego i przeglądarki. Wykluczone adresy IP są wyróżnione.',
+	'IP_BAN'					=> 'Zbanuj adres(y) IP',
+	'IP_BAN_EXCLUDE_EXPLAIN'	=> 'Użyj tej funkcji, aby wyłączyć podany/e adres(y) IP ze wszystkich obecnych banów.',
+	'IP_BAN_EXPLAIN'			=> 'Aby podać więcej, niż jeden adres IP lub nazwę hosta, wpisz każdy w nowej linii. Aby za jednym razem zbanować pulę adresów IP, między pierwszym i ostatnim adresem z puli wstaw -, albo użyj *.',
+	'IP_HOSTNAME'				=> 'Adresy IP albo nazwy hostów',
+	'IP_NO_BANNED'				=> 'Nie ma zbanowanych adresów IP',
+	'IP_UNBAN'					=> 'Odbanuj lub anuluj wyłączenie adresów IP',
+	'IP_UNBAN_EXPLAIN'			=> 'Możesz odbanować (lub anulować wyłączenie) wielu adresów IP naraz dzięki użyciu odpowiedniej dla Twojego komputera i przeglądarki kombinacji myszki i klawiatury (np. Ctrl + LPM). Wyłączone adresy IP są pogrubione.',
 
-	'LENGTH_BAN_INVALID'		=> 'Data powinna mieć format <kbd>RRRR-MM-DD</kbd>.',
+	'LENGTH_BAN_INVALID'		=> 'Data musi mieć format <kbd>RRRR-MM-DD</kbd>.',
 
-	'OPTIONS_BANNED'			=> 'Zablokowany',
-	'OPTIONS_EXCLUDED'			=> 'Wykluczony',
+	'OPTIONS_BANNED'			=> 'Zbanowany',
+	'OPTIONS_EXCLUDED'			=> 'Wyłączony z bana',
 
-	'PERMANENT'		=> 'Na stałe',
+	'PERMANENT'		=> 'Na zawsze',
 
 	'UNTIL'						=> 'Do',
-	'USER_BAN'					=> 'Blokowanie użytkowników',
-	'USER_BAN_EXCLUDE_EXPLAIN'	=> 'Włączenie tej funkcji spowoduje wykluczenie wprowadzonej nazwy użytkownika ze wszystkich blokad.',
-	'USER_BAN_EXPLAIN'			=> 'Można zablokować wielu użytkowników w jednym kroku poprzez wprowadzenie każdej nazwy użytkownika w nowym, oddzielnym wierszu. Można użyć narzędzia <b>Znajdź użytkownika</b>, aby wyszukać i automatycznie dodać użytkowników.',
-	'USER_NO_BANNED'			=> 'Nie ma zablokowanych użytkowników',
-	'USER_UNBAN'				=> 'Odblokowywanie lub usuwanie wykluczeń użytkowników',
-	'USER_UNBAN_EXPLAIN'		=> 'Można usunąć blokadę lub wykluczenie wielu użytkowników w jednym kroku, używając odpowiednich kombinacji klawiszy myszy i klawiatury właściwych dla danego systemu operacyjnego i przeglądarki. Wykluczone nazwy użytkowników są wyróżnione.',
+	'USER_BAN'					=> 'Zbanuj konto/a użytkownika/ów',
+	'USER_BAN_EXCLUDE_EXPLAIN'	=> 'Użyj tej funkcji, aby wyłączyć podanego/ych użytkownika/ów ze wszystkich obecnych banów.',
+	'USER_BAN_EXPLAIN'			=> 'Możesz zbanować wielu użytkowników jednocześnie, wpisując nazwę każdego w nowej linii. Użyj funkcji <span style="text-decoration: underline;">Znajdź użytkownika</span>, aby automatycznie znaleźć i dodać jednego lub więcej użytkowników.',
+	'USER_NO_BANNED'			=> 'Nie ma zbanowanych użytkowników',
+	'USER_UNBAN'				=> 'Odbanuj lub anuluj wyłączenie kont użytkowników',
+	'USER_UNBAN_EXPLAIN'		=> 'Możesz odbanować (lub anulować wyłączenie) wielu kont użytkowników naraz dzięki użyciu odpowiedniej dla Twojego komputera i przeglądarki kombinacji myszki i klawiatury (np. Ctrl + LPM). Wyłączone konta użytkowników są pogrubione.',
+
+
 ));
 
 ?>

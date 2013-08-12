@@ -10,26 +10,54 @@
 
 	<fieldset>
 	<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+	<!-- IF ENABLE_GG -->
+	<dl>
+		<dt><label for="gg">{L_UCP_GG}:</label></dt>
+		<dd><input type="text" name="gg" id="gg" maxlength="15" value="{GG}" class="inputbox" /></dd>
+	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_TLEN -->  
+	<dl>
+		<dt><label for="tlen">{L_UCP_TLEN}:</label></dt>
+		<dd><input type="text" name="tlen" id="tlen" maxlength="255" value="{TLEN}" class="inputbox" /></dd>
+	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_SKYPE -->  
+	<dl>
+		<dt><label for="skype">{L_UCP_SKYPE}:</label></dt>
+		<dd><input type="text" name="skype" id="skype" maxlength="255" value="{SKYPE}" class="inputbox" /></dd>
+	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_ICQ -->
 	<dl>
 		<dt><label for="icq">{L_UCP_ICQ}:</label></dt>
 		<dd><input type="text" name="icq" id="icq" maxlength="15" value="{ICQ}" class="inputbox" /></dd>
 	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_AIM -->  
 	<dl>
 		<dt><label for="aim">{L_UCP_AIM}:</label></dt>
 		<dd><input type="text" name="aim" id="aim" maxlength="255" value="{AIM}" class="inputbox" /></dd>
 	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_MSN -->  
 	<dl>
 		<dt><label for="msn">{L_UCP_MSNM}:</label></dt>
 		<dd><input type="text" name="msn" id="msn" maxlength="255" value="{MSN}" class="inputbox" /></dd>
 	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_YIM -->  
 	<dl>
 		<dt><label for="yim">{L_UCP_YIM}:</label></dt>
 		<dd><input type="text" name="yim" id="yim" maxlength="255" value="{YIM}" class="inputbox" /></dd>
 	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_JABBER -->  
 	<dl>
 		<dt><label for="jabber">{L_UCP_JABBER}:</label></dt>
 		<dd><input type="text" name="jabber" id="jabber" maxlength="255" value="{JABBER}" class="inputbox" /></dd>
 	</dl>
+	<!-- ENDIF -->
 	<dl>
 		<dt><label for="website">{L_WEBSITE}:</label></dt>
 		<dd><input type="text" name="website" id="website" maxlength="255" value="{WEBSITE}" class="inputbox" /></dd>

@@ -1,13 +1,14 @@
+Witaj {TO_USERNAME},
 
-Witaj {TO_USERNAME}!
-
-Poniżej znajduje się wiadomość wysłana do Ciebie przez {FROM_USERNAME} za pośrednictwem Twojego konta na witrynie „{SITENAME}”. Jeżeli uznasz ją za spam, jest obraźliwa lub w jakikolwiek sposób Cię niepokoi, poinformuj o tym administratora forum, wysyłając informację na poniższy adres:
+Tę wiadomość wysłał(a) do Ciebie {FROM_USERNAME} przez Twoje konto na "{SITENAME}". Jeśli jest to spam lub zawiera obraźliwe treści, to wyślij informację o tym na ten adres e-mail:
 
 {BOARD_CONTACT}
 
-Dołącz do e-maila całą otrzymaną wiadomość wraz z nagłówkami. Zwróć uwagę na to, że adresem zwrotnym tej wiadomości jest adres należący do {FROM_USERNAME}.
+Załącz cały e-mail (szczególnie nagłówki). Zauważ, że adres e-mail nadawcy tej wiadomości został ustawiony na ten należący do {FROM_USERNAME}.
 
 Treść wiadomości:
 ~~~~~~~~~~~~~~~~~
 
 {MESSAGE}
+
+{EMAIL_SIG}

@@ -15,7 +15,6 @@ define('IN_PHPBB', true);
 $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './../';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
 
-
 // Thank you sun.
 if (isset($_SERVER['CONTENT_TYPE']))
 {
@@ -47,12 +46,23 @@ if (isset($_GET['avatar']))
 
 	$db = new $sql_db();
 	$cache = new cache();
-
+         
 	// Connect to DB
 	if (!@$db->sql_connect($dbhost, $dbuser, $dbpasswd, $dbname, $dbport, false, false))
 	{
 		exit;
+	}     
+ //LPADLO ADD
+  $dbTest = new $sql_db();
+
+	// Connect to DB
+	if (!@$dbTest->sql_connect($dbhost, $dbuser, $dbpasswd, $dbnameTest, $dbport, false, false))
+	{
+		exit;
 	}
+  
+  //&&&&&&&&&&&&&&&&&&&
+  
 	unset($dbpasswd);
 
 	// worst-case default
@@ -319,7 +329,7 @@ else
 */
 function send_avatar_to_browser($file, $browser)
 {
-	global $config, $phpbb_root_path;
+	global $config, $phpbb_root_path, $remoteServerDir;
 
 	$prefix = $config['avatar_salt'] . '_';
 	$image_dir = $config['avatar_path'];
@@ -335,8 +345,18 @@ function send_avatar_to_browser($file, $browser)
 	{
 		$image_dir = '';
 	}
+ 
+ //LPADLO ADD
+ // global $forum_location;
+          
+  if ($forum_location == 'R') {
+    $phpbb_root_path = '../' . $remoteServerDir;
+  }
+  
+  //LPADLO ADD END
+   
 	$file_path = $phpbb_root_path . $image_dir . '/' . $prefix . $file;
-
+  //@echo  '  '. $file_path;
 	if ((@file_exists($file_path) && @is_readable($file_path)) && !headers_sent())
 	{
 		header('Pragma: public');
@@ -417,14 +437,20 @@ function wrap_img_in_html($src, $title)
 */
 function send_file_to_browser($attachment, $upload_dir, $category)
 {
-	global $user, $db, $config, $phpbb_root_path;
-
-	$filename = $phpbb_root_path . $upload_dir . '/' . $attachment['physical_filename'];
-
+	global $user, $db, $config, $phpbb_root_path, $forum_location, $remoteServerDir; 
+  
+  //LPADLO ADD
+ // global $forum_location;
+  if ($forum_location == 'R') {
+    $phpbb_root_path = '../' . $remoteServerDir;
+  }
+  //logSring("mamy full dest: " . $phpbb_root_path . " poniewaz: " . $forum_location);//LPADLO
+	//LPADLO ADD END 
+  $filename = $phpbb_root_path . $upload_dir . '/' . $attachment['physical_filename'];
 	if (!@file_exists($filename))
 	{
 		send_status_line(404, 'Not Found');
-		trigger_error('ERROR_NO_ATTACHMENT');
+		trigger_error($user->lang['ERROR_NO_ATTACHMENT'] . '<br /><br />' . sprintf($user->lang['FILE_NOT_FOUND_404'], $filename));
 	}
 
 	// Correct the mime type - we force application/octetstream for all files, except images

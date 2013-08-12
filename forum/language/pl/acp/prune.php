@@ -1,13 +1,12 @@
 <?php
-/** 
+/**
 *
 * acp_prune [Polski]
 *
 * @package language
-* @version $Id: prune.php 9933 2009-08-06 09:12:21Z marshalrusty $
-* @copyright (c) 2005 phpBB Group
+* @copyright (c) 2006 - 2011 phpBB3.PL Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* @Polish locale 9933 2009-09-25 18:14:52 Zespół Olympus.pl $
+*
 */
 
 /**
@@ -23,9 +22,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// DEVELOPERS PLEASE NOTE
+// INFORMACJA
 //
-// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
+// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -35,57 +34,57 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-// User pruning
+// Usuwanie użytkowników
 $lang = array_merge($lang, array(
-	'ACP_PRUNE_USERS_EXPLAIN'	=> 'Tutaj można usuwać lub dezaktywować użytkowników tej witryny. Konta można filtrować, stosując różne kryteria, np. liczbę postów, aktywność, itp. Kryteria te można łączyć w celu zawężenia filtrowania do konkretnych kont. Na przykład można usunąć użytkowników aktywnych przed 2002-01-01 z liczbą postów mniejszą niż 10. Alternatywnie można bezpośrednio w polu tekstowym utworzyć listę użytkowników do usunięcia – każdy użytkownik musi być w osobnym wierszu. Wówczas jakiekolwiek wprowadzone inne kryteria będą ignorowane. Proszę ostrożnie posługiwać się tą funkcją, ponieważ skutków jej działania nie można odwrócić.',
+	'ACP_PRUNE_USERS_EXPLAIN'	=> 'Tutaj możesz masowo usuwać lub deaktywować użytkowników Twojego forum. Listę kont można ograniczać wg różnych kryteriów: liczby postów, daty ostatniej aktywności itp. Wszystkie te kryteria mogą być łączone, żeby jeszcze bardziej ograniczyć listę, np. możesz usunąć użytkowników ostatnio aktywnych przed 2008-01-01, mających mniej niż 10 postów. Możesz też pominąć generowanie listy za pomocą kryteriów podając własną listę użytkowników do usunięcia (nazwa każdego w osobnej linii) w polu tekstowym. <br/><strong>Uważaj przy używaniu tej funkcji! Nie ma tu przycisku „Cofnij”!</strong>',
 
-	'DEACTIVATE_DELETE'			=> 'Dezaktywuj lub usuń',
-	'DEACTIVATE_DELETE_EXPLAIN'	=> 'Wybierz opcję – dezaktywować użytkownika, czy go usunąć. Pamiętaj, że kont usuniętych użytkowników nie można odtworzyć!',
+	'DEACTIVATE_DELETE'			=> 'Deaktywować czy usunąć',
+	'DEACTIVATE_DELETE_EXPLAIN'	=> 'Wybierz, czy chcesz deaktywować użytkowników, czy ich całkowicie usunąć. <strong>Pamiętaj, że usuniętych użytkowników nie można przywrócić!</strong>',
 	'DELETE_USERS'				=> 'Usuń',
-	'DELETE_USER_POSTS'			=> 'Usuń posty usuwanych użytkowników',
-	'DELETE_USER_POSTS_EXPLAIN' => 'Usuwa posty napisane przez usuwanych użytkowników. Nie oddziałuje na posty użytkowników dezaktywowanych.',
+	'DELETE_USER_POSTS'			=> 'Usuń posty usuniętych użytkowników',
+	'DELETE_USER_POSTS_EXPLAIN' => 'Usuwa posty napisane przez usuniętych użytkowników. Nie ma żadnego efektu, jeśli użytkownicy są deaktywowani.',
 
-	'JOINED_EXPLAIN'			=> 'Wprowadź datę w formacie <kbd>RRRR-MM-DD</kbd>.',
+	'JOINED_EXPLAIN'			=> 'Podaj datę w formacie <kbd>RRRR-MM-DD</kbd>.',
 
-	'LAST_ACTIVE_EXPLAIN'		=> 'Wprowadź datę w formacie <kbd>RRRR-MM-DD</kbd>. Wprowadź <kbd>0000-00-00</kbd>, aby usunąć użytkowników, którzy nigdy się nie zalogowali. Warunki <em>Przed</em> i <em>Po</em> będą ignorowane.',
+	'LAST_ACTIVE_EXPLAIN'		=> 'Podaj datę w formacie <kbd>RRRR-MM-DD</kbd>. Podaj <kbd>0000-00-00</kbd> aby usunąć użytkowników, którzy nigdy się nie zalogowali - <em>Przed</em> i <em>Po</em> zostaną zignorowane.',
 
-	'PRUNE_USERS_LIST'				=> 'Użytkownicy do usunięcia',
-	'PRUNE_USERS_LIST_DELETE'		=> 'Stosując wybrane kryteria następujące konta użytkowników zostaną usunięte.',
-	'PRUNE_USERS_LIST_DEACTIVATE'	=> 'Stosując wybrane kryteria następujące konta użytkowników zostaną dezaktywowane.',
+	'PRUNE_USERS_LIST'				=> 'Użytkownicy do usunięcia/deaktywacji',
+	'PRUNE_USERS_LIST_DELETE'		=> 'Przy wybranych kryteriach usuwania użytkowników, usunięte zostaną poniższe konta.',
+	'PRUNE_USERS_LIST_DEACTIVATE'	=> 'Przy wybranych kryteriach deaktywowania użytkowników, deaktywowane zostaną poniższe konta.',
 
-	'SELECT_USERS_EXPLAIN'		=> 'Wprowadź tutaj nazwy użytkowników, których konta zostaną usunięte przy zastosowaniu kryteriów określonych powyżej. Założycieli nie można usuwać.',
+	'SELECT_USERS_EXPLAIN'		=> 'Podaj konkretne nazwy użytkowników, zostaną one użyte zamiast powyższych kryteriów. Założycieli nie można usunąć.',
 
-	'USER_DEACTIVATE_SUCCESS'	=> 'Dezaktywowano wybranych użytkowników.',
-	'USER_DELETE_SUCCESS'		=> 'Usunięto wybranych użytkowników.',
-	'USER_PRUNE_FAILURE'		=> 'Nie ma użytkowników spełniających wybrane kryteria.',
+	'USER_DEACTIVATE_SUCCESS'	=> 'Wybrani użytkownicy zostali deaktywowani.',
+	'USER_DELETE_SUCCESS'		=> 'Wybrani użytkownicy zostali usunięci.',
+	'USER_PRUNE_FAILURE'		=> 'Nie znaleziono użytkowników odpowiadających poniższym kryteriom.',
 
-	'WRONG_ACTIVE_JOINED_DATE'	=> 'Wprowadzona data jest nieprawidłowa. Data powinna być wprowadzona w formacie <kbd>RRRR-MM-DD</kbd>.',
+	'WRONG_ACTIVE_JOINED_DATE'	=> 'Podana data jest nieprawidłowa, musisz podać ją w formacie <kbd>RRRR-MM-DD</kbd>.',
 ));
 
-// Forum Pruning
+// Oczyszczanie działów
 $lang = array_merge($lang, array(
-	'ACP_PRUNE_FORUMS_EXPLAIN'	=> 'Tutaj można usunąć dowolny temat bez odpowiedzi bądź nieoglądany w ciągu określonej liczby dni. Jeśli nie zostanie określona liczba dni, wszystkie tematy zostaną usunięte. Domyślnie nie zostaną usunięte tematy, w których są zamieszczone ogłoszenia, przyklejone posty i aktywne ankiety.',
+	'ACP_PRUNE_FORUMS_EXPLAIN'	=> 'Tutaj możesz szybko oczyścić wybrany/e dział(y) ze starych wątków. Najpierw wybierz dział(y), który/e chcesz oczyścić, a potem ustaw zasady, według których ma się odbyć oczyszczanie. Jeśli nie zdefiniujesz żadnych kryteriów (tj. zostawisz obydwa pola puste lub wpiszesz 0), wszystkie wątki zostaną usunięte. Standardowo forum nie usunie wątków z nadal otwartymi ankietami ani wątków przyklejonych oraz ogłoszeń.',
 
-	'FORUM_PRUNE'		=> 'Czyszczenie forum',
+	'FORUM_PRUNE'		=> 'Kryteria oczyszczania',
 
-	'NO_PRUNE'			=> 'Nie ma forów do wyczyszczenia.',
+	'NO_PRUNE'			=> 'Nie oczyszczono żadnych działów.',
 
-	'SELECTED_FORUM'	=> 'Wybrane forum',
-	'SELECTED_FORUMS'	=> 'Wybrane fora',
+	'SELECTED_FORUM'	=> 'Wybrany dział',
+	'SELECTED_FORUMS'	=> 'Wybrane działy',
 
-	'POSTS_PRUNED'					=> 'Usunięte posty',
+	'POSTS_PRUNED'					=> 'Usunięto postów',
 	'PRUNE_ANNOUNCEMENTS'			=> 'Usuń ogłoszenia',
 	'PRUNE_FINISHED_POLLS'			=> 'Usuń zamknięte ankiety',
-	'PRUNE_FINISHED_POLLS_EXPLAIN'	=> 'Usuwa tematy z wygasłymi ankietami.',
-	'PRUNE_FORUM_CONFIRM'			=> 'Czy na pewno chcesz wyczyścić zaznaczone fora, stosując wybrane kryteria? Operacji tej nie można odwrócić.',
-	'PRUNE_NOT_POSTED'				=> 'Liczba dni od ostatniej publikacji',
-	'PRUNE_NOT_VIEWED'				=> 'Liczba dni od ostatnich odwiedzin',
+	'PRUNE_FINISHED_POLLS_EXPLAIN'	=> 'Usuwa wątki z przeterminowanymi ankietami.',
+	'PRUNE_FORUM_CONFIRM'			=> 'Czy na pewno chcesz oczyścić wybrany/e dział(y) wg podanych kryteriów? <strong>Pamiętaj, że nie ma tu przycisku „Cofnij”!</strong>',
+	'PRUNE_NOT_POSTED'				=> 'Liczba dni od napisania ostatniego postu / oddania ostatniego głosu',
+	'PRUNE_NOT_VIEWED'				=> 'Liczba dni od ostatniego wyświetlenia',
 	'PRUNE_OLD_POLLS'				=> 'Usuń stare ankiety',
-	'PRUNE_OLD_POLLS_EXPLAIN'		=> 'Usuwa tematy zawierające ankiety, w których nie oddano głosów w czasie aktywności ankiety.',
-	'PRUNE_STICKY'					=> 'Usuń przyklejone posty',
-	'PRUNE_SUCCESS'					=> 'Czyszczenie forum zostało zakończone.',
+	'PRUNE_OLD_POLLS_EXPLAIN'		=> 'Usuwa wątki z ankietami, w których nie głosowano od ustalonej wyżej liczby dni.',
+	'PRUNE_STICKY'					=> 'Usuń przyklejone',
+	'PRUNE_SUCCESS'					=> 'Dział(y) został(y) oczyszczony/e.',
 
-	'TOPICS_PRUNED'		=> 'Usunięte tematy',
+	'TOPICS_PRUNED'		=> 'Usunięto wątków',
 ));
 
 ?>

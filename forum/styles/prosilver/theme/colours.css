@@ -5,20 +5,22 @@ Colours and backgrounds for common.css
 
 html, body {
 	color: #536482;
-	background-color: #FFFFFF;
+	
+	background: #011c30 no-repeat url({T_THEME_PATH}/images/diver.jpg);
+	background-position: right top;
 }
 
 h1 {
-	color: #FFFFFF;
+	color: #e5e950;
 }
 
 h2 {
-	color: #28313F;
+	color: #e5e950;
 }
 
 h3 {
 	border-bottom-color: #CCCCCC;
-	color: #115098;
+	color: #e5e950;
 }
 
 hr {
@@ -48,8 +50,10 @@ hr.dashed {
 /* Round cornered boxes and backgrounds
 ---------------------------------------- */
 .headerbar {
-	background-color: #12A3EB;
-	background-image: url("{T_THEME_PATH}/images/bg_header.gif");
+	/*background-color: #12A3EB;
+	background-image: url("{T_THEME_PATH}/images/bg_header.gif");*/
+	background-color: transparent;
+	height: 250px;
 	color: #FFFFFF;
 }
 
@@ -58,31 +62,30 @@ hr.dashed {
 }
 
 .forabg {
-	background-color: #0076b1;
+	background-color: #c3c752;
 	background-image: url("{T_THEME_PATH}/images/bg_list.gif");
 }
 
 .forumbg {
-	background-color: #12A3EB;
-	background-image: url("{T_THEME_PATH}/images/bg_header.gif");
+	background-color: #c3c752;
+	background-image: url("{T_THEME_PATH}/images/bg_list.gif");
 }
 
 .panel {
-	background-color: #ECF1F3;
-	color: #28313F;
+	color: #FFFFFF;
 }
 
 .post:target .content {
-	color: #000000;
+	color: white;
 }
 
 .post:target h3 a {
-	color: #000000;
+	color: #d2d58a;
 }
 
-.bg1	{ background-color: #ECF3F7; }
-.bg2	{ background-color: #e1ebf2;  }
-.bg3	{ background-color: #cadceb; }
+.bg1	{ background-color: #0e2030; }
+.bg2	{ background-color: #0e2030;  }
+.bg3	{ background-color: #0e2030; }
 
 .ucprowbg {
 	background-color: #DCDEE2;
@@ -140,7 +143,7 @@ table.table1 tbody td {
 
 table.table1 tbody th {
 	border-bottom-color: #000000;
-	color: #333333;
+	color: #a0a0a0;
 	background-color: #FFFFFF;
 }
 
@@ -151,11 +154,11 @@ table.info tbody th {
 /* Misc layout styles
 ---------------------------------------- */
 dl.details dt {
-	color: #000000;
+	color: #a0a0a0;
 }
 
 dl.details dd {
-	color: #536482;
+	color: #C8D7E6;
 }
 
 .sep {
@@ -239,9 +242,9 @@ p.rules {
 Colours and backgrounds for links.css
 -------------------------------------------------------------- */
 
-a:link	{ color: #105289; }
-a:visited	{ color: #105289; }
-a:hover	{ color: #D31141; }
+a:link	{ color: #e5e950; }
+a:visited	{ color: #c9cc46; }
+a:hover	{ color: #EAED85; }
 a:active	{ color: #368AD2; }
 
 /* Links on gradient backgrounds */
@@ -263,31 +266,31 @@ a:active	{ color: #368AD2; }
 
 /* Links for forum/topic lists */
 a.forumtitle {
-	color: #105289;
+	color: #A5B6D6;
 }
 
 /* a.forumtitle:visited { color: #105289; } */
 
 a.forumtitle:hover {
-	color: #BC2A4D;
+	color: #637BA6;
 }
 
 a.forumtitle:active {
-	color: #105289;
+	color: #637BA6;
 }
 
 a.topictitle {
-	color: #105289;
+	color: #A5B6D6;
 }
 
 /* a.topictitle:visited { color: #368AD2; } */
 
 a.topictitle:hover {
-	color: #BC2A4D;
+	color: #6D8DC7;
 }
 
 a.topictitle:active {
-	color: #105289;
+	color: #6D8DC7;
 }
 
 /* Post body links */
@@ -370,12 +373,11 @@ Colours and backgrounds for content.css
 -------------------------------------------------------------- */
 
 ul.forums {
-	background-color: #eef5f9;
-	background-image: url("{T_THEME_PATH}/images/gradient.gif");
+	background-color: #0e2030;
 }
 
 ul.topiclist li {
-	color: #4C5D77;
+	color: white;
 }
 
 ul.topiclist dd {
@@ -401,11 +403,11 @@ li.row {
 }
 
 li.row strong {
-	color: #000000;
+	color: #8E969C;
 }
 
 li.row:hover {
-	background-color: #F6F4D0;
+	background-color: #203447;
 }
 
 li.row:hover dd {
@@ -423,28 +425,32 @@ li.header dt, li.header dd {
 
 /* Forum list column styles */
 ul.topiclist dd.searchextra {
-	color: #333333;
+	color: #a0a0a0;
 }
 
 /* Post body styles
 ----------------------------------------*/
 .postbody {
-	color: #333333;
+	color: #e0e0e0;
 }
 
 /* Content container styles
 ----------------------------------------*/
 .content {
-	color: #333333;
+	color: white;
+}
+
+.clearfix .postbody .content {
+	color: white;
 }
 
 .content h2, .panel h2 {
-	color: #115098;
+	color: #e5e950;
 	border-bottom-color:  #CCCCCC;
 }
 
 dl.faq dt {
-	color: #333333;
+	color: #a0a0a0;
 }
 
 .posthilit {
@@ -466,6 +472,7 @@ dl.faq dt {
 ----------------------------------------*/
 /* Quote block */
 blockquote {
+	color: black;
 	background-color: #EBEADD;
 	background-image: url("{T_THEME_PATH}/images/quote.gif");
 	border-color:#DBDBCE;
@@ -629,7 +636,7 @@ fieldset.polls dd div {
 /* Poster profile block
 ----------------------------------------*/
 .postprofile {
-	color: #666666;
+	color: #E3ECFA;
 	border-left-color: #FFFFFF;
 }
 
@@ -648,7 +655,7 @@ fieldset.polls dd div {
 }
 
 .postprofile strong {
-	color: #000000;
+	color: #739CDE;
 }
 
 .online {
@@ -769,7 +776,7 @@ ul.cplist {
 }
 
 #tabs .activetab a span {
-	color: #333333;
+	color: #a0a0a0;
 }
 
 #tabs .activetab a:hover span {
@@ -787,7 +794,7 @@ ul.cplist {
 }
 
 #minitabs li.activetab a, #minitabs li.activetab a:hover {
-	color: #333333;
+	color: #a0a0a0;
 }
 
 /* UCP navigation menu
@@ -824,15 +831,15 @@ ul.cplist {
 /* Preferences pane layout
 ----------------------------------------*/
 #cp-main h2 {
-	color: #333333;
+	color: #a0a0a0;
 }
 
 #cp-main .panel {
-	background-color: #F9F9F9;
+	background-color: #707B82;
 }
 
 #cp-main .pm {
-	background-color: #FFFFFF;
+	background-color: #707B82;
 }
 
 #cp-main span.corners-top, #cp-menu span.corners-top {
@@ -884,6 +891,12 @@ dl.mini dt {
 	color: #000000 !important;
 }
 
+/* PM panel adjustments */
+.pm-panel-header,
+#cp-main .pm-message-nav {
+	border-bottom-color: #A4B3BF;
+}
+
 /* PM marking colours */
 .pmlist li.pm_message_reported_colour, .pm_message_reported_colour {
 	border-left-color: #BC2A4D;
@@ -930,7 +943,7 @@ select {
 }
 
 label {
-	color: #425067;
+	color: #839DC7;
 }
 
 option.disabled-option {
@@ -940,7 +953,7 @@ option.disabled-option {
 /* Definition list layout for forms
 ---------------------------------------- */
 dd label {
-	color: #333;
+	color: #767C87;
 }
 
 /* Hover effects */
@@ -961,7 +974,7 @@ fieldset.quick-login input.inputbox {
 ----------------------------------------*/
 
 #message-box textarea {
-	color: #333333;
+	color: black;
 }
 
 /* Input field styles
@@ -1020,4 +1033,25 @@ input.search {
 
 input.disabled {
 	color: #666666;
+}
+
+/**
+added by Filip
+**/
+div#navlinks_div{
+	overflow: auto;
+	position: absolute;
+	top: 80px;
+	width: 380px;
+	left: 20px;
+}
+
+div#navlinks_div a{
+	color: #e0e0e0;
+}
+
+div#font_size_chng{
+	position: absolute;
+	top: 10px;
+	right: 50px;
 }

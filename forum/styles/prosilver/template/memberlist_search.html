@@ -59,22 +59,48 @@ function insert_single(user)
 		<dd><input type="text" name="email" id="email" value="{EMAIL}" class="inputbox" /></dd>
 	</dl>
 <!-- ENDIF -->
+	<!-- IF ENABLE_GG -->
+	<dl>
+		<dt><label for="gg">{L_GG}:</label></dt>
+		<dd><input type="text" name="gg" id="gg" value="{GG}" class="inputbox" /></dd>
+	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_TLEN -->  
+	<dl>
+		<dt><label for="tlen">{L_TLEN}:</label></dt>
+		<dd><input type="text" name="tlen" id="tlen" value="{TLEN}" class="inputbox" /></dd>
+	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_SKYPE -->  
+	<dl>
+		<dt><label for="skype">{L_SKYPE}:</label></dt>
+		<dd><input type="text" name="skype" id="skype" value="{SKYPE}" class="inputbox" /></dd>
+	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_ICQ -->
 	<dl>
 		<dt><label for="icq">{L_ICQ}:</label></dt>
 		<dd><input type="text" name="icq" id="icq" value="{ICQ}" class="inputbox" /></dd>
 	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_AIM -->  
 	<dl>
 		<dt><label for="aim">{L_AIM}:</label></dt>
 		<dd><input type="text" name="aim" id="aim" value="{AIM}" class="inputbox" /></dd>
 	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_YIM -->  
 	<dl>
 		<dt><label for="yahoo">{L_YIM}:</label></dt>
 		<dd><input type="text" name="yahoo" id="yahoo" value="{YAHOO}" class="inputbox" /></dd>
 	</dl>
+	<!-- ENDIF -->
+	<!-- IF ENABLE_MSN -->  
 	<dl>
 		<dt><label for="msn">{L_MSNM}:</label></dt>
 		<dd><input type="text" name="msn" id="msn" value="{MSNM}" class="inputbox" /></dd>
 	</dl>
+	<!-- ENDIF -->
 	</fieldset>
 
 	<fieldset class="fields1 column2">

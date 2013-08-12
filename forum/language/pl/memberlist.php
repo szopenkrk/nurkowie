@@ -4,11 +4,9 @@
 * memberlist [Polski]
 *
 * @package language
-* @version $Id: memberlist.php 9933 2009-08-06 09:12:21Z marshalrusty $
-* @copyright (c) 2005 phpBB Group
+* @copyright (c) 2006 - 2011 phpBB3.PL Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* @Polish locale 9933 2011-06-16 13:05:47 Zespół Olympus.pl $
-
+*
 */
 
 /**
@@ -24,9 +22,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// DEVELOPERS PLEASE NOTE
+// INFORMACJA
 //
-// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
+// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -38,112 +36,113 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'ABOUT_USER'			=> 'Profil',
-	'ACTIVE_IN_FORUM'		=> 'Najaktywniejszy na forum',
-	'ACTIVE_IN_TOPIC'		=> 'Najaktywniejszy w temacie',
+	'ACTIVE_IN_FORUM'		=> 'Najaktywniejszy w dziale',
+	'ACTIVE_IN_TOPIC'		=> 'Najaktywniejszy w wątku',
 	'ADD_FOE'				=> 'Dodaj do wrogów',
 	'ADD_FRIEND'			=> 'Dodaj do przyjaciół',
 	'AFTER'					=> 'Po',
 
-	'ALL'					=> 'Wszyscy',
+	'ALL'					=> 'Wszystkie',
 
 	'BEFORE'				=> 'Przed',
 
-	'CC_EMAIL'				=> 'Wyślij kopię tej wiadomości do nadawcy',
-	'CONTACT_USER'			=> 'Kontakt z',
+	'CC_EMAIL'				=> 'Wyślij kopię e-maila do siebie',
+	'CONTACT_USER'			=> 'Kontakt',
 
 	'DEST_LANG'				=> 'Język',
-	'DEST_LANG_EXPLAIN'		=> 'Wybierz właściwy – jeśli jest dostępny – język dla odbiorcy tej wiadomości.',
+	'DEST_LANG_EXPLAIN'		=> 'Wybierz docelowy język (jeśli jest dostępny) dla odbiorcy wiadomości.',
 
-	'EMAIL_BODY_EXPLAIN'	=> 'Wiadomość zostanie wysłana jako zwykły tekst bez znaczników HTML i BBCode. Twój adres e-mail zostanie ustawiony jako adres zwrotny tej wiadomości.',
-	'EMAIL_DISABLED'		=> 'Przepraszamy, ale wszystkie funkcje e-maili zostały wyłączone.',
-	'EMAIL_SENT'			=> 'Wiadomość e-mail została wysłana.',
-	'EMAIL_TOPIC_EXPLAIN'	=> 'Wiadomość zostanie wysłana jako zwykły tekst bez znaczników HTML i BBCode. Informacje o temacie zostały załączone w wiadomości. Twój adres e-mail zostanie ustawiony jako adres zwrotny tej wiadomości.',
-	'EMPTY_ADDRESS_EMAIL'	=> 'Należy podać aktywny adres e-mail odbiorcy.',
-	'EMPTY_MESSAGE_EMAIL'	=> 'Należy wpisać treść wiadomości.',
-	'EMPTY_MESSAGE_IM'		=> 'Należy wpisać treść wiadomości.',
-	'EMPTY_NAME_EMAIL'		=> 'Należy podać rzeczywistą nazwę odbiorcy.',
-	'EMPTY_SUBJECT_EMAIL'	=> 'Należy podać temat wiadomości.',
-	'EQUAL_TO'				=> 'Liczba równa',
+	'EMAIL_BODY_EXPLAIN'	=> 'Wiadomość zostanie wysłana jako tekst, bez kodu HTML i BBCode. Jako adres zwrotny zostanie podany Twój adres e-mail.',
+	'EMAIL_DISABLED'		=> 'Wszystkie funkcje dotyczące wysyłania e-maili są zablokowane.',
+	'EMAIL_SENT'			=> 'Email został wysłany.',
+	'EMAIL_TOPIC_EXPLAIN'	=> 'Wiadomość zostanie wysłana jako tekst, bez kodu HTML i BBCode. Informacje o wątku zostały załączone w wiadomości. Jako adres zwrotny zostanie podany Twój adres e-mail.',
+	'EMPTY_ADDRESS_EMAIL'	=> 'Musisz podać prawidłowy adres e-mail odbiorcy.',
+	'EMPTY_MESSAGE_EMAIL'	=> 'Musisz wpisać treść e-maila.',
+	'EMPTY_MESSAGE_IM'		=> 'Musisz wpisać treść wiadomości.',
+	'EMPTY_NAME_EMAIL'		=> 'Musisz podać prawidłową nazwę odbiorcy.',
+	'EMPTY_SUBJECT_EMAIL'	=> 'Musisz wpisać temat e-maila.',
+	'EQUAL_TO'				=> 'Równy z',
 
-	'FIND_USERNAME_EXPLAIN'	=> 'Tego formularza można użyć do szukania użytkowników. Nie trzeba wypełniać wszystkich pól. Można użyć gwiazdki (*) jako zamiennika dowolnego ciągu znaków. Datę należy wprowadzić w formacie <kbd>RRRR-MM-DD</kbd>, np. <samp>2007-08-31</samp>. Można też na poniżej wyświetlonej liście odszukać użytkownika, kliknąć jego nazwę, by zobaczyć profil tego użytkownika lub kliknąć odnośnik [Wybierz], aby przeprowadzać dalsze operacje.',
-	'FLOOD_EMAIL_LIMIT'		=> 'Nie możesz teraz wysłać kolejnej wiadomości. Spróbuj ponownie za chwilę.',
+	'FIND_USERNAME_EXPLAIN'	=> 'Użyj tego formularza do znalezienia użytkowników. Nie musisz wypełniać wszystkich pól. Możesz użyć * zamiast dowolnego znaku. Format daty to <kbd>YYYY-MM-DD</kbd>, np. <samp>2006-12-31</samp>. Wybierz jednego lub kilku użytkowników i kliknij na przycisk „Dodaj wybranych”.',
+	'FLOOD_EMAIL_LIMIT'		=> 'Nie możesz teraz wysłać kolejnego maila. Spróbuj później.',
 
 	'GROUP_LEADER'			=> 'Lider grupy',
 
 	'HIDE_MEMBER_SEARCH'	=> 'Ukryj wyszukiwanie użytkowników',
 
 	'IM_ADD_CONTACT'		=> 'Dodaj kontakt',
-	'IM_AIM'				=> 'Aby użyć tej funkcji, musisz mieć zainstalowany komunikator AOL Instant Messenger.',
+	'IM_AIM'				=> 'Musisz mieć zainstalowany AOL Instant Messenger, aby użyć tej funkcji.',
 	'IM_AIM_EXPRESS'		=> 'AIM Express',
 	'IM_DOWNLOAD_APP'		=> 'Pobierz program',
-	'IM_ICQ'				=> 'Użytkownicy mogą mieć włączoną funkcję nieodbierania niechcianych wiadomości.',
-	'IM_JABBER'				=> 'Użytkownicy mogą mieć włączoną funkcję nieodbierania niechcianych wiadomości.',
-	'IM_JABBER_SUBJECT'		=> 'To jest wiadomość wygenerowana automatycznie. Nie odpowiadaj na nią! Wiadomość od użytkownika %1$s wysłana %2$s.',
+	'IM_ICQ'				=> 'Użytkownik może mieć zablokowane otrzymywanie wiadomości od nieznajomych.',
+	'IM_JABBER'				=> 'Użytkownik może mieć zablokowane otrzymywanie wiadomości od nieznajomych.',
+	'IM_JABBER_SUBJECT'		=> 'To jest wiadomość wygenerowana automatycznie. Nie odpowiadaj na nią! Wiadomość od użytkownika %1$s @ %2$s.',
 	'IM_MESSAGE'			=> 'Twoja wiadomość',
-	'IM_MSNM'				=> 'Aby użyć tej funkcji, musisz mieć zainstalowany komunikator Windows Messenger.',
+	'IM_MSNM'				=> 'Musisz mieć zainstalowany Windows Messenger, aby użyć tej funkcji.',
 	'IM_MSNM_BROWSER'		=> 'Twoja przeglądarka tego nie obsługuje.',
 	'IM_MSNM_CONNECT'		=> 'MSNM nie jest podłączony.\nPodłącz się do MSNM, aby kontynuować.',
 	'IM_NAME'				=> 'Twoja nazwa',
-	'IM_NO_DATA'			=> 'Nie ma stosownych informacji kontaktowych dla tego użytkownika.',
-	'IM_NO_JABBER'			=> 'Kontakty bezpośrednie z użytkownikami protokółu Jabber nie są obsługiwane przez tę witrynę. Aby kontaktować się z powyższym odbiorcą, musisz mieć zainstalowanego klienta protokółu Jabber.',
+	'IM_NO_DATA'			=> 'Nie ma odpowiednich informacji kontaktowych dla tego użytkownika.',
+	'IM_NO_JABBER'			=> 'Przepraszamy, ale bezpośrednie wysyłanie wiadomości do użytkowników sieci Jabber nie jest możliwe na tym forum. Aby skontaktować się z powyższą osobą, musisz mieć w systemie zainstalowanego klienta sieci Jabber.',
 	'IM_RECIPIENT'			=> 'Odbiorca',
 	'IM_SEND'				=> 'Wyślij',
 	'IM_SEND_MESSAGE'		=> 'Wyślij wiadomość',
 	'IM_SENT_JABBER'		=> 'Wiadomość do użytkownika %1$s została wysłana.',
 	'IM_USER'				=> 'Wyślij wiadomość',
 
-	'LAST_ACTIVE'				=> 'Ostatnio aktywny',
-	'LESS_THAN'					=> 'Liczba < niż',
+	'LAST_ACTIVE'				=> 'Ostatnia aktywność',
+	'LESS_THAN'					=> 'Mniej niż',
 	'LIST_USER'					=> 'Użytkownicy: 1',
 	'LIST_USERS'				=> 'Użytkownicy: %d',
-	'LOGIN_EXPLAIN_LEADERS'		=> 'Aby obejrzeć listę członków zespołu administracyjnego, musisz się zalogować.',
-	'LOGIN_EXPLAIN_MEMBERLIST'	=> 'Aby obejrzeć listę użytkowników, musisz się zalogować.',
-	'LOGIN_EXPLAIN_SEARCHUSER'	=> 'Aby szukać użytkowników, musisz się zalogować.',
-	'LOGIN_EXPLAIN_VIEWPROFILE'	=> 'Aby oglądać profile, musisz się zalogować.',
+	'LOGIN_EXPLAIN_LEADERS'		=> 'Aby przeglądać listę członków ekipy musisz się zalogować.',
+	'LOGIN_EXPLAIN_MEMBERLIST'	=> 'Aby przeglądać listę użytkowników musisz się zalogować.',
+	'LOGIN_EXPLAIN_SEARCHUSER'	=> 'Aby szukać użytkowników musisz się zalogować.',
+	'LOGIN_EXPLAIN_VIEWPROFILE'	=> 'Aby przeglądać profile musisz się zalogować.',
 
-	'MORE_THAN'				=> 'Liczba > niż',
+	'MORE_THAN'				=> 'Więcej niż',
 
-	'NO_EMAIL'				=> 'Nie masz uprawnień, aby wysłać e-maila do tego użytkownika.',
-	'NO_VIEW_USERS'			=> 'Nie masz uprawnień, aby przeglądać listę użytkowników lub profile.',
+	'NO_EMAIL'				=> 'Nie masz wystarczających uprawnień, żeby wysłać wiadomość do tego użytkownika.',
+	'NO_VIEW_USERS'			=> 'Nie masz wystarczających uprawnień, żeby przeglądać listę użytkowników i profile.',
 
-	'ORDER'					=> 'Kierunek',
+	'ORDER'					=> '',
 	'OTHER'					=> 'Inny',
 
 	'POST_IP'				=> 'Napisano z IP/domeny',
 
+	'RANK'					=> 'Ranga',
 	'REAL_NAME'				=> 'Nazwa odbiorcy',
 	'RECIPIENT'				=> 'Odbiorca',
 	'REMOVE_FOE'			=> 'Usuń wroga',
 	'REMOVE_FRIEND'			=> 'Usuń przyjaciela',
 
-	'SELECT_MARKED'			=> 'Dodaj zaznaczonych',
-	'SELECT_SORT_METHOD'	=> 'Wybierz metodę sortowania',
-	'SEND_AIM_MESSAGE'		=> 'Wyślij wiadomość za pomocą AIM',
-	'SEND_ICQ_MESSAGE'		=> 'Wyślij wiadomość za pomocą ICQ',
-	'SEND_IM'				=> 'Wiadomości błyskawiczne',
-	'SEND_JABBER_MESSAGE'	=> 'Wyślij wiadomość za pomocą Jabbera',
+	'SELECT_MARKED'			=> 'Dodaj wybranych',
+	'SELECT_SORT_METHOD'	=> 'Sortuj wg',
+	'SEND_AIM_MESSAGE'		=> 'Wyślij wiadomość AIM',
+	'SEND_ICQ_MESSAGE'		=> 'Wyślij wiadomość ICQ',
+	'SEND_IM'				=> 'Błyskawiczne wiadomości',
+	'SEND_JABBER_MESSAGE'	=> 'Wyślij wiadomość Jabber',
 	'SEND_MESSAGE'			=> 'Wiadomość',
-	'SEND_MSNM_MESSAGE'		=> 'Wyślij wiadomość za pomocą MSNM/WLM',
-	'SEND_YIM_MESSAGE'		=> 'Wyślij wiadomość za pomocą YIM',
+	'SEND_MSNM_MESSAGE'		=> 'Wyślij wiadomość MSNM/WLM',
+	'SEND_YIM_MESSAGE'		=> 'Wyślij wiadomość YIM',
 	'SORT_EMAIL'			=> 'E-mail',
 	'SORT_LAST_ACTIVE'		=> 'Ostatnia aktywność',
 	'SORT_POST_COUNT'		=> 'Liczba postów',
 
 	'USERNAME_BEGINS_WITH'	=> 'Nazwa użytkownika zaczyna się na',
 	'USER_ADMIN'			=> 'Zarządzaj',
-	'USER_BAN'				=> 'Blokowanie',
+	'USER_BAN'				=> 'Zbanuj',
 	'USER_FORUM'			=> 'Statystyki użytkownika',
 	'USER_LAST_REMINDED'	=> array(
-		0		=> 'Jeszcze nie wysłano żadnego przypomnienia',
-		1		=> 'Wysłane przypomnienia: %1$d<br />» %2$s',
+		0		=> 'Nie wysłano żadnego przypomnienia',
+		1		=> '%1$d. przypomnienie wysłane<br />» %2$s',
 	),
 	'USER_ONLINE'			=> 'Online',
 	'USER_PRESENCE'			=> 'Obecność na forum',
 
-	'VIEWING_PROFILE'		=> 'Oglądasz profil – %s',
+	'VIEWING_PROFILE'		=> 'Profil użytkownika %s',
 	'VISITED'				=> 'Ostatnia wizyta',
 
-	'WWW'					=> 'Witryna internetowa',
+	'WWW'					=> 'WWW',
 ));
 
 ?>

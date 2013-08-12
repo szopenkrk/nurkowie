@@ -16,14 +16,204 @@ if (!defined('IN_PHPBB'))
 	exit;
 }
 
+//LPADLO ADD :)    **************************************************
+function add_forum( $sql, $root_data = '', $forum_rows, $subforums, $forum_tracking_info, $tracking_topics, $forum_id_add_value)
+{
+  global $db2, $dbLocal, $auth, $config, $user, $forum_location;                                                   
+  //$forum_location = 
+   
+  
+  if ($forum_location == 'R') {
+    $db_tmp = $db2;
+  } else {
+    $db_tmp = $dbLocal;
+  }
+           
+	$result = $db_tmp->sql_query($sql);
+  $branch_root_id = $root_data['forum_id'];
+  $forum_id_max = 0;
+     
+	while ($row = $db_tmp->sql_fetchrow($result))
+	{
+		$forum_id = $row['forum_id'];
+    
+    if ($forum_id > $forum_id_max) {
+      $forum_id_max = $forum_id;
+    }
+     /*          
+		// Mark forums read?
+		if ($mark_read == 'forums')
+		{
+			if ($auth->acl_get('f_list', $forum_id))
+			{
+				$forum_ids[] = $forum_id;
+			}
+
+			continue;
+		}
+              
+		// Category with no members
+		if ($row['forum_type'] == FORUM_CAT && ($row['left_id'] + 1 == $row['right_id']))
+		{
+			continue;
+		}
+       
+		// Skip branch
+		if (isset($right_id))
+		{
+			if ($row['left_id'] < $right_id)
+			{
+				continue;
+			}
+			unset($right_id);
+		}
+                      //           TO JEST PROBLEMATYCZNE JEZELI CHODZI O UPRAWNIENIA
+		if (!$auth->acl_get('f_list', $forum_id))
+		{
+			// if the user does not have permissions to list this forum, skip everything until next branch
+			$right_id = $row['right_id'];
+			continue;
+		}
+    
+    
+          
+		if ($config['load_db_lastread'] && $user->data['is_registered'])
+		{
+			$forum_tracking_info[$forum_id] = (!empty($row['mark_time'])) ? $row['mark_time'] : $user->data['user_lastmark'];
+		}
+		else if ($config['load_anon_lastread'] || $user->data['is_registered'])
+		{
+			if (!$user->data['is_registered'])
+			{
+				$user->data['user_lastmark'] = (isset($tracking_topics['l'])) ? (int) (base_convert($tracking_topics['l'], 36, 10) + $config['board_startdate']) : 0;
+			}
+			$forum_tracking_info[$forum_id] = (isset($tracking_topics['f'][$forum_id])) ? (int) (base_convert($tracking_topics['f'][$forum_id], 36, 10) + $config['board_startdate']) : $user->data['user_lastmark'];
+		}
+    
+		// Count the difference of real to public topics, so we can display an information to moderators
+		$row['forum_id_unapproved_topics'] = ($auth->acl_get('m_approve', $forum_id) && ($row['forum_topics_real'] != $row['forum_topics'])) ? $forum_id : 0;
+		$row['forum_topics'] = ($auth->acl_get('m_approve', $forum_id)) ? $row['forum_topics_real'] : $row['forum_topics'];
+             
+		// Display active topics from this forum?
+	        
+  	if ($show_active && $row['forum_type'] == FORUM_POST && $auth->acl_get('f_read', $row['forum_id']) && ($row['forum_flags'] & FORUM_FLAG_ACTIVE_TOPICS))
+		{
+			if (!isset($active_forum_ary['forum_topics']))
+			{
+				$active_forum_ary['forum_topics'] = 0;
+			}
+
+			if (!isset($active_forum_ary['forum_posts']))
+			{
+				$active_forum_ary['forum_posts'] = 0;
+			}
+
+      $forum_id_add_value = 1000;
+      $forum_id = (int) $forum_id +  $forum_id_add_value;
+
+
+			$active_forum_ary['forum_id'][]		= $forum_id;
+			$active_forum_ary['enable_icons'][]	= $row['enable_icons'];
+			$active_forum_ary['forum_topics']	+= $row['forum_topics'];
+			$active_forum_ary['forum_posts']	+= $row['forum_posts'];
+
+			// If this is a passworded forum we do not show active topics from it if the user is not authorised to view it...
+			if ($row['forum_password'] && $row['user_id'] != $user->data['user_id'])
+			{
+				$active_forum_ary['exclude_forum_id'][] = $forum_id;
+			}
+		} 
+       */
+		//
+    
+    //$forum_id = $forum_id +  $forum_id_add_value;
+    if($row['forum_type'] == FORUM_LINK && $forum_location == 'R') //Nie wyswietlamy linkow!!! //LPADLO ADD
+    {
+       continue;                    
+    }
+    
+		if ($row['parent_id'] == $root_data['forum_id'] || $row['parent_id'] == $branch_root_id || ($branch_root_id != $root_data['forum_id'] && $row['parent_id'] + $forum_id_add_value  == $branch_root_id ))
+		{          
+    
+			if ($row['forum_type'] != FORUM_CAT)
+			{
+				$forum_ids_moderator[] = (int) $forum_id;
+			}
+      
+			// Direct child of current branch
+			$parent_id = $forum_id + $forum_id_add_value;
+			$forum_rows[$parent_id] = $row;
+
+			if ($row['forum_type'] == FORUM_CAT && $row['parent_id'] == $root_data['forum_id'])
+			{
+				$branch_root_id = $forum_id;
+			}
+		//	$forum_rows[$parent_id]['forum_id_last_post'] = $row['forum_id'];   LPADLO MODYFIKUJE!!!
+      $forum_rows[$parent_id]['forum_id_last_post'] = $forum_id; 
+			$forum_rows[$parent_id]['orig_forum_last_post_time'] = $row['forum_last_post_time'];
+      $forum_rows[$parent_id]['forum_location'] = $forum_location;
+		}
+		else if ($row['forum_type'] != FORUM_CAT)
+		{
+      
+			$subforums[$parent_id][$forum_id]['display'] = ($row['display_on_index']) ? true : false;
+			$subforums[$parent_id][$forum_id]['name'] = $row['forum_name'];
+			$subforums[$parent_id][$forum_id]['orig_forum_last_post_time'] = $row['forum_last_post_time'];
+			$subforums[$parent_id][$forum_id]['children'] = array();
+
+
+			//if (isset($subforums[$parent_id][$row['parent_id']]) && !$row['display_on_index'])  LPADLO MODYFIKUJE  CALY WARUNEK
+      //{
+			//	$subforums[$parent_id][$row['parent_id']]['children'][] = $forum_id;
+			//}
+      
+      if (isset($subforums[$parent_id][$row['parent_id']]) && !$row['display_on_index'])
+			{
+				$subforums[$parent_id][$row['parent_id']]['children'][] = $forum_id;
+			}
+
+			if (!$forum_rows[$parent_id]['forum_id_unapproved_topics'] && $row['forum_id_unapproved_topics'])
+			{
+				$forum_rows[$parent_id]['forum_id_unapproved_topics'] = $forum_id;
+			}
+
+			$forum_rows[$parent_id]['forum_topics'] += $row['forum_topics'];
+
+			// Do not list redirects in LINK Forums as Posts.
+			if ($row['forum_type'] != FORUM_LINK)
+			{
+				$forum_rows[$parent_id]['forum_posts'] += $row['forum_posts'];
+			}
+
+			if ($row['forum_last_post_time'] > $forum_rows[$parent_id]['forum_last_post_time'])
+			{
+				$forum_rows[$parent_id]['forum_last_post_id'] = $row['forum_last_post_id'];
+				$forum_rows[$parent_id]['forum_last_post_subject'] = $row['forum_last_post_subject'];
+				$forum_rows[$parent_id]['forum_last_post_time'] = $row['forum_last_post_time'];
+				$forum_rows[$parent_id]['forum_last_poster_id'] = $row['forum_last_poster_id'];
+				$forum_rows[$parent_id]['forum_last_poster_name'] = $row['forum_last_poster_name'];
+				$forum_rows[$parent_id]['forum_last_poster_colour'] = $row['forum_last_poster_colour'];
+				$forum_rows[$parent_id]['forum_id_last_post'] = $forum_id;          
+			}
+      
+		}
+	}
+	$db_tmp->sql_freeresult($result);
+ 
+ return array($forum_rows, $subforums, $forum_id_max);
+ 
+}
+//LPADLO ADD END :)
+
+
 /**
 * Display Forums
 */
 function display_forums($root_data = '', $display_moderators = true, $return_moderators = false)
 {
-	global $db, $auth, $user, $template;
+	global $db,$db2, $auth, $user, $template, $forum_location;    //LPADLO CHANGE
 	global $phpbb_root_path, $phpEx, $config;
-
+   
 	$forum_rows = $subforums = $forum_ids = $forum_ids_moderator = $forum_moderators = $active_forum_ary = array();
 	$parent_id = $visible_forums = 0;
 	$sql_from = '';
@@ -120,9 +310,10 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 	));
 
 	$result = $db->sql_query($sql);
+  
 
 	$forum_tracking_info = array();
-	$branch_root_id = $root_data['forum_id'];
+	//$branch_root_id = $root_data['forum_id']; //LPADLO HIDE
 
 	// Check for unread global announcements (index page only)
 	$ga_unread = false;
@@ -136,6 +327,8 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 		}
 	}
 
+ 
+  /*                                            //LPADLO HIDE ALL
 	while ($row = $db->sql_fetchrow($result))
 	{
 		$forum_id = $row['forum_id'];
@@ -234,6 +427,7 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 			}
 			$forum_rows[$parent_id]['forum_id_last_post'] = $row['forum_id'];
 			$forum_rows[$parent_id]['orig_forum_last_post_time'] = $row['forum_last_post_time'];
+      $forum_rows[$parent_id]['forum_location'] = "L";
 		}
 		else if ($row['forum_type'] != FORUM_CAT)
 		{
@@ -268,11 +462,200 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 				$forum_rows[$parent_id]['forum_last_poster_id'] = $row['forum_last_poster_id'];
 				$forum_rows[$parent_id]['forum_last_poster_name'] = $row['forum_last_poster_name'];
 				$forum_rows[$parent_id]['forum_last_poster_colour'] = $row['forum_last_poster_colour'];
-				$forum_rows[$parent_id]['forum_id_last_post'] = $forum_id;
+				$forum_rows[$parent_id]['forum_id_last_post'] = $forum_id;            
 			}
+      
 		}
 	}
 	$db->sql_freeresult($result);
+  
+        */
+  
+  
+      
+  
+  
+  
+  //LPADLO ADD :)    **************************************************
+  
+   global $forum_location_var;
+  
+  list($forum_rows, $subforums, $forum_id_add_value) = add_forum($sql, $root_data, $forum_rows, $subforums, $forum_tracking_info, $tracking_topics, 0); //LPADLO ADD
+  
+  if ($forum_location_var == 'N') {
+    $forum_location = 'R';
+    list($forum_rows, $subforums) = add_forum($sql, $root_data, $forum_rows, $subforums, $forum_tracking_info, $tracking_topics, 1000);          //LPADLO ADD
+    $forum_location = 'L';
+  }
+    /*        
+	$result = $db2->sql_query($sql);
+     
+	while ($row = $db2->sql_fetchrow($result))
+	{
+		$forum_id = $row['forum_id'];
+    */
+    /*           
+		// Mark forums read?
+		if ($mark_read == 'forums')
+		{
+			if ($auth->acl_get('f_list', $forum_id))
+			{
+				$forum_ids[] = $forum_id;
+			}
+
+			continue;
+		}
+                
+		// Category with no members
+		if ($row['forum_type'] == FORUM_CAT && ($row['left_id'] + 1 == $row['right_id']))
+		{
+			continue;
+		}
+      
+		// Skip branch
+		if (isset($right_id))
+		{
+			if ($row['left_id'] < $right_id)
+			{
+				continue;
+			}
+			unset($right_id);
+		}
+            
+		if (!$auth->acl_get('f_list', $forum_id))
+		{
+			// if the user does not have permissions to list this forum, skip everything until next branch
+			$right_id = $row['right_id'];
+			continue;
+		}
+        
+		if ($config['load_db_lastread'] && $user->data['is_registered'])
+		{
+			$forum_tracking_info[$forum_id] = (!empty($row['mark_time'])) ? $row['mark_time'] : $user->data['user_lastmark'];
+		}
+		else if ($config['load_anon_lastread'] || $user->data['is_registered'])
+		{
+			if (!$user->data['is_registered'])
+			{
+				$user->data['user_lastmark'] = (isset($tracking_topics['l'])) ? (int) (base_convert($tracking_topics['l'], 36, 10) + $config['board_startdate']) : 0;
+			}
+			$forum_tracking_info[$forum_id] = (isset($tracking_topics['f'][$forum_id])) ? (int) (base_convert($tracking_topics['f'][$forum_id], 36, 10) + $config['board_startdate']) : $user->data['user_lastmark'];
+		}
+
+		// Count the difference of real to public topics, so we can display an information to moderators
+		$row['forum_id_unapproved_topics'] = ($auth->acl_get('m_approve', $forum_id) && ($row['forum_topics_real'] != $row['forum_topics'])) ? $forum_id : 0;
+		$row['forum_topics'] = ($auth->acl_get('m_approve', $forum_id)) ? $row['forum_topics_real'] : $row['forum_topics'];
+             
+		// Display active topics from this forum?
+	        
+  	if ($show_active && $row['forum_type'] == FORUM_POST && $auth->acl_get('f_read', $row['forum_id']) && ($row['forum_flags'] & FORUM_FLAG_ACTIVE_TOPICS))
+		{
+			if (!isset($active_forum_ary['forum_topics']))
+			{
+				$active_forum_ary['forum_topics'] = 0;
+			}
+
+			if (!isset($active_forum_ary['forum_posts']))
+			{
+				$active_forum_ary['forum_posts'] = 0;
+			}
+
+      $forum_id_add_value = 1000;
+      $forum_id = (int) $forum_id +  $forum_id_add_value;
+
+
+			$active_forum_ary['forum_id'][]		= $forum_id;
+			$active_forum_ary['enable_icons'][]	= $row['enable_icons'];
+			$active_forum_ary['forum_topics']	+= $row['forum_topics'];
+			$active_forum_ary['forum_posts']	+= $row['forum_posts'];
+
+			// If this is a passworded forum we do not show active topics from it if the user is not authorised to view it...
+			if ($row['forum_password'] && $row['user_id'] != $user->data['user_id'])
+			{
+				$active_forum_ary['exclude_forum_id'][] = $forum_id;
+			}
+		}
+       */
+		//
+    
+                  /*
+    $forum_id_add_value = 1000;
+    $forum_id = $forum_id +  $forum_id_add_value;
+    
+		if ($row['parent_id'] == $root_data['forum_id'] || $row['parent_id'] == $branch_root_id || ($branch_root_id != $root_data['forum_id'] && $row['parent_id'] + $forum_id_add_value  == $branch_root_id ))
+		{          
+    
+			if ($row['forum_type'] != FORUM_CAT)
+			{
+				$forum_ids_moderator[] = (int) $forum_id;
+			}
+      
+			// Direct child of current branch
+			$parent_id = $forum_id;
+			$forum_rows[$forum_id] = $row;
+
+			if ($row['forum_type'] == FORUM_CAT && $row['parent_id'] == $root_data['forum_id'])
+			{
+				$branch_root_id = $forum_id;
+			}
+		//	$forum_rows[$parent_id]['forum_id_last_post'] = $row['forum_id'];   LPADLO MODYFIKUJE!!!
+      $forum_rows[$parent_id]['forum_id_last_post'] = $forum_id; 
+			$forum_rows[$parent_id]['orig_forum_last_post_time'] = $row['forum_last_post_time'];
+      $forum_rows[$parent_id]['forum_location'] = "R";
+		}
+		else if ($row['forum_type'] != FORUM_CAT)
+		{
+			$subforums[$parent_id][$forum_id]['display'] = ($row['display_on_index']) ? true : false;
+			$subforums[$parent_id][$forum_id]['name'] = $row['forum_name'];
+			$subforums[$parent_id][$forum_id]['orig_forum_last_post_time'] = $row['forum_last_post_time'];
+			$subforums[$parent_id][$forum_id]['children'] = array();
+
+			//if (isset($subforums[$parent_id][$row['parent_id']]) && !$row['display_on_index'])  LPADLO MODYFIKUJE  CALY WARUNEK
+      //{
+			//	$subforums[$parent_id][$row['parent_id']]['children'][] = $forum_id;
+			//}
+      
+      if (isset($subforums[$parent_id][$row['parent_id'] + $forum_id_add_value ]) && !$row['display_on_index'])
+			{
+				$subforums[$parent_id][$row['parent_id'] + $forum_id_add_value]['children'][] = $forum_id;
+			}
+
+			if (!$forum_rows[$parent_id]['forum_id_unapproved_topics'] && $row['forum_id_unapproved_topics'])
+			{
+				$forum_rows[$parent_id]['forum_id_unapproved_topics'] = $forum_id;
+			}
+
+			$forum_rows[$parent_id]['forum_topics'] += $row['forum_topics'];
+
+			// Do not list redirects in LINK Forums as Posts.
+			if ($row['forum_type'] != FORUM_LINK)
+			{
+				$forum_rows[$parent_id]['forum_posts'] += $row['forum_posts'];
+			}
+
+			if ($row['forum_last_post_time'] > $forum_rows[$parent_id]['forum_last_post_time'])
+			{
+				$forum_rows[$parent_id]['forum_last_post_id'] = $row['forum_last_post_id'];
+				$forum_rows[$parent_id]['forum_last_post_subject'] = $row['forum_last_post_subject'];
+				$forum_rows[$parent_id]['forum_last_post_time'] = $row['forum_last_post_time'];
+				$forum_rows[$parent_id]['forum_last_poster_id'] = $row['forum_last_poster_id'];
+				$forum_rows[$parent_id]['forum_last_poster_name'] = $row['forum_last_poster_name'];
+				$forum_rows[$parent_id]['forum_last_poster_colour'] = $row['forum_last_poster_colour'];
+				$forum_rows[$parent_id]['forum_id_last_post'] = $forum_id;          
+			}
+      
+		}
+	}
+	$db2->sql_freeresult($result);
+  
+            */
+  
+  
+           
+  
+
+  //LPADLO ADD END :)
+
 
 	// Handle marking posts
 	if ($mark_read == 'forums')
@@ -309,8 +692,11 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 
 	// Used to tell whatever we have to create a dummy category or not.
 	$last_catless = true;
-	foreach ($forum_rows as $row)
+  //foreach ($forum_rows as $row)      //LPADLO COM
+	foreach ($forum_rows as $rowIdReal => $row)   //LPADLO MOD
 	{
+    $forum_location = $row['forum_location']; 
+  
 		// Empty category
 		if ($row['parent_id'] == $root_data['forum_id'] && $row['forum_type'] == FORUM_CAT)
 		{
@@ -330,7 +716,8 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 		}
 
 		$visible_forums++;
-		$forum_id = $row['forum_id'];
+		//$forum_id = $row['forum_id'];  //LPADLO COM
+    $forum_id = $rowIdReal;
 
 		$forum_unread = (isset($forum_tracking_info[$forum_id]) && $row['orig_forum_last_post_time'] > $forum_tracking_info[$forum_id]) ? true : false;
 
@@ -342,12 +729,17 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 
 		$folder_image = $folder_alt = $l_subforums = '';
 		$subforums_list = array();
-
+   // logSring($row['forum_name'] . '    id: ' . $rowIdReal);    //LPADLO ADD
 		// Generate list of subforums if we need to
 		if (isset($subforums[$forum_id]))
 		{
+    
+      
+    
 			foreach ($subforums[$forum_id] as $subforum_id => $subforum_row)
 			{
+      //logSring('    Sub: ' . $subforum_row['name'] . '    subforum_id: ' . $subforum_id . '    ROW: ' . $subforum_row); 
+      
 				$subforum_unread = (isset($forum_tracking_info[$subforum_id]) && $subforum_row['orig_forum_last_post_time'] > $forum_tracking_info[$subforum_id]) ? true : false;
 
 				if (!$subforum_unread && !empty($subforum_row['children']))
@@ -444,7 +836,7 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 
 		if ($row['forum_type'] != FORUM_LINK)
 		{
-			$u_viewforum = append_sid("{$phpbb_root_path}viewforum.$phpEx", 'f=' . $row['forum_id']);
+			$u_viewforum = append_sid("{$phpbb_root_path}viewforum.$phpEx", 'f=' . $row['forum_id']); //LPADLO CHANGE
 		}
 		else
 		{
@@ -458,7 +850,7 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 			{
 				$u_viewforum = $row['forum_link'];
 			}
-		}
+		}   
 
 		$template->assign_block_vars('forumrow', array(
 			'S_IS_CAT'			=> false,
@@ -483,7 +875,7 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 			'FORUM_IMAGE_SRC'		=> ($row['forum_image']) ? $phpbb_root_path . $row['forum_image'] : '',
 			'LAST_POST_SUBJECT'		=> censor_text($last_post_subject),
 			'LAST_POST_TIME'		=> $last_post_time,
-			'LAST_POSTER'			=> get_username_string('username', $row['forum_last_poster_id'], $row['forum_last_poster_name'], $row['forum_last_poster_colour']),
+			'LAST_POSTER'			=>  get_username_string('username', $row['forum_last_poster_id'], $row['forum_last_poster_name'], $row['forum_last_poster_colour']),
 			'LAST_POSTER_COLOUR'	=> get_username_string('colour', $row['forum_last_poster_id'], $row['forum_last_poster_name'], $row['forum_last_poster_colour']),
 			'LAST_POSTER_FULL'		=> get_username_string('full', $row['forum_last_poster_id'], $row['forum_last_poster_name'], $row['forum_last_poster_colour']),
 			'MODERATORS'			=> $moderators_list,
@@ -508,7 +900,10 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 			);
 		}
 
-		$last_catless = $catless;
+		$last_catless = $catless;               
+    if ($forum_location_var == 'N') {
+      $forum_location = 'L';
+    }
 	}
 
 	$template->assign_vars(array(
@@ -526,7 +921,7 @@ function display_forums($root_data = '', $display_moderators = true, $return_mod
 
 	return array($active_forum_ary, array());
 }
-
+                                                 
 /**
 * Create forum rules for given forum
 */
@@ -1317,7 +1712,7 @@ function get_user_avatar($avatar, $avatar_type, $avatar_width, $avatar_height, $
 			{
 				return '';
 			}
-			$avatar_img = $phpbb_root_path . "download/file.$phpEx?avatar=";
+			$avatar_img = 'http://www.studioej.pl/testowo/forum2/forum/' . "download/file.$phpEx?avatar=";
 		break;
 
 		case AVATAR_GALLERY:
@@ -1325,7 +1720,7 @@ function get_user_avatar($avatar, $avatar_type, $avatar_width, $avatar_height, $
 			{
 				return '';
 			}
-			$avatar_img = $phpbb_root_path . $config['avatar_gallery_path'] . '/';
+			$avatar_img = 'http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_gallery_path'] . '/';
 		break;
 
 		case AVATAR_REMOTE:

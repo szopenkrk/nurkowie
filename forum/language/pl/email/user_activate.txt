@@ -1,9 +1,10 @@
-Subject: Reaktywacja konta
+Subject: {SITENAME} - Ponownie aktywuj konto
 
-Witaj {USERNAME}!
+Witaj {USERNAME},
 
-Najprawdopodobniej z powodu zmian dokonanych w profilu, Twoje konto na forum „{SITENAME}” zostało dezaktywowane. Aby aktywować konto musisz kliknąć poniższy odnośnik:
+Twoje konto zostało deaktywowane, najprawdopodobniej z powodu zmian w Twoim profilu.
 
+Zanim będziesz mógł/mogła się zalogować, musisz je aktywować, klikając na poniższy link:
 {U_ACTIVATE}
 
 {EMAIL_SIG}

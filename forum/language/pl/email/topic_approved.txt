@@ -1,11 +1,9 @@
-Subject: Temat „{TOPIC_TITLE}” został zaakceptowany
+Subject: {SITENAME} - Wątek "{TOPIC_TITLE}" został zaakceptowany
 
-Witaj {USERNAME}!
+Witaj {USERNAME},
 
-Otrzymujesz to powiadomienie, ponieważ Twój temat „{TOPIC_TITLE}” napisany na forum „{SITENAME}” został zaakceptowany przez moderatora lub administratora.
+Twój wątek "{TOPIC_TITLE}" został zaakceptowany przez moderatora lub administratora.
 
-Jeśli chcesz zobaczyć ten temat – kliknij poniższy odnośnik:
-{U_VIEW_TOPIC}
-
+Link: {U_VIEW_TOPIC}
 
 {EMAIL_SIG}

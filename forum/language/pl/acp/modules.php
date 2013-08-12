@@ -4,10 +4,9 @@
 * acp_modules [Polski]
 *
 * @package language
-* @version $Id: modules.php 8479 2008-03-29 00:22:48Z naderman $
-* @copyright (c) 2005 phpBB Group
+* @copyright (c) 2006 - 2011 phpBB3.PL Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* @Polish locale 8479 2008-12-12 18:19:11  Zespół Olympus.pl $
+*
 */
 
 /**
@@ -23,9 +22,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// DEVELOPERS PLEASE NOTE
+// INFORMACJA
 //
-// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
+// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -36,44 +35,44 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'ACP_MODULE_MANAGEMENT_EXPLAIN'	=> 'Tutaj można zarządzać wszystkimi rodzajami modułów. Proszę zwrócić uwagę na to, że panel administracji ma trój–poziomową strukturę menu – Kategoria » Kategoria » Moduł. Inne panele mają dwupoziomową strukturę – Kategoria » Moduł. Nie można tego zmienić. Należy pamiętać, że można się zablokować, jeśli wyłączy się lub usunie moduły odpowiedzialne za zarządzanie modułami.',
+	'ACP_MODULE_MANAGEMENT_EXPLAIN'	=> 'Tutaj możesz zarządzać wszystkimi rodzajami modułów. Pamiętaj, że PA ma trójpoziomową strukturę (Kategoria -> Kategoria -> Moduł), a inne panele mają dwupoziomową (Kategoria -> Moduł). Nie możesz tego zmienić. Pamiętaj też, że możesz się zablokować, jeśli wyłączysz lub usuniesz moduły odpowiedzialne za zarządzanie modułami.',
 	'ADD_MODULE'					=> 'Dodaj moduł',
-	'ADD_MODULE_CONFIRM'			=> 'Czy na pewno chcesz dodać zaznaczony moduł z wybranym trybem?',
+	'ADD_MODULE_CONFIRM'			=> 'Czy na pewno chcesz dodać wybrany moduł z wybranym trybem?',
 	'ADD_MODULE_TITLE'				=> 'Dodaj moduł',
 
-	'CANNOT_REMOVE_MODULE'	=> 'Nie można usunąć modułu, ponieważ ma on elementy potomne. Najpierw należy elementy te przenieść lub usunąć.',
+	'CANNOT_REMOVE_MODULE'	=> 'Nie można usunąć modułu, ponieważ ma dzieci. Usuń lub przenieś wszystkie dzieci, zanim to zrobisz.',
 	'CATEGORY'				=> 'Kategoria',
 	'CHOOSE_MODE'			=> 'Wybierz tryb modułu',
-	'CHOOSE_MODE_EXPLAIN'	=> 'Wybierz używany tryb modułu.',
+	'CHOOSE_MODE_EXPLAIN'	=> 'Wybierz tryb modułu, z którego chcesz korzystać.',
 	'CHOOSE_MODULE'			=> 'Wybierz moduł',
-	'CHOOSE_MODULE_EXPLAIN'	=> 'Wybierz plik wywoływany przez ten moduł.',
+	'CHOOSE_MODULE_EXPLAIN'	=> 'Wybierz plik, w którym znajduje się kod modułu.',
 	'CREATE_MODULE'			=> 'Utwórz nowy moduł',
 
-	'DEACTIVATED_MODULE'	=> 'Dezaktywowany moduł',
+	'DEACTIVATED_MODULE'	=> 'Wyłączony moduł',
 	'DELETE_MODULE'			=> 'Usuń moduł',
 	'DELETE_MODULE_CONFIRM'	=> 'Czy na pewno chcesz usunąć ten moduł?',
 
 	'EDIT_MODULE'			=> 'Edytuj moduł',
-	'EDIT_MODULE_EXPLAIN'	=> 'Tutaj można określić ustawienia charakyerystyczne dla danego modułu.',
+	'EDIT_MODULE_EXPLAIN'	=> 'Tutaj możesz podać ustawienia specyficzne dla typu modułu.',
 
 	'HIDDEN_MODULE'			=> 'ukryty',
 
 	'MODULE'					=> 'Moduł',
 	'MODULE_ADDED'				=> 'Moduł został dodany.',
 	'MODULE_DELETED'			=> 'Moduł został usunięty.',
-	'MODULE_DISPLAYED'			=> 'Wyświetlanie modułu',
-	'MODULE_DISPLAYED_EXPLAIN'	=> 'Jeśli moduł ma być używany, ale niewyświetlany, należy wybrać „Nie”.',
-	'MODULE_EDITED'				=> 'Edycja modułu została zakończona.',
+	'MODULE_DISPLAYED'			=> 'Wyświetlaj moduł',
+	'MODULE_DISPLAYED_EXPLAIN'	=> 'Jeśli nie chcesz wyświetlać modułu, ale chcesz go używać, ustaw tę opcję na nie.',
+	'MODULE_EDITED'				=> 'Moduł został zmieniony.',
 	'MODULE_ENABLED'			=> 'Włącz moduł',
 	'MODULE_LANGNAME'			=> 'Nazwa modułu',
-	'MODULE_LANGNAME_EXPLAIN'	=> 'Tutaj należy podać wyświetlaną nazwę modułu. Użyj stałej językowej, jeśli nazwa jest podawana z pliku językowego.',
+	'MODULE_LANGNAME_EXPLAIN'	=> 'Podaj wyświetlaną nazwę modułu. Użyj nazwy wpisu w plikach językowych, aby z nich pobrać nazwę.',
 	'MODULE_TYPE'				=> 'Typ modułu',
 
-	'NO_CATEGORY_TO_MODULE'	=> 'Nie można zmienić kategorii w moduł. Najpierw należy usunąć lub przenieść wszystkie elementy potomne.',
+	'NO_CATEGORY_TO_MODULE'	=> 'Nie można zmienić kategorii w moduł. Usuń lub przenieś wszystkie dzieci, zanim to zrobisz.',
 	'NO_MODULE'				=> 'Nie znaleziono modułu.',
-	'NO_MODULE_ID'			=> 'Nie określono ID modułu.',
-	'NO_MODULE_LANGNAME'	=> 'Nie określono nazwy języka modułu.',
-	'NO_PARENT'				=> 'Nie wybrano rodzica modułu',
+	'NO_MODULE_ID'			=> 'Nie podano ID modułu.',
+	'NO_MODULE_LANGNAME'	=> 'Nie podano nazwy modułu.',
+	'NO_PARENT'				=> 'Nie wybrano rodzica modułu.',
 
 	'PARENT'				=> 'Rodzic',
 	'PARENT_NO_EXIST'		=> 'Rodzic nie istnieje.',

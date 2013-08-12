@@ -1918,17 +1918,14 @@ function update_forum_tracking_info($forum_id, $forum_last_post_time, $f_mark_ti
 		}
 		else
 		{
-			$sql = 'SELECT t.forum_id
-				FROM ' . TOPICS_TABLE . ' t
-				LEFT JOIN ' . TOPICS_TRACK_TABLE . ' tt
-					ON (tt.topic_id = t.topic_id
-						AND tt.user_id = ' . $user->data['user_id'] . ')
+			$sql = 'SELECT t.forum_id FROM ' . TOPICS_TABLE . ' t
+				LEFT JOIN ' . TOPICS_TRACK_TABLE . ' tt ON (tt.topic_id = t.topic_id AND tt.user_id = ' . $user->data['user_id'] . ')
 				WHERE t.forum_id = ' . $forum_id . '
 					AND t.topic_last_post_time > ' . $mark_time_forum . '
 					AND t.topic_moved_id = 0 ' .
 					$sql_update_unapproved . '
-					AND (tt.topic_id IS NULL
-						OR tt.mark_time < t.topic_last_post_time)';
+					AND (tt.topic_id IS NULL OR tt.mark_time < t.topic_last_post_time)
+				GROUP BY t.forum_id';
 			$result = $db->sql_query_limit($sql, 1);
 			$row = $db->sql_fetchrow($result);
 			$db->sql_freeresult($result);
@@ -2230,16 +2227,41 @@ function on_page($num_items, $per_page, $start)
 * </code>
 *
 */
-function append_sid($url, $params = false, $is_amp = true, $session_id = false)
+function append_sid($url, $params = false, $is_amp = true, $session_id = false, $location = false)
 {
-	global $_SID, $_EXTRA_URL, $phpbb_hook;
+	global $_SID, $_EXTRA_URL, $phpbb_hook, $forum_location; //LPADLO MODIFIED $forum_location
 
 	if ($params === '' || (is_array($params) && empty($params)))
 	{
 		// Do not append the ? if the param-list is empty anyway.
 		$params = false;
 	}
-
+  
+  //LPADLO ADD
+   
+  if ($location == false) {
+    if (!isset($forum_location)) {
+    $forum_location = 'L';
+    }
+    $db_location = $forum_location;
+  } else {
+    $db_location = $location;
+  }     
+    
+  if ($params == false) {
+    $params = 'location=' . $db_location;
+  } else {
+  
+    if (is_array($params)) {
+      //array_push($params, 'location' => $forum_location);
+      $params[]= 'location=' . $db_location;
+    } else {
+      $params = $params . '&amp;location=' . $db_location;  
+    }
+  }
+      
+  //----------------------
+  
 	// Developers using the hook function need to globalise the $_SID and $_EXTRA_URL on their own and also handle it appropriately.
 	// They could mimic most of what is within this function
 	if (!empty($phpbb_hook) && $phpbb_hook->call_hook(__FUNCTION__, $url, $params, $is_amp, $session_id))
@@ -2326,6 +2348,7 @@ function append_sid($url, $params = false, $is_amp = true, $session_id = false)
 
 		$params = implode($amp_delim, $output);
 	}
+  
 
 	// Append session id and parameters (even if they are empty)
 	// If parameters are empty, the developer can still append his/her parameters without caring about the delimiter
@@ -3325,11 +3348,6 @@ function parse_cfg_file($filename, $lines = false)
 
 		$parsed_items[$key] = $value;
 	}
-	
-	if (isset($parsed_items['inherit_from']) && isset($parsed_items['name']) && $parsed_items['inherit_from'] == $parsed_items['name'])
-	{
-		unset($parsed_items['inherit_from']);
-	}
 
 	return $parsed_items;
 }
@@ -3456,7 +3474,7 @@ function get_preg_expression($mode)
 		case 'email':
 			// Regex written by James Watts and Francisco Jose Martin Moreno
 			// http://fightingforalostcause.net/misc/2006/compare-email-regex.php
-			return '([\w\!\#$\%\&\'\*\+\-\/\=\?\^\`{\|\}\~]+\.)*(?:[\w\!\#$\%\'\*\+\-\/\=\?\^\`{\|\}\~]|&amp;)+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,63})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)';
+			return '([\w\!\#$\%\&\'\*\+\-\/\=\?\^\`{\|\}\~]+\.)*(?:[\w\!\#$\%\'\*\+\-\/\=\?\^\`{\|\}\~]|&amp;)+@((((([a-z0-9]{1}[a-z0-9\-]{0,62}[a-z0-9]{1})|[a-z])\.)+[a-z]{2,6})|(\d{1,3}\.){3}\d{1,3}(\:\d{1,5})?)';
 		break;
 
 		case 'bbcode_htm':
@@ -3861,23 +3879,11 @@ function msg_handler($errno, $msg_text, $errfile, $errline)
 				}
 			}
 
-			$log_text = $msg_text;
-			$backtrace = get_backtrace();
-			if ($backtrace)
-			{
-				$log_text .= '<br /><br />BACKTRACE<br />' . $backtrace;
-			}
-
-			if (defined('IN_INSTALL') || defined('DEBUG_EXTRA') || isset($auth) && $auth->acl_get('a_'))
-			{
-				$msg_text = $log_text;
-			}
-
 			if ((defined('DEBUG') || defined('IN_CRON') || defined('IMAGE_OUTPUT')) && isset($db))
 			{
 				// let's avoid loops
 				$db->sql_return_on_error(true);
-				add_log('critical', 'LOG_GENERAL_ERROR', $msg_title, $log_text);
+				add_log('critical', 'LOG_GENERAL_ERROR', $msg_title, $msg_text);
 				$db->sql_return_on_error(false);
 			}
 
@@ -4433,12 +4439,12 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 	// Generate logged in/logged out status
 	if ($user->data['user_id'] != ANONYMOUS)
 	{
-		$u_login_logout = append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=logout', true, $user->session_id);
+		$u_login_logout = append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=logout', true, $user->session_id , 'L'); //LPADLO CHANGE
 		$l_login_logout = sprintf($user->lang['LOGOUT_USER'], $user->data['username']);
 	}
 	else
 	{
-		$u_login_logout = append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=login');
+		$u_login_logout = append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=login' , true, false, 'L'); //LPADLO CHANGE
 		$l_login_logout = $user->lang['LOGIN'];
 	}
 
@@ -4556,7 +4562,7 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		foreach ($_EXTRA_URL as $url_param)
 		{
 			$url_param = explode('=', $url_param, 2);
-			$s_search_hidden_fields[$url_param[0]] = $url_param[1];
+			$s_hidden_fields[$url_param[0]] = $url_param[1];
 		}
 	}
 
@@ -4589,28 +4595,28 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 		'L_INDEX'			=> $user->lang['FORUM_INDEX'],
 		'L_ONLINE_EXPLAIN'	=> $l_online_time,
 
-		'U_PRIVATEMSGS'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;folder=inbox'),
-		'U_RETURN_INBOX'		=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;folder=inbox'),
-		'U_POPUP_PM'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=popup'),
-		'UA_POPUP_PM'			=> addslashes(append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=popup')),
-		'U_MEMBERLIST'			=> append_sid("{$phpbb_root_path}memberlist.$phpEx"),
+		'U_PRIVATEMSGS'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;folder=inbox', true, false, 'L'), //LPADLO CHANGE
+		'U_RETURN_INBOX'		=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;folder=inbox', true, false, 'L'), //LPADLO CHANGE
+		'U_POPUP_PM'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=popup', true, false, 'L'), //LPADLO CHANGE
+		'UA_POPUP_PM'			=> addslashes(append_sid("{$phpbb_root_path}ucp.$phpEx", 'i=pm&amp;mode=popup', true, false, 'L')), //LPADLO CHANGE
+		'U_MEMBERLIST'			=> append_sid("{$phpbb_root_path}memberlist.$phpEx", false, true, false, 'L'), //LPADLO CHANGE
 		'U_VIEWONLINE'			=> ($auth->acl_gets('u_viewprofile', 'a_user', 'a_useradd', 'a_userdel')) ? append_sid("{$phpbb_root_path}viewonline.$phpEx") : '',
 		'U_LOGIN_LOGOUT'		=> $u_login_logout,
-		'U_INDEX'				=> append_sid("{$phpbb_root_path}index.$phpEx"),
-		'U_SEARCH'				=> append_sid("{$phpbb_root_path}search.$phpEx"),
-		'U_REGISTER'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=register'),
-		'U_PROFILE'				=> append_sid("{$phpbb_root_path}ucp.$phpEx"),
-		'U_MODCP'				=> append_sid("{$phpbb_root_path}mcp.$phpEx", false, true, $user->session_id),
-		'U_FAQ'					=> append_sid("{$phpbb_root_path}faq.$phpEx"),
-		'U_SEARCH_SELF'			=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=egosearch'),
-		'U_SEARCH_NEW'			=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=newposts'),
-		'U_SEARCH_UNANSWERED'	=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=unanswered'),
-		'U_SEARCH_UNREAD'		=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=unreadposts'),
-		'U_SEARCH_ACTIVE_TOPICS'=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=active_topics'),
-		'U_DELETE_COOKIES'		=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=delete_cookies'),
+		'U_INDEX'				=> append_sid("{$phpbb_root_path}index.$phpEx", false, true, false, 'N'), //LPADLO CHANGE
+		'U_SEARCH'				=> append_sid("{$phpbb_root_path}search.$phpEx", false, true, false, 'L'), //LPADLO CHANGE
+		'U_REGISTER'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=register', true, false, 'L'), //LPADLO CHANGE
+		'U_PROFILE'				=> append_sid("{$phpbb_root_path}ucp.$phpEx", false, true, false, 'L'), //LPADLO CHANGE
+		'U_MODCP'				=> append_sid("{$phpbb_root_path}mcp.$phpEx", false, true, $user->session_id, 'L'), //LPADLO CHANGE
+		'U_FAQ'					=> append_sid("{$phpbb_root_path}faq.$phpEx", false, true, false, 'L'), //LPADLO CHANGE
+		'U_SEARCH_SELF'			=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=egosearch', true, false, 'L'), //LPADLO CHANGE
+		'U_SEARCH_NEW'			=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=newposts', true, false, 'L'), //LPADLO CHANGE
+		'U_SEARCH_UNANSWERED'	=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=unanswered', true, false, 'L'), //LPADLO CHANGE
+		'U_SEARCH_UNREAD'		=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=unreadposts', true, false, 'L'), //LPADLO CHANGE
+		'U_SEARCH_ACTIVE_TOPICS'=> append_sid("{$phpbb_root_path}search.$phpEx", 'search_id=active_topics', true, false, 'L'), //LPADLO CHANGE
+		'U_DELETE_COOKIES'		=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=delete_cookies', true, false, 'L'), //LPADLO CHANGE
 		'U_TEAM'				=> ($user->data['user_id'] != ANONYMOUS && !$auth->acl_get('u_viewprofile')) ? '' : append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=leaders'),
-		'U_TERMS_USE'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=terms'),
-		'U_PRIVACY'				=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=privacy'),
+		'U_TERMS_USE'			=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=terms', true, false, 'L'), //LPADLO CHANGE
+		'U_PRIVACY'				=> append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=privacy', true, false, 'L'), //LPADLO CHANGE
 		'U_RESTORE_PERMISSIONS'	=> ($user->data['user_perm_from'] && $auth->acl_get('a_switchperm')) ? append_sid("{$phpbb_root_path}ucp.$phpEx", 'mode=restore_perm') : '',
 		'U_FEED'				=> generate_board_url() . "/feed.$phpEx",
 
@@ -4651,25 +4657,25 @@ function page_header($page_title = '', $display_online_list = true, $item_id = 0
 
 		'S_SEARCH_HIDDEN_FIELDS'	=> build_hidden_fields($s_search_hidden_fields),
 
-		'T_THEME_PATH'			=> "{$web_path}styles/" . rawurlencode($user->theme['theme_path']) . '/theme',
-		'T_TEMPLATE_PATH'		=> "{$web_path}styles/" . rawurlencode($user->theme['template_path']) . '/template',
-		'T_SUPER_TEMPLATE_PATH'	=> (isset($user->theme['template_inherit_path']) && $user->theme['template_inherit_path']) ? "{$web_path}styles/" . rawurlencode($user->theme['template_inherit_path']) . '/template' : "{$web_path}styles/" . rawurlencode($user->theme['template_path']) . '/template',
-		'T_IMAGESET_PATH'		=> "{$web_path}styles/" . rawurlencode($user->theme['imageset_path']) . '/imageset',
-		'T_IMAGESET_LANG_PATH'	=> "{$web_path}styles/" . rawurlencode($user->theme['imageset_path']) . '/imageset/' . $user->lang_name,
+		'T_THEME_PATH'			=> "{$web_path}styles/" . $user->theme['theme_path'] . '/theme',
+		'T_TEMPLATE_PATH'		=> "{$web_path}styles/" . $user->theme['template_path'] . '/template',
+		'T_SUPER_TEMPLATE_PATH'	=> (isset($user->theme['template_inherit_path']) && $user->theme['template_inherit_path']) ? "{$web_path}styles/" . $user->theme['template_inherit_path'] . '/template' : "{$web_path}styles/" . $user->theme['template_path'] . '/template',
+		'T_IMAGESET_PATH'		=> "{$web_path}styles/" . $user->theme['imageset_path'] . '/imageset',
+		'T_IMAGESET_LANG_PATH'	=> "{$web_path}styles/" . $user->theme['imageset_path'] . '/imageset/' . $user->lang_name,
 		'T_IMAGES_PATH'			=> "{$web_path}images/",
 		'T_SMILIES_PATH'		=> "{$web_path}{$config['smilies_path']}/",
-		'T_AVATAR_PATH'			=> "{$web_path}{$config['avatar_path']}/",
-		'T_AVATAR_GALLERY_PATH'	=> "{$web_path}{$config['avatar_gallery_path']}/",
+		'T_AVATAR_PATH'			=> "http://www.studioej.pl/testowo/forum2/forum/{$config['avatar_path']}/",
+		'T_AVATAR_GALLERY_PATH'	=> "http://www.studioej.pl/testowo/forum2/forum/{$config['avatar_gallery_path']}/",
 		'T_ICONS_PATH'			=> "{$web_path}{$config['icons_path']}/",
 		'T_RANKS_PATH'			=> "{$web_path}{$config['ranks_path']}/",
 		'T_UPLOAD_PATH'			=> "{$web_path}{$config['upload_path']}/",
-		'T_STYLESHEET_LINK'		=> (!$user->theme['theme_storedb']) ? "{$web_path}styles/" . rawurlencode($user->theme['theme_path']) . '/theme/stylesheet.css' : append_sid("{$phpbb_root_path}style.$phpEx", 'id=' . $user->theme['style_id'] . '&amp;lang=' . $user->lang_name),
+		'T_STYLESHEET_LINK'		=> (!$user->theme['theme_storedb']) ? "{$web_path}styles/" . $user->theme['theme_path'] . '/theme/stylesheet.css' : append_sid("{$phpbb_root_path}style.$phpEx", 'id=' . $user->theme['style_id'] . '&amp;lang=' . $user->lang_name),
 		'T_STYLESHEET_NAME'		=> $user->theme['theme_name'],
 
-		'T_THEME_NAME'			=> rawurlencode($user->theme['theme_path']),
-		'T_TEMPLATE_NAME'		=> rawurlencode($user->theme['template_path']),
-		'T_SUPER_TEMPLATE_NAME'	=> rawurlencode((isset($user->theme['template_inherit_path']) && $user->theme['template_inherit_path']) ? $user->theme['template_inherit_path'] : $user->theme['template_path']),
-		'T_IMAGESET_NAME'		=> rawurlencode($user->theme['imageset_path']),
+		'T_THEME_NAME'			=> $user->theme['theme_path'],
+		'T_TEMPLATE_NAME'		=> $user->theme['template_path'],
+		'T_SUPER_TEMPLATE_NAME'	=> (isset($user->theme['template_inherit_path']) && $user->theme['template_inherit_path']) ? $user->theme['template_inherit_path'] : $user->theme['template_path'],
+		'T_IMAGESET_NAME'		=> $user->theme['imageset_path'],
 		'T_IMAGESET_LANG_NAME'	=> $user->data['user_lang'],
 		'T_IMAGES'				=> 'images',
 		'T_SMILIES'				=> $config['smilies_path'],
@@ -4741,7 +4747,6 @@ function page_footer($run_cron = true)
 	$template->assign_vars(array(
 		'DEBUG_OUTPUT'			=> (defined('DEBUG')) ? $debug_output : '',
 		'TRANSLATION_INFO'		=> (!empty($user->lang['TRANSLATION_INFO'])) ? $user->lang['TRANSLATION_INFO'] : '',
-		'CREDIT_LINE'			=> $user->lang('POWERED_BY', '<a href="http://www.phpbb.com/">phpBB</a>&reg; Forum Software &copy; phpBB Group'),
 
 		'U_ACP' => ($auth->acl_get('a_') && !empty($user->data['is_registered'])) ? append_sid("{$phpbb_root_path}adm/index.$phpEx", false, true, $user->session_id) : '')
 	);
@@ -4830,6 +4835,12 @@ function garbage_collection()
 	if (!empty($db))
 	{
 		$db->sql_close();
+	}
+
+	// Close our DB2 connection.
+	if (!empty($db2))
+	{
+		$db2->sql_close();
 	}
 }
 

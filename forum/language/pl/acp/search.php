@@ -1,13 +1,12 @@
 <?php
-/** 
+/**
 *
 * acp_search [Polski]
 *
 * @package language
-* @version $Id: search.php 9438 2009-04-11 11:09:45Z acydburn $
-* @copyright (c) 2005 phpBB Group
+* @copyright (c) 2006 - 2011 phpBB3.PL Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* @Polish locale 9438 2010-11-16 19:36:21 Zespół Olympus.pl $
+*
 */
 
 /**
@@ -23,9 +22,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// DEVELOPERS PLEASE NOTE
+// INFORMACJA
 //
-// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
+// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -36,74 +35,74 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'ACP_SEARCH_INDEX_EXPLAIN'				=> 'Tutaj można zarządzać mechanizmami indeksowania wyszukiwania. Jeżeli jest używany tylko jeden mechanizm, należy usunąć nieużywane indeksy. Po zmianie niektórych ustawień wyszukiwania, np. minimalnej/maksymalnej liczby znaków, powinno się wykonać ponowne indeksowanie.',
-	'ACP_SEARCH_SETTINGS_EXPLAIN'			=> 'Tutaj można określić, co mechanizm wyszukiwania będzie używał do indeksowania postów i przeprowadzania wyszukiwania. Można ustawić różne opcje, które mogą wpływać na czas potrzebny na wykonanie powyższych zadań. Niektóre z tych opcji są takie same dla wszystkich mechanizmów wyszukiwania.',
+	'ACP_SEARCH_INDEX_EXPLAIN'				=> 'Tutaj możesz zarządzać indeksami wyszukiwania. Normalnie używasz tylko jednego backendu, więc powinieneś usunąć wszystkie indeksy, których nie używasz. Po zmianie części ustawień wyszukiwania (np. minimalna/maksymalna liczba znaków), może przydać się ponowne utworzenie indeksu, aby odpowiadał tym zmienionym ustawieniom.',
+	'ACP_SEARCH_SETTINGS_EXPLAIN'			=> 'Tutaj możesz wybrać, który backend wyszukiwania będzie używany do indeksowania postów i ich wyszukiwania. Możesz też ustawić różne opcje wpływające na obciążenie serwera. Niektóre z nich dotyczą wszystkich backendów wyszukiwania.',
 
-	'COMMON_WORD_THRESHOLD'					=> 'Próg popularności słowa ',
-	'COMMON_WORD_THRESHOLD_EXPLAIN'			=> 'Wyrazy mające najwyższy procentowy udział w ogólnej liczbie postów zostaną uznane za popularne. Wyrazy te są pomijane podczas wyszukiwania. Wprowadź zero, aby wyłączyć tę funkcję. Funkcja ta działa, gdy jest więcej niż 100 postów. Jeśli chcesz, aby słowa uznane za popularne były ponownie uwzględniane podczas wyszukiwania, musisz wykonać ponowne indeksowanie.',
-	'CONFIRM_SEARCH_BACKEND'				=> 'Czy na pewno chcesz zmienić mechanizm wyszukiwania? Zmiana mechanizmu wymaga stworzenia nowego indeksu dla nowego mechanizmu. Jeśli nie planuje się powrotu do poprzedniego mechanizmu wyszukiwania można usunąć stary indeks, aby zwolnić zasoby systemu.',
-	'CONTINUE_DELETING_INDEX'				=> 'Kontynuuj proces usuwania poprzedniego indeksu',
-	'CONTINUE_DELETING_INDEX_EXPLAIN'		=> 'Proces usuwania indeksu został rozpoczęty. Aby uzyskać dostęp do strony indeksu wyszukiwania, należy zakończyć lub anulować proces.',
-	'CONTINUE_INDEXING'						=> 'Kontynuuj poprzedni proces indeksowania',
-	'CONTINUE_INDEXING_EXPLAIN'				=> 'Rozpoczęto proces indeksowania. Aby uzyskać dostęp do strony indeksu wyszukiwania, należy zakończyć lub anulować proces.',
+	'COMMON_WORD_THRESHOLD'					=> 'Próg popularnych słów',
+	'COMMON_WORD_THRESHOLD_EXPLAIN'			=> 'Słowa zawarte w większej części postów zostaną uznane za popularne i przez to ignorowane w zapytaniach do wyszukiwarki. Ustaw na 0, aby zablokować tę funkcję. Działa tylko wtedy, jeśli na forum jest ponad 100 postów. Jeśli chcesz, żeby słowa uznane obecnie za popularne zostały ponownie przeanalizowane, musisz ponownie utworzyć indeks.',
+	'CONFIRM_SEARCH_BACKEND'				=> 'Czy na pewno chcesz zmienić backend wyszukiwania? Po zmianie backendu będziesz musiał utworzyć indeks dla nowego backendu. Jeśli nie planujesz wracać do starego backendu, możesz też usunąć jego indeks, aby oczyścić część zasobów.',
+	'CONTINUE_DELETING_INDEX'				=> 'Kontynuuj proces usuwania indeksu',
+	'CONTINUE_DELETING_INDEX_EXPLAIN'		=> 'Uruchomiony został proces usuwania indeksu. Aby korzystać z wyszukiwarki, musisz go skończyć lub anulować.',
+	'CONTINUE_INDEXING'						=> 'Kontynuuj proces tworzenia indeksu',
+	'CONTINUE_INDEXING_EXPLAIN'				=> 'Uruchomiony został proces tworzenia indeksu. Aby korzystać z wyszukiwarki, musisz go skończyć lub anulować.',
 	'CREATE_INDEX'							=> 'Utwórz indeks',
 
 	'DELETE_INDEX'							=> 'Usuń indeks',
-	'DELETING_INDEX_IN_PROGRESS'			=> 'Trwa usuwanie indeksu…',
-	'DELETING_INDEX_IN_PROGRESS_EXPLAIN'	=> 'Mechanizm wyszukiwania czyści teraz swój indeks. Może to potrwać kilka minut.',
+	'DELETING_INDEX_IN_PROGRESS'			=> 'Trwa usuwanie indeksu',
+	'DELETING_INDEX_IN_PROGRESS_EXPLAIN'	=> 'Backend wyszukiwarki aktualnie usuwa swój indeks. Może to potrwać kilka minut.',
 
-	'FULLTEXT_MYSQL_INCOMPATIBLE_VERSION'	=> 'Mechanizm wyszukiwania pełnotekstowego MySQL może być użyty tylko z wersją MySQL4 i nowszymi.',
-	'FULLTEXT_MYSQL_NOT_MYISAM'				=> 'Mechanizm wyszukiwania pełnotekstowego MySQL może być użyty tylko z tabelami MyISAM.',
+	'FULLTEXT_MYSQL_INCOMPATIBLE_VERSION'	=> 'Pełnotekstowe indeksy MySQL mogą być używane tylko z MySQL w wersji 4 lub nowszej.',
+	'FULLTEXT_MYSQL_NOT_MYISAM'				=> 'Pełnotekstowe indeksy MySQL mogą być używane tylko w tabelach MyISAM.',
 	'FULLTEXT_MYSQL_TOTAL_POSTS'			=> 'Liczba zindeksowanych postów',
-	'FULLTEXT_MYSQL_MBSTRING'				=> 'Wsparcie dla nie łacińskich znaków w kodowaniu UTF-8 za pomocą mbstring:',
-	'FULLTEXT_MYSQL_PCRE'					=> 'Wsparcie dla nie łacińskich znaków w kodowaniu UTF-8 za pomocą PCRE:',
-	'FULLTEXT_MYSQL_MBSTRING_EXPLAIN'		=> 'Jeżeli PCRE nie obsługuje znaków unicode, mechanizm wyszukiwania spróbuje użyć wyrażeń regularnych z pomocą mbstring.',
-	'FULLTEXT_MYSQL_PCRE_EXPLAIN'			=> 'Jeśli chce się wyszukiwać znaki inne niż znaki alfabetu łacińskiego, mechanizm wyszukiwania wymaga kodowania PCRE unicode, dostępnego w PHP 4.4, 5.1 i nowszych wersjach.',
-	'FULLTEXT_MYSQL_MIN_SEARCH_CHARS_EXPLAIN'	=> 'Słowa składające się z przynajmniej tej liczby znaków będą indeksowane dla celów wyszukiwania. Tylko ty lub administrator twojego serwera może zmienić to ustawienie, zmieniając konfigurację bazy danych mysql.',
-	'FULLTEXT_MYSQL_MAX_SEARCH_CHARS_EXPLAIN'	=> 'Słowa składające się z nie więcej niż tej liczby znaków będą indeksowane dla celów wyszukiwania. Tylko ty lub administrator twojego serwera może zmienić to ustawienie, zmieniając konfigurację bazy danych mysql.',
+	'FULLTEXT_MYSQL_MBSTRING'				=> 'Wsparcie dla nie-łacińskich znaków UTF-8 poprzez mbstring:',
+	'FULLTEXT_MYSQL_PCRE'					=> 'Wsparcie dla nie-łacińskich znaków UTF-8 poprzez PCRE:',
+	'FULLTEXT_MYSQL_MBSTRING_EXPLAIN'		=> 'Jeśli PCRE nie posiada wsparcia dla UTF-8, backend wyszukiwania spróbuje użyć silnika wyrażeń regularnych mbstring.',
+	'FULLTEXT_MYSQL_PCRE_EXPLAIN'			=> 'Ten backend do wyszukiwania nie-łacińskich znaków UTF-8 wymaga PCRE ze wsparciem dla UTF-8, dostępnego tylko w PHP 4.4, 5.1 i nowszych.',
+	'FULLTEXT_MYSQL_MIN_SEARCH_CHARS_EXPLAIN'	=> 'Słowa zawierające przynajmniej tyle znaków zostaną umieszczone w indeksie wyszukiwarki. Ty lub Twój host może zmienić to ustawienie tylko przez zmianę konfiguracji MySQL.',
+	'FULLTEXT_MYSQL_MAX_SEARCH_CHARS_EXPLAIN'	=> 'Słowa zawierające najwyżej tyle znaków zostaną umieszczone w indeksie wyszukiwarki. Ty lub Twój host może zmienić to ustawienie tylko przez zmianę konfiguracji MySQL.',
 
 	'GENERAL_SEARCH_SETTINGS'				=> 'Ogólne ustawienia wyszukiwania',
-	'GO_TO_SEARCH_INDEX'					=> 'Przejdź do strony wyszukiwania',
+	'GO_TO_SEARCH_INDEX'					=> 'Przejdź do zarządzania indeksami',
 
-	'INDEX_STATS'							=> 'Statystyki indeksowania',
-	'INDEXING_IN_PROGRESS'					=> 'Trwa indeksowanie…',
-	'INDEXING_IN_PROGRESS_EXPLAIN'			=> 'Mechanizm wyszukiwania indeksuje teraz wszystkie posty. To może potrwać w zależności od wielkości twojego forum od kilku minut do kilku godzin.',
+	'INDEX_STATS'							=> 'Statystyki indeksów',
+	'INDEXING_IN_PROGRESS'					=> 'Trwa indeksowanie',
+	'INDEXING_IN_PROGRESS_EXPLAIN'			=> 'Backend wyszukiwania obecnie indeksuje wszystkie posty na forum. Może to potrwać od kilku minut do kilku godzin, zależnie od wielkości Twojego forum.',
 
-	'LIMIT_SEARCH_LOAD'						=> 'Limit obciążenia systemu serwera – przeszukiwanie strony',
-	'LIMIT_SEARCH_LOAD_EXPLAIN'				=> 'Jeśli w ciągu 1 minuty obciążenie systemu serwera przewyższa podaną wartość, przeszukiwana strona przejdzie do trybu offline. Wartość 1.0 odpowiada ~100% wykorzystania procesora. Funkcja dostępna tylko na serwerach z systemami UNIX-owymi.',
+	'LIMIT_SEARCH_LOAD'						=> 'Limit obciążenia systemu - wyszukiwarka',
+	'LIMIT_SEARCH_LOAD_EXPLAIN'				=> 'Jeśli średnie minutowe obciążenie systemu przekroczy tę wartość, wyszukiwarka automatycznie zostanie wyłączona. Wartość 1.0 oznacza około stuprocentowe wykorzystanie jednego procesora. To ustawienie działa tylko na serwerach bazujących na UNIXie i gdzie ta informacja jest dostępna.',
 
-	'MAX_SEARCH_CHARS'						=> 'Maksymalna liczba znaków indeksowana przez wyszukiwanie ',
-	'MAX_SEARCH_CHARS_EXPLAIN'				=> 'Słowa z liczbą znaków nie większą od tej, będą indeksowane dla wyszukiwania.',
-	'MAX_NUM_SEARCH_KEYWORDS'				=> 'Maksymalna liczba dozwolonych słów kluczowych',
-	'MAX_NUM_SEARCH_KEYWORDS_EXPLAIN'		=> 'Maksymalna liczba słów, jakie użytkownik może wyszukiwać. Wartość 0 – nielimitowana liczba słów.',
-	'MIN_SEARCH_CHARS'						=> 'Minimalna liczba znaków indeksowana przez wyszukiwanie',
-	'MIN_SEARCH_CHARS_EXPLAIN'				=> 'Słowa z co najmniej taką liczbą znaków zostaną zindeksowane dla wyszukiwania.',
-	'MIN_SEARCH_AUTHOR_CHARS'				=> 'Minimalna liczba znaków nazwy autora',
-	'MIN_SEARCH_AUTHOR_CHARS_EXPLAIN'		=> 'Użytkownicy muszą podać co najmniej tyle znaków nazwy autora oprócz wieloznacznika (*,?), jeśli w szukanej nazwie wieloznacznik został użyty. Jeżeli nazwa autora jest krótsza od tej wartości, można szukać postów autora, wpisując całą nazwę użytkownika.',
+	'MAX_SEARCH_CHARS'						=> 'Maksymalna długość słowa',
+	'MAX_SEARCH_CHARS_EXPLAIN'				=> 'Słowa mające więcej znaków nie będą indeksowane przez wyszukiwarkę.',
+	'MAX_NUM_SEARCH_KEYWORDS'				=> 'Maksymalna liczba słów',
+	'MAX_NUM_SEARCH_KEYWORDS_EXPLAIN'		=> 'Maksymalna liczba słów kluczowych jakiej użytkownik może szukać. Wartość 0 pozwala szukać nielimitowanej liczby słów.',
+	'MIN_SEARCH_CHARS'						=> 'Minimalna długość słowa',
+	'MIN_SEARCH_CHARS_EXPLAIN'				=> 'Słowa mające mniej znaków nie będą indeksowane przez wyszukiwarkę.',
+	'MIN_SEARCH_AUTHOR_CHARS'				=> 'Minimalna długość nazwy użytkownika',
+	'MIN_SEARCH_AUTHOR_CHARS_EXPLAIN'		=> 'Użytkownicy muszą podać co najmniej tyle znaków loginu w czasie wyszukiwania postów użytkownika z użyciem gwiazdki (*). Jeśli nazwa użytkownika jest krótsza od tej liczby, nadal możliwe jest znalezienie postów takiego użytkownika dzięki podaniu pełnej nazwy.',
 
 	'PROGRESS_BAR'							=> 'Pasek postępu',
 
-	'SEARCH_GUEST_INTERVAL'					=> 'Interwał anty–przepełnieniowy dla gościa',
-	'SEARCH_GUEST_INTERVAL_EXPLAIN'			=> 'Liczba sekund, jaką goście muszą odczekać między wyszukiwaniami. Jeśli jeden z gości przeprowadza wyszukiwanie, wszyscy pozostali muszą poczekać, aż upłynie określony tutaj czas.',
-	'SEARCH_INDEX_CREATE_REDIRECT'			=> 'Wszystkie posty do postu o id %1$d zostały zindeksowane, z czego %2$d postów w tym kroku.<br />Aktualnie szybkość indeksowania wynosi około %3$.1f postów na sekundę.<br />Indeksowanie w toku…',
-	'SEARCH_INDEX_DELETE_REDIRECT'			=> 'Wszystkie posty do postu o id %1$d zostały usunięte z indeksu wyszukiwania.<br />Trwa usuwanie…',
-	'SEARCH_INDEX_CREATED'					=> 'Wszystkie posty znajdujące się w bazie danych witryny zostały zindeksowane.',
-	'SEARCH_INDEX_REMOVED'					=> 'Indeks wyszukiwania dla tego mechanizmu został usunięty.',
-	'SEARCH_INTERVAL'						=> 'Interwał anty–przepełnieniowy dla użytkownika',
-	'SEARCH_INTERVAL_EXPLAIN'				=> 'Liczba sekund, jaką użytkownik musi odczekać pomiędzy wyszukiwaniami. Interwał ten jest sprawdzany niezależnie dla każdego użytkownika.',
-	'SEARCH_STORE_RESULTS'					=> 'Czas przechowywania wyników wyszukiwania w buforze',
-	'SEARCH_STORE_RESULTS_EXPLAIN'			=> 'Wyniki wyszukiwania znajdujące się w buforze wyszukiwania wygasną po określonym tutaj czasie. Wartość (0) wyłącza bufor wyników wyszukiwania.',
-	'SEARCH_TYPE'							=> 'Mechanizm wyszukiwania',
-	'SEARCH_TYPE_EXPLAIN'					=> 'phpBB pozwala na wybór mechanizmu używanego do przeszukiwania tekstów postów. Domyślnie wyszukiwanie będzie korzystało z pełnotekstowego mechanizmu wyszukiwania phpBB.',
-	'SWITCHED_SEARCH_BACKEND'				=> 'Został zmieniony mechanizm wyszukiwania. Aby używać nowego mechanizmu, należy sprawdzić czy istnieje indeks wyszukiwania dla tego mechanizmu.',
+	'SEARCH_GUEST_INTERVAL'					=> 'Interwał wyszukiwania gości',
+	'SEARCH_GUEST_INTERVAL_EXPLAIN'			=> 'Liczba sekund, jaką goście muszą odczekać między wyszukiwaniami. Jeśli jeden gość coś wyszukał, wszyscy inni muszą odczekać ten czas.',
+	'SEARCH_INDEX_CREATE_REDIRECT'			=> 'Wszystkie posty do postu o ID %1$d zostały zindeksowane, z czego %2$d posty zostały zindeksowane w tym kroku.<br />Obecna prędkość indeksowania to około %3$.1f postów na sekundę.<br />Trwa indeksowanie…',
+	'SEARCH_INDEX_DELETE_REDIRECT'			=> 'Wszystkie posty do postu o ID %1$d zostały usunięte z indeksu.<br />Trwa usuwanie…',
+	'SEARCH_INDEX_CREATED'					=> 'Wszystkie posty napisane na forum zostały zindeksowane.',
+	'SEARCH_INDEX_REMOVED'					=> 'Indeks tego backendu wyszukiwania został usunięty.',
+	'SEARCH_INTERVAL'						=> 'Interwał wyszukiwania użytkowników',
+	'SEARCH_INTERVAL_EXPLAIN'				=> 'Liczba sekund, jaką użytkownicy muszą odczekać między wyszukiwaniami. Interwał ten jest sprawdzany osobno dla każdego użytkownika.',
+	'SEARCH_STORE_RESULTS'					=> 'Czas zapamiętywania wyników wyszukiwania',
+	'SEARCH_STORE_RESULTS_EXPLAIN'			=> 'Zapamiętane wyniki wyszukiwania wygasną po tym czasie. Jest on liczony w sekundach. Ustaw na 0, aby zablokować zapamiętywanie wyników wyszukiwania.',
+	'SEARCH_TYPE'							=> 'Backend wyszukiwania',
+	'SEARCH_TYPE_EXPLAIN'					=> 'phpBB pozwala Ci wybrać backend używany do wyszukiwania postów. Domyślnie phpBB używa własnego backendu pełnotekstowego.',
+	'SWITCHED_SEARCH_BACKEND'				=> 'Zmieniłeś backend wyszukiwania. Aby go używać, upewnij się, że istnieje jego indeks.',
 
 	'TOTAL_WORDS'							=> 'Liczba zindeksowanych słów',
-	'TOTAL_MATCHES'							=> 'Liczba zindeksowanych relacji słowo–post',
+	'TOTAL_MATCHES'							=> 'Liczba zindeksowanych relacji słowo - post',
 
-	'YES_SEARCH'							=> 'Wyświetlaj narzędzia wyszukiwania',
-	'YES_SEARCH_EXPLAIN'					=> 'Włączenie funkcji spowoduje wyświetlanie pola wyszukiwania i odnośnika do formularza wyszukiwania zaawansowanego.',
-	'YES_SEARCH_UPDATE'						=> 'Aktualizacja wyszukiwania pełnotekstowego',
-	'YES_SEARCH_UPDATE_EXPLAIN'				=> 'Aktualizuje indeksy wyszukiwania pełnotekstowego podczas wysyłania postu. Funkcja jest ignorowana, jeśli wyszukiwanie jest wyłączone.' 
+	'YES_SEARCH'							=> 'Włącz wyszukiwanie',
+	'YES_SEARCH_EXPLAIN'					=> 'Pozwala użytkownikom przeszukiwać forum w celu znajdowania postów i użytkowników.',
+	'YES_SEARCH_UPDATE'						=> 'Włącz aktualizację indeksów pełnotekstowych',
+	'YES_SEARCH_UPDATE_EXPLAIN'				=> 'Aktualizuje indeksy pełnotekstowe, gdy użytkownicy piszą / zmieniają / usuwają swoje posty. Ignorowane, gdy wyszukiwanie jest zablokowane.',
 ));
 
 ?>

@@ -1,13 +1,12 @@
 <?php
-/** 
+/**
 *
 * acp_bots [Polski]
 *
 * @package language
-* @version $Id: bots.php 8479 2008-03-29 00:22:48Z naderman $
-* @copyright (c) 2005 phpBB Group
+* @copyright (c) 2006 - 2011 phpBB3.PL Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-* @Polish locale 8479 2008-12-12 15:34:14 Zespół Olympus.pl $
+*
 */
 
 /**
@@ -23,9 +22,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// DEVELOPERS PLEASE NOTE
+// INFORMACJA
 //
-// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
+// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -38,36 +37,36 @@ if (empty($lang) || !is_array($lang))
 // Bot settings
 $lang = array_merge($lang, array(
 	'BOTS'				=> 'Zarządzanie botami',
-	'BOTS_EXPLAIN'		=> '„Boty”, „pająki” czy „pełzacze” są programami zbierającymi informacje o strukturze i stronach internetowych używanymi najczęściej przez wyszukiwarki do aktualizacji swoich baz danych. Ponieważ rzadko używają poprawnej sesji, mogą zniekształcać licznik odwiedzin, zwiększając jego wskazania, a czasami uszkadzają indeks stron. Aby zapanować nad tymi problemami, tutaj można zdefiniować typy i dostęp botów.',
+	'BOTS_EXPLAIN'		=> '„Boty” lub „pająki”, to automatyczne programy używane zazwyczaj przez wyszukiwarki, aby aktualizować ich bazy danych. Ponieważ bardzo rzadko prawidłowo używają sesji, mogą mieszać w liczniku gości, zwiększać obciążenie i czasami błędnie indeksować strony. Tutaj mozesz zdefiniować listę takich botów, dzięki czemu problemy te nie będą występowały.',
 	'BOT_ACTIVATE'		=> 'Aktywuj',
-	'BOT_ACTIVE'		=> 'Aktywność bota',
+	'BOT_ACTIVE'		=> 'Aktywny',
 	'BOT_ADD'			=> 'Dodaj bota',
-	'BOT_ADDED'			=> 'Nowy bot został dodany.',
-	'BOT_AGENT'			=> 'Identyfikator bota',
-	'BOT_AGENT_EXPLAIN'	=> 'Ciąg znaków określających identyfikator bota. Niepełne dopasowanie jest dozwolone.',
-	'BOT_DEACTIVATE'	=> 'Dezaktywuj',
+	'BOT_ADDED'			=> 'Bot został dodany.',
+	'BOT_AGENT'			=> 'Fragment identyfikatora',
+	'BOT_AGENT_EXPLAIN'	=> 'Tekst zawarty w identyfikatorze przeglądarki bota służy do rozpoznania bota.',
+	'BOT_DEACTIVATE'	=> 'Deaktywuj',
 	'BOT_DELETED'		=> 'Bot został usunięty.',
-	'BOT_EDIT'			=> 'Edytowanie botów',
-	'BOT_EDIT_EXPLAIN'	=> 'Tutaj można dodać lub edytować istniejące wpisy botów. Można zdefiniować identyfikator bota lub adresy, zakres adresów IP do porównania. W trakcie definiowania identyfikatora czy adresu, należy zachować ostrożność. Można także zdefiniować styl i język jaki bot będzie widział, odwiedzając witrynę. Ustawienie prostego stylu dla botów pozwoli zredukować szerokość zajmowanego pasma. Należy pamiętać, aby ustawić odpowiednie uprawnienia dla grupy „Boty”.',
-	'BOT_LANG'			=> 'Język dla bota',
-	'BOT_LANG_EXPLAIN'	=> 'Język forum prezentowany botowi w trakcie przeglądania.',
-	'BOT_LAST_VISIT'	=> 'Ostatnie odwiedziny',
+	'BOT_EDIT'			=> 'Edytuj boty',
+	'BOT_EDIT_EXPLAIN'	=> 'Tutaj możesz dodać lub edytować istniejącego bota. Możesz ustawić fragment identyfikatora bota albo jeden lub więcej adres(ów) IP. Możesz też wybrać styl i język, których bot będzie zawsze używał. Ustawiając prosty styl dla botów, możesz zmniejszyć wykorzystanie transferu. Pamiętaj o ustawieniu odpowiednich uprawnień dla grupy użytkowników „Boty”.',
+	'BOT_LANG'			=> 'Język',
+	'BOT_LANG_EXPLAIN'	=> 'Język, w którym bot widzi forum.',
+	'BOT_LAST_VISIT'	=> 'Ostatnia wizyta',
 	'BOT_IP'			=> 'Adres IP bota',
-	'BOT_IP_EXPLAIN'	=> 'Adresy należy oddzielać przecinkiem (,). Niepełne dopasowanie jest dozwolone.',
+	'BOT_IP_EXPLAIN'	=> 'Może być częściowy, oddziel adresy przecinkiem.',
 	'BOT_NAME'			=> 'Nazwa bota',
-	'BOT_NAME_EXPLAIN'	=> 'Stosowana tylko dla wewnętrznej informacji.',
-	'BOT_NAME_TAKEN'	=> 'Nazwa ta jest już używana na witrynie i nie może być użyta jako nazwa bota.',
+	'BOT_NAME_EXPLAIN'	=> 'Używana tylko do wyświetlania bota na liście botów i „kto przegląda forum”.',
+	'BOT_NAME_TAKEN'	=> 'Na Twoim forum jest już użytkownik lub bot o takiej nazwie.',
 	'BOT_NEVER'			=> 'Nigdy',
-	'BOT_STYLE'			=> 'Styl dla bota',
-	'BOT_STYLE_EXPLAIN'	=> 'Styl witryny prezentowany botowi.',
-	'BOT_UPDATED'		=> 'Bot został zaktualizowany.',
+	'BOT_STYLE'			=> 'Styl',
+	'BOT_STYLE_EXPLAIN'	=> 'Styl, w którym bot widzi forum.',
+	'BOT_UPDATED'		=> 'Bot został zmieniony.',
 
-	'ERR_BOT_AGENT_MATCHES_UA'	=> 'Podany identyfikator bota już istnieje. Proszę określić inny.',
-	'ERR_BOT_NO_IP'				=> 'Podany adres IP jest nieprawidłowy lub nie został rozpoznany przez serwer.',
-	'ERR_BOT_NO_MATCHES'		=> 'Należy dostarczyć przynajmniej jeden identyfikator lub adres IP dla tego bota.',
+	'ERR_BOT_AGENT_MATCHES_UA'	=> 'Podany fragment identyfikatora jest podobny do tego, który aktualnie używasz. Wybierz inny fragment identyfikatora bota.',
+	'ERR_BOT_NO_IP'				=> 'Podane adresy IP są nieprawidłowe albo nie można znaleźć hosta o podanej nazwie.',
+	'ERR_BOT_NO_MATCHES'		=> 'Musisz podać fragment identyfikatora i/albo co najmniej jeden adres IP dla tego bota.',
 
-	'NO_BOT'		=> 'Nie znaleziono bota z podanym ID.',
-	'NO_BOT_GROUP'	=> 'Nie można znaleźć grupy bota.',
+	'NO_BOT'		=> 'Nie znaleziono bota o podanym ID.',
+	'NO_BOT_GROUP'	=> 'Nie znaleziono specjalnej grupy dla botów.',
 ));
 
 ?>

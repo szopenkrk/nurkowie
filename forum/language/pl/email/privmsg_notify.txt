@@ -1,15 +1,12 @@
-Subject: Nadeszła nowa prywatna wiadomość
+Subject: {SITENAME} - {AUTHOR_NAME} wysłał(a) Ci wiadomość
 
-Witaj {USERNAME}!
+Witaj {USERNAME},
 
-Na forum „{SITENAME}” użytkownik „{AUTHOR_NAME}” wysłał do Ciebie prywatną wiadomość zatytułowaną:
+{AUTHOR_NAME} wysłał(a) Ci wiadomość pt. "{SUBJECT}".
 
-{SUBJECT}
-
-Możesz ją zobaczyć, klikając poniższy odnośnik:
-
+Możesz ją zobaczyć klikając na ten link:
 {U_VIEW_MESSAGE}
 
-Masz włączoną funkcję powiadamiania o nowych wiadomościach. Jeśli nie chcesz już otrzymywać powiadomień, możesz zrezygnować z nich, zmieniając odpowiednie ustawienia w panelu zarządzania swoim kontem.
+Prosiłeś/aś, żeby powiadamiać Cię, gdy przychodzą nowe wiadomości. Jeśli zmieniłeś/aś zdanie, możesz zrezygnować z powiadomień, zmieniając odpowiednie ustawienia w Twoim panelu użytkownika.
 
 {EMAIL_SIG}

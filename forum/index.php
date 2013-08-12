@@ -17,14 +17,16 @@
 define('IN_PHPBB', true);
 $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './';
 $phpEx = substr(strrchr(__FILE__, '.'), 1);
-include($phpbb_root_path . 'common.' . $phpEx);
+include($phpbb_root_path . 'common.' . $phpEx); 
 include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
-
+$forum_location_var = 'N';
 // Start session management
+
+
 $user->session_begin();
 $auth->acl($user->data);
 $user->setup('viewforum');
-
+  
 display_forums('', $config['load_moderators']);
 
 // Set some stats, get posts count from forums data if we... hum... retrieve all forums data
@@ -89,7 +91,7 @@ if ($config['load_birthdays'] && $config['allow_birthdays'] && $auth->acl_gets('
 	$leap_year_birthdays = '';
 	if ($now['mday'] == 28 && $now['mon'] == 2 && !$user->format_date(time(), 'L'))
 	{
-		$leap_year_birthdays = " OR u.user_birthday LIKE '" . $db->sql_escape(sprintf('%2d-%2d-', 29, 2)) . "%'";
+		$leap_year_birthdays = " OR user_birthday LIKE '" . $db->sql_escape(sprintf('%2d-%2d-', 29, 2)) . "%'";
 	}
 
 	$sql = 'SELECT u.user_id, u.username, u.user_colour, u.user_birthday
