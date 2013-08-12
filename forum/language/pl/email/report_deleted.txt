@@ -1,7 +1,8 @@
-Subject: {SITENAME} - Zgłoszenie usunięte - "{POST_SUBJECT}"
+Subject: Zgłoszenie zostało usunięte – „{POST_SUBJECT}”
 
-Witaj {USERNAME},
+Witaj {USERNAME}!
 
-Wysłane przez Ciebie zgłoszenie dotyczące postu "{POST_SUBJECT}" w wątku "{TOPIC_TITLE}" zostało usunięte przez moderatora lub administratora.
+Otrzymujesz to powiadomienie, ponieważ wysłane przez Ciebie zgłoszenie dotyczące postu „{POST_SUBJECT}” w wątku „{TOPIC_TITLE}” na forum „{SITENAME}” zostało usunięte przez moderatora lub administratora.
+
 
 {EMAIL_SIG}

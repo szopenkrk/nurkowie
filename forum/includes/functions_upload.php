@@ -270,8 +270,7 @@ class filespec
 	*/
 	function move_file($destination, $overwrite = false, $skip_image_check = false, $chmod = false)
 	{
-    //global $user, $phpbb_root_path;     //LPADLO COMMENT
-		global $user, $phpbb_root_path, $forum_location , $remoteServerDir;  //LPADLO ADD
+		global $user, $phpbb_root_path;
 
 		if (sizeof($this->error))
 		{
@@ -280,18 +279,9 @@ class filespec
 
 		$chmod = ($chmod === false) ? CHMOD_READ | CHMOD_WRITE : $chmod;
 
-
 		// We need to trust the admin in specifying valid upload directories and an attacker not being able to overwrite it...
 		$this->destination_path = $phpbb_root_path . $destination;
-    
-    
-        //LPADLO ADD
-        if ($forum_location == 'R') {
-          $destination_path_backup =  $this->destination_path;
-          $this->destination_path = $remoteServerDir . $destination;
-        }
-       
-    //&&&&&&&&&&&&&&&&&&&
+
 		// Check if the destination path exist...
 		if (!file_exists($this->destination_path))
 		{
@@ -302,14 +292,7 @@ class filespec
 		$upload_mode = (@ini_get('open_basedir') || @ini_get('safe_mode') || strtolower(@ini_get('safe_mode')) == 'on') ? 'move' : 'copy';
 		$upload_mode = ($this->local) ? 'local' : $upload_mode;
 		$this->destination_file = $this->destination_path . '/' . utf8_basename($this->realname);
-    
-    
-        //LPADLO ADD
-        if ($forum_location == 'R') {
-          $destination_file_backup =  $this->destination_file;         
-          $this->destination_file = $this->destination_path . '/' . utf8_basename($this->realname);
-        }
-    
+
 		// Check if the file already exist, else there is something wrong...
 		if (file_exists($this->destination_file) && !$overwrite)
 		{
@@ -321,6 +304,7 @@ class filespec
 			{
 				@unlink($this->destination_file);
 			}
+
 			switch ($upload_mode)
 			{
 				case 'copy':
@@ -415,6 +399,7 @@ class filespec
 		$this->file_moved = true;
 		$this->additional_checks();
 		unset($this->upload);
+
 		return true;
 	}
 
@@ -766,6 +751,31 @@ class fileupload
 		$filename = $url['path'];
 		$filesize = 0;
 
+		$remote_max_filesize = $this->max_filesize;
+		if (!$remote_max_filesize)
+		{
+			$max_filesize = @ini_get('upload_max_filesize');
+
+			if (!empty($max_filesize))
+			{
+				$unit = strtolower(substr($max_filesize, -1, 1));
+				$remote_max_filesize = (int) $max_filesize;
+
+				switch ($unit)
+				{
+					case 'g':
+						$remote_max_filesize *= 1024;
+					// no break
+					case 'm':
+						$remote_max_filesize *= 1024;
+					// no break
+					case 'k':
+						$remote_max_filesize *= 1024;
+					// no break
+				}
+			}
+		}
+
 		$errno = 0;
 		$errstr = '';
 
@@ -794,9 +804,9 @@ class fileupload
 				$block = @fread($fsock, 1024);
 				$filesize += strlen($block);
 
-				if ($this->max_filesize && $filesize > $this->max_filesize)
+				if ($remote_max_filesize && $filesize > $remote_max_filesize)
 				{
-					$max_filesize = get_formatted_filesize($this->max_filesize, false);
+					$max_filesize = get_formatted_filesize($remote_max_filesize, false);
 
 					$file = new fileerror(sprintf($user->lang[$this->error_prefix . 'WRONG_FILESIZE'], $max_filesize['value'], $max_filesize['unit']));
 					return $file;
@@ -822,9 +832,9 @@ class fileupload
 					{
 						$length = (int) str_replace('content-length: ', '', strtolower($line));
 
-						if ($length && $length > $this->max_filesize)
+						if ($remote_max_filesize && $length && $length > $remote_max_filesize)
 						{
-							$max_filesize = get_formatted_filesize($this->max_filesize, false);
+							$max_filesize = get_formatted_filesize($remote_max_filesize, false);
 
 							$file = new fileerror(sprintf($user->lang[$this->error_prefix . 'WRONG_FILESIZE'], $max_filesize['value'], $max_filesize['unit']));
 							return $file;

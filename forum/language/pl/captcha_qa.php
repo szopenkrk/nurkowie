@@ -4,9 +4,10 @@
 * captcha_qa [Polski]
 *
 * @package language
-* @copyright (c) 2006 - 2011 phpBB3.PL Group
+* @version $Id: captcha_qa.php 10558 2010-03-07 03:45:28Z git-gate $
+* @copyright (c) 2009 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
+* @Polish locale 2011-06-16 21:34:14 Zespół Olympus.pl $
 */
 
 /**
@@ -22,9 +23,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// INFORMACJA
+// DEVELOPERS PLEASE NOTE
 //
-// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
+// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -35,29 +36,30 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'CAPTCHA_QA'				=> 'Pytania',
-	'CONFIRM_QUESTION_EXPLAIN'	=> 'To pytanie służy do uniemożliwienia automatycznego wysyłania formularza przez boty spamujące.',
-	'CONFIRM_QUESTION_WRONG'	=> 'Podałeś/aś nieprawidłową odpowiedź na pytanie.',
+	'CAPTCHA_QA'				=> 'Q&amp;A',
+	'CONFIRM_QUESTION_EXPLAIN'	=> 'To pytanie jest elementem zabezpieczającym przed automatycznym zamieszczaniem postów.',
+	'CONFIRM_QUESTION_WRONG'	=> 'Udzielono nieprawidłowej odpowiedzi na pytanie.',
 
 	'QUESTION_ANSWERS'			=> 'Odpowiedzi',
-	'ANSWERS_EXPLAIN'			=> 'Podaj prawidłowe odpowiedzi na pytanie, jedna na linię.',
+	'ANSWERS_EXPLAIN'			=> 'Wprowadź poprawne odpowiedzi na pytanie. Każda odpowiedź powinna znaleźć się w oddzielnym wierszu.',
 	'CONFIRM_QUESTION'			=> 'Pytanie',
 
 	'ANSWER'					=> 'Odpowiedź',
-	'EDIT_QUESTION'				=> 'Edytuj pytanie',
+	'EDIT_QUESTION'				=> 'Edycja pytania',
 	'QUESTIONS'					=> 'Pytania',
-	'QUESTIONS_EXPLAIN'			=> 'W każdym formularzu, dla którego włączyłeś wtyczkę Pytania, użytkownicy zostaną poproszeni o odpowiedź na jedno z podanych tutaj pytań. Aby używać tej wtyczki, musisz ustawić przynajmniej jedno pytanie w domyślnym języku. Pytania powinny być łatwe dla Twojej docelowej grupy odbiorców, ale przekraczające umiejętności bota używającego wyszukiwarki Google™. Używanie dużego i często zmienianego zestawu pytań da najlepsze wyniki. Włącz dokładne sprawdzenie, jeśli Twoje pytanie polega na interpunkcji lub wielkości znaków.',
-	'QUESTION_DELETED'			=> 'Pytanie usunięte',
+	'QUESTIONS_EXPLAIN'			=> 'Gdy jest włączona wtyczka Q&amp;A, podczas wysyłania czegokolwiek na forum, użytkownicy będą otrzymywać jedno z wyszczególnionych tutaj pytań. Aby używać tej wtyczki w domyślnym języku, musi być określone przynajmniej jedno pytanie. Pytania powinny być tak skonstruowane, aby użytkownicy mogli łatwo udzielić na nie odpowiedzi, a jednocześnie umożliwiały one botom uruchamianie wyszukiwania w Google™. Najlepsze rezultaty można osiągnąć, stosując duże i często zmieniane zestawy pytań. Włącz sprawdzanie dokładne, jeśli pytanie odnosi się do zagadnień związanych ze znakami interpunkcjnymi, wielkością liter i tzw. „białymi znakami”.',
+	'QUESTION_DELETED'			=> 'Pytanie zostało usunięte',
 	'QUESTION_LANG'				=> 'Język',
-	'QUESTION_LANG_EXPLAIN'		=> 'Język w którym to pytanie i jego odpowiedzi są zapisane.',
-	'QUESTION_STRICT'			=> 'Dokładne sprawdzanie',
-	'QUESTION_STRICT_EXPLAIN'	=> 'Włącz, aby sprawdzać również wielkość liter, odstępy i interpunkcję.',
+	'QUESTION_LANG_EXPLAIN'		=> 'Język w jakim pytanie i odpowiedź są napisane.',
+	'QUESTION_STRICT'			=> 'Sprawdzanie dokładne',
+	'QUESTION_STRICT_EXPLAIN'	=> 'Jeśli funkcja ta zostanie zaznaczona, wielkość liter, znaki interpunkcyjne i tzw. „białe znaki” będą brane pod uwagę.',
 
 	'QUESTION_TEXT'				=> 'Pytanie',
-	'QUESTION_TEXT_EXPLAIN'		=> 'Pytanie, które zostanie zadane użytkownikowi.',
+	'QUESTION_TEXT_EXPLAIN'		=> 'Pytanie, jakie będzie zadawane użytkownikowi.',
 
-	'QA_ERROR_MSG'				=> 'Uzupełnij wszystkie pola i podaj przynajmniej jedną odpowiedź.',
-	'QA_LAST_QUESTION'			=> 'Nie możesz usunąć wszystkich pytań gdy wtyczka jest aktywna.',
+	'QA_ERROR_MSG'				=> 'Wypełnij wszystkie pola i przynajmniej jedną odpowiedź.',
+	'QA_LAST_QUESTION'			=> 'Gdy wtyczka jest aktywna nie można usuwać wszystkich pytań.',
+
 ));
 
 ?>

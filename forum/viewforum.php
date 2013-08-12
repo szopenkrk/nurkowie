@@ -10,13 +10,12 @@
 
 /**
 * @ignore
-*/               
+*/
 define('IN_PHPBB', true);
 $phpbb_root_path = (defined('PHPBB_ROOT_PATH')) ? PHPBB_ROOT_PATH : './';
-$phpEx = substr(strrchr(__FILE__, '.'), 1);     
+$phpEx = substr(strrchr(__FILE__, '.'), 1);
 include($phpbb_root_path . 'common.' . $phpEx);
-include($phpbb_root_path . 'includes/functions_display.' . $phpEx); 
-
+include($phpbb_root_path . 'includes/functions_display.' . $phpEx);
 
 // Start session
 $user->session_begin();
@@ -26,7 +25,6 @@ $auth->acl($user->data);
 $forum_id	= request_var('f', 0);
 $mark_read	= request_var('mark', '');
 $start		= request_var('start', 0);
-      
 
 $default_sort_days	= (!empty($user->data['user_topic_show_days'])) ? $user->data['user_topic_show_days'] : 0;
 $default_sort_key	= (!empty($user->data['user_topic_sortby_type'])) ? $user->data['user_topic_sortby_type'] : 't';
@@ -280,7 +278,7 @@ if (!empty($_EXTRA_URL))
 	foreach ($_EXTRA_URL as $url_param)
 	{
 		$url_param = explode('=', $url_param, 2);
-		$s_hidden_fields[$url_param[0]] = $url_param[1];
+		$s_search_hidden_fields[$url_param[0]] = $url_param[1];
 	}
 }
 

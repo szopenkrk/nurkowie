@@ -23,7 +23,7 @@ if (!defined('IN_PHPBB'))
 */
 class ucp_register
 {
-	var $u_action; 
+	var $u_action;
 
 	function main($id, $mode)
 	{
@@ -165,24 +165,8 @@ class ucp_register
 			$captcha->init(CONFIRM_REG);
 		}
 
-		// Try to manually determine the timezone and adjust the dst if the server date/time complies with the default setting +/- 1
-		$timezone = date('Z') / 3600;
-		$is_dst = date('I');
-
-		if ($config['board_timezone'] == $timezone || $config['board_timezone'] == ($timezone - 1))
-		{
-			$timezone = ($is_dst) ? $timezone - 1 : $timezone;
-
-			if (!isset($user->lang['tz_zones'][(string) $timezone]))
-			{
-				$timezone = $config['board_timezone'];
-			}
-		}
-		else
-		{
-			$is_dst = $config['board_dst'];
-			$timezone = $config['board_timezone'];
-		}
+		$is_dst = $config['board_dst'];
+		$timezone = $config['board_timezone'];
 
 		$data = array(
 			'username'			=> utf8_normalize_nfc(request_var('username', '', true)),
@@ -262,9 +246,8 @@ class ucp_register
 
 			if (!sizeof($error))
 			{
-      
 				$server_url = generate_board_url();
-      /*
+
 				// Which group by default?
 				$group_name = ($coppa) ? 'REGISTERED_COPPA' : 'REGISTERED';
 
@@ -314,8 +297,6 @@ class ucp_register
 					'user_regdate'			=> time(),
 					'user_inactive_reason'	=> $user_inactive_reason,
 					'user_inactive_time'	=> $user_inactive_time,
-					'user_domain'               => urldecode(generate_board_url($without_script_path = false)),
-
 				);
 
 				if ($config['new_member_post_limit'])
@@ -325,19 +306,7 @@ class ucp_register
 
 				// Register user...
 				$user_id = user_add($user_row, $cp_data);
-                                                                          */
-                                                           
-                      
-        //LPADLO ADD                                                     
-        list($user_id, $user_actkey) = $this->register_user($coppa, $data, $is_dst, $without_script_path, $cp_data, null); //LPADLO ADD
-        
-    
-        set_db('R');
-        $this->register_user($coppa, $data, $is_dst, $without_script_path, $cp_data, $user_actkey); //LPADLO ADD
-        set_db('L'); 
-        //LPADLO ADD END
-                                                                       
-                                                                          
+
 				// This should not happen, because the required variables are listed above...
 				if ($user_id === false)
 				{
@@ -512,87 +481,6 @@ class ucp_register
 		$this->tpl_name = 'ucp_register';
 		$this->page_title = 'UCP_REGISTRATION';
 	}
-  
-  
-  
-  
-  function register_user($coppa, $data, $is_dst, $without_script_path, $cp_data, $user_actkey) //LPADLO ADD
-  {
-  
-    global $config, $db, $user;
-
-    
-		// Which group by default?
-		$group_name = ($coppa) ? 'REGISTERED_COPPA' : 'REGISTERED';
-
-		$sql = 'SELECT group_id
-			FROM ' . GROUPS_TABLE . "
-			WHERE group_name = '" . $db->sql_escape($group_name) . "'
-				AND group_type = " . GROUP_SPECIAL;
-		$result = $db->sql_query($sql);
-		$row = $db->sql_fetchrow($result);
-		$db->sql_freeresult($result);
-
-		if (!$row)
-		{
-			trigger_error('NO_GROUP');
-		}
-
-		$group_id = $row['group_id'];
-
-		if (($coppa ||
-			$config['require_activation'] == USER_ACTIVATION_SELF ||
-			$config['require_activation'] == USER_ACTIVATION_ADMIN) && $config['email_enable'])
-		{
-      if(!isset($user_actkey)) {
-			 $user_actkey = gen_rand_string(mt_rand(6, 10));
-      }
-			$user_type = USER_INACTIVE;
-			$user_inactive_reason = INACTIVE_REGISTER;
-			$user_inactive_time = time();
-		}
-		else
-		{
-			$user_type = USER_NORMAL;
-			$user_actkey = '';
-			$user_inactive_reason = 0;
-			$user_inactive_time = 0;
-		}
-
-		$user_row = array(
-			'username'				=> $data['username'],
-			'user_password'			=> phpbb_hash($data['new_password']),
-			'user_email'			=> $data['email'],
-			'group_id'				=> (int) $group_id,
-			'user_timezone'			=> (float) $data['tz'],
-			'user_dst'				=> $is_dst,
-			'user_lang'				=> $data['lang'],
-			'user_type'				=> $user_type,
-			'user_actkey'			=> $user_actkey,
-			'user_ip'				=> $user->ip,
-			'user_regdate'			=> time(),
-			'user_inactive_reason'	=> $user_inactive_reason,
-			'user_inactive_time'	=> $user_inactive_time,
-			'user_domain'               => urldecode(generate_board_url($without_script_path = false)),
-
-		);
-
-		if ($config['new_member_post_limit'])
-		{
-			$user_row['user_new'] = 1;
-		}
-
-		// Register user...
-		$user_id = user_add($user_row, $cp_data);
-  
-    return array($user_id, $user_actkey);
-  }
-  
-  
-  
-  
-  
-  
 }
 
 ?>

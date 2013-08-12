@@ -4,9 +4,10 @@
 * acp_permissions [Polski]
 *
 * @package language
-* @copyright (c) 2006 - 2011 phpBB3.PL Group
+* @version $Id$
+* @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
+* @Polish locale 2012-06-15 21:34:21 Zespół Olympus.pl $
 */
 
 /**
@@ -22,9 +23,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// INFORMACJA
+// DEVELOPERS PLEASE NOTE
 //
-// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
+// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -34,112 +35,100 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-$user_permissions_msg = ' Do zarządzania uprawnieniami większej liczby użytkowników dużo lepszy jest system uprawnień grupowych. Uprawnienia pojedynczych użytkowników powinny być używane tylko w rzadkich przypadkach. Najlepiej dodawać użytkowników do grup i ustawiać uprawnienia tych grup.';
-$role_msg = 'Tutaj możesz zarządzać zestawami uprawnień %s. Jeżeli zmodyfikujesz zestaw uprawnień, zmienione zostaną również uprawienia obiektów korzystających z tego zestawu.';
-$view_msg = 'Tutaj możesz sprawdzić jakie %s uprawnienia %s ma wybrany użytkownik lub grupa%s.';
-
 $lang = array_merge($lang, array(
 	'ACP_PERMISSIONS_EXPLAIN'	=> '
-		<p>System uprawnień w phpBB3 jest bardzo rozbudowany i dlatego został podzielony na 4 główne kategorie:</p>
+		<p>Uprawnienia są bardzo rozbudowane i dlatego zostały zgrupowane w czterech głównych sekcjach:</p>
 
 		<h2>Uprawnienia globalne</h2>
-		<p>Uprawnienia globalne to uprawnienia dotyczące całego forum. Są podzielone na:</p>
-		<ul>
-			<li>uprawnienia globalne użytkowników i grup, za pomocą których można zarządzać globalnymi uprawnieniami użytkowania, moderacyjnymi i administracyjnymi wybranej grupy lub użytkownika,</li>
-			<li>administrację i moderację, za pomocą których można zarządzać globalnymi uprawnieniami administracyjnymi lub moderacyjnymi wybranych grup lub użytkowników.</li>
-		</ul>
+		<p>Uprawnienia globalne, to uprawnienia dotyczące całej witryny. Służą do kontroli dostępu na poziomie globalnym. Są podzielone na uprawnienia przydzielane: użytkownikowi, grupie, administratorom i moderatorom globalnym.</p>
 
-		<h2>Uprawnienia lokalne</h2>
-		<p>Uprawnienia lokalne pozwalają kontrolować uprawnienia osobno dla każdego działu. Są podzielone na:</p>
-		<ul>
-			<li>dostęp do działów i moderację, za pomocą których można zarządzać dostępem do działów lub lokalnymi uprawnieniami moderacyjnymi wybranych grup lub użytkowników.</li>
-			<li>uprawnienia lokalne użytkowników i grup, za pomocą których można zarządzać dostępem do działów lub lokalnymi uprawnieniami moderacyjnymi wybranej grupy lub użytkownika,</li>
-		</ul>
+		<h2>Uprawnienia na forach</h2>
+		<p>Te uprawnienia są używane do kontroli dostępu do forów i są podzielone na uprawnienia przypisane do forum, moderatorów forum, użytkownika forum i grup istniejących na forach.</p>
 
 		<h2>Zestawy uprawnień</h2>
-		<p>Zestawy uprawnień mogą być używane do szybkiego i wygodnego nadawania różnych typów uprawnień użytkownikom i grupom.</p>
+		<p>W tej sekcji można tworzyć różne zestawy uprawnień dla różnych typów uprawnień, które później mogą być przydzielane opartym na tych zestawach bazom. Domyślne zestawy powinny pokrywać swoimi uprawnieniami duży i mały zakres administracji witryny, niemniej w każdej z czterech sekcji można dodawać, edytować i usuwać zestawy.</p>
 
 		<h2>Przegląd uprawnień</h2>
-		<p>Przegląd uprawnień jest sposobem na szybkie i wygodne sprawdzenie jakie uprawnienia ma wybrana grupa lub użytkownik. Pozwala też na tropienie uprawnień, czyli sprawdzenie dlaczego grupa lub użytkownik ma takie, a nie inne uprawnienie.</p>
+		<p>W tej sekcji można dokonać przeglądu faktycznie przydzielonych uprawnień użytkownikom, moderatorom (lokalnym i globalnym), administratorom, czy forom.</p>
 
-		<p>Aby dowiedzieć się więcej o zarządzaniu uprawnieniami przeczytaj <a href="http://www.phpbb.com/support/documentation/3.0/quickstart/quick_permissions.php" rel="external">rozdział 1.5 naszego przewodnika Szybki Start</a>.</p>
+		<br />
+
+		<p>Aby dowiedzieć się więcej o przydzielaniu i zarządzaniu uprawnieniami przeczytaj <a href="http://www.phpbb.com/support/documentation/3.0/quickstart/quick_permissions.html">Rozdział 1.5</a> naszego przewodnika Szybki start.</p>
 	',
 
 	'ACL_NEVER'				=> 'Nigdy',
-	'ACL_SET'				=> 'Ustawianie uprawnień',
-	'ACL_SET_EXPLAIN'		=> 'Uprawnienia bazują na prostym systemie TAK/NIE. Ustawienie opcji na NIGDY nadpisuje wszystkie inne wartości jej nadane. Jeżeli nie chcesz nadawać tego uprawnienia, wybierz NIE. Jeżeli gdzieś nadano temu uprawnieniu wartość TAK, zostanie ona użyta zamiast wartości NIE. Wszystkie wybrane obiekty użyją tych samych uprawnień co obiekt, którego uprawnienia ustawiasz.',
+	'ACL_SET'				=> 'Przydzielanie uprawnień',
+	'ACL_SET_EXPLAIN'		=> 'Przydzielanie uprawnień polega na wybraniu jednej z opcji: <samp>Tak</samp>/<samp>Nie</samp>/<samp>Nigdy</samp>. Wybranie opcji <samp>Nigdy</samp> dla użytkownika lub grupy użytkowników zastępuje wszystkie inne przydzielone im wartości. Jeśli nie chcesz przydzielać danego uprawnienia, wybierz <samp>Nie</samp>. Jeśli gdzieś przydzielono temu uprawnieniu już jakąś wartość, zostanie ona użyta w ustawieniach, chyba że zostało przydzielone <samp>Nigdy</samp>. Wszystkie zaznaczone elementy skopiują uprawnienia wybranego zestawu.',
 	'ACL_SETTING'			=> 'Uprawnienie',
 
-	'ACL_TYPE_A_'			=> 'Administracja',
-	'ACL_TYPE_F_'			=> 'Dostęp do działów',
-	'ACL_TYPE_M_'			=> 'Moderacja',
-	'ACL_TYPE_U_'			=> 'Użytkowanie',
+	'ACL_TYPE_A_'			=> 'Uprawnienia administratora',
+	'ACL_TYPE_F_'			=> 'Uprawnienia na forum',
+	'ACL_TYPE_M_'			=> 'Uprawnienia moderatora',
+	'ACL_TYPE_U_'			=> 'Uprawnienia użytkownika',
 
-	'ACL_TYPE_GLOBAL_A_'	=> 'Administracja',
-	'ACL_TYPE_GLOBAL_U_'	=> 'Użytkowanie',
-	'ACL_TYPE_GLOBAL_M_'	=> 'Moderacja (globalna)',
-	'ACL_TYPE_LOCAL_M_'		=> 'Moderacja (lokalna)',
-	'ACL_TYPE_LOCAL_F_'		=> 'Dostęp do działów',
+	'ACL_TYPE_GLOBAL_A_'	=> 'Uprawnienia administracyjne',
+	'ACL_TYPE_GLOBAL_U_'	=> 'Uprawnienia użytkownika',
+	'ACL_TYPE_GLOBAL_M_'	=> 'Uprawnienia moderatora globalnego',
+	'ACL_TYPE_LOCAL_M_'		=> 'Uprawnienia moderatora',
+	'ACL_TYPE_LOCAL_F_'		=> 'Uprawnienia na forum',
 
 	'ACL_NO'				=> 'Nie',
 	'ACL_VIEW'				=> 'Przeglądanie uprawnień',
-	'ACL_VIEW_EXPLAIN'		=> 'Tutaj możesz szybko i wygodne sprawdzić jakie uprawnienia ma wybrana grupa lub użytkownik. Zielony prostokąt oznacza, że grupa ma dane uprawnienie, a czerwony, że go nie ma.',
+	'ACL_VIEW_EXPLAIN'		=> 'Tutaj można szybko i wygodne sprawdzić, jakie uprawnienia ma wybrana grupa lub użytkownik. Czerwony kwadrat oznacza, że użytkownik/grupa nie ma danego uprawnienia, a zielony, że go ma.',
 	'ACL_YES'				=> 'Tak',
 
-	'ACP_ADMINISTRATORS_EXPLAIN'				=> 'Tutaj możesz zarządzać globalnymi prawami administracyjnymi grup lub użytkowników. Wszyscy użytkownicy z uprawnieniami administracyjnymi mają dostęp do panelu administratora.',
-	'ACP_GLOBAL_MODERATORS_EXPLAIN'				=> 'Tutaj możesz zarządzać globalnymi prawami moderacyjnymi grup lub użytkowników. Moderatorzy globalni mogą mieć trochę więcej uprawień (tj. banowanie i ostrzeganie) niż zwykli moderatorzy.',
-	'ACP_FORUM_MODERATORS_EXPLAIN'				=> 'Tutaj możesz zarządzać lokalnymi prawami moderacyjnymi grup lub użytkowników.',
-	'ACP_FORUM_PERMISSIONS_EXPLAIN'				=> 'Tutaj możesz zarządzać dostępem do działów grup lub użytkowników.',
-	'ACP_FORUM_PERMISSIONS_COPY_EXPLAIN'		=> 'Tutaj możesz skopiować uprawnienia dostępu z jednego działu do innego/innych.',
-	'ACP_GROUPS_PERMISSIONS_EXPLAIN'			=> 'Tutaj możesz zarządzać globalnymi prawami użytkowania, moderacyjnymi i administracyjnymi wybranej grupy.',
-	'ACP_USERS_PERMISSIONS_EXPLAIN'				=> 'Tutaj możesz zarządzać globalnymi prawami użytkowania, moderacyjnymi i administracyjnymi wybranego użytkownika.' . $user_permissions_msg,
-	'ACP_GROUPS_FORUM_PERMISSIONS_EXPLAIN'		=> 'Tutaj możesz zarządzać lokalnymi prawami dostępu do działów i moderacyjnymi wybranej grupy.',
-	'ACP_USERS_FORUM_PERMISSIONS_EXPLAIN'		=> 'Tutaj możesz zarządzać lokalnymi prawami dostępu do działów i moderacyjnymi wybranego użytkownika.' . $user_permissions_msg,
-
-	'ACP_ADMIN_ROLES_EXPLAIN'					=> sprintf($role_msg, 'administracyjnych'),
-	'ACP_FORUM_ROLES_EXPLAIN'					=> sprintf($role_msg, 'dostępu do działów'),
-	'ACP_MOD_ROLES_EXPLAIN'						=> sprintf($role_msg, 'moderacyjnych'),
-	'ACP_USER_ROLES_EXPLAIN'					=> sprintf($role_msg, 'użytkowania'),
-
-	'ACP_VIEW_ADMIN_PERMISSIONS_EXPLAIN'		=> sprintf($view_msg, 'globalne', 'administracyjne', ''),
-	'ACP_VIEW_GLOBAL_MOD_PERMISSIONS_EXPLAIN'	=> sprintf($view_msg, 'globalne', 'moderacyjne', ''),
-	'ACP_VIEW_FORUM_MOD_PERMISSIONS_EXPLAIN'	=> sprintf($view_msg, 'lokalne', 'moderacyjne', ' w wybranym dziale'),
-	'ACP_VIEW_FORUM_PERMISSIONS_EXPLAIN'		=> sprintf($view_msg, 'lokalne', 'dostępu do działu', ' w wybranym dziale'),
-	'ACP_VIEW_USER_PERMISSIONS_EXPLAIN'			=> sprintf($view_msg, 'globalne', 'użytkowania', ''),
+	'ACP_ADMINISTRATORS_EXPLAIN'				=> 'Tutaj można przydzielić uprawnienia administratora użytkownikom lub grupom. Wszyscy użytkownicy z uprawnieniami administratora mają dostęp do panelu administracji.',
+	'ACP_FORUM_MODERATORS_EXPLAIN'				=> 'Tutaj można użytkownikom i grupom przydzielać uprawnienia  moderacyjne na forach - ustanawiać ich moderatorami. Aby przydzielić użytkownikom prawo dostępu do forów, zdefiniować globalne uprawnienia moderacyjne czy administracyjne, należy użyć właściwej do tego strony.',
+	'ACP_FORUM_PERMISSIONS_EXPLAIN'				=> 'Tutaj można użytkownikom i grupom przydzielać i modyfikować prawa dostępu do forów. Aby przydzielić moderatorów czy zdefiniować administratorów, należy użyć właściwej do tego strony.',
+	'ACP_FORUM_PERMISSIONS_COPY_EXPLAIN'		=> 'Tutaj można skopiować uprawnienia forum do jednego lub kilku innych forów.',
+	'ACP_GLOBAL_MODERATORS_EXPLAIN'				=> 'Tutaj można przydzielić użytkownikom i grupom uprawnienia moderatora globalnego. Moderatorzy globalni mają uprawnienia, takie jak zwykli moderatorzy, z tym że mają ponadto dostęp do wszystkich forów na tej witrynie.',
+	'ACP_GROUPS_FORUM_PERMISSIONS_EXPLAIN'		=> 'Tutaj można przydzielać grupom uprawnienia na forach.',
+	'ACP_GROUPS_PERMISSIONS_EXPLAIN'			=> 'Tutaj można przydzielać globalne uprawnienia grupom – uprawnienia użytkownika, moderatora globalnego i administratora. Uprawnienia użytkownika zawierają uprawnienia do używania awatarów, wysyłania prywatnych wiadomości itp. Uprawnienia moderatora globalnego, to akceptowanie/odrzucanie postów, zarządzanie tematami, zarządzanie blokowaniem itp. Uprawnienia administratora, to zmiana uprawnień, definiowanie dodatkowych znaczników BBCode, zarządzanie forami itp. Indywidualne uprawnienia użytkowników powinny być zmieniane tylko w wyjątkowych przypadkach. Zalecaną metodą zmiany uprawnień jest przydzielanie użytkowników do grup i przydzielenie im uprawnień grupy.',
+	'ACP_ADMIN_ROLES_EXPLAIN'					=> 'Tutaj można zarządzać zestawami uprawnień administracyjnych. Zestawy są efektywnym sposobem przydzielania uprawnień. Jeśli zostanie zmieniony zestaw, wszyscy użytkownicy i grupy, które mają przydzielony ten zestaw, przyjmą uprawnienia nowego zestawu.',
+	'ACP_FORUM_ROLES_EXPLAIN'					=> 'Tutaj można zarządzać zestawami uprawnień na forum. Zestawy są efektywnym sposobem przydzielania uprawnień. Jeśli zostanie zmieniony zestaw, wszystkie elementy, które mają przydzielony ten zestaw, przyjmą uprawnienia nowego zestawu.',
+	'ACP_MOD_ROLES_EXPLAIN'						=> 'Tutaj można zarządzać zestawami uprawnień moderacyjnych. Zestawy są efektywnym sposobem przydzielania uprawnień. Jeśli zostanie zmieniony zestaw, wszyscy użytkownicy i grupy, które mają przydzielony ten zestaw, przyjmą uprawnienia nowego zestawu.',
+	'ACP_USER_ROLES_EXPLAIN'					=> 'Tutaj można zarządzać zestawami uprawnień użytkownika. Zestawy są efektywnym sposobem przydzielania uprawnień. Jeśli zostanie zmieniony zestaw, wszyscy użytkownicy, które mają przydzielony ten zestaw, przyjmą uprawnienia nowego zestawu.',
+	'ACP_USERS_FORUM_PERMISSIONS_EXPLAIN'		=> 'Tutaj można przydzielać użytkownikom uprawnienia na forach.',
+	'ACP_USERS_PERMISSIONS_EXPLAIN'				=> 'Tutaj można przydzielać globalne uprawnienia użytkownikom – uprawnienia użytkownika, moderatora globalnego i administratora. Uprawnienia użytkownika zawierają takie funkcje, jak używanie awatarów, wysyłanie prywatnych wiadomości itp. Uprawnienia moderatora globalnego, to akceptowanie/odrzucanie postów, zarządzanie postami, zarządzanie blokowaniem itp. Uprawnienia administratora globalnego, to zmiana uprawnień, tworzenie dodatkowych znaczników BBCode, zarządzanie forami itp. Zalecaną metodą zmiany tych uprawnień jednocześnie wielu użytkownikom jest system uprawnień grupowych. Uprawnienia użytkownika powinny być zmieniane tylko w wyjątkowych przypadkach. Zaleca się przydzielenie użytkowników do grup i przydzielenie im uprawnień grupy.',
+	'ACP_VIEW_ADMIN_PERMISSIONS_EXPLAIN'		=> 'Tutaj można zobaczyć uprawnienia administracyjne przydzielone wybranym użytkownikom/grupom.',
+	'ACP_VIEW_GLOBAL_MOD_PERMISSIONS_EXPLAIN'	=> 'Tutaj można zobaczyć globalne uprawnienia moderacyjne przydzielone wybranym użytkownikom/grupom.',
+	'ACP_VIEW_FORUM_PERMISSIONS_EXPLAIN'		=> 'Tutaj można zobaczyć uprawnienia na forum przydzielone wybranym użytkownikom/grupom i forom.',
+	'ACP_VIEW_FORUM_MOD_PERMISSIONS_EXPLAIN'	=> 'Tutaj można zobaczyć uprawnienia moderacyjne na forum przydzielone wybranym użytkownikom/grupom i forom.',
+	'ACP_VIEW_USER_PERMISSIONS_EXPLAIN'			=> 'Tutaj można zobaczyć uprawnienia użytkownika przydzielone wybranym użytkownikom/grupom.',
 
 	'ADD_GROUPS'				=> 'Dodaj grupy',
-	'ADD_PERMISSIONS'			=> 'Dodaj uprawnienia',
+	'ADD_PERMISSIONS'			=> 'Przydziel uprawnienia',
 	'ADD_USERS'					=> 'Dodaj użytkowników',
-	'ADVANCED_PERMISSIONS'		=> 'Zaawansowane uprawnienia',
+	'ADVANCED_PERMISSIONS'		=> 'Ustawienia zaawansowane',
 	'ALL_GROUPS'				=> 'Zaznacz wszystkie grupy',
-	'ALL_NEVER'					=> 'Wszytkie NIGDY',
-	'ALL_NO'					=> 'Wszytkie NIE',
-	'ALL_USERS'					=> 'Wybierz wszystkich użytkowników',
-	'ALL_YES'					=> 'Wszytkie TAK',
+	'ALL_NEVER'					=> 'Wszystkie <samp>Nigdy</samp>',
+	'ALL_NO'					=> 'Wszystkie <samp>Nie</samp>',
+	'ALL_USERS'					=> 'Zaznacz wszystkich użytkowników',
+	'ALL_YES'					=> 'Wszystkie <samp>Tak</samp>',
 	'APPLY_ALL_PERMISSIONS'		=> 'Zastosuj wszystkie uprawnienia',
 	'APPLY_PERMISSIONS'			=> 'Zastosuj uprawnienia',
-	'APPLY_PERMISSIONS_EXPLAIN'	=> 'Uprawnienia ustawione dla tego obiektu zostaną zastosowane do tego obiektu i wszystkich wybranych obiektów.',
-	'AUTH_UPDATED'				=> 'Uprawnienia zostały zmienione.',
+	'APPLY_PERMISSIONS_EXPLAIN'	=> 'Uprawnienia i zestaw zdefiniowane dla tego elementu zostaną zastosowane tylko dla niego i wszystkich wybranych elementów.',
+	'AUTH_UPDATED'				=> 'Uprawnienia zostały zaktualizowane.',
 
-	'COPY_PERMISSIONS_CONFIRM'				=> 'Czy na pewno chcesz skopiować uprawnienia? Spowoduje to nadpisanie wszelkich uprawnień dostępu do docelowych działów.',
-	'COPY_PERMISSIONS_FORUM_FROM_EXPLAIN'	=> 'Dział, którego uprawnienia chcesz skopiować.',
-	'COPY_PERMISSIONS_FORUM_TO_EXPLAIN'		=> 'Dział(y), do którego chcesz skopiować uprawnienia.',
-	'COPY_PERMISSIONS_FROM'					=> 'Skopiuj uprawnienia z',
-	'COPY_PERMISSIONS_TO'					=> 'Skopiuj uprawnienia do',
+	'COPY_PERMISSIONS_CONFIRM'				=> 'Czy na pewno chcesz wykonać tę operację? Spowoduje ona w wybranych obiektach zastąpienie istniejących uprawnień skopiowanymi uprawnieniami.',
+	'COPY_PERMISSIONS_FORUM_FROM_EXPLAIN'	=> 'Forum źródłowe, z którego chcesz skopiować uprawnienia.',
+	'COPY_PERMISSIONS_FORUM_TO_EXPLAIN'		=> 'Fora docelowe, w których chcesz zastosować skopiowane uprawnienia.',
+	'COPY_PERMISSIONS_FROM'					=> 'Kopiuj uprawnienia z',
+	'COPY_PERMISSIONS_TO'					=> 'Zastosuj uprawnienia w',
 
-	'CREATE_ROLE'				=> 'Utwórz zestaw uprawnień',
-	'CREATE_ROLE_FROM'			=> 'Użyj uprawnień z…',
-	'CUSTOM'					=> 'Custom…', // TODO: translate it... It isn't used anywhere!
+	'CREATE_ROLE'				=> 'Utwórz zestaw',
+	'CREATE_ROLE_FROM'			=> 'Użyj ustawień z…',
+	'CUSTOM'					=> 'Dostosuj…',
 
 	'DEFAULT'					=> 'Domyślny',
 	'DELETE_ROLE'				=> 'Usuń zestaw',
-	'DELETE_ROLE_CONFIRM'		=> 'Czy na pewno chcesz usunąć ten zestaw? Obiekty używające tego zestawu <strong>nie</strong> stracą swoich uprawnień.',
-	'DISPLAY_ROLE_ITEMS'		=> 'Wyświetl obiekty używające tego zestawu',
+	'DELETE_ROLE_CONFIRM'		=> 'Czy na pewno chcesz usunąć ten zestaw? Elementy, które mają przydzielony ten zestaw <strong>nie</strong> stracą swoich uprawnień.',
+	'DISPLAY_ROLE_ITEMS'		=> 'Wyświetl elementy używające ten zestaw',
 
 	'EDIT_PERMISSIONS'			=> 'Edytuj uprawnienia',
 	'EDIT_ROLE'					=> 'Edytuj zestaw',
 
-	'GROUPS_NOT_ASSIGNED'		=> 'Żadna grupa nie używa tego zestawu uprawnień',
+	'GROUPS_NOT_ASSIGNED'		=> 'Żadna grupa nie jest przydzielona do tego zestawu',
 
 	'LOOK_UP_GROUP'				=> 'Wybierz grupę',
 	'LOOK_UP_USER'				=> 'Wybierz użytkownika',
@@ -147,153 +136,154 @@ $lang = array_merge($lang, array(
 	'MANAGE_GROUPS'		=> 'Zarządzaj grupami',
 	'MANAGE_USERS'		=> 'Zarządzaj użytkownikami',
 
-	'NO_AUTH_SETTING_FOUND'		=> 'Ustawienia uprawnień nie zostały zdefiniowane.',
-	'NO_ROLE_ASSIGNED'			=> 'Brak zestawu…',
-	'NO_ROLE_ASSIGNED_EXPLAIN'	=> 'Wybranie tej opcji nie spowoduje zmiany uprawnień. Jeżeli chcesz usunąć wszystkie uprawnienia, powinieneś kliknąć na link “Wszystkie <samp>NIE</samp>”.',
-	'NO_ROLE_AVAILABLE'			=> 'Nie istnieje żaden zestaw',
-	'NO_ROLE_NAME_SPECIFIED'	=> 'Nie podałeś nazwy zestawu.',
+	'NO_AUTH_SETTING_FOUND'		=> 'Ustawienia uprawnienia nie zostały zdefiniowane.',
+	'NO_ROLE_ASSIGNED'			=> 'Nie przydzielono zestawu…',
+	'NO_ROLE_ASSIGNED_EXPLAIN'	=> 'Wybranie tej opcji nie spowoduje zmiany uprawnień. Jeśli chcesz cofnąć ustawienia/usunąć wszystkie uprawnienia, użyj odnośnika „Wszystkie <samp>Nie</samp>”.',
+	'NO_ROLE_AVAILABLE'			=> 'Nie zdefiniowano żadnego zestawu',
+	'NO_ROLE_NAME_SPECIFIED'	=> 'Proszę podać nazwę zestawu.',
 	'NO_ROLE_SELECTED'			=> 'Nie znaleziono zestawu.',
-	'NO_USER_GROUP_SELECTED'	=> 'Nie wybrałeś żadnej grupy ani żadnego użytkownika.',
+	'NO_USER_GROUP_SELECTED'	=> 'Nie wybrano żadnego użytkownika lub grupy.',
 
-	'ONLY_FORUM_DEFINED'	=> 'Wybrałeś tylko działy, a powinieneś też wybrać przynajmniej jedną grupę lub jednego użytkownika.',
+	'ONLY_FORUM_DEFINED'	=> 'Wybrano tylko fora. Proszę także wybrać co najmniej jednego użytkownika lub jedną grupę.',
 
-	'PERMISSION_APPLIED_TO_ALL'		=> 'Uprawnienia zostaną zastosowane też do wszystkich wybranych obiektów',
-	'PLUS_SUBFORUMS'				=> 'i poddziały',
+	'PERMISSION_APPLIED_TO_ALL'		=> 'Uprawnienia i zestawy zostaną zastosowane także do wszystkich zaznaczonych elementów',
+	'PLUS_SUBFORUMS'				=> 'i subfora',
 
 	'REMOVE_PERMISSIONS'			=> 'Usuń uprawnienia',
-	'REMOVE_ROLE'					=> 'Usuń zestaw uprawnień',
+	'REMOVE_ROLE'					=> 'Usuń zestaw',
 	'RESULTING_PERMISSION'			=> 'Wynikowe uprawnienie',
-	'ROLE'							=> 'Zestaw uprawnień',
-	'ROLE_ADD_SUCCESS'				=> 'Zestaw uprawnień został dodany.',
-	'ROLE_ASSIGNED_TO'				=> 'Użytkownicy i grupy korzystający z zestawu %s',
-	'ROLE_DELETED'					=> 'Zestaw uprawnień został usunięty.',
-	'ROLE_DESCRIPTION'				=> 'Opis zestawu uprawnień',
+	'ROLE'							=> 'Zestaw',
+	'ROLE_ADD_SUCCESS'				=> 'Zestaw został dodany.',
+	'ROLE_ASSIGNED_TO'				=> 'Użytkownicy/grupy przydzieleni do zestawu %s',
+	'ROLE_DELETED'					=> 'Zestaw został usunięty.',
+	'ROLE_DESCRIPTION'				=> 'Opis zestawu',
 
-	'ROLE_ADMIN_FORUM'			=> 'Administrator działów',
+	'ROLE_ADMIN_FORUM'			=> 'Administrator forum',
 	'ROLE_ADMIN_FULL'			=> 'Pełny administrator',
-	'ROLE_ADMIN_STANDARD'		=> 'Zwykły administrator',
+	'ROLE_ADMIN_STANDARD'		=> 'Standardowy administrator',
 	'ROLE_ADMIN_USERGROUP'		=> 'Administrator użytkowników i grup',
-	'ROLE_FORUM_BOT'			=> 'Dostęp botów',
+	'ROLE_FORUM_BOT'			=> 'Dostęp dla botów',
 	'ROLE_FORUM_FULL'			=> 'Pełny dostęp',
 	'ROLE_FORUM_LIMITED'		=> 'Ograniczony dostęp',
 	'ROLE_FORUM_LIMITED_POLLS'	=> 'Ograniczony dostęp + ankiety',
 	'ROLE_FORUM_NOACCESS'		=> 'Brak dostępu',
-	'ROLE_FORUM_ONQUEUE'		=> 'Pisanie wymagające akceptacji',
-	'ROLE_FORUM_POLLS'			=> 'Zwykły dostęp + ankiety',
+	'ROLE_FORUM_ONQUEUE'		=> 'W kolejce moderacji',
+	'ROLE_FORUM_POLLS'			=> 'Standardowy dostęp + ankiety',
 	'ROLE_FORUM_READONLY'		=> 'Tylko czytanie',
-	'ROLE_FORUM_STANDARD'		=> 'Zwykły dostęp',
-	'ROLE_FORUM_NEW_MEMBER'		=> 'Nowy użytkownik',
+	'ROLE_FORUM_STANDARD'		=> 'Standardowy dostęp',
+	'ROLE_FORUM_NEW_MEMBER'		=> 'Dostęp dla nowo zarejestrowanego użytkownika',
 	'ROLE_MOD_FULL'				=> 'Pełny moderator',
 	'ROLE_MOD_QUEUE'			=> 'Moderator kolejki',
-	'ROLE_MOD_SIMPLE'			=> 'Prosty moderator',
-	'ROLE_MOD_STANDARD'			=> 'Zwykły moderator',
-	'ROLE_USER_FULL'			=> 'Wszystkie możliwości',
-	'ROLE_USER_LIMITED'			=> 'Ograniczone możliwości',
-	'ROLE_USER_NOAVATAR'		=> 'Bez avatara',
+	'ROLE_MOD_SIMPLE'			=> 'Zwykły moderator',
+	'ROLE_MOD_STANDARD'			=> 'Standardowy moderator',
+	'ROLE_USER_FULL'			=> 'Wszystkie funkcje',
+	'ROLE_USER_LIMITED'			=> 'Ograniczone funkcje',
+	'ROLE_USER_NOAVATAR'		=> 'Bez awatara',
 	'ROLE_USER_NOPM'			=> 'Bez prywatnych wiadomości',
-	'ROLE_USER_STANDARD'		=> 'Zwykłe możliwości',
-	'ROLE_USER_NEW_MEMBER'		=> 'Nowy użytkownik',
+	'ROLE_USER_STANDARD'		=> 'Standardowe funkcje',
+	'ROLE_USER_NEW_MEMBER'		=> 'Funkcje dla nowo zarejestrowanego użytkownika',
 
-	'ROLE_DESCRIPTION_ADMIN_FORUM'			=> 'Ma dostęp do zarządzania działami i uprawnieniami dostępu do nich.',
-	'ROLE_DESCRIPTION_ADMIN_FULL'			=> 'Ma dostęp do wszystkich funkcji administracyjnych na tym forum.<br />Niezalecane.',
-	'ROLE_DESCRIPTION_ADMIN_STANDARD'		=> 'Ma dostęp do większości funkcji administracyjnych z wyjątkiem narzędzi związanych z serwerem i systemem.',
-	'ROLE_DESCRIPTION_ADMIN_USERGROUP'		=> 'Ma dostęp do zarządzania grupami i użytkownikami: może zmieniać uprawnienia i ustawienia, zarządzać banami i rangami.',
-	'ROLE_DESCRIPTION_FORUM_BOT'			=> 'Ten zestaw uprawnień jest zalecany dla botów i pająków wyszukiwarek.',
-	'ROLE_DESCRIPTION_FORUM_FULL'			=> 'Ma możliwość korzystania ze wszystkich funkcji forum w danym dziale, w tym pisania ogłoszeń i przyklejania wątków. Może też ignorować limit wysłania jednej wiadomości w wybranym przez administratora czasie.<br />Niezalecane dla zwykłych użytkowników.',
-	'ROLE_DESCRIPTION_FORUM_LIMITED'		=> 'Ma możliwość korzystania z części funkcji forum, ale nie może załączać plików i używać ikon postów/wątków.',
-	'ROLE_DESCRIPTION_FORUM_LIMITED_POLLS'	=> 'Ma uprawnienia takie, jak przy ograniczonym dostępie, ale może też tworzyć ankiety.',
-	'ROLE_DESCRIPTION_FORUM_NOACCESS'		=> 'Nie ma żadnego dostępu do działu.',
-	'ROLE_DESCRIPTION_FORUM_ONQUEUE'		=> 'Ma uprawnienia takie, jak przy standardowym dostępie, ale jego posty i wątki muszą być akceptowane przez moderatora.',
-	'ROLE_DESCRIPTION_FORUM_POLLS'			=> 'Ma uprawnienia takie, jak przy standardowym dostępie, ale może też tworzyć ankiety.',
-	'ROLE_DESCRIPTION_FORUM_READONLY'		=> 'Ma możliwość czytania zawartości działu, ale nie może nic pisać, ani na nic odpowiadać.',
-	'ROLE_DESCRIPTION_FORUM_STANDARD'		=> 'Ma możliwość korzystania z większości funkcji forum (w tym wysyłania załączników i usuwania własnych wątków), ale nie może blokować własnych wątków ani tworzyć ankiet.',
-	'ROLE_DESCRIPTION_FORUM_NEW_MEMBER'		=> 'Zestaw dla członków specjalnej grupy nowych użytkowników; zawiera uprawnienia <samp>NIGDY</samp> aby zablokować korzystanie z niektórych funkcji nowym użytkownikom.',
-	'ROLE_DESCRIPTION_MOD_FULL'				=> 'Ma możliwość korzystania ze wszystkich funkcji moderacyjnych, w tym banowania.',
-	'ROLE_DESCRIPTION_MOD_QUEUE'			=> 'Ma możliwość korzystania z kolejki moderacji, aby sprawdzać i edytować posty, ale nic poza tym.',
-	'ROLE_DESCRIPTION_MOD_SIMPLE'			=> 'Ma możliwość wykonywania tylko podstawowych akcji związanych z wątkami i postami. Nie może przyznawać ostrzeżeń ani używać kolejki moderacji.',
-	'ROLE_DESCRIPTION_MOD_STANDARD'			=> 'Ma możliwość korzystania z większości funkcji moderacyjnych, ale nie może banować użytkowników ani zmieniać autora postu.',
-	'ROLE_DESCRIPTION_USER_FULL'			=> 'Ma możliwość korzystania ze wszystkich dostępnych dla użytkowników funkcji forum, w tym zmiany nazwy użytkownika i ignorowania limitu wysłania jednej wiadomości w wybranym przez administratora okresie czasu.<br />Niezalecane dla zwykłych użytkowników.',
-	'ROLE_DESCRIPTION_USER_LIMITED'			=> 'Ma możliwość korzystania z części dostępnych dla użytkowników funkcji forum. Wysyłanie załączników, e-maili i natychmiastowych wiadomości nie jest dozwolone.',
-	'ROLE_DESCRIPTION_USER_NOAVATAR'		=> 'Ma możliwość korzystania z ograniczonej części dostępnych dla użytkowników funkcji forum i nie ma prawa do posiadania avatara.',
-	'ROLE_DESCRIPTION_USER_NOPM'			=> 'Ma możliwość korzystania z ograniczonej części dostępnych dla użytkowników funkcji forum i nie ma prawa do wysyłania prywatnych wiadomości.',
-	'ROLE_DESCRIPTION_USER_STANDARD'		=> 'Ma możliwość korzystania z większości dostępnych dla użytkowników funkcji forum. Nie może np. zmieniać nazwy użytkownika ani ignorować limitu wysłania jednej wiadomości w wybranym przez administratora czasie.',
-	'ROLE_DESCRIPTION_USER_NEW_MEMBER'		=> 'Zestaw dla członków specjalnej grupy nowych użytkowników; zawiera uprawnienia <samp>NIGDY</samp> aby zablokować korzystanie z niektórych funkcji nowym użytkownikom.',
 
-	'ROLE_DESCRIPTION_EXPLAIN'		=> 'Masz możliwość wpisania krótkiego opisu co ten zestaw uprawnień robi lub w jakim celu został utworzony. Tekst, który tu wpiszesz, będzie też wyświetlany na stronach ustawiania uprawnień.',
-	'ROLE_DESCRIPTION_LONG'			=> 'Opis zestawu jest zbyt długi. Maksymalna dopuszczalna liczba znaków to 4 000.',
-	'ROLE_DETAILS'					=> 'Szczegóły zestawu uprawnień',
-	'ROLE_EDIT_SUCCESS'				=> 'Zestaw uprawnień został przeedytowany.',
-	'ROLE_NAME'						=> 'Nazwa zestawu uprawnień',
-	'ROLE_NAME_ALREADY_EXIST'		=> 'Zestaw uprawnień tego typu o nazwie <strong>%s</strong> już istnieje.',
-	'ROLE_NOT_ASSIGNED'				=> 'Zestaw uprawnień nie został jeszcze nikomu przyznany.',
+	'ROLE_DESCRIPTION_ADMIN_FORUM'			=> 'Dostęp do zarządzania forum i ustawień uprawnień forum.',
+	'ROLE_DESCRIPTION_ADMIN_FULL'			=> 'Dostęp do wszystkich funkcji administracyjnych na tej witrynie.<br />Nie zalecane.',
+	'ROLE_DESCRIPTION_ADMIN_STANDARD'		=> 'Dostęp do większości funkcji administracyjnych z wyjątkiem narzędzi umożliwiających zarządzanie serwerem i systemem.',
+	'ROLE_DESCRIPTION_ADMIN_USERGROUP'		=> 'Zarządzanie grupami i użytkownikami. Możliwość zmiany uprawnień, ustawień, zarządzania blokowaniem i rangami.',
+	'ROLE_DESCRIPTION_FORUM_BOT'			=> 'Ten zestaw jest zalecany dla botów i pająków wyszukiwawczych.',
+	'ROLE_DESCRIPTION_FORUM_FULL'			=> 'Dostęp do wszystkich funkcji forum włącznie z zamieszczaniem ogłoszeń i przyklejaniem postów. Możliwość ignorowania limitu wysłania wiadomości w określonym przedziale czasowym.<br />Nie zalecane dla normalnych użytkowników.',
+	'ROLE_DESCRIPTION_FORUM_LIMITED'		=> 'Dostęp do większości funkcji forum, ale bez możliwości załączania plików i używania ikon postów.',
+	'ROLE_DESCRIPTION_FORUM_LIMITED_POLLS'	=> 'Uprawnienia, takie jak przy ograniczonym dostępie, ale z możliwością tworzenia ankiet.',
+	'ROLE_DESCRIPTION_FORUM_NOACCESS'		=> 'Brak dostępu do forum.',
+	'ROLE_DESCRIPTION_FORUM_ONQUEUE'		=> 'Dostęp do większości funkcji forum włącznie z zamieszczaniem załączników, ale posty i tematy muszą być akceptowane przez moderatora.',
+	'ROLE_DESCRIPTION_FORUM_POLLS'			=> 'Uprawnienia, takie jak przy standardowym dostępie, ale z możliwością tworzenia ankiet.',
+	'ROLE_DESCRIPTION_FORUM_READONLY'		=> 'Uprawnienia do czytania forum, ale bez możliwości tworzenia nowych tematów i odpowiadania na posty.',
+	'ROLE_DESCRIPTION_FORUM_STANDARD'		=> 'Dostęp do większości funkcji forum włącznie z zamieszczaniem załączników i usuwaniem własnych tematów, ale bez możliwości zamykania własnych tematów i tworzenia ankiet.',
+	'ROLE_DESCRIPTION_FORUM_NEW_MEMBER'		=> 'Zestaw dla członków specjalnej grupy nowo zarejestrowanych użytkowników. Zawiera on uprawnienia typu <samp>Nigdy</samp> do blokowania funkcji dla nowych użytkowników.',
+	'ROLE_DESCRIPTION_MOD_FULL'				=> 'Dostęp do wszystkich funkcji moderacyjnych, włącznie z blokowaniem.',
+	'ROLE_DESCRIPTION_MOD_QUEUE'			=> 'Dostęp tylko do kolejki moderacji, aby sprawdzać i edytować posty.',
+	'ROLE_DESCRIPTION_MOD_SIMPLE'			=> 'Dostęp tylko do podstawowych czynności związanych z tematami. Bez możliwości udzielania ostrzeżeń i używania kolejki moderacji.',
+	'ROLE_DESCRIPTION_MOD_STANDARD'			=> 'Dostęp do większości narzędzi moderacyjnych, ale bez możliwości blokowania użytkowników i zmiany autora postu.',
+	'ROLE_DESCRIPTION_USER_FULL'			=> 'Dostęp do wszystkich dostępnych dla użytkowników funkcji forum włącznie ze zmianą nazwy użytkownika i ignorowaniem limitu wysłania wiadomości w określonym przedziale czasowym.<br />Nie zalecane.',
+	'ROLE_DESCRIPTION_USER_LIMITED'			=> 'Dostęp do części funkcji przeznaczonych dla użytkowników. Bez możliwości zamieszczania załączników, e-maili i błyskawicznych wiadomości.',
+	'ROLE_DESCRIPTION_USER_NOAVATAR'		=> 'Ograniczony zestaw funkcji bez możliwości korzystania z funkcji przypisanych awatarom.',
+	'ROLE_DESCRIPTION_USER_NOPM'			=> 'Ograniczony zestaw funkcji bez możliwości używania funkcji prywatnych wiadomości.',
+	'ROLE_DESCRIPTION_USER_STANDARD'		=> 'Dostęp do większości funkcji przeznaczonych dla użytkowników. Brak możliwości zmiany nazwy użytkownika i ignorowania limitu wysłania wiadomości w określonym przedziale czasowym.',
+	'ROLE_DESCRIPTION_USER_NEW_MEMBER'		=> 'Zestaw dla członków specjalnej grupy nowo zarejestrowanych użytkowników. Zawiera on uprawnienia typu <samp>Nigdy</samp> do blokowania funkcji dla nowych użytkowników.',
 
-	'SELECTED_FORUM_NOT_EXIST'		=> 'Wybrany/e dział(y) nie istnieje/ą.',
-	'SELECTED_GROUP_NOT_EXIST'		=> 'Wybrana/e grupa/y nie istnieje/ą.',
-	'SELECTED_USER_NOT_EXIST'		=> 'Wybrany/i użytkownik/cy nie istnieje/ą.',
-	'SELECT_FORUM_SUBFORUM_EXPLAIN'	=> 'Wybranie z tej listy działu spowoduje również wybranie jego poddziałów.',
+	'ROLE_DESCRIPTION_EXPLAIN'		=> 'Można podać krótki opis tego zestawu i cel jego utworzenia. Tekst tutaj wprowadzony będzie też wyświetlany na stronach ustawiania uprawnień.',
+	'ROLE_DESCRIPTION_LONG'			=> 'Opis zestawu jest za długi. Maksymalna dopuszczalna liczba znaków – 4000.',
+	'ROLE_DETAILS'					=> 'Szczegóły zestawu',
+	'ROLE_EDIT_SUCCESS'				=> 'Zestaw został zmieniony.',
+	'ROLE_NAME'						=> 'Nazwa zestawu',
+	'ROLE_NAME_ALREADY_EXIST'		=> 'Zestaw tego typu o nazwie <strong>%s</strong> już istnieje.',
+	'ROLE_NOT_ASSIGNED'				=> 'Zestaw nie został jeszcze przydzielony nikomu.',
+
+	'SELECTED_FORUM_NOT_EXIST'		=> 'Wybrane forum/fora nie istnieją.',
+	'SELECTED_GROUP_NOT_EXIST'		=> 'Wybrane grupy nie istnieją.',
+	'SELECTED_USER_NOT_EXIST'		=> 'Wybrani użytkownicy nie istnieją.',
+	'SELECT_FORUM_SUBFORUM_EXPLAIN'	=> 'Tutaj można wybrać tylko jedno forum. Wybrane forum będzie zawierało wszystkie jego subfora.',
 	'SELECT_ROLE'					=> 'Wybierz zestaw…',
 	'SELECT_TYPE'					=> 'Wybierz typ',
-	'SET_PERMISSIONS'				=> 'Ustaw uprawnienia',
-	'SET_ROLE_PERMISSIONS'			=> 'Ustaw uprawnienia w zestawie uprawnień',
-	'SET_USERS_PERMISSIONS'			=> 'Ustaw uprawnienia użytkownika',
-	'SET_USERS_FORUM_PERMISSIONS'	=> 'Ustaw uprawnienia dostępu do działu',
+	'SET_PERMISSIONS'				=> 'Określ uprawnienia',
+	'SET_ROLE_PERMISSIONS'			=> 'Określ uprawnienia zestawu',
+	'SET_USERS_PERMISSIONS'			=> 'Określ uprawnienia użytkownika',
+	'SET_USERS_FORUM_PERMISSIONS'	=> 'Określ uprawnienia użytkownika na forum',
 
-	'TRACE_DEFAULT'							=> 'Domyślnie wszystkie uprawnienia są ustawione na <samp>NIE</samp> i mogą zostać nadpisane.',
-	'TRACE_FOR'								=> 'Tropienie dla',
-	'TRACE_GLOBAL_SETTING'					=> '%s (globalne)',
-	'TRACE_GROUP_NEVER_TOTAL_NEVER'			=> 'Uprawnienie tej grupy jest ustawione na <samp>NIGDY</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
-	'TRACE_GROUP_NEVER_TOTAL_NEVER_LOCAL'	=> 'Uprawnienie tej grupy w tym dziale jest ustawione na <samp>NIGDY</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
-	'TRACE_GROUP_NEVER_TOTAL_NO'			=> 'Uprawnienie tej grupy jest ustawione na <samp>NIGDY</samp>, co nadpisuje poprzednią wartość (<samp>NIE</samp>).',
-	'TRACE_GROUP_NEVER_TOTAL_NO_LOCAL'		=> 'Uprawnienie tej grupy w tym dziale jest ustawione na <samp>NIGDY</samp>, co nadpisuje poprzednią wartość (<samp>NIE</samp>).',
-	'TRACE_GROUP_NEVER_TOTAL_YES'			=> 'Uprawnienie tej grupy jest ustawione na <samp>NIGDY</samp>, co nadpisuje poprzednią wartość (<samp>TAK</samp).',
-	'TRACE_GROUP_NEVER_TOTAL_YES_LOCAL'		=> 'Uprawnienie tej grupy w tym dziale jest ustawione na <samp>NIGDY</samp>, co nadpisuje poprzednią wartość (<samp>TAK</samp).',
-	'TRACE_GROUP_NO'						=> 'Uprawnienie tej grupy jest ustawione na <samp>NIE</samp>. Ponieważ nieprzyznanie uprawnienia nie zmienia w żaden sposób wcześniej obliczonych uprawnień, nic się nie zmieniło.',
-	'TRACE_GROUP_NO_LOCAL'					=> 'Uprawnienie tej grupy w tym dziale jest ustawione na <samp>NIE</samp>. Ponieważ nieprzyznanie uprawnienia nie zmienia w żaden sposób wcześniej obliczonych uprawnień, nic się nie zmieniło.',
-	'TRACE_GROUP_YES_TOTAL_NEVER'			=> 'Uprawnienie tej grupy jest ustawione na <samp>TAK</samp>, ale wcześniej ustawione <samp>NIGDY</samp> nie może zostać nadpisane.',
-	'TRACE_GROUP_YES_TOTAL_NEVER_LOCAL'		=> 'Uprawnienie tej grupy w tym dziale jest ustawione na <samp>TAK</samp>, ale wcześniej ustawione <samp>NIGDY</samp> nie może zostać nadpisane.',
-	'TRACE_GROUP_YES_TOTAL_NO'				=> 'Uprawnienie tej grupy jest ustawione na <samp>TAK</samp>, co nadpisuje poprzednią wartość (<samp>NIE</samp>).',
-	'TRACE_GROUP_YES_TOTAL_NO_LOCAL'		=> 'Uprawnienie tej grupy w tym dziale jest ustawione na <samp>TAK</samp>, co nadpisuje poprzednią wartość (<samp>NIE</samp>).',
-	'TRACE_GROUP_YES_TOTAL_YES'				=> 'Uprawnienie tej grupy jest ustawione na <samp>TAK</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
-	'TRACE_GROUP_YES_TOTAL_YES_LOCAL'		=> 'Uprawnienie tej grupy w tym dziale jest ustawione na <samp>TAK</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
-	'TRACE_PERMISSION'						=> 'Trop uprawnienie - %s',
-	'TRACE_RESULT'							=> 'Wynik tropienia',
-	'TRACE_SETTING'							=> 'Trop uprawnienie',
+	'TRACE_DEFAULT'					=> 'Domyślnie żadne uprawnienie nie jest przydzielone – są określone jako <samp>Nie</samp>. Uprawnienia te mogą być zmieniane przez inne ustawienia.',
+	'TRACE_FOR'						=> 'Badanie uprawnienia dla',
+	'TRACE_GLOBAL_SETTING'			=> '%s (globalne)',
+	'TRACE_GROUP_NEVER_TOTAL_NEVER'	=> 'To uprawnienie grupowe jest określone jako <samp>Nigdy</samp> – jak uprawnienie globalne, zatem nie zostało zmienione.',
+	'TRACE_GROUP_NEVER_TOTAL_NEVER_LOCAL'	=> 'To uprawnienie grupowe dla tego forum jest określone jako <samp>Nigdy</samp> – jak uprawnienie globalne, zatem nie zostało zmienione.',
+	'TRACE_GROUP_NEVER_TOTAL_NO'	=> 'To uprawnienie grupowe jest określone jako <samp>Nigdy</samp> i staje się nową wartością globalną, ponieważ nie została ona jeszcze określona.',
+	'TRACE_GROUP_NEVER_TOTAL_NO_LOCAL'	=> 'To uprawnienie grupowe na tym forum jest określone jako <samp>Nigdy</samp> i staje się nową wartością globalną, ponieważ nie została ona jeszcze określona.',
+	'TRACE_GROUP_NEVER_TOTAL_YES'	=> 'Dla tego użytkownika to uprawnienie grupowe jest określone jako <samp>Nigdy</samp>, co zamienia globalną wartość <samp>Tak</samp> na <samp>Nigdy</samp>.',
+	'TRACE_GROUP_NEVER_TOTAL_YES_LOCAL'	=> 'Dla tego użytkownika, to uprawnienie grupowe dla tego forum jest określone jako <samp>Nigdy</samp>, co zamienia globalną wartość <samp>Tak</samp> na <samp>Nigdy</samp>.',
+	'TRACE_GROUP_NO'				=> 'Uprawnienie dla tej grupy jest określone jako <samp>Nie</samp> – tak samo, jak uprawnienie globalne, zatem nie zostało zmienione.',
+	'TRACE_GROUP_NO_LOCAL'			=> 'Uprawnienie dla tej grupy na tym forum jest określone jako <samp>Nie</samp> – tak samo, jak uprawnienie globalne, zatem nie zostało zmienione.',
+	'TRACE_GROUP_YES_TOTAL_NEVER'	=> 'To uprawnienie grupowe jest określone jako <samp>Tak</samp>, ale uprawnienie globalne jest określone jako <samp>Nigdy</samp>, zatem nie może zostać zmienione.',
+	'TRACE_GROUP_YES_TOTAL_NEVER_LOCAL'	=> 'To uprawnienie grupowe na tym forum jest określone jako <samp>Tak</samp>, ale uprawnienie globalne jest określone jako <samp>Nigdy</samp>, zatem nie może zostać zmienione.',
+	'TRACE_GROUP_YES_TOTAL_NO'		=> 'To uprawnienie grupowe jest określone jako <samp>Tak</samp> i staje się nową wartością globalną, ponieważ nie została ona jeszcze określona.',
+	'TRACE_GROUP_YES_TOTAL_NO_LOCAL'	=> 'To uprawnienie grupowe na tym forum jest określone jako <samp>Tak</samp> i staje się nową wartością globalną, ponieważ nie została ona jeszcze określona.',
+	'TRACE_GROUP_YES_TOTAL_YES'		=> 'To uprawnienie grupowe jest określone jako <samp>Tak</samp> – tak samo, jak uprawnienie globalne, zatem nie zostało zmienione.',
+	'TRACE_GROUP_YES_TOTAL_YES_LOCAL'	=> 'To uprawnienie grupowe na tym forum jest określone jako <samp>Tak</samp> – tak samo, jak uprawnienie globalne, zatem nie zostało zmienione.',
+	'TRACE_PERMISSION'				=> 'Badanie uprawnień – %s',
+	'TRACE_RESULT'					=> 'Wynik badania',
+	'TRACE_SETTING'					=> 'Ustawienia badania',
 
-	'TRACE_USER_GLOBAL_YES_TOTAL_YES'		=> 'Globalne uprawnienie tego użytkownika to <samp>TAK</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło. %sTrop globalne uprawnienia%s',
-	'TRACE_USER_GLOBAL_YES_TOTAL_NEVER'		=> 'Globalne uprawnienie tego użytkownika to <samp>TAK</samp>, co nadpisuje lokalną wartość (<samp>NIGDY</samp>). %sTrop globalne uprawnienia%s',
-	'TRACE_USER_GLOBAL_NEVER_TOTAL_KEPT'	=> 'Globalne uprawnienie tego użytkownika to <samp>NIGDY</samp>, co nie zmienia lokalnej wartości. %sTrop globalne uprawnienia%s',
+	'TRACE_USER_GLOBAL_YES_TOTAL_YES'		=> 'Globalne uprawnienie użytkownika określono jako <samp>Tak</samp>. Ponieważ uprawnienie globalne ma taką samą wartość, pozostanie ono niezmienione. %sZbadaj uprawnienie globalne%s',
+	'TRACE_USER_GLOBAL_YES_TOTAL_NEVER'		=> 'Globalne uprawnienie użytkownika określono jako <samp>Tak</samp>, zatem obecna wartość <samp>Nigdy</samp> zostanie zmieniona. %sZbadaj uprawnienie globalne%s',
+	'TRACE_USER_GLOBAL_NEVER_TOTAL_KEPT'	=> 'Globalne uprawnienie użytkownika określono jako <samp>Nigdy</samp>, zatem nie zmieni to dotychczasowej wartości. %sZbadaj uprawnienie globalne%s',
 
-	'TRACE_USER_FOUNDER'					=> 'Użytkownik jest założycielem forum, więc wszystkie uprawnienia administracyjne ma ustawione na <samp>TAK</samp>.',
-	'TRACE_USER_KEPT'						=> 'Uprawnienie tego użytkownika jest ustawione na <samp>NIE</samp>. Ponieważ nieprzyznanie uprawnienia nie zmienia w żaden sposób wcześniej obliczonych uprawnień, nic się nie zmieniło.',
-	'TRACE_USER_KEPT_LOCAL'					=> 'Uprawnienie tego użytkownika w tym dziale jest ustawione na <samp>NIE</samp>. Ponieważ nieprzyznanie uprawnienia nie zmienia w żaden sposób wcześniej obliczonych uprawnień, nic się nie zmieniło.',
-	'TRACE_USER_NEVER_TOTAL_NEVER'			=> 'Uprawnienie tego użytkownika jest ustawione na <samp>NIGDY</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
-	'TRACE_USER_NEVER_TOTAL_NEVER_LOCAL'	=> 'Uprawnienie tego użytkownika w tym dziale jest ustawione na <samp>NIGDY</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
-	'TRACE_USER_NEVER_TOTAL_NO'				=> 'Uprawnienie tego użytkownika jest ustawione na <samp>NIGDY</samp>, co nadpisuje poprzednią wartość (<samp>NIE</samp>).',
-	'TRACE_USER_NEVER_TOTAL_NO_LOCAL'		=> 'Uprawnienie tego użytkownika w tym dziale jest ustawione na <samp>NIGDY</samp>, co nadpisuje poprzednią wartość (<samp>NIE</samp>).',
-	'TRACE_USER_NEVER_TOTAL_YES'			=> 'Uprawnienie tego użytkownika jest ustawione na <samp>NIGDY</samp>, co nadpisuje poprzednią wartość (<samp>TAK</samp>).',
-	'TRACE_USER_NEVER_TOTAL_YES_LOCAL'		=> 'Uprawnienie tego użytkownika w tym dziale jest ustawione na <samp>NIGDY</samp>, co nadpisuje poprzednią wartość (<samp>TAK</samp>).',
-	'TRACE_USER_NO_TOTAL_NO'				=> 'Uprawnienie tego użytkownika jest ustawione na <samp>NIE</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
-	'TRACE_USER_NO_TOTAL_NO_LOCAL'			=> 'Uprawnienie tego użytkownika w tym dziale jest ustawione na <samp>NIE</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
-	'TRACE_USER_YES_TOTAL_NEVER'			=> 'Uprawnienie tego użytkownika jest ustawione na <samp>TAK</samp>, ale wcześniej ustawione <samp>NIGDY</samp> nie może zostać nadpisane.',
-	'TRACE_USER_YES_TOTAL_NEVER_LOCAL'		=> 'Uprawnienie tego użytkownika w tym dziale jest ustawione na <samp>TAK</samp>, ale wcześniej ustawione <samp>NIGDY</samp> nie może zostać nadpisane.',
-	'TRACE_USER_YES_TOTAL_NO'				=> 'Uprawnienie tego użytkownika jest ustawione na <samp>TAK</samp>, co nadpisuje poprzednią wartość (<samp>NIE</samp>).',
-	'TRACE_USER_YES_TOTAL_NO_LOCAL'			=> 'Uprawnienie tego użytkownika w tym dziale jest ustawione na <samp>TAK</samp>, co nadpisuje poprzednią wartość (<samp>NIE</samp>).',
-	'TRACE_USER_YES_TOTAL_YES'				=> 'Uprawnienie tego użytkownika jest ustawione na <samp>TAK</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
-	'TRACE_USER_YES_TOTAL_YES_LOCAL'		=> 'Uprawnienie tego użytkownika w tym dziale jest ustawione na <samp>TAK</samp>. Ponieważ wynik wcześniejszych rozważań był taki sam, nic się nie zmieniło.',
+	'TRACE_USER_FOUNDER'					=> 'Użytkownik jest założycielem forum, zatem wszystkie uprawnienia administracyjne ma zawsze określone jako <samp>Tak</samp>.',
+	'TRACE_USER_KEPT'						=> 'Uprawnienie użytkownika jest określone jako <samp>Nie</samp>, zatem nie zostało zmienione.',
+	'TRACE_USER_KEPT_LOCAL'					=> 'Uprawnienie użytkownika dla tego forum jest określone jako <samp>Nie</samp>, zatem nie zostało zmienione.',
+	'TRACE_USER_NEVER_TOTAL_NEVER'			=> 'Uprawnienie użytkownika jest określone jako <samp>Nigdy</samp>. Ponieważ wartość globalna jest taka sama, nic nie zostało zmienione.',
+	'TRACE_USER_NEVER_TOTAL_NEVER_LOCAL'	=> 'Uprawnienie użytkownika na tym forum jest określone jako <samp>Nigdy</samp>. Ponieważ wartość globalna jest taka sama, nic nie zostało zmienione.',
+	'TRACE_USER_NEVER_TOTAL_NO'				=> 'Uprawnienie użytkownika jest określone jako <samp>Nigdy</samp> i staje się nową wartością globalną, ponieważ poprzednia wartość była określona jako <samp>Nie</samp>.',
+	'TRACE_USER_NEVER_TOTAL_NO_LOCAL'		=> 'Uprawnienie użytkownika na tym forum jest określone jako <samp>Nigdy</samp> i staje się nową wartością globalną, ponieważ poprzednia wartość była określona jako <samp>Nie</samp>.',
+	'TRACE_USER_NEVER_TOTAL_YES'			=> 'Uprawnienie użytkownika jest określone jako <samp>Nigdy</samp> i zastępuje poprzednią wartość <samp>Tak</samp>.',
+	'TRACE_USER_NEVER_TOTAL_YES_LOCAL'		=> 'Uprawnienie użytkownika na tym forum jest określone jako <samp>Nigdy</samp> i zastępuje poprzednią wartość <samp>Tak</samp>.',
+	'TRACE_USER_NO_TOTAL_NO'				=> 'Uprawnienie użytkownika jest określone jako <samp>Nie</samp> i globalne uprawnienie miało wartość <samp>Nie</samp>, zatem zostało zmienione domyślnie na <samp>Nigdy</samp>.',
+	'TRACE_USER_NO_TOTAL_NO_LOCAL'			=> 'Uprawnienie użytkownika na tym forum jest określone jako <samp>Nie</samp> i globalne uprawnienie miało wartość <samp>Nie</samp>, zatem zostało zmienione domyślnie na <samp>Nigdy</samp>.',
+	'TRACE_USER_YES_TOTAL_NEVER'			=> 'Uprawnienie użytkownika jest określone jako <samp>Tak</samp>, a globalne ma wartość <samp>Nigdy</samp>, zatem nie może zostać zmienione.',
+	'TRACE_USER_YES_TOTAL_NEVER_LOCAL'		=> 'Uprawnienie użytkownika na tym forum jest określone jako <samp>Tak</samp>, ale globalne ma wartość <samp>Nigdy</samp>, zatem nie może zostać zmienione.',
+	'TRACE_USER_YES_TOTAL_NO'				=> 'Uprawnienie użytkownika jest określone jako <samp>Tak</samp> i staje się nową wartością globalną, ponieważ poprzednia wartość była określona jako <samp>Nie</samp>.',
+	'TRACE_USER_YES_TOTAL_NO_LOCAL'			=> 'Uprawnienie użytkownika na tym forum jest określone jako <samp>Tak</samp> i staje się nową wartością globalną, ponieważ poprzednia wartość była określona jako <samp>Nie</samp>.',
+	'TRACE_USER_YES_TOTAL_YES'				=> 'Uprawnienie użytkownika jest określone jako <samp>Tak</samp> i wartość globalna jest również określona jako <samp>Tak</samp>, zatem nic nie zostało zmienione.',
+	'TRACE_USER_YES_TOTAL_YES_LOCAL'		=> 'Uprawnienie użytkownika na tym forum jest określone jako <samp>Tak</samp> i wartość globalna jest również określona jako <samp>Tak</samp>, zatem nic nie zostało zmienione.',
 	'TRACE_WHO'								=> 'Kto',
 	'TRACE_TOTAL'							=> 'Łącznie',
 
-	'USERS_NOT_ASSIGNED'			=> 'Żaden użytkownik nie używa tego zestawu uprawnień',
-	'USER_IS_MEMBER_OF_DEFAULT'		=> 'jest członkiem poniższych wbudowanych grup',
-	'USER_IS_MEMBER_OF_CUSTOM'		=> 'jest członkiem poniższych utworzonych przez administratora grup',
+	'USERS_NOT_ASSIGNED'			=> 'Żaden użytkownik nie ma przydzielonego tego zestawu',
+	'USER_IS_MEMBER_OF_DEFAULT'		=> 'jest członkiem następujących predefiniowanych grup',
+	'USER_IS_MEMBER_OF_CUSTOM'		=> 'jest członkiem następujących, utworzonych przez administratora grup',
 
-	'VIEW_ASSIGNED_ITEMS'	=> 'Wyświetl użytkowników / grupy korzystające z tego zestawu',
-	'VIEW_LOCAL_PERMS'		=> 'Lokalne uprawnienia',
-	'VIEW_GLOBAL_PERMS'		=> 'Globalne uprawnienia',
+	'VIEW_ASSIGNED_ITEMS'	=> 'Wyświetl użytkowników/grupy, które mają przydzielony ten zestaw',
+	'VIEW_LOCAL_PERMS'		=> 'Uprawnienia lokalne',
+	'VIEW_GLOBAL_PERMS'		=> 'Uprawnienia globalne',
 	'VIEW_PERMISSIONS'		=> 'Wyświetl uprawnienia',
 
-	'WRONG_PERMISSION_TYPE'				=> 'Został wybrany nieprawidłowy typ uprawnień.',
-	'WRONG_PERMISSION_SETTING_FORMAT'	=> 'Ustawienia uprawnień mają nieprawidłowy format, phpBB3 nie jest w stanie ich zrozumieć.',
+	'WRONG_PERMISSION_TYPE'				=> 'Wybrano nieprawidłowy typ uprawnień.',
+	'WRONG_PERMISSION_SETTING_FORMAT'	=> 'Ustawienia uprawnienia mają nieprawidłowy format. Skrypt phpBB nie jest w stanie przetworzyć ich poprawnie.',
 ));
 
 ?>

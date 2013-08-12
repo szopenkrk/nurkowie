@@ -1,10 +1,12 @@
-Subject: {SITENAME} - Wątek "{TOPIC_TITLE}" został odrzucony
+Subject: Temat „{TOPIC_TITLE}” został odrzucony
 
-Witaj {USERNAME},
+Witaj {USERNAME}!
 
-Twój wątek "{TOPIC_TITLE}" został odrzucony przez moderatora lub administratora.
+Otrzymujesz to powiadomienie, ponieważ Twój temat „{TOPIC_TITLE}” napisany na forum „{SITENAME}” został odrzucony przez moderatora lub administratora.
 
 Powód odrzucenia:
+
 {REASON}
+
 
 {EMAIL_SIG}

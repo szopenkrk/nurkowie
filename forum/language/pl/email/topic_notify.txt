@@ -1,17 +1,20 @@
-Subject: {SITENAME} - Powiadomienie o odpowiedzi w wątku "{TOPIC_TITLE}"
+Subject: Powiadomienie o odpowiedzi w temacie „{TOPIC_TITLE}”
 
-Witaj {USERNAME},
+Witaj {USERNAME}!
 
-Przed chwilą ktoś odpowiedział w wątku "{TOPIC_TITLE}".
+Otrzymujesz to powiadomienie, ponieważ obserwujesz temat „{TOPIC_TITLE}” na forum „{SITENAME}”. Od czasu Twojej ostatniej wizyty, w tym temacie pojawił się nowy post. Możesz użyć jednego z poniższych odnośników, aby przejrzeć ten temat. Aby otrzymywać kolejne powiadomienia o zmianach w tym temacie musisz zapoznać się z obecną zmianą.
 
-Post: {U_NEWEST_POST}
-Wątek: {U_TOPIC}
-Dział: {U_FORUM}
-Forum: {U_BOARD}
+Jeśli chcesz przejść bezpośrednio do nowego postu, skorzystaj z poniższego odnośnika:
+{U_NEWEST_POST}
 
-Dopóki nie zobaczysz tego wątku, nie otrzymasz żadnego następnego powiadomienia.
+Jeśli chcesz przejść na początek tematu, użyj tego odnośnika:
+{U_TOPIC}
 
-Jeśli nie chcesz już obserwować tego wątku, kliknij na poniższy link:
+Jeśli chcesz przejść do forum, w którym napisano ten post, skorzystaj z tego odnośnika:
+{U_FORUM}
+
+Jeśli nie chcesz już obserwować tego tematu, kliknij odnośnik „Zaprzestań obserwacji tematu” znajdujący się na dole tematu na forum lub użyj odnośnika zamieszczonego poniżej:
+
 {U_STOP_WATCHING_TOPIC}
 
 {EMAIL_SIG}

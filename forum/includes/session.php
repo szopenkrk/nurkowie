@@ -33,8 +33,6 @@ class session
 	var $load = 0;
 	var $time_now = 0;
 	var $update_session_page = true;
-  
-  var $dataRemote = array(); //LPADLO ADD
 
 	/**
 	* Extract current session page
@@ -187,7 +185,7 @@ class session
 				$host = (function_exists('php_uname')) ? php_uname('n') : 'localhost';
 			}
 		}
-              
+
 		// It may be still no valid host, but for sure only a hostname (we may further expand on the cookie domain... if set)
 		return $host;
 	}
@@ -207,9 +205,8 @@ class session
 	*/
 	function session_begin($update_session_page = true)
 	{
-	//	global $phpEx, $SID, $_SID, $_EXTRA_URL, $db, $config, $phpbb_root_path;                //LPADLO COM
-    	global $phpEx, $SID, $_SID, $_EXTRA_URL, $db, $config, $phpbb_root_path, $db2;    //LPADLO ADD
-      
+		global $phpEx, $SID, $_SID, $_EXTRA_URL, $db, $config, $phpbb_root_path;
+
 		// Give us some basic information
 		$this->time_now				= time();
 		$this->cookie_data			= array('u' => 0, 'k' => '');
@@ -220,7 +217,7 @@ class session
 
 		$this->host					= $this->extract_current_hostname();
 		$this->page					= $this->extract_current_page($phpbb_root_path);
-               
+
 		// if the forwarded for header shall be checked we have to validate its contents
 		if ($config['forwarded_for_check'])
 		{
@@ -265,10 +262,7 @@ class session
 			$this->session_id = $_SID = request_var('sid', '');
 			$SID = '?sid=' . $this->session_id;
 		}
-    //LPADLO ADD
-     //echo 'LP>> SID: ' . $SID . '<br/>';
-     //echo 'LP>> $_SID: ' . $_SID;
-     
+
 		$_EXTRA_URL = array();
 
 		// Why no forwarded_for et al? Well, too easily spoofed. With the results of my recent requests
@@ -327,12 +321,17 @@ class session
 				set_config('limit_search_load', '0');
 			}
 		}
-     //   logSring("sprawdzam?"); //LPADLO ADD
-		// Is session_id is set or session_id is set and matches the url param if required
-		if (!empty($this->session_id) && (!defined('NEED_SID') || (isset($_GET['sid']) && $this->session_id === $_GET['sid'])))
+
+		// if no session id is set, redirect to index.php
+		if (defined('NEED_SID') && (!isset($_GET['sid']) || $this->session_id !== $_GET['sid']))
 		{
-     // logSring("tak sprawdzam");//LPADLO ADD
-    
+			send_status_line(401, 'Not authorized');
+			redirect(append_sid("{$phpbb_root_path}index.$phpEx"));
+		}
+
+		// if session id is set
+		if (!empty($this->session_id))
+		{
 			$sql = 'SELECT u.*, s.*
 				FROM ' . SESSIONS_TABLE . ' s, ' . USERS_TABLE . " u
 				WHERE s.session_id = '" . $db->sql_escape($this->session_id) . "'
@@ -340,17 +339,6 @@ class session
 			$result = $db->sql_query($sql);
 			$this->data = $db->sql_fetchrow($result);
 			$db->sql_freeresult($result);
-
-
-
-      //LPADLO ADD
-        $result = $db2->sql_query($sql);
-  			$this->dataRemote = $db2->sql_fetchrow($result);
-  			$db2->sql_freeresult($result);
-      //LPADLO ADD END
-
-    //  logString('dataRemote user id: ' . $this->dataRemote['user_id']);
-     // logString('data user id: ' . $this->data['user_id']);
 
 			// Did the session exist in the DB?
 			if (isset($this->data['user_id']))
@@ -497,11 +485,9 @@ class session
 	* garbage collection, (search)bot checking, banned user comparison. Basically
 	* though this method will result in a new session for a specific user.
 	*/
-  //function session_create($user_id = false, $set_admin = false, $persist_login = false, $viewonline = true) //LPADLO COM
-	function session_create($user_id = false, $set_admin = false, $persist_login = false, $viewonline = true, $user_remote_id = false) // LPADLO ADD
+	function session_create($user_id = false, $set_admin = false, $persist_login = false, $viewonline = true)
 	{
-   //global $SID, $_SID, $db, $config, $cache, $phpbb_root_path, $phpEx;    //LPADLO COM
-		global $SID, $_SID, $db, $config, $cache, $phpbb_root_path, $phpEx, $db2, $dbLocal; //LPADLO ADD
+		global $SID, $_SID, $db, $config, $cache, $phpbb_root_path, $phpEx;
 
 		$this->data = array();
 
@@ -571,15 +557,6 @@ class session
 		if (function_exists($method))
 		{
 			$this->data = $method();
-      
-      //LPADLO ADD
-      if ($forum_location != 'R') {
-        $db = $db2;
-        $this->dataRemote = $method();
-      
-        $db = $dbLocal; 
-      }
-      //LPADLO ADD END
 
 			if (sizeof($this->data))
 			{
@@ -714,7 +691,6 @@ class session
 			if ($u_ip === $s_ip && $s_browser === $u_browser && $s_forwarded_for === $u_forwarded_for)
 			{
 				$this->session_id = $this->data['session_id'];
-        $this->sessionRemote_id = $this->dataRemote['session_id'];//LPADLO ADD
 
 				// Only update session DB a minute or so after last update or if page changes
 				if ($this->time_now - $this->data['session_time'] > 60 || ($this->update_session_page && $this->data['session_page'] != $this->page['page']))
@@ -824,14 +800,6 @@ class session
 
 		$sql = 'INSERT INTO ' . SESSIONS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
 		$db->sql_query($sql);
-    
-    //$db2 ->sql_query($sql); //LPADLO ADD !!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ADD SESION RECORD
-    //LPADLO ADD
-           
-		$sql_ary['session_user_id'] = $user_remote_id;
-    	$sql = 'INSERT INTO ' . SESSIONS_TABLE . ' ' . $db2->sql_build_array('INSERT', $sql_ary);
-		$db2->sql_query($sql);
-    //LPADLO ADD END
 
 		$db->sql_return_on_error(false);
 
@@ -1546,7 +1514,6 @@ class user extends session
 
 	// Able to add new options (up to id 31)
 	var $keyoptions = array('viewimg' => 0, 'viewflash' => 1, 'viewsmilies' => 2, 'viewsigs' => 3, 'viewavatars' => 4, 'viewcensors' => 5, 'attachsig' => 6, 'bbcode' => 8, 'smilies' => 9, 'popuppm' => 10, 'sig_bbcode' => 15, 'sig_smilies' => 16, 'sig_links' => 17);
-	var $keyvalues = array();
 
 	/**
 	* Constructor to set the lang path
@@ -2376,47 +2343,51 @@ class user extends session
 	}
 
 	/**
-	* Get option bit field from user options
+	* Get option bit field from user options.
+	*
+	* @param int $key option key, as defined in $keyoptions property.
+	* @param int $data bit field value to use, or false to use $this->data['user_options']
+	* @return bool true if the option is set in the bit field, false otherwise
 	*/
 	function optionget($key, $data = false)
 	{
-		if (!isset($this->keyvalues[$key]))
-		{
-			$var = ($data) ? $data : $this->data['user_options'];
-			$this->keyvalues[$key] = ($var & 1 << $this->keyoptions[$key]) ? true : false;
-		}
-
-		return $this->keyvalues[$key];
+		$var = ($data !== false) ? $data : $this->data['user_options'];
+		return phpbb_optionget($this->keyoptions[$key], $var);
 	}
 
 	/**
-	* Set option bit field for user options
+	* Set option bit field for user options.
+	*
+	* @param int $key Option key, as defined in $keyoptions property.
+	* @param bool $value True to set the option, false to clear the option.
+	* @param int $data Current bit field value, or false to use $this->data['user_options']
+	* @return int|bool If $data is false, the bit field is modified and
+	*                  written back to $this->data['user_options'], and
+	*                  return value is true if the bit field changed and
+	*                  false otherwise. If $data is not false, the new
+	*                  bitfield value is returned.
 	*/
 	function optionset($key, $value, $data = false)
 	{
-		$var = ($data) ? $data : $this->data['user_options'];
+		$var = ($data !== false) ? $data : $this->data['user_options'];
 
-		if ($value && !($var & 1 << $this->keyoptions[$key]))
+		$new_var = phpbb_optionset($this->keyoptions[$key], $value, $var);
+
+		if ($data === false)
 		{
-			$var += 1 << $this->keyoptions[$key];
-		}
-		else if (!$value && ($var & 1 << $this->keyoptions[$key]))
-		{
-			$var -= 1 << $this->keyoptions[$key];
+			if ($new_var != $var)
+			{
+				$this->data['user_options'] = $new_var;
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
-			return ($data) ? $var : false;
-		}
-
-		if (!$data)
-		{
-			$this->data['user_options'] = $var;
-			return true;
-		}
-		else
-		{
-			return $var;
+			return $new_var;
 		}
 	}
 

@@ -607,7 +607,7 @@ if (!empty($_EXTRA_URL))
 	foreach ($_EXTRA_URL as $url_param)
 	{
 		$url_param = explode('=', $url_param, 2);
-		$s_hidden_fields[$url_param[0]] = $url_param[1];
+		$s_search_hidden_fields[$url_param[0]] = $url_param[1];
 	}
 }
 
@@ -1117,8 +1117,6 @@ while ($row = $db->sql_fetchrow($result))
 
 				'warnings'			=> 0,
 				'allow_pm'			=> 0,
-				'user_domain'           => $row['user_domain'],
-
 			);
 
 			get_user_rank($row['user_rank'], false, $user_cache[$poster_id]['rank_title'], $user_cache[$poster_id]['rank_image'], $user_cache[$poster_id]['rank_image_src']);
@@ -1171,7 +1169,6 @@ while ($row = $db->sql_fetchrow($result))
 				'author_colour'		=> get_username_string('colour', $poster_id, $row['username'], $row['user_colour']),
 				'author_username'	=> get_username_string('username', $poster_id, $row['username'], $row['user_colour']),
 				'author_profile'	=> get_username_string('profile', $poster_id, $row['username'], $row['user_colour']),
-				'user_domain'           => $row['user_domain'],
 			);
 
 			get_user_rank($row['user_rank'], $row['user_posts'], $user_cache[$poster_id]['rank_title'], $user_cache[$poster_id]['rank_image'], $user_cache[$poster_id]['rank_image_src']);
@@ -1520,7 +1517,6 @@ for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 
 	//
 	$postrow = array(
-'POSTER_DOMAIN'     => $user_cache[$poster_id]['user_domain'],
 		'POST_AUTHOR_FULL'		=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_full'] : get_username_string('full', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
 		'POST_AUTHOR_COLOUR'	=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_colour'] : get_username_string('colour', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
 		'POST_AUTHOR'			=> ($poster_id != ANONYMOUS) ? $user_cache[$poster_id]['author_username'] : get_username_string('username', $poster_id, $row['username'], $row['user_colour'], $row['post_username']),
@@ -1593,9 +1589,7 @@ for ($i = 0, $end = sizeof($post_list); $i < $end; ++$i)
 
 		'S_IGNORE_POST'		=> ($row['hide_post']) ? true : false,
 		'L_IGNORE_POST'		=> ($row['hide_post']) ? sprintf($user->lang['POST_BY_FOE'], get_username_string('full', $poster_id, $row['username'], $row['user_colour'], $row['post_username']), '<a href="' . $viewtopic_url . "&amp;p={$row['post_id']}&amp;view=show#p{$row['post_id']}" . '">', '</a>') : '',
-		
-
-);
+	);
 
 	if (isset($cp_row['row']) && sizeof($cp_row['row']))
 	{

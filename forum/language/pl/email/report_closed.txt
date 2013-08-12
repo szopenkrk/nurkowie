@@ -1,7 +1,8 @@
-Subject: {SITENAME} - Zgłoszenie zamknięte - "{POST_SUBJECT}"
+Subject: Zgłoszenie zostało zamknięte – „{POST_SUBJECT}”
 
-Witaj {USERNAME},
+Witaj {USERNAME}!
 
-Wysłane przez Ciebie zgłoszenie dotyczące postu "{POST_SUBJECT}" w wątku "{TOPIC_TITLE}" zostało zamknięte przez moderatora lub administratora. Jeśli masz jakieś pytania, to skontaktuj się z {CLOSER_NAME} za pomocą prywatnej wiadomości.
+Otrzymujesz to powiadomienie, ponieważ wysłane przez Ciebie zgłoszenie dotyczące postu „{POST_SUBJECT}” w wątku „{TOPIC_TITLE}” na forum „{SITENAME}” zostało przeczytane przez moderatora lub administratora i zamknięte. Jeśli masz jakieś pytania, skontaktuj się z {CLOSER_NAME}, wysyłając prywatną wiadomość.
+
 
 {EMAIL_SIG}

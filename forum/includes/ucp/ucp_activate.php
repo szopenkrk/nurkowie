@@ -92,31 +92,13 @@ class ucp_activate
 		{
 			include_once($phpbb_root_path . 'includes/functions_user.' . $phpEx);
 
-     
-      /* LPADLO HIDE
 			user_active_flip('activate', $user_row['user_id']);
-
 
 			$sql = 'UPDATE ' . USERS_TABLE . "
 				SET user_actkey = ''
 				WHERE user_id = {$user_row['user_id']}";
 			$db->sql_query($sql);
-      */
-          //LPADLO ADD
-        $this->active_user($user_row);  
-        
-        set_db('R');
-          
-        	$sql = 'SELECT user_id, username, user_type, user_email, user_newpasswd, user_lang, user_notify_type, user_actkey, user_inactive_reason  
-    			FROM ' . USERS_TABLE . ' WHERE username = \'' . $user_row['username'] . '\'';
-      
-      		$result = $db->sql_query($sql);
-          
-      		$user_row_remote = $db->sql_fetchrow($result);
-      		$db->sql_freeresult($result);
-          $this->active_user($user_row_remote); //LPADLO ADD
-        set_db('L'); 
-       //---------  
+
 			// Create the correct logs
 			add_log('user', $user_row['user_id'], 'LOG_USER_ACTIVE_USER');
 			if ($auth->acl_get('a_user'))
@@ -160,20 +142,6 @@ class ucp_activate
 		meta_refresh(3, append_sid("{$phpbb_root_path}index.$phpEx"));
 		trigger_error($user->lang[$message]);
 	}
-  
-  //LPADLO ADD
-  function active_user($user_row)
-	{
-      global $db;
-      
-      user_active_flip('activate', $user_row['user_id']);            
-
-			$sql = 'UPDATE ' . USERS_TABLE . "
-				SET user_actkey = ''
-				WHERE user_id = {$user_row['user_id']}";
-			$db->sql_query($sql);
-  }
-  //-----
 }
 
 ?>

@@ -1,16 +1,24 @@
-Subject: {SITENAME} - Witamy na forum
+Subject: Witamy na witrynie „{SITENAME}”
 
-Witaj {USERNAME},
+{WELCOME_MSG}
 
-Twoje konto zostało utworzone, ale jest obecnie nieaktywne.
+Zachowaj, wydrukuj tę wiadomość lub zapamiętaj dane swojego konta.
 
-Adres forum: {U_BOARD}
+Informacje o Twoim koncie:
 
-Zanim będziesz mógł/mogła się zalogować, musisz je aktywować, klikając na poniższy link:
+----------------------------
+Nazwa użytkownika: {USERNAME}
+Hasło: {PASSWORD}
+
+Adres witryny: {U_BOARD}
+----------------------------
+
+Twoje konto jest nieaktywne. Nie możesz używać tego konta, dopóki go nie uaktywnisz, klikając poniższy odnośnik:
+
 {U_ACTIVATE}
 
-Twoje hasło zostało bezpiecznie zaszyfrowane w bazie danych i jego odzyskanie jest niewykonalne. Jeśli je zapomnisz, będziesz mógł/mogła poprosić o nowe, używając adresu e-mail powiązanego z kontem.
+Zapamiętaj swoje hasło! Zostało ono zakodowane w naszej bazie danych i nie ma możliwości jego odzyskania. Jeśli zdarzy się, że je zapomnisz – możesz je zresetować, używając adresu e-mail skojarzonego z Twoim kontem.
 
-Dziękujemy za rejestrację.
+Dziękujemy za dokonanie rejestracji.
 
 {EMAIL_SIG}

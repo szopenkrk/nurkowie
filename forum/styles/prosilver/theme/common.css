@@ -17,7 +17,7 @@ body {
 	/* Text-Sizing with ems: http://www.clagnut.com/blog/348/ */
 	font-family: Verdana, Helvetica, Arial, sans-serif;
 	color: #828282;
-	background-color: #011c30;
+	background-color: #FFFFFF;
 	/*font-size: 62.5%;			 This sets the default font size to be equivalent to 10px */
 	font-size: 10px;
 	margin: 0;
@@ -111,16 +111,8 @@ p.right {
 }
 
 #page-body {
-	background: rgba(71,91,125,0.3);
-	border-left: rgba(255,255,255,0.18) solid 2px;
-	border-right: rgba(255,255,255,0.18) solid 2px;
-	border-bottom: rgba(255,255,255,0.18) solid 2px;
 	margin: 4px 0;
 	clear: both;
-	position: relative;
-	top: 40px;
-	padding-left: 30px;
-	padding-right: 30px;
 }
 
 #page-footer {
@@ -150,7 +142,6 @@ a#logo:hover {
 	margin-right: 5px;
 	display: block;
 	float: right;
-	right: -430px;
 	text-align: right;
 	white-space: nowrap; /* For Opera */
 }
@@ -181,11 +172,8 @@ a#logo:hover {
 
 /* Site description and logo */
 #site-description {
-	position: absolute;
-	right: 10%;
-	width: 500px;
-	height: 500px;
-	background: transparent;
+	float: left;
+	width: 70%;
 }
 
 #site-description h1 {
@@ -223,8 +211,8 @@ a#logo:hover {
 .panel {
 	margin-bottom: 4px;
 	padding: 0 10px;
-	background-color: rgba(0,0,0,0.2);
-	color: white;
+	background-color: #f3f3f3;
+	color: #3f3f3f;
 }
 
 .post {
@@ -430,7 +418,19 @@ table.info tbody th {
 }
 
 .forumbg table.table1 {
-	margin: 0 -2px -1px -1px;
+	margin: 0;
+}
+
+.forumbg-table > .inner {
+	margin: 0 -1px;
+}
+
+.forumbg-table > .inner > span.corners-top {
+	margin: 0 -4px -1px -4px;
+}
+
+.forumbg-table > .inner > span.corners-bottom {
+	margin: -1px -4px 0 -4px;
 }
 
 /* Misc layout styles

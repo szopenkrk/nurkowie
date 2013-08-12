@@ -4,9 +4,10 @@
 * viewforum [Polski]
 *
 * @package language
-* @copyright (c) 2006 - 2011 phpBB3.PL Group
+* @version $Id: viewforum.php 10751 2010-08-21 21:45:09Z git-gate $
+* @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
+* @Polish locale 8479 2010-11-16 18:30:23 Zespół Olympus.pl $
 */
 
 /**
@@ -22,9 +23,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// INFORMACJA
+// DEVELOPERS PLEASE NOTE
 //
-// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
+// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -35,36 +36,36 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'ACTIVE_TOPICS'			=> 'Aktywne wątki',
+	'ACTIVE_TOPICS'			=> 'Aktywne tematy',
 	'ANNOUNCEMENTS'			=> 'Ogłoszenia',
 
-	'FORUM_PERMISSIONS'		=> 'Twoje uprawnienia w tym dziale',
+	'FORUM_PERMISSIONS'		=> 'Twoje uprawnienia na tym forum',
 
 	'ICON_ANNOUNCEMENT'		=> 'Ogłoszenie',
 	'ICON_STICKY'			=> 'Przyklejony',
 
-	'LOGIN_NOTIFY_FORUM'	=> 'Zostałeś powiadomiony o tym dziale, zaloguj się, aby go przejrzeć.',
+	'LOGIN_NOTIFY_FORUM'	=> 'Poinformowano cię o tym forum. Zaloguj się, aby je przejrzeć.',
 
-	'MARK_TOPICS_READ'		=> 'Oznacz wątki jako przeczytane',
+	'MARK_TOPICS_READ'		=> 'Oznacz jako przeczytane',
 
-	'NEW_POSTS_HOT'			=> 'Nowe posty [ Popularne ]', // Not used anymore
-	'NEW_POSTS_LOCKED'		=> 'Nowe posty [ Zablokowane ]', // Not used anymore
-	'NO_NEW_POSTS_HOT'		=> 'Brak nowych postów [ Popularne ]', // Not used anymore
-	'NO_NEW_POSTS_LOCKED'	=> 'Brak nowych postów [ Zablokowane ]', // Not used anymore
-	'NO_READ_ACCESS'		=> 'Nie masz uprawnień do przeglądania wątków w tym dziale.',
-	'NO_UNREAD_POSTS_HOT'		=> 'Brak nieprzeczytanych postów [ Popularne ]',
-	'NO_UNREAD_POSTS_LOCKED'	=> 'Brak nieprzeczytanych postów [ Zablokowane ]',
+	'NEW_POSTS_HOT'			=> 'Nowe posty [ Popularne ]',
+	'NEW_POSTS_LOCKED'		=> 'Nowe posty [ Zamknięte ]',
+	'NO_NEW_POSTS_HOT'		=> 'Brak nowych postów [ Popularne ]',
+	'NO_NEW_POSTS_LOCKED'	=> 'Brak nowych postów [ Zamknięte ]',
+	'NO_READ_ACCESS'		=> 'Nie masz uprawnień do czytania tematów na tym forum.',
+	'NO_UNREAD_POSTS_HOT'		=> 'Nie ma nieprzeczytanych postów [ Popularne ]',
+	'NO_UNREAD_POSTS_LOCKED'	=> 'Nie ma nieprzeczytanych postów [ Zamknięte ]',
 
-	'POST_FORUM_LOCKED'		=> 'Ten dział jest zablokowany',
+	'POST_FORUM_LOCKED'		=> 'To forum jest zamknięte',
 
-	'TOPICS_MARKED'			=> 'Wątki w tym dziale oznaczono jako przeczytane.',
+	'TOPICS_MARKED'			=> 'Tematy na tym forum zostały oznaczone jako przeczytane.',
 
 	'UNREAD_POSTS_HOT'		=> 'Nieprzeczytane posty [ Popularne ]',
 	'UNREAD_POSTS_LOCKED'	=> 'Nieprzeczytane posty [ Zablokowane ]',
 
-	'VIEW_FORUM'			=> 'Zobacz dział',
-	'VIEW_FORUM_TOPIC'		=> 'Wątki: 1',
-	'VIEW_FORUM_TOPICS'		=> 'Wątki: %d',
+	'VIEW_FORUM'			=> 'Zobacz forum',
+	'VIEW_FORUM_TOPIC'		=> 'Tematy: 1',
+	'VIEW_FORUM_TOPICS'		=> 'Tematy: %d',
 ));
 
 ?>

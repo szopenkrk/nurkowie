@@ -1175,34 +1175,21 @@ function truncate_string($string, $max_length = 60, $max_store_length = 255, $al
 * @return string A string consisting of what is wanted based on $mode.
 * @author BartVB, Acyd Burn
 */
-function get_username_string($mode, $user_id, $username, $username_colour = '', $guest_username = false, $custom_profile_url = false, $db_location = false)     //LPADLO CHANGE
+function get_username_string($mode, $user_id, $username, $username_colour = '', $guest_username = false, $custom_profile_url = false)
 {
 	static $_profile_cache;
-  
-  //LPADLO ADD
-    /*
-  if ($db_location == false) {
-    if (!isset($forum_location)) {
-      $forum_location = 'L';
-    }
-    $db_location = $forum_location;
-  }         
-     */
-  //----------------------
-    
-	// We cache some common variables we need within this function  
+
+	// We cache some common variables we need within this function
 	if (empty($_profile_cache))
 	{
-		global $phpbb_root_path, $phpEx;                                   
+		global $phpbb_root_path, $phpEx;
+
 		$_profile_cache['base_url'] = append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=viewprofile&amp;u={USER_ID}');
 		$_profile_cache['tpl_noprofile'] = '{USERNAME}';
 		$_profile_cache['tpl_noprofile_colour'] = '<span style="color: {USERNAME_COLOUR};" class="username-coloured">{USERNAME}</span>';
 		$_profile_cache['tpl_profile'] = '<a href="{PROFILE_URL}">{USERNAME}</a>';
 		$_profile_cache['tpl_profile_colour'] = '<a href="{PROFILE_URL}" style="color: {USERNAME_COLOUR};" class="username-coloured">{USERNAME}</a>';
-	} else {
-    global $phpbb_root_path, $phpEx;        //LPADLO ADD
-    $_profile_cache['base_url'] = append_sid("{$phpbb_root_path}memberlist.$phpEx", 'mode=viewprofile&amp;u={USER_ID}'); //LPADLO ADD
-  }
+	}
 
 	global $user, $auth;
 
@@ -1251,7 +1238,7 @@ function get_username_string($mode, $user_id, $username, $username_colour = '', 
 			if ($user_id && $user_id != ANONYMOUS && ($user->data['user_id'] == ANONYMOUS || $auth->acl_get('u_viewprofile')))
 			{
 				$profile_url = ($custom_profile_url !== false) ? $custom_profile_url . '&amp;u=' . (int) $user_id : str_replace(array('={USER_ID}', '=%7BUSER_ID%7D'), '=' . (int) $user_id, $_profile_cache['base_url']);
-      }
+			}
 			else
 			{
 				$profile_url = '';

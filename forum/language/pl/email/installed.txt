@@ -1,19 +1,20 @@
-Subject: phpBB3 zainstalowane
-
-Witaj {USERNAME},
+Subject: Witryna phpBB została zainstalowana
 
 Gratulacje!
 
-Właśnie zainstalowałeś/aś swoje własne forum oparte na skrypcie phpBB3.
+Twoja witryna oparta na skrypcie phpBB3 została zainstalowana.
 
-Adres: {U_BOARD}
+Wiadomość zawiera ważne informacje dotyczące tej instalacji. Hasło zostało zakodowane w naszej bazie danych i nie ma możliwości jego odzyskania. Jeśli je zapomnisz, możesz poprosić o przysłanie nowego hasła, dopełniając odpowiednią procedurę.
 
-Twoje hasło zostało bezpiecznie zaszyfrowane w bazie danych i jego odzyskanie jest niewykonalne. Jeśli je zapomnisz, będziesz mógł/mogła poprosić o nowe, używając adresu e-mail powiązanego z kontem.
+----------------------------
+Nazwa użytkownika: {USERNAME}
+Hasło: {PASSWORD}
 
-Przydatne informacje o phpBB możesz znaleźć w folderze "docs" i na polskiej stronie WWW skryptu:
-http://phpbb3.pl/
+Adres witryny: {U_BOARD}
+----------------------------
 
-Aby Twoje forum było bezpieczne zalecamy aktualizowanie go do najnowszej wersji phpBB. Jeśli chcesz otrzymywać powiadomienia o nowych wydaniach phpBB3, zasubskrybuj poniższy kanał Atom za pomocą czytnika RSS/Atom:
-http://phpbb3.pl/feed.php?mode=news
+Przydatne informacje o phpBB możesz znaleźć w folderze „docs” znajdującym się w katalogu instalacyjnym phpBB3,  a także na stronie internetowej – http://www.phpbb.com/support/.
+
+Aby otrzymywać powiadomienia o nowych wersjach phpBB, trzeba zapisać się na naszą listę dystrybucyjną znajdującą się na stronie, której adres podaliśmy powyżej.
 
 {EMAIL_SIG}

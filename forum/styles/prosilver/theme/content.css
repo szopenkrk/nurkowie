@@ -110,11 +110,6 @@ li.header dl.icon dt {
 	/* Tweak for headers alignment when folder icon used */
 	padding-left: 0;
 	padding-right: 50px;
-	color: #585a2b;
-}
-
-li.header dl.icon dd{
-	color: #585a2b;
 }
 
 /* Forum list column styles */
@@ -235,7 +230,7 @@ div[class].topic-actions {
 	line-height: 1.48em;
 	color: #333333;
 	width: 76%;
-	float: right;
+	float: left;
 	clear: both;
 }
 
@@ -246,10 +241,6 @@ div[class].topic-actions {
 .postbody h3.first {
 	/* The first post on the page uses this */
 	font-size: 1.7em;
-}
-
-.postbody h3.first a{
-	color: #d2d58a;
 }
 
 .postbody h3 {
@@ -745,9 +736,9 @@ fieldset.polls dd div {
 	margin: 5px 0 10px 0;
 	min-height: 80px;
 	color: #666666;
-	border-right: 1px solid #FFFFFF;
+	border-left: 1px solid #FFFFFF;
 	width: 22%;
-	float: left;
+	float: right;
 	display: inline;
 }
 .pm .postprofile {

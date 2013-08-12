@@ -1,17 +1,19 @@
-Subject: {SITENAME} - Powiadomienie o odpowiedzi w dziale "{FORUM_NAME}"
+Subject: Informacja o odpowiedzi na forum „{FORUM_NAME}”
 
-Witaj {USERNAME},
+Witaj {USERNAME}!
 
-Przed chwilą ktoś odpowiedział w wątku "{TOPIC_TITLE}", znajdującym się w obserwowanym przez Ciebie dziale "{FORUM_NAME}".
+Wiadomość ta została wysłana do Ciebie, ponieważ na witrynie „{SITENAME}” obserwujesz forum „{FORUM_NAME}”. Od czasu Twojego ostatniego pobytu na forum w wątku „{TOPIC_TITLE}” został opublikowany nowy post. By go zobaczyć, możesz użyć poniższego odnośnika. Kolejne powiadomienia o zmianach na tym forum będą wysyłane dopiero, gdy zapoznasz się z tym postem.
 
-Post: {U_NEWEST_POST}
-Wątek: {U_TOPIC}
-Dział: {U_FORUM}
-Forum: {U_BOARD}
+{U_NEWEST_POST}
 
-Dopóki nie zobaczysz tego wątku, nie otrzymasz żadnego następnego powiadomienia.
+Jeśli chcesz przejść na początek wątku, w którym go napisano – użyj poniższego odnośnika:
+{U_TOPIC}
 
-Jeśli nie chcesz już obserwować tego działu, kliknij na poniższy link:
+Jeśli chcesz przejść do obserwowanego forum – skorzystaj z poniższego odnośnika:
+{U_FORUM}
+
+Jeśli nie chcesz już obserwować tego forum, kliknij odnośnik „Zaprzestań obserwacji forum” znajdujący się na dole forum lub użyj poniższego odnośnika:
+
 {U_STOP_WATCHING_FORUM}
 
 {EMAIL_SIG}

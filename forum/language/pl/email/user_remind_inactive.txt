@@ -1,10 +1,11 @@
-Subject: {SITENAME} - Przypomnienie o nieaktywnym koncie
+Subject: Przypomnienie o nieaktywnym koncie
 
 Witaj {USERNAME},
 
-{REGISTER_DATE} zarejestrowałeś/aś nowe konto na forum "{SITENAME}". Do tej pory go jeszcze nie aktywowałeś/aś. Nie będziesz mógł/mogła go używać, póki nie klikniesz na poniższy link:
+Przypominamy, że Twoje konto na witrynie „{SITENAME}” utworzone {REGISTER_DATE} jest nieaktywne. Jeśli chcesz aktywować konto, kliknij poniższy odnośnik:
+
 {U_ACTIVATE}
 
-Dziękujemy za rejestrację.
+Dziękujemy za zarejestrowanie na witrynie „{SITENAME}”. Liczymy na Twoje zaangażowanie.
 
 {EMAIL_SIG}

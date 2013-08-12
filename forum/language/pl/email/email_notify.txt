@@ -1,16 +1,16 @@
-Subject: {SITENAME} - Powiadom znajomego
+Subject: „{SITENAME}” – Powiadom przyjaciela
 
-Witaj {TO_USERNAME},
+Witaj {TO_USERNAME}!
 
-Ten e-mail został wysłany z "{SITENAME}" przez {FROM_USERNAME}, który uznał, że ten wątek może Cię zainteresować:
+Wiadomość ta została wysłana z witryny „{SITENAME}” przez {FROM_USERNAME}. Osoba ta uznała, że poniższy temat może Cię zainteresować:
 
 {TOPIC_NAME}
 
-Możesz go przeczytać pod tym adresem:
+Możesz zapoznać się z nim, odwiedzając ten adres:
 
 {U_TOPIC}
 
-Poniżej może również być załączona wiadomość od {FROM_USERNAME}. Nie była ona widziana lub zaakceptowana przez administratorów forum. Jeśli chcesz poskarżyć się na treść tego e-maila, skontaktuj się z administracją forum pod adresem e-mail {BOARD_CONTACT}. W e-mailu zacytuj nagłówki tego e-maila.
+Poniżej może być również załączona wiadomość od {FROM_USERNAME}. Nie była ona sprawdzana, ani akceptowana przez administratorów forum. Jeśli chcesz wnieść skargę dotyczącą tej wiadomości, skontaktuj się z administratorem witryny za pomocą e-maila {BOARD_CONTACT}. W przesyłanym e-mailu zacytuj nagłówki niechcianej wiadomości.
 
 ----------
 

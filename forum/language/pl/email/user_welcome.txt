@@ -1,13 +1,20 @@
-Subject: {SITENAME} - Witamy na forum
+Subject: Witamy na witrynie „{SITENAME}”
 
-Witaj {USERNAME},
+{WELCOME_MSG}
 
-Twoje konto zostało utworzone.
+Zachowaj, wydrukuj tę wiadomość lub zapamiętaj dane swojego konta.
 
-Adres forum: {U_BOARD}
+Informacje o Twoim koncie:
 
-Twoje hasło zostało bezpiecznie zaszyfrowane w bazie danych i jego odzyskanie jest niewykonalne. Jeśli je zapomnisz, będziesz mógł/mogła poprosić o nowe, używając adresu e-mail powiązanego z kontem.
+----------------------------
+Nazwa użytkownika: {USERNAME}
+Hasło: {PASSWORD}
 
-Dziękujemy za rejestrację.
+Adres witryny: {U_BOARD}
+----------------------------
+
+Nie zapomnij swojego hasła, ponieważ zostało ono zakodowane w naszej bazie danych i nie ma możliwości jego odzyskania. Jeśli zdarzy się, że je zapomnisz – możesz je zresetować, używając adresu e-mail skojarzonego z Twoim kontem.
+
+Dziękujemy za dokonanie rejestracji.
 
 {EMAIL_SIG}

@@ -8,10 +8,10 @@
 <meta http-equiv="imagetoolbar" content="no" />
 <meta name="resource-type" content="document" />
 <meta name="distribution" content="global" />
-<meta name="copyright" content="phpBB Group" />
+<meta name="copyright" content="2007 phpBB Group" />
 <meta name="keywords" content="" />
-<meta name="description" content="phpBB 3.0.x Installation, updating and conversion informations" />
-<title>phpBB3 &bull; Install</title>
+<meta name="description" content="Informacje o instalacji, aktualizacji i konwersji phpBB 3.0.x" />
+<title>phpBB3 &bull; Instalacja</title>
 
 <link href="stylesheet.css" rel="stylesheet" type="text/css" media="screen, projection" />
 
@@ -27,8 +27,8 @@
 
 			<div id="doc-description">
 				<a href="../index.php" id="logo"><img src="site_logo.gif" alt="" /></a>
-				<h1>phpBB 3.0.x Install</h1>
-				<p>phpBB 3.0.x Installation, updating and conversion informations</p>
+				<h1>Instalacja phpBB 3.0.x</h1>
+				<p>Informacje o instalacji, aktualizacji i konwersji phpBB 3.0.x</p>
 				<p style="display: none;"><a href="#start_here">Skip</a></p>
 			</div>
 
@@ -42,13 +42,13 @@
 
 <!-- BEGIN DOCUMENT -->
 
-<p><strong>Please read this document completely before proceeding with installation, updating or converting.</strong></p>
+<p><strong>Przed przystąpieniem do instalacji, aktualizacji lub konwersji przeczytaj ten artykuł w całości.</strong></p>
 
-<p>This document will walk you through the basics on installing, updating and converting the forum software.</p>
+<p>Ten artykuł poprowadzi cię przez podstawy instalacji, aktualizacji i konwersji witryny opartej na skrypcie phpBB3.</p>
 
-<p>A basic overview of running phpBB3 can be found in the accompanying <a href="README.html">README</a> file. Please ensure you read that document in addition to this! For more detailed information on using, installing, updating and converting phpBB3 you should read <a href="http://www.phpbb.com/support/documentation/3.0/">the documentation</a> available online.</p>
+<p>Informacje o uruchomieniu phpBB3 można znaleźć w załączonym artykule <a href="README.html">Informacje podstawowe</a>. Przeczytaj ten artykuł! Więcej szczegółowych informacji na temat używania, instalacji, aktualizacji i konwersji phpBB3 znajdziesz w <a href="http://www.phpbb.com/support/documentation/3.0/">dokumentacji</a> dostępnej online.</p>
 
-<h1>Install</h1>
+<h1>Instalacja</h1>
 
 	<div class="paragraph menu">
 		<div class="inner"><span class="corners-top"><span></span></span>
@@ -56,33 +56,32 @@
 		<div class="content">
 
 <ol>
-	<li><a href="#quickinstall">Quick install</a></li>
-	<li><a href="#require">Requirements</a></li>
-	<li><a href="#install">New installation</a></li>
-	<li><a href="#update">Updating from stable releases of phpBB 3.0.x</a>
-	<ol style="list-style-type: lower-roman;">
-		<li><a href="#update_full">Full package</a></li>
-		<li><a href="#update_files">Changed files only</a></li>
-		<li><a href="#update_patch">Patch file</a></li>
-		<li><a href="#update_auto">Automatic update package</a></li>
-		<li><a href="#update_all">All package types</a></li>
+	<li><a href="#quickinstall">Szybka instalacja</a></li>
+	<li><a href="#require">Wymagania</a></li>
+	<li><a href="#install">Nowa instalacja</a></li>
+	<li><a href="#update">Aktualizacja poprzedniej wersji phpBB 3.0.x</a>
+	<ol>
+		<li><a href="#update_full">Pełen pakiet</a></li>
+		<li><a href="#update_files">Tylko zmienione pliki</a></li>
+		<li><a href="#update_patch">Łatka</a></li>
+		<li><a href="#update_auto">Pakiet automatycznej aktualizacji</a></li>
+		<li><a href="#update_all">Pakiety językowe</a></li>
 	</ol>
 	</li>
-	<li><a href="#convert">Conversion from phpBB 2.0.x to phpBB 3.0.x</a>
-	<ol style="list-style-type: lower-roman;">
-		<li><a href="#prereq">Requirements before converting</a></li>
-		<li><a href="#conversion">Converting</a></li>
-		<li><a href="#postreq">Things to do after conversion</a></li>
-		<li><a href="#convprob">Common conversion problems</a></li>
+	<li><a href="#convert">Konwersja z phpBB 2.0.x do phpBB 3.0.x</a>
+	<ol>
+		<li><a href="#prereq">Wymagania przed konwersją</a></li>
+		<li><a href="#conversion">Konwersja</a></li>
+		<li><a href="#postreq">Czynności po konwersji</a></li>
+		<li><a href="#convprob">Problemy związane z konwersją</a></li>
 	</ol>
 	</li>
-	<li><a href="#postinstall">Important (security related) post-Install tasks for all installation methods</a>
-	<ol style="list-style-type: lower-roman;">
-		<li><a href="#avatars">Uploadable avatars</a></li>
-		<li><a href="#webserver_configuration">Webserver configuration</a></li>
+	<li><a href="#postinstall">Ważne, odpowiedzialne za bezpieczeństwo, czynności do wykonania po przeprowadzeniu każdej z metod instalacji</a>
+	<ol>
+		<li><a href="#avatars">Wgrywane awatary</a></li>
 	</ol>
 	</li>
-	<li><a href="#disclaimer">Disclaimer</a></li>
+	<li><a href="#disclaimer">Prawa autorskie</a></li>
 </ol>
 
 		</div>
@@ -92,350 +91,345 @@
 
 	<hr />
 
-	<a name="quickinstall"></a><h2>1. Quick install</h2>
+	<a name="quickinstall"></a><h2>1. Szybka instalacja</h2>
 
 	<div class="paragraph">
 		<div class="inner"><span class="corners-top"><span></span></span>
 
 		<div class="content">
 
-	<p>If you have basic knowledge of using FTP and are sure your hosting service or server will run phpBB3 you can use these steps to quickly get started. For a more detailed explanation you should skip this and go to <a href="#require">section 2</a> below.</p>
+	<p>Jeśli masz podstawową wiedzę na temat FTP (ang. File Transfer Protocol) i znasz dane serwera hostingowego lub własnego serwera, na którym ma być uruchomiona witryna phpBB3, wykonaj poniższe działania, by przeprowadzić szybką instalację. Bardziej szczegółowy opis instalacji znajduje się w <a href="#require">sekcji 2</a>.</p>
 
 	<ol>
-		<li>Decompress the phpBB3 archive to a local directory on your system.</li>
-		<li>Upload all the files contained in this archive (retaining the directory structure) to a web accessible directory on your server or hosting account.</li>
-		<li>Change the permissions on config.php to be writable by all (666 or -rw-rw-rw- within your FTP Client)</li>
-		<li>Change the permissions on the following directories to be writable by all (777 or -rwxrwxrwx within your FTP Client):<br />
-			<code>store/</code>, <code>cache/</code>, <code>files/</code> and <code>images/avatars/upload/</code>.</li>
-		<li>Using your web browser visit the location you placed phpBB3 with the addition of install/index.php or pointing directly to install/, e.g. http://www.mydomain.com/phpBB3/install/, http://www.mydomain.com/forum/install/ etc.</li>
-		<li>Click the <em>INSTALL</em> tab, follow the steps and fill out all the requested information.</li>
-		<li>Change the permissions on config.php to be writable only by yourself (644 or -rw-r--r-- within your FTP Client)</li>
-		<li>phpBB3 should now be available, please <strong>MAKE SURE</strong> you read at least <a href="#postinstall">Section 6</a> below for important, security related post-installation instructions.</li>
+		<li>Rozpakuj archiwum phpBB3 do katalogu na dysku lokalnym.</li>
+		<li>Wgraj wszystkie pliki z tego archiwum, zachowując strukturę katalogów na swój serwer lub konto hostingowe.</li>
+		<li>Za pomocą klienta FTP zmień uprawnienia pliku config.php na 666 lub -rw-rw-rw-.</li>
+		<li>Za pomocą klienta FTP zmień uprawnienia poniższych katalogów na 777 lub -rwxrwxrwx:<br />
+			<code>store/</code>, <code>cache/</code>, <code>files/</code> i <code>images/avatars/upload/</code>.</li>
+		<li>Za pomocą swojej przeglądarki internetowej przejdź do miejsca wgrania skryptu phpBB3, dodając na końcu adresu install/index.php, lub wpisując bezpośrednio w pasku adresu, np. http://www.twoja_domena.pl/phpBB3/install/, http://www.twoja_domena.pl/forum/install/ itp.</li>
+		<li>Kliknij kartę <em>Instalacja</em> i postępuj zgodnie ze wskazówkami, podając wszystkie wymagane informacje.</li>
+		<li>Za pomocą klienta FTP zmień uprawnienia pliku config.php na 644 lub -rw-r--r--.</li>
+		<li>Teraz witryna phpBB3 powinna być dostępna. <strong>Przeczytaj</strong> przynajmniej <a href="#postinstall">sekcję 6</a>, by zapoznać się z ważnymi, odpowiedzialnymi za bezpieczeństwo, instrukcjami dotyczącymi czynności, jakie należy wykonać po zainstalowaniu phpBB3.</li>
 	</ol>
 
-	<p>If you experienced problems or do not know how to proceed with any of the steps above please read the rest of this document.</p>
+	<p>Jeśli wystąpią problemy lub nie wiesz, jak wykonać powyższe czynności, zapoznaj się z pozostałą częścią artykułu.</p>
 
 		</div>
 
-		<div class="back2top"><a href="#wrap" class="top">Back to Top</a></div>
+		<div class="back2top"><a href="#wrap" class="top">Na górę</a></div>
 
 		<span class="corners-bottom"><span></span></span></div>
 	</div>
 
 	<hr />
 
-	<a name="require"></a><h2>2. Requirements</h2>
+	<a name="require"></a><h2>2. Wymagania</h2>
 
 	<div class="paragraph">
 		<div class="inner"><span class="corners-top"><span></span></span>
 
 		<div class="content">
 
-	<p>phpBB3 has a few requirements which must be met before you are able to install and use it.</p>
+	<p>Aby zainstalować i używać phpBB3, muszą być spełnione pewne wymagania.</p>
 
 	<ul>
-		<li>A webserver or web hosting account running on any major Operating System with support for PHP</li>
-		<li>A SQL database system, <strong>one of</strong>:
+		<li>Serwer sieciowy lub konto na serwerze hostingowym muszą działać na jednym z głównych systemów operacyjnych obsługujących PHP.</li>
+		<li>Serwer musi udostępniać jedną z następujących <strong>baz danych SQL</strong>:
 		<ul>
-			<li>MySQL 3.23 or above (MySQLi supported)</li>
+			<li>MySQL 3.23 lub nowsze (MySQLi obsługiwana)</li>
 			<li>PostgreSQL 7.3+</li>
 			<li>SQLite 2.8.2+</li>
 			<li>Firebird 2.1+</li>
-			<li>MS SQL Server 2000 or above (directly or via ODBC)</li>
+			<li>MS SQL Server 2000 lub nowsze (bezpośrednio lub przez ODBC)</li>
 			<li>Oracle</li>
 		</ul>
 		</li>
-		<li><strong>PHP 4.3.3+ (>=4.3.3, >4.4.x, >5.x.x, >6.0-dev (compatible))</strong> with support for the database you intend to use.</li>
-		<li>getimagesize() function need to be enabled.</li>
-		<li>These optional presence of the following modules within PHP will provide access to additional features, but they are not required.
+		<li>Serwer musi obsługiwać <strong>PHP 4.3.3+ (>=4.3.3, >4.4.x, >5.x.x, >6.0-dev (kompatybilne))</strong> z obsługą wybranej bazy danych.</li>
+		<li>Musi być włączona funkcja getimagesize().</li>
+		<li>Obecność poniższych modułów PHP zapewnia dostęp do dodatkowych funkcji, ale nie są one wymagane.
 		<ul>
-			<li>zlib Compression support</li>
-			<li>Remote FTP support</li>
-			<li>XML support</li>
-			<li>Imagemagick support</li>
-			<li>GD Support</li>
+			<li>zlib – obsługa kompresji</li>
+			<li>FTP – obsługa zdalnego FTP</li>
+			<li>XML – obsługa XML</li>
+			<li>Imagemagick – obsługa obrazków</li>
+			<li>GD – obsługa grafiki</li>
 		</ul>
 		</li>
 	</ul>
 
-	<p>If your server or hosting account does not meet the requirements above we are afraid phpBB3 is not for you.</p>
+	<p>Jeśli serwer lub konto hostingowe nie spełnia wymagań określonych powyżej, nie możesz zainstalować phpBB3.</p>
 
 		</div>
 
-		<div class="back2top"><a href="#wrap" class="top">Back to Top</a></div>
+		<div class="back2top"><a href="#wrap" class="top">Na górę</a></div>
 
 		<span class="corners-bottom"><span></span></span></div>
 	</div>
 
 	<hr />
 
-	<a name="install"></a><h2>3. New installation</h2>
+	<a name="install"></a><h2>3. Nowa instalacja</h2>
 
 	<div class="paragraph">
 		<div class="inner"><span class="corners-top"><span></span></span>
 
 		<div class="content">
 
-	<p>Installation of phpBB3 will vary according to your server and database. If you have <em>shell access</em> to your account (via telnet or ssh for example) you may want to upload the entire phpBB3 archive (in binary mode!) to a directory on your host and unarchive it there.</p>
+	<p>Instalacja phpBB3 będzie się różnić w zależności od twojego serwera i bazy danych. Jeśli masz dostęp przez <em>terminal</em> do swojego konta, np. przez Telnet lub SSH, możesz wgrać w trybie binarnym archiwum phpBB3 do katalogu na swoim koncie hostingowym i tam je rozpakować.</p>
 
-	<p>If you do not have shell access or do not wish to use it you will need to decompress the phpBB3 archive to a local directory on your system using your favourite compression program, e.g. winzip, rar, zip, etc. From there you must FTP <strong>ALL</strong> the files it contains (being sure to retain the directory structure and filenames) to your host. Please ensure that the cases of filenames are retained, do <strong>NOT</strong> force filenames to all lower or upper case doing so will cause errors later.</p>
+	<p>Jeśli nie masz dostępu do konta przez terminal lub nie chcesz go użyć, musisz za pomocą jednego z programów do kompresji danych, np. Winzip, RAR, ZIP itp. rozpakować archiwum phpBB3 na dysku lokalnym. Następnie, używając klienta FTP, prześlij, zachowując strukturę katalogów i nazwy plików, <strong>wszystkie</strong> pliki na serwer. Po tej operacji sprawdź, czy pliki na serwerze mają taką samą strukturę i nazwy, jak w rozpakowanym katalogu. <strong>Nie</strong> wymuszaj zmiany nazw plików na duże lub małe znaki, ponieważ będzie to powodowało błędy w dalszej części instalacji.</p>
 
-	<p>All .php, .inc, .sql, .cfg, .html and .txt files should be uploaded in <strong>ASCII</strong> mode, while all graphics should be uploaded in <strong>BINARY</strong> mode. If you are unfamiliar with what this means please refer to your FTP client documentation. In most cases this is all handled transparantly by your ftp client but if you encounter problems later you should be sure the files where uploaded correctly as described here.</p>
+	<p>Wszystkie pliki .php, .inc, .sql, .cfg, .html i .txt powinny być przesłane na serwer w trybie <strong>ASCII</strong>, a pliki graficzne w trybie <strong>BINARNYM</strong>. Jeśli nie wiesz, co to oznacza, zapoznaj się z dokumentacją swojego klienta FTP. W większości przypadków przesłanie na serwer jest bezproblemowo wykonywane przez klientów FTP, ale jeśli w późniejszym czasie wystąpią jakieś problemy, należy sprawdzić czy pliki zostały przesłane zgodnie z opisanymi tutaj zaleceniami.</p>
 
-	<p>phpBB3 comes supplied with english as its standard language. However a number of separate packs for different languages are available. If you are not a native english speaker you may wish to install one or more of these packages before continuing. The installation process below will allow you to select a default language from those available (you can of course change this default at a later stage). For more details of language packs, where to obtain them and how to install them please see the <a href="README.html#i18n">README</a>.</p>
+	<p>Standardowo, phpBB3 jest dostarczane w języku angielskim. Inne języki są dostępne jako oddzielne pakiety. Jeśli język angielski nie jest twoim ojczystym językiem, możesz przed przejściem do dalszych czynności instalacyjnych zainstalować inne języki. Wówczas w dalszym procesie instalacyjnym, z dostępnych języków, można wybrać domyślny język. Języki można dowolnie zmieniać w późniejszym czasie. Więcej informacji na temat pakietów językowych – jak je pobrać i zainstalować – znajduje się w artykule <a href="README.html#i18n">Informacje podstawowe</a>.</p>
 
-	<p>Once all the files have been uploaded to your site you should point your browser at this location with the addition of <code>install/</code>. For example if your domain name is <em>www.mydomain.tld</em> and you placed phpBB3 in a directory /phpBB3 off your web root you would enter <em>http://www.mydomain.tld/phpBB3/install/</em> or (alternatively) <em>http://www.mydomain.tld/phpBB3/install/index.php</em> into your browser. When you have done this you should see the phpBB3 Installation screen appear.</p>
+	<p>Po przesłaniu wszystkich plików na serwer, należy za pomocą przeglądarki przejść do katalogu <code>install/</code> znajdującym się w katalogu głównym skryptu. Na przykład, jeśli nazwa twojej domeny to <em>www.moja_domena.pl</em> i phpBB3 znajduje się w katalogu /phpBB3, należy podać adres <em>http://www.moja_domena.pl/phpBB3/install/</em> lub alternatywnie <em>http://www.moja_domena.pl/phpBB3/install/index.php</em>. Po wykonaniu tej operacji zostanie wyświetlone okno instalacji.</p>
 
-	<h4>Introduction:</h4>
+	<h4>Wprowadzenie:</h4>
 
-	<p>The installation screen gives you a short introduction into phpBB. It allows you to read the license phpBB3 is released under (General Public License) and provides information about how you can receive support. To start the installation, use the <em>Install</em> button.</p>
+	<p>W oknie instalacji wyświetlane jest krótkie wprowadzenie do phpBB. Można tutaj przeczytać o licencji, na jakiej phpBB3 zostało wydane (General Public License), a także zapoznać się informacjami dotyczącymi uzyskania pomocy. Aby rozpocząć instalację, należy w panelu instalacji wybrać kartę: <em>Instalacja</em>. Zostanie wyświetlonw wprowadzenie do instalatora phpBB3. Zapoznaj się z zawartymi tam danymi i jeśli są spełnione opisane tam elementy przejdż do instalacji, naciskając przycisk <em>Przejdź do następnego etapu</em> </p>
 
-	<h4>Requirements</h4>
+	<h4>Wymagania</h4>
 
-	<p>The first page you will see after starting the installation is the Requirements list. phpBB3 checks automatically whether everything that it needs to run properly is installed on your server. You need to have at least the minimum PHP version installed, and at least one database available to continue the installation. Also important, is that all shown folders are available and do have the correct permissions. Please see the description of each section to find out whether they are optional or required for phpBB3 to run. If everything is in order, you can continue the installation with <em>Start Install</em>.</p>
+	<p>Na pierwszej wyświetlanej po uruchomieniu procesu instalacyjnego stronie, znajduje się lista wymagań. phpBB3 automatycznie sprawdza, czy na twoim serwerze są zainstalowane wszystkie wymagane do prawidłowej instalacji elementy. Aby kontynuować instalację, na serwerze musi być zainstalowane PHP w minimalnej wymaganej wersji i przynajmniej jedna baza danych. Bardzo ważne jest, aby wszystkie wyświetlane foldery były dostępne i miały prawidłowe uprawnienia. Aby dowiedzieć się czy wymagania są opcjonalne, czy wymagane do uruchomienia phpBB3, zobacz opisy w poszczególnych sekcjach. Jeśli wszystko jest w porządku, możesz kontynuować instalację, naciskając przycisk: <em>Rozpocznij instalację</em>.</p>
 
-	<h4>Database settings</h4>
+	<h4>Ustawienia bazy danych</h4>
 
-	<p>You now have to decide which database to use. See the <a href="#require">Requirements section</a> for information on which databases are supported. If you do not know your database settings, please contact your host and ask for them. You will not be able to continue without them. You need:</p>
+	<p>Teraz należy zdecydować, której bazy danych użyć. Przejdź do sekcji <a href="#require">Wymagania</a>, by zobaczyć, które bazy danych są obsługiwane. Jeśli nie znasz ustawień swojej bazy danych, skontaktuj się z administracją swojego hosta i zapytaj o poniższe dane:</p>
 
 	<ul>
-		<li>The Database Type - the database you will be using.</li>
-		<li>The Database server hostname or DSN - the address of the database server.</li>
-		<li>The Database server port - the port of the database server (most of the time this is not needed).</li>
-		<li>The Database name - the name of the database on the server.</li>
-		<li>The Database username and Database password - the login data to access the database.</li>
+		<li>Typ bazy danych – baza danych, która będzie używana.</li>
+		<li>Nazwa serwera lub DSN (Data Source Name) bazy danych – adres serwera bazy danych (zazwyczaj localhost).</li>
+		<li>Port serwera bazy danych – port serwera bazy danych (w większości przypadków nie jest potrzebny).</li>
+		<li>Nazwa bazy danych – nazwa bazy danych na serwerze.</li>
+		<li>Nazwa użytkownika i hasło bazy – dane potrzebne do zalogowania się do bazy danych.</li>
 	</ul>
 
 	<div class="indent">
-		<p><strong>Note:</strong> if you are installing using SQLite, you should enter the full path to your database file in the DSN field and leave the username and password fields blank. For security reasons, you should make sure that the database file is not stored in a location accessible from the web.</p>
+		<p><strong>Uwaga!</strong> Jeśli instalujesz phpBB, używając bazy danych SQLite, należy w polu DSN podać pełną ścieżkę do pliku bazy danych i pozostawić pola nazwy użytkownika i hasła puste. Z powodów bezpieczeństwa, należy sprawdzić czy plik bazy danych nie jest zapisany w miejscu dostępnym poprzez sieć.</p>
 	</div>
 
-	<p>You don't need to change the Prefix for tables in database setting, unless you plan on using multipe phpBB installations on one database. In this case you can use a different prefix for each installation to make it work.</p>
+	<p>Nie ma potrzeby w ustawieniach bazy danych zmiany prefiksu tabel, chyba że planujesz używanie wielu instalacji phpBB używających jednej bazy danych. W takim przypadku należy użyć różnych prefiksów dla każdej instalacji phpBB.</p>
 
-	<p>After you entered your details, you can continue with the Proceed to next step button. Now phpBB3 will check whether the data you entered will lead to a successful database connection and whether tables with the same prefix already exist.</p>
+	<p>Po podaniu danych można kontynuować instalację, naciskając przycisk: <strong>Przejdź do następnego etapu</strong>. Teraz phpBB3 sprawdzi czy za pomocą podanych danych można przeprowadzić połączenie z bazą danych i czy istnieją tabele z podanym prefiksem.</p>
 
-	<p>A <em>Could not connect to the database</em> error means that you didn't enter the database data correctly and it is not possible for phpBB to connect. Make sure that everything you entered is in order and try again. Again, if you are unsure about your database settings, please contact your host.</p>
+	<p>Błąd <em>Nie można połączyć się z bazą danych</em> oznacza, że zostały podane nieprawidłowe dane dotyczące bazy danych i phpBB nie może połączyć się z bazą danych. Sprawdź, czy podane dane są prawidłowe, ewentualnie je skoryguj i ponów próbę. Jeśli błąd będzie występował nadal, skontaktuj się z administratorem swojego serwera.</p>
 
-	<p>If you installed another version of phpBB before on the same database with the same prefix, phpBB will inform you and you just need to enter a different database prefix.</p>
+	<p>Jeśli, wykorzystując tę bazę danych, z tym samym prefiksem była wcześniej instalowana inna wersja phpBB, zostanie wyświetlona stosowna informacja i należy wówczas wprowadzić inny prefiks dla tabel w bazie danych.</p>
 
-	<p>If you see the Successful Connection message, you can continue to the next step.</p>
+	<p>Jeśli zostanie wyświetlona informacja <em>Połączono</em>, przejdź do następnego etapu.</p>
 
-	<h4>Administrator details</h4>
+	<h4>Dane administratora</h4>
 
-	<p>Now you have to create your administration user. This user will have full administration access and he/she will be the first user on your forum. All fields on this page are required. You can also set the default language of your forum on this page. In a vanilla phpBB3 installation we only include English. You can download further languages from <a href="http://www.phpbb.com/">www.phpbb.com</a>, and add them before installing or later.</p>
+	<p>Teraz należy utworzyć konto administratora. Ten użytkownik będzie miał dostęp do wszystkich czynności administracyjnych i będzie pierwszym użytkownikiem witryny. Wszystkie pola na tej stronie są wymagane. Można tutaj także określić domyślny język witryny. W standardowej instalacji phpBB3 jest tylko język angielski. Można z witryny <a href="http://www.phpbb.com/">www.phpbb.com</a> pobrać pakiety innych języków i przed instalacją lub w późniejszym czasie dodać je do katalogu language/. Jeśli pliki językowe zostaną dodane przed instalacją – w menu rozwijanym pola „Domyślny język witryny:” bedą widoczne dostępne języki.</p>
 
-	<h4>Configuration file</h4>
+	<h4>Plik konfiguracyjny</h4>
 
-	<p>In this step, phpBB will try to write the configuration file automatically. The forum needs the configuration to run properly. It contains all database settings, so without it, phpBB will not be able to access the database.</p>
+	<p>Na tym etapie phpBB będzie próbowało zapisać plik konfiguracyjny automatycznie. Aby działać poprawnie, witryna musi być skonfigurowana. Plik ten zawiera wszystkie ustawienia bazy danych, a bez tych informacji phpBB nie będzie mogło uzyskać do niej dostępu.</p>
 
-	<p>Usually writing the configuration file automatically works fine. But in some cases it can fail due to wrong file permissions, for instance. In this case, you need to upload the file manually. phpBB asks you to download the config.php file and tells you what to do with it. Please read the instructions carefully. After you have uploaded the file, use <em>Done</em> to get to the last step. If <em>Done</em> returns you to the same page as before, and does not return a success message, you did not upload the file correctly.</p>
+	<p>Zazwyczaj automatyczny zapis ustawień działa bez problemów, ale czasami może, na przykład źle zapisać uprawnienia dostępu do plików. W takim przypadku należy ten plik przesłać na serwer ręcznie. phpBB poprosi, aby pobrać plik config.php i przekaże, co z nim zrobić. Przeczytaj instrukcje bardzo uważnie. Po przesłaniu pliku na serwer naciśnij przycisk: <em>Wykonano</em>, aby przejść do ostatniego etapu. Jeśli po naciśnięciu przycisku: <em>Wykonano</em> zostanie ponownie wyświetlona ta sama strona, oznacza to, że plik konfiguracyjny został przesłany nieprawidłowo.</p>
 
-	<h4>Advanced settings</h4>
+	<h4>Ustawienia zaawansowane</h4>
 
-	<p>The Advanced settings allow you to set some parameters of the board configuration. They are optional, and you can always change them later. So if you are not sure what these settings mean, proceed to the final step and finish the installation.</p>
+	<p>Ustawienia zaawansowane umożliwiają określenie niektórych parametrów konfiguracyjnych witryny. Są one opcjonalne i można je w każdej chwili zmienić. Jeśli nie znasz tych parametrów i nie wiesz, jak je ustawić – przejdź do następnego etapu.</p>
 
-	<p>If the installation was successful, you can now use the Login button to visit the Administration Control Panel. Congratulations, you have installed phpBB3 successfully. But there is still work ahead!</p>
+	<p>Jeśli instalacja przebiegła prawidłowo, można się zalogować, używając przycisku: <em>Zaloguj się</em>, by przejść do panelu administracji. Gratulacje! phpBB3 zostało zainstalowane, ale przed tobą jest jeszcze trochę pracy do wykonania.</p>
 
-	<p>If you are unable to get phpBB3 installed even after reading this guide, please look at the support section to find out where you can ask for further assistance.</p>
+	<p>Jeśli nawet po zapoznaniu się z tym artykułem nie możesz zainstalować phpBB3, przejdź do sekcji pomocy, by dowiedzieć się, gdzie możesz uzyskać dalszą pomoc.</p>
 
-	<p>At this point if you are converting from phpBB 2.0.x, you should refer to the <a href="#convert">conversion steps</a> for further information. If not, you should remove the install directory from your server as you will only be able to access the Administration Control Panel whilst it is present.</p>
+	<p>Jeśli w tym momencie dokonujesz konwersji z phpBB 2.0.x, informacje na ten temat uzyskasz w sekcji dotyczącej <a href="#convert">konwersji</a>, jeśli nie, usuń ze swojego serwera katalog instalacyjny. Jeśli będzie on pozostawał w katalogu głównym phpBB, będzie możliwy dostęp tylko do panelu administracyjnego.</p>
 
 		</div>
 
-		<div class="back2top"><a href="#wrap" class="top">Back to Top</a></div>
+		<div class="back2top"><a href="#wrap" class="top">Na górę</a></div>
 
 		<span class="corners-bottom"><span></span></span></div>
 	</div>
 
 	<hr />
 
-	<a name="update"></a><h2>4. Updating from stable releases of phpBB 3.0.x</h2>
+	<a name="update"></a><h2>4. Aktualizacja phpBB 3.0.x</h2>
 
 	<div class="paragraph">
 		<div class="inner"><span class="corners-top"><span></span></span>
 
 		<div class="content">
 
-<p>If you are currently using a stable release of phpBB3 updating to this version is straightforward. You would have downloaded one of four packages and your choice determines what you need to do. <strong>Please Note</strong>: That before updating we heavily recommend you do a <em>full backup of your database and existing phpBB3 files</em>! If you are unsure how to achieve this please ask your hosting provider for advice.</p>
+<p>Jeśli obecnie używasz stabilnego wydania phpBB3, aktualizacja do najnowszej wersji jest bardzo łatwa. Należy pobrać jeden z czterech pakietów, a dokonany wybór pakietu określa dalsze postępowanie. <strong>Uwaga!</strong> Przed aktualizacją zaleca się wykonanie pełnej <em>kopii zapasowej bazy danych i istniejących plików phpBB3</em>. Jeśli nie masz pewności, jak to zrobić, skonsultuj się z dostawcą usług hostingowych w celu uzyskania porady.</p>
 
-<p><strong>Please make sure you update your phpBB3 source files too, even if you run the <code>database_update.php</code> file.</strong></p>
+<p><strong>Sprawdź, czy została wykonana aktualizacja plików źródłowych, nawet jeśli został uruchomiony plik <code>database_update.php</code></strong>.</p>
 
-<a name="update_full"></a><h3>4.i. Full package</h3>
+<a name="update_full"></a><h3>4.1. Pełen pakiet</h3>
 
-	<p>The full package is normally meant for new installations only, but if you want to replace all source files this package comes in handy.</p>
+	<p>Pełen pakiet jest zazwyczaj przeznaczony dla nowych instalacji, ale jeśli chcesz zastąpić wszystkie pliki źródłowe plikami zawartymi w tym pakiecie, jest on przydatny.</p>
 
-	<p>First you should make a copy of your existing <em>config.php</em> file, keep it in a safe place! Next delete all the existing phpBB3 files, you may want to leave your <code>files/</code> and <code>images/</code> directory in place. You can leave alternative styles in-place too. With this complete you can upload the new phpBB3 files (see <a href="#install">New installation</a> for details if necessary). Once complete copy back your saved <em>config.php</em>, replacing the new one. Another method is to just <strong>replace</strong> the existing files with the files from the full package - though make sure you do <strong>not</strong> overwrite your config.php file.</p>
+	<p>Najpierw należy wykonać kopię zapasową istniejącego pliku <em>config.php</em> i zapisać w bezpiecznym miejscu, a następnie usunąć wszystkie istniejące pliki phpBB3. Możesz pozostawić istniejące katalogi <code>files/</code> i <code>images/</code>, a także style. Po wykonaniu tych czynności możesz przesłać na serwer nowe pliki phpBB3. Więcej szczegółowych informacji znajduje się w sekcji <a href="#install">Nowa instalacja</a>. Po zakończeniu tych czynności skopiuj z powrotem zapisany wcześniej plik <em>config.php</em>, zastępując nim nowy plik. Inny sposób, to po prostu <strong>zastąpienie</strong> istniejących plików nowymi plikami z pakietu. Dopilnuj, by <strong>nie</strong> zastąpić istniejącego pliku <em>config.php</em>.</p>
 
-	<p>You should now run <code>install/database_update.php</code> which, depending on your previous version, will make a number of database changes. You may receive <em>FAILURES</em> during this procedure, they should not be a cause for concern unless you see an actual <em>ERROR</em>, in which case the script will stop (in this case you should seek help via our forums or bug tracker).</p>
+	<p>Teraz należy uruchomić skrypt <code>install/database_update.php</code>, który w zależności od twojej poprzedniej wersji wykona zmiany w bazie danych. Podczas wykonywania tej procedury możesz otrzymywać informacje <em>Niepowodzenie</em>. Nie powinny być one powodem do niepokoju, chyba że pojawi się informacja <em>BŁĄD</em>. W tym przypadku skrypt zostanie zatrzymany i należy szukać pomocy na naszych forach lub w systemie śledzenia błędów.</p>
 
-	<p>Once the install/database_update.php has completed you may proceed to the Administration Control Panel and check remove the install directory as advised.</p>
+	<p>Po zakończeniu działania skryptu install/database_update.php, należy przejść do panelu administracyjnego i sprawdzić poprawność oraz zgodnie z zaleceniami usunąć katalog install/.</p>
 
-<a name="update_files"></a><h3>4.ii. Changed files only</h3>
+<a name="update_files"></a><h3>4.2. Tylko zmienione pliki</h3>
 
-	<p>This package is meant for those wanting to only replace changed files from a previous version to the latest version. This package normally contains the changed files from up to five previous versions.</p>
+	<p>Pakiet jest przeznaczony dla tych osób, które chcą zamienić tylko zmienione pliki. Zawiera on zmienione pliki, począwszy od pięciu poprzednich wersji do aktualnej wersji.</p>
 
-	<p>This package contains a number of archives, each contains the files changed from a given release to the latest version. You should select the appropriate archive for your current version, e.g. if you currently have <samp>3.0.9</samp> you should select the phpBB-3.0.9_to_3.0.10.zip/tar.gz file.</p>
+	<p>Ten pakiet zawiera wiele archiwów. Każde z nich zawiera pliki, które uległy zmianie od danego wydania do ostatniej wersji. Należy wybrać odpowiednie archiwum dla zainstalowanej wersji. Na przykład, jeśli jest zainstalowana wersja <samp>3.0.6</samp>, należy wybrać plik phpBB-3.0.6_to_3.0.8.zip/tar.gz.</p>
 
-	<p>The directory structure has been preserved enabling you (if you wish) to simply upload the contents of the archive to the appropriate location on your server, i.e. simply overwrite the existing files with the new versions. Do not forget that if you have installed any MODs these files will overwrite the originals possibly destroying them in the process. You will need to re-add MODs to any affected file before uploading.</p>
+	<p>Struktura katalogu została zachowana, umożliwiając wgranie zawartości archiwum do odpowiedniej lokalizacji na serwerze, np. po prostu zastąpić istniejące na serwerze pliki ich nowymi wersjami. Należy pamiętać, że jeśli są zainstalowane jakieś mody, te pliki zastąpią istniejące pliki, co może uniemożliwić działanie tych modyfikacji. Trzeba będzie ponownie dodać modyfikacje do tych plików.</p>
 
-	<p>As for the other update procedures you should run <b>install/database_update.php</b> after you have finished updating the files. This will update your database schema and increment the version number.</p>
+	<p>Po zakończeniu aktualizacji plików, należy uruchomić skrypt <code>install/database_update.php</code>. Skrypt dokona aktualizacji bazy danych i zmieni numer wersji.</p>
 
-<a name="update_patch"></a><h3>4.iii. Patch file</h3>
+<a name="update_patch"></a><h3>4.3. Łatka</h3>
 
-	<p>The patch file package is for those wanting to update through the patch application, and being comfortable with it.</p>
+	<p>Plik łatki jest dla osób obeznanych z aplikacjami aktualizującymi oprogramowanie za pomocą tego typu plików.</p>
 
-	<p>The patch file is one solution for those with many Modifications (MODs) or other changes who do not want to re-add them back to all the changed files if they use the method explained above. To use this you will need command line access to a standard UNIX type <strong>patch</strong> application. If you do not have access to such an application but still want to use this update approach, we strongly recommend the <a href="#update_auto">Automatic update package</a> explained below. It is also the recommended update method.</p>
+	<p>Plik łatki jest dobrym rozwiązaniem dla aktualizacji witryn z dużą liczbą modyfikacji lub innych zmian plików bez ponownego dodawania modyfikacji do zmienionych plików. Aby użyć tego pliku, trzeba mieć dostęp do wiersza poleceń aplikacji realizującej aktualizacje za pomocą łatek. Jeśli nie ma się dostępu do wiersza poleceń, a chce się użyć tego typu aktualizacji, należy skorzystać z pakietu <a href="#update_auto">automatycznej aktualizacji</a>. Jest to zalecana metoda aktualizacji.</p>
 
-	<p>A number of patch files are provided to allow you to update from previous stable releases. Select the correct patch, e.g. if your current version is <samp>3.0.9</samp> you need the phpBB-3.0.9_to_3.0.10.patch file. Place the correct patch in the parent directory containing the phpBB3 core files (i.e. index.php, viewforum.php, etc.). With this done you should run the following command: <strong>patch -cl -d [PHPBB DIRECTORY] -p1 &lt; [PATCH NAME]</strong> (where PHPBB DIRECTORY is the directory name your phpBB Installation resides in, for example phpBB3, and where PATCH NAME is the relevant filename of the selected patch file). This should complete quickly, hopefully without any HUNK FAILED comments.</p>
+	<p>Ten pakiet zawiera wiele łatek służących do aktualizacji poprzednich stabilnych wydań. Należy wybrać odpowiednią dla zainstalowanej wersji łatkę. Na przykład, jeśli jest zainstalowana wersja <samp>3.0.6</samp>, należy wybrać plik phpBB-3.0.6_to_3.0.8.patch. Następnie plik ten umieścić na serwerze w katalogu głównym phpBB3. Po wykonaniu tych czynności, należy uruchomić polecenie: <strong>patch -cl -d [katalog_phpBB] -p1 &lt; [nazwa_pliku_łatki]</strong>, gdzie <strong>katalog_phpBB</strong>, to nazwa katalogu instalacji phpBB, np. phpBB3, a <strong>nazwa_pliku_łatki</strong>, to nazwa wybranego pliku łatki. Aktualizacja powinna zakończyć się szybko, mamy nadzieję, bez niepowodzeń.</p>
 
-	<p>If you do get failures you should look at using the <a href="#update_files">Changed files only</a> package to replace the files which failed to patch, please note that you will need to manually re-add any Modifications (MODs) to these particular files. Alternatively if you know how you can examine the .rej files to determine what failed where and make manual adjustments to the relevant source.</p>
+	<p>Jeśli wystąpiły jakieś problemy, należy użyć pakietu <a href="#update_files">Tylko zmienione pliki</a>, by zamienić pliki, które spowodowały awarię łatki. W tym przypadku trzeba będzie do odpowiednich plików ręcznie ponownie wprowadzić zmiany dotyczące modyfikacji. Alternatywnie, jeśli zna się sposób sprawdzania plików .rej, można je sprawdzić, by dowiedzieć się, co i gdzie się nie powiodło i dokonać ręcznych zmian w odpowiednich plikach źródłowych.</p>
 
-	<p>You should of course delete the patch file (or files) after use. As for the other update procedures you should run <code>install/database_update.php</code> after you have finished updating the files. This will update your database schema and data (if appropriate) and increment the version number.</p>
+	<p>Po użyciu, należy usunąć plik łatki i tak jak w innych procedurach aktualizacyjnych uruchomić skrypt <code>install/database_update.php</code>. Skrypt dokona aktualizacji bazy danych i zmieni numer wersji.</p>
 
-<a name="update_auto"></a><h3>4.iv. Automatic update package</h3>
+<a name="update_auto"></a><h3>4.4. Pakiet automatycznej aktualizacji</h3>
 
-	<p>This update method is the recommended method for updating. This package allows detecting changed files automatically and merges changes if needed.</p>
+	<p>Jest to zalecana metoda aktualizacji. Ten pakiet umożliwia automatyczne wykrycie zmienionych plików i dodanie, jeśli potrzeba, zmian.</p>
 
-	<p>The automatic update package contains - contrary to the others - only the information required to update the previous release version to the latest available version. These packages are meant for use with the automatic update tool.</p>
+	<p>Pakiet automatycznej aktualizacji zawiera – w przeciwieństwie do innych – tylko informacje wymagane do aktualizacji poprzedniej wersji do aktualnej. Pakiety te przeznaczone są do stosowania z narzędziem do automatycznej aktualizacji.</p>
 
-	<p>To perform the update, either follow the instructions from the <code>Administration Control Panel-&gt;System</code> Tab - this should point out that you are running an outdated version and will guide you through the update - or follow the instructions listed below.</p>
+	<p>Aby wykonać automatyczną aktualizację, należy postępować zgodnie z instrukcjami po przejściu do karty <code>Panel administracji » System</code> – zostanie wyświetlona informacja o zainstalowanej wersji i instrukcja, jak dokonać aktualizacji do najnowszej wersji – lub postępować zgodnie z instrukcjami podanymi poniżej.</p>
 
 	<ul>
-		<li>Go to the <a href="http://www.phpbb.com/downloads/">downloads page</a> and download the latest update package listed there, matching your current version.</li>
-		<li>Upload the archives contents to your phpBB installation - only the install folder is required. Upload the whole install folder, retaining the file structure.</li>
-		<li>After the install folder is present, phpBB3 will go offline automatically.</li>
-		<li>Point your browser to the install directory, for example <samp>http://www.example.com/phpBB3/install/</samp></li>
-		<li>Choose the "Update" Tab and follow the instructions</li>
+		<li>Przejdź na <a href="http://www.phpbb.com/downloads/">stronę pobierania</a> i pobierz najnowszy pakiet aktualizacyjny odpowiedni dla zainstalowanej wersji.</li>
+		<li>Prześlij do swojej instalacji phpBB zawartość archiwów – wymagany jest tylko folder <code>install</code>. Prześlij cały folder <code>install</code>, zachowując jego strukturę. Po wgraniu tego folderu witryna phpBB3 przejdzie automatycznie w tryb offline.</li>
+		<li>Wpisz w przeglądarce adres do katalogu instalacyjnego, np. <samp>http://www.moja_domena.pl/phpBB3/install/</samp>.</li>
+		<li>Wybierz kartę „Aktualizacja” i postępuj zgodnie z instrukcjami.</li>
 	</ul>
 
 	<p>&nbsp;</p>
 
-<a name="update_all"></a><h3>4.v. All package types</h3>
+<a name="update_all"></a><h3>4.5. Pakiety językowe</h3>
 
-	<p>If you have non-English language packs installed you may want to see if a new version has been made available. A number of missing strings may have been added which, though not essential, may be beneficial to users. Please note that at this time not all language packs have been updated so you should be prepared to periodically check for updates.</p>
+	<p>Jeśli są zainstalowane różne pakiety językowe, należy sprawdzić, czy są dostępne ich nowe wersje. Może być tak, że nie wszystkie pakiety językowe zostały zaktualizowane, więc należy okresowo sprawdzać dostępność aktualizacji.</p>
 
 		</div>
 
-		<div class="back2top"><a href="#wrap" class="top">Back to Top</a></div>
+		<div class="back2top"><a href="#wrap" class="top">Na górę</a></div>
 
 		<span class="corners-bottom"><span></span></span></div>
 	</div>
 
 	<hr />
 
-	<a name="convert"></a><h2>5. Conversion from phpBB 2.0.x to phpBB 3.0.x</h2>
+	<a name="convert"></a><h2>5. Konwersja z phpBB 2.0.x do phpBB 3.0.x</h2>
 
 	<div class="paragraph">
 		<div class="inner"><span class="corners-top"><span></span></span>
 
 		<div class="content">
 
-<p>This paragraph explains the steps necessary to convert your existing phpBB2 installation to phpBB3.</p>
+<p>W tej sekcji opisano czynności, jakie należy wykonać, aby przeprowadzić konwersję istniejącej instalacji phpBB2 do phpBB3.</p>
 
-<a name="prereq"></a><h3>5.i. Requirements before converting</h3>
+<a name="prereq"></a><h3>5.1. Wymagania przed konwersją</h3>
 
-	<p>Before converting we heavily recommend you do a <em>full backup of your database and files</em>! If you are unsure how to achieve this please ask your hosting provider for advice. You basically need to follow the basic instructions given for <a href="#install">New installations</a>. Please <strong>do not</strong> overwrite any old files - install phpBB3 at a different location.</p>
+	<p>Przed konwersją zaleca się wykonanie <em>pełnej kopii zapasowej bazy danych i istniejących plików phpBB3</em>! Jeśli nie masz pewności, jak to zrobić, skonsultuj się z dostawcą usług hostingowych w celu uzyskania porady.</p>
 
-	<p>Once you made a backup of everything and also have a brand new phpBB3 installation, you can now begin the conversion.</p>
+	<p>Zainstaluj phpBB3 zgodnie z instrukcją podaną w sekcji <a href="#install">Nowa instalacja</a>. <strong>Nie zastępuj starych plików</strong> – zainstaluj phpBB3 w innym miejscu.</p>
 
-	<p>Note that the conversion requires CREATE and DROP privileges for the phpBB3's database user account.</p>
+	<p>Po wykonaniu kopii zapasowej i zainstalowaniu phpBB3, można rozpocząć konwersję.</p>
 
-<a name="conversion"></a><h3>5.ii. Converting</h3>
+	<p>Wykonanie konwersji wymaga, aby użytkownik bazy danych phpBB3 miał uprawnienia CREATE i DROP.</p>
 
-	<p>To begin the conversion visit the install folder of your phpBB3 installation (the same as you have done for installing). Now you will see a new tab <em>Convert</em>. Click this tab.</p>
+<a name="conversion"></a><h3>5.2. Konwersja</h3>
 
-	<p>As with install the conversion is automated. Your previous 2.0.x database tables will not be changed as well as the original 2.0.x files remaining unaltered. The conversion is actually only filling your phpBB3 database tables and copying additional data over to your phpBB3 installation. This has the benefit that if something goes wrong you are able to either re-run the conversion or continue a conversion, while your old board is still accessible. We really recommend you disable your old installation while converting, else you may have inconsistent data after the conversion.</p>
+	<p>Aby rozpocząć konwersję, za pomocą swojej przeglądarki internetowej przejdź do miejsca wgrania skryptu phpBB3, dodając na końcu adresu install/index.php, lub wpisując bezpośrednio w pasku adresu, np. http://www.twoja_domena.pl/phpBB3/install/, http://www.twoja_domena.pl/forum/install/ itp. Po otwarciu panelu instalacji kliknij kartę <em>Konwersja</em> i postępuj zgodnie z wyświetlanymi wskazówkami.</p>
 
-	<p>Please note that this conversion process may take quite some time and depending on your hosting provider this may result in it failing (due to web server or other timeout issues). If this is the case you should ask your provider if they are willing to allow the convert script to temporarily exceed their limits (be nice and they will probably be quite helpful).</p>
+	<p>Konwersja tak samo, jak instalacja jest zautomatyzowana. Tabele bazy danych, jak i pliki wersji 2.0.x nie zostaną zmienione. W trakcie konwersji tabele bazy danych phpBB3 zostaną wypełnione danymi ze starej bazy i do samej instalacji phpBB3 zostaną skopiowane dodatkowe dane. Ma to swoje dodatnie strony, ponieważ jeśli konwersja nie przebiegnie prawidłowo, będzie możliwość powrotu do konwersji i jej kontynuowanie, a stara witryna będzie nadal działała. Zalecamy wyłączenie starej witryny na czas konwersji, ponieważ może wystąpić niespójność danych, jeśli w czasie konwersji będą dokonywane jakieś zmiany na starej witrynie.</p>
 
-	<p>Once completed your board should be immediately available. If you encountered errors you should report the problems to our bug tracker or seek help via our forums (see <a href="README.html">README</a> for details).</p>
+	<p>Proces konwersji może zająć trochę czasu i w zależności od ustawień serwera może się nie powieść z powodu przekroczenia limitu czasu połączenia. Jeśli taka sytuacja nastąpi, należy skontaktować się z dostawcą usług hostingowych i poprosić o tymczasowe umożliwienie przekroczenia ustawionego limitu czasu.</p>
 
-<a name="postreq"></a><h3>5.iii. Things to do after conversion</h3>
+	<p>Po zakończeniu konwersji, witryna będzie natychmiast dostępna. Jeśli w trakcie konwersji wystąpią błędy, należy zgłosić problemy w naszym systemie śledzenia błędów lub poszukać pomocy na naszych forach. Więcej szczegółów na ten temat znajduje się w artykule <a href="README.html">Informacje podstawowe</a>.</p>
 
-	<p>After successful conversion there may be a few items you need to do - apart from checking if the installation is accessible and everything displayed correctly.</p>
+<a name="postreq"></a><h3>5.3. Czynności po konwersji</h3>
 
-	<p>The first thing you may want to do is going to the administration control panel and checking every configuration item within the general tab. Thereafter you may want to adjust the forum descriptions/names if you entered HTML there. You also may want to access the other administrative sections, e.g. adjusting permissions, smilies, icons, ranks, etc.</p>
+	<p>Po prawidłowym przebiegu i zakończeniu konwersji, oprócz sprawdzenia czy instalacja jest dostępna i wszystko wyświetla się poprawnie, należy wykonać kilka rzeczy.</p>
 
-	<p>Within the conversion the search index has not been created or transferred. This means after conversion you are not able to find any matches if you want to search for something. We recommend you rebuild your search index within <code>Admin -&gt; Maintenance -&gt; Database -&gt; Search Index</code>.</p>
+	<p>Pierwszą rzeczą, którą trzeba zrobić, to w panelu administracji z poziomu karty „Ogólne” sprawdzić każdy element konfiguracji. Można zmienić nazwę czy opis witryny. Można także przejść do innych sekcji, by np. dostosować uprawnienia, emotikony, ikony rangi itp.</p>
 
-	<p>After verifying the settings in the ACP, you can delete the install directory to enable the board. The board will stay disabled until you do so.</p>
+	<p>Podczas konwersji nie jest tworzony ani przenoszony indeks wyszukiwania. Oznacza to, że po konwersji wyszukiwanie nie będzie działało. Zaleca się przebudowanie indeksu wyszukiwania. W tym celu należy przejść do panelu administracji i w karcie <strong>Konserwacja</strong> wybrać <strong>Indeksowanie wyszukiwania</strong>.</p>
 
-	<p>Once you are pleased with your new installation you may want to give it the name of your old installation, changing the directory name. With phpBB3 this is possible without any problems - but you may still want to check your cookie settings within the administration panel, if the cookie path need to be adjusted prior to renaming.</p>
+	<p>Po weryfikacji ustawień, można usunąć z folderu instalacyjnego katalog install/, by włączyć witrynę. Do czasu usunięcia tego katalogu witryna będzie niedostępna dla użytkowników.</p>
 
-<a name="convprob"></a><h3>5.iv. Common conversion problems</h3>
+	<p>Gdy konwersja przebiegła prawidłowo, ustawienia są poprawne i witryna działa bezproblemowo, można zmienić nazwę tej instalacji na nazwę starej instalacji, zmieniając nazwę katalogu. W phpBB3 jest to możliwe i przebiega bezproblemowo, ale trzeba przed zmianą nazwy sprawdzić ustawienia ciasteczek i ewentualnie skorygować ścieżkę do nich.</p>
 
-	<p><strong>Broken non-latin characters</strong> The conversion script assumes that the database encoding in the source phpBB2 matches the encoding defined in the <code>lang_main.php</code> file of the default language pack of the source installation. Edit that file to match the database's encoding and re-start the conversion procedure.</p>
+<a name="convprob"></a><h3>5.4. Problemy związane z konwersją</h3>
 
-	<p><strong>http 500 / white pages</strong> The conversion is a load-heavy procedure. Restrictions imposed by some server hosting providers can cause problems. The most common causes are: too low values for the php settings <code>memory_limit</code> and <code>max_execution_time</code>. Limits on the allowed CPU time are also a frequent cause for such errors, as are caps on the number of database queries allowed. If you cannot change such settings, then contact your hosting provider or run the conversion procedure on a different computer. The phpBB.com forums are also an excellent location to ask for support.</p>
+	<p><strong>Zdeformowane nie łacińskie znaki</strong> – skrypt konwersji zakłada, że kodowanie bazy danych w phpBB2 odpowiada kodowaniu zdefiniowanemu w pliku <code>lang_main.php</code> domyślnego pakietu językowego w instalacji źródłowej. Należy dokonać edycji tego pliku, dopasować kodowanie zgodne z kodowaniem bazy danych i ponownie uruchomić konwersję.</p>
 
-	<p><strong>Password conversion</strong> Due to the utf-8 based handling of passwords in phpBB3, it is not always possible to transfer all passwords. For passwords "lost in translation" the easiest workaround is to use the "forgotten password" function.</p>
+	<p><strong>http 500 / białe puste strony</strong> – konwersja jest bardzo trudną i obciążającą serwer procedurą. Ograniczenia narzucone przez niektórych dostawców usług hostingowych mogą powodować problemy. Najczęstsze przyczyny to zbyt mała wartość ustawień php <code>memory_limit</code> i <code>max_execution_time</code>. Częstą przyczyną takich błędów są limity czasu CPU oraz ograniczenia liczby zapytań do bazy danych. Jeśli nie można zmienić tych ustawień, należy skontaktować się z dostawcą usługi hostingowej lub uruchomić konwersję na innym komputerze. Dobrym miejscem do poszukania pomocy są także fora phpBB.com.</p>
 
-	<p><strong>Path to your former board</strong> The converter expects the relative path to your old board's files. So, - for instance - if the old board is located at <code>http://www.yourdomain.com/forum</code> and the phpBB3 installation is located at <code>http://www.yourdomain.com/phpBB3</code>, then the correct value would be <code>../forum</code>. Note that the webserver user must be able to access the source installation's files.</p>
+	<p><strong>Konwersja hasła</strong> – w trakcie konwersji nie zawsze jest możliwe przeniesienie wszystkich haseł względu na stosowanie w phpBB3 kodowania utf-8. Najprostszym sposobem rozwiązania problemu zagubionych podczas konwersji haseł jest użycie funkcji „Nie pamiętam hasła”.</p>
 
-	<p><strong>Missing images</strong> If your default board language's language pack does not include all images, then some images might be missing in your installation. Always use a complete language pack as default language.</p>
+	<p><strong>Ścieżka do starej witryny</strong> – konwerter oczekuje relatywnej ścieżki do plików starej witryny. Na przykład, jeśli stara witryna jest umiejscowiona w <code>http://www.yourdomain.com/forum</code>, a instalacja phpBB3 w <code>http://www.yourdomain.com/phpBB3</code>, prawidłowa wartość powinna być <code>../forum</code>. Uwaga! Użytkownik serwera sieciowego musi mieć dostęp do plików instalacyjnych na serwerze.</p>
 
-	<p><strong>Smilies</strong> During the conversion you might see warnings about image files where the copying failed. That can happen if the old board's smilies have the same file names as those on the new board. Copy those files manually after the conversion, if you want to continue using the old smilies.</p>
+	<p><strong>Zagubione obrazki</strong> – jeśli pakiet językowy domyślnego języka witryny nie zawiera wszystkich obrazków, w instalacji będzie brakowało obrazków nieistniejących w pakiecie. Należy zawsze jako domyślnego języka używać kompletnego pakietu językowego.</p>
+
+	<p><strong>Emotikony</strong> – w trakcie konwersji mogą być wyświetlane ostrzeżenia o niepowodzeniu kopiowania plików obrazków. Może tak się zdarzyć, jeśli pliki emotikon na starej witrynie mają takie same nazwy, jak na nowej. Jeśli chce się używać starych emotikon na nowej witrynie, należy po zakończeniu konwersji skopiować je ręcznie.</p>
 
 
 		</div>
 
-		<div class="back2top"><a href="#wrap" class="top">Back to Top</a></div>
+		<div class="back2top"><a href="#wrap" class="top">Na górę</a></div>
 
 		<span class="corners-bottom"><span></span></span></div>
 	</div>
 
 	<hr />
 
-	<a name="postinstall"></a><h2>6. Important (security related) post-Install tasks for all installation methods</h2>
+	<a name="postinstall"></a><h2>6. Ważne, odpowiedzialne za bezpieczeństwo, czynności do wykonania po przeprowadzeniu każdej z metod instalacji</h2>
 
 	<div class="paragraph">
 		<div class="inner"><span class="corners-top"><span></span></span>
 
 		<div class="content">
 
-	<p>Once you have successfully installed phpBB3 you <strong>MUST</strong> ensure you remove the entire install/ directory. Leaving the install directory in place is a <em>very serious potential security issue</em> which may lead to deletion or alteration of files, etc. Please note that until this directory is removed, phpBB3 will not operate and a warning message will be displayed. Beyond this <strong>essential</strong> deletion, you may also wish to delete the docs/ directories if you wish.</p>
+	<p>Po zainstalowaniu phpBB3, z katalogu głównego <strong>trzeba usunąć</strong> cały katalog install/. Pozostawienie tego katalogu spowoduje, że witryna phpBB3 nie będzie działała i będzie wyświetlany stosowny komunikat. Ponadto może to <em>stanowić potencjalne zagrożenie bezpieczeństwa</em>, które może doprowadzić do, np. usunięcia, zmiany plików itp. przez niepowołane osoby. Bez szkody dla działania witryny, można też usunąć katalog docs/.</p>
 
-	<p>With these directories deleted you should proceed to the administration panel. Depending on how the installation completed you may have been directed there automatically. If not, login as the administrator you specified during install/conversion and click the <strong>Administration Panel</strong> link at the bottom of any page. Ensure that details specified in <code>Admin -&gt; General</code> are correct!</p>
+	<p>Po usunięciu tych katalogów, należy przejść do panelu administracyjnego. W zależności od sposobu zakończenia instalacji, może nastąpić automatyczne przekierowanie do panelu administracyjnego. Jeśli tak się nie stanie, należy zalogować się jako administrator określony podczas instalacji/konwersji, klikając znajdujący się na dole strony odnośnik <strong>Panel administracji</strong>. Po zalogowaniu, w karcie <code>Ogólne</code> należy sprawdzić poprawność danych!</p>
 
-<a name="avatars"></a><h3>6.i. Uploadable avatars</h3>
+<a name="avatars"></a><h3>6.1. Wgrywane awatary</h3>
 
-	<p>phpBB3 supports several methods for allowing users to select their own <em>avatar</em> (an avatar is a small image generally unique to a user and displayed just below their username in posts).</p>
+	<p>phpBB3 obsługuje różne metody umożliwiające użytkownikom wybór ich własnego <em>awatara</em>. Awatar, to zazwyczaj mały, unikalny dla danego użytkownika obrazek wyświetlany w postach – w zależności od użytego stylu – powyżej lub poniżej nazwy użytkownika.</p>
 
-	<p>Two of these options allow users to upload an avatar from their machine or a remote location (via a URL). If you wish to enable this function you should first ensure the correct paths for uploadeable avatars is set in <code>Admin -&gt; General -&gt; Board Configuration -&gt; Avatar settings</code>. By default this is <em>images/avatars/uploads</em> but you can set it to whatever you like, just ensure the configuration setting is updated. You must also ensure this directory can be written to by the webserver. Usually this means you have to alter its permissions to allow anyone to read and write to. Exactly how you should do this depends on your ftp client or server operating system.</p>
+	<p>Dwie z tych metod umożliwiają użytkownikom wgranie awatara ze swojego komputera lub ze zdalnego położenia (poprzez podanie adresu URL). Jeśli chcesz włączyć te funkcję, należy najpierw sprawdzić, czy na karcie <code>Panel administracji » Ogólne » Konfiguracja witryny » Awatary</code> jest podana prawidłowa ścieżka do katalogu zapisu wgrywanych awatarów. Domyślnie jest to <em>images/avatars/uploads</em>, ale można określić dowolne inne położenie katalogu awatarów. Należy upewnić się, że ustawienia konfiguracyjne zostały zaktualizowane, a także czy ten katalog jest udostępniony do zapisu i odczytu przez wszystkich. Jak należy to zrobić, zależy od klienta FTP lub systemu operacyjnego serwera.</p>
 
-	<p>On UNIX systems for example you set the directory to a+rwx (or ugo+rwx or even 777). This can be done from a command line on your server using chmod or via your FTP client (using the Change Permissions, chmod or other Permissions dialoge box, see your FTP clients documentation for help). Most FTP clients list permissions in the form of User (Read, Write, Execute), Group (Read, Write, Execute) and Other (Read, Write, Execute). You need to tick all of these boxes to set correct permissions.</p>
+	<p>W systemach uniksowych, można ustawić dla tego katalogu: a+rwx lub ugo+rwx, a nawet 777. Można to zrobić z poziomu wiersza poleceń, używając chmod lub za pomocą klienta FTP, używając funkcji zmiany uprawnień, chmod lub innego okna dialogowego. Dokładne informacje zazwyczaj znajdują się w dokumentacji klienta FTP.</p>
 
-	<p>On Windows system you need to ensure the directory is not write-protected and that it has global write permissions (see your servers documentation or contact your hosting provider if you are unsure on how to achieve this).</p>
+	<p>W systemach rodziny Windows, należy sprawdzić, czy katalog ten nie jest zabezpieczony przed zapisem i czy ma globalne uprawnienia do zapisu. Jeśli nie wiesz, jak to zrobić, zobacz dokumentację swojego serwera lub skontaktuj się z dostarczycielem usługi hostingowej.</p>
 
-	<p>Please be aware that setting a directories permissions to global write access is a potential security issue. While it is unlikely that anything nasty will occur (such as all the avatars being deleted) there are always people out there to cause trouble. Therefore you should monitor this directory and if possible make regular backups.</p>
-
-<a name="webserver_configuration"></a><h3>6.ii. Webserver configuration</h3>
-
-	<p>Depending on your web server you may have to configure your server to deny web access to the <code>cache/</code>, <code>files/</code>, <code>store/</code> and other directories. This is to prevent users from accessing sensitive files.</p>
-
-	<p>For <strong>apache</strong> there are <code>.htaccess</code> files already in place to do this for you. For other webservers you will have to adjust the configuration yourself. Sample files for <strong>nginx</strong> and <strong>lighttpd</strong> to help you get started may be found in docs directory.</p>
+	<p>Należy zachować ostrożność, ponieważ ustawienie globalnych uprawnień dostępu do zapisu katalogu, może stanowić potencjalne zagrożenie bezpieczeństwa. Choć jest mało prawdopodobne, że nastąpi coś złego, jak usunięcie wszystkich awatarów, to są jednak osoby, które lubią sprawiać takie problemy. Dlatego należy monitorować ten katalog i jeśli to możliwe regularne tworzyć kopie zapasowe.</p>
 
 		</div>
 
-		<div class="back2top"><a href="#wrap" class="top">Back to Top</a></div>
+		<div class="back2top"><a href="#wrap" class="top">Na górę</a></div>
 
 		<span class="corners-bottom"><span></span></span></div>
 	</div>
 
 	<hr />
 
-<a name="disclaimer"></a><h2>7. Copyright and disclaimer</h2>
+<a name="disclaimer"></a><h2>7. Odpowiedzialność i prawa autorskie</h2>
 
 	<div class="paragraph">
 		<div class="inner"><span class="corners-top"><span></span></span>
 
 		<div class="content">
 
-	<p>This application is opensource software released under the <a href="http://opensource.org/licenses/gpl-license.php">GPL</a>. Please see source code and the docs directory for more details. This package and its contents are Copyright (c) <a href="http://www.phpbb.com/">phpBB Group</a>, All Rights Reserved.</p>
+	<p>Ta aplikacja jest oprogramowaniem open-source udostępnionym na licencji <a href="http://opensource.org/licenses/gpl-license.php">GPL</a>. Więcej informacji znajdziesz w kodzie źródłowym i katalogu <code>docs</code>. Ten pakiet i jego zawartość jest stworzona przez <a href="http://www.phpbb.com/">phpBB Group</a>, Copyright (c) 2000, 2002, 2005, 2007. Wszelkie prawa zastrzeżone.</p>
 
 		</div>
 
-		<div class="back2top"><a href="#wrap" class="top">Back to Top</a></div>
+		<div class="back2top"><a href="#wrap" class="top">Na górę</a></div>
 
 		<span class="corners-bottom"><span></span></span></div>
 	</div>

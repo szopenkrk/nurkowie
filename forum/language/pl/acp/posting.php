@@ -4,9 +4,11 @@
 * acp_posting [Polski]
 *
 * @package language
-* @copyright (c) 2006 - 2011 phpBB3.PL Group
+* @version $Id: posting.php 10558 2010-03-07 03:45:28Z git-gate $
+* @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
+* @Polish locale 2011-05-16 17:03:18 Zespół Olympus.pl $
+
 */
 
 /**
@@ -22,9 +24,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// INFORMACJA
+// DEVELOPERS PLEASE NOTE
 //
-// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
+// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -34,245 +36,245 @@ if (empty($lang) || !is_array($lang))
 // equally where a string contains only two placeholders which are used to wrap text
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
-// BBCode'y
-// Uwaga dla tłumaczy: możecie tłumaczyć wszystko oprócz tego co jest między { i }
+// BBCodes
+// Note to translators: you can translate everything but what's between { and }
 $lang = array_merge($lang, array(
-	'ACP_BBCODES_EXPLAIN'		=> 'BBCode to specjalna implementacja HTMLa, oferująca większą kontrolę nad tym co i jak jest wyświetlane. Tutaj możesz dodać, usuwać i zmieniać własne BBCode’y.',
-	'ADD_BBCODE'				=> 'Dodaj BBCode’a',
+	'ACP_BBCODES_EXPLAIN'		=> 'BBCode jest specjalną implementacją języka HTML oferującą ogromne możliwości kontroli tego, co i jak jest wyświetlane. Tutaj można dodawać, usuwać i zmieniać własne znaczniki BBCode.',
+	'ADD_BBCODE'				=> 'Dodaj nowy znacznik',
 
-	'BBCODE_DANGER'				=> 'BBCode, który próbujesz dodać, prawdopodobnie używa tokenu {TEXT} wewnątrz atrybutu HTML. Możliwe, że jest to dziura pozwalająca na XSS. Spróbuj użyć bardziej restrykcyjnych typów {SIMPLETEXT} lub {INTTEXT}. Przejdź dalej tylko jeśli rozumiesz związane z tym niebezpieczeństwa i uważasz użycie {TEXT} za niezbędne.',
-	'BBCODE_DANGER_PROCEED'		=> 'Przejdź dalej', //'Rozumiem zagrożenie',
+	'BBCODE_DANGER'				=> 'Wygląda na to, że znacznik BBCode, który próbujesz dodać, używa tokena {TEXT} wewnątrz atrybutu HTML. Może to stwarzać zagrożenie bezpieczeństwa, umożliwiając atak typu XSS. Spróbuj użyć bardziej restrykcyjnego tokena {SIMPLETEXT} lub {INTTEXT}. Token {TEXT} użyj tylko wtedy, gdy zdajesz sobię sprawę z zagrożenia, jakie jest z tym związane i jest to absolutnie konieczne.',
+	'BBCODE_DANGER_PROCEED'		=> 'Kontynuuj',
 
-	'BBCODE_ADDED'				=> 'BBCode został dodany.',
-	'BBCODE_EDITED'				=> 'BBCode został zmieniony.',
-	'BBCODE_NOT_EXIST'			=> 'Wybrany BBCode nie istnieje.',
-	'BBCODE_HELPLINE'			=> 'Linia informacyjna',
-	'BBCODE_HELPLINE_EXPLAIN'	=> 'To pole zawiera tekst wyświetlany, gdy kursor myszki jest nad BBCodem.',
-	'BBCODE_HELPLINE_TEXT'		=> 'Tekst w linii informacyjnej',
-	'BBCODE_HELPLINE_TOO_LONG'	=> 'Podana linia informacyjna jest zbyt długa.',
+	'BBCODE_ADDED'				=> 'Znacznik został dodany.',
+	'BBCODE_EDITED'				=> 'Znacznik został zmieniony.',
+	'BBCODE_NOT_EXIST'			=> 'Wybrany znacznik nie istnieje.',
+	'BBCODE_HELPLINE'			=> 'Podpowiedzi',
+	'BBCODE_HELPLINE_EXPLAIN'	=> 'To pole zawiera tekst, jaki wyświetli się w podpowiedzi po wskazaniu kursorem myszy znacznika BBCode.',
+	'BBCODE_HELPLINE_TEXT'		=> 'Treść podpowiedzi',
+	'BBCODE_HELPLINE_TOO_LONG'	=> 'Wprowadzony tekst jest za długi.',
 
-	'BBCODE_INVALID_TAG_NAME'	=> 'Istnieje już BBCode o wybranej nazwie tagu.',
-	'BBCODE_INVALID'			=> 'Twój BBCode został nieprawidłowo skonstruowany.',
-	'BBCODE_OPEN_ENDED_TAG'		=> 'Twój BBCode musi się składać z otwierającego i zamykającego tagu.',
-	'BBCODE_TAG'				=> 'Tag',
-	'BBCODE_TAG_TOO_LONG'		=> 'Wybrany tag jest za długi.',
-	'BBCODE_TAG_DEF_TOO_LONG'	=> 'Podana definicja tagu jest za długa, skróć ją.',
-	'BBCODE_USAGE'				=> 'Sposób użycia BBCode’a',
-	'BBCODE_USAGE_EXAMPLE'		=> '[podswietl={COLOR}]{TEXT}[/podswietl]<br /><br />[font={SIMPLETEXT}]{TEXT}[/font]',
-	'BBCODE_USAGE_EXPLAIN'		=> 'Tutaj możesz określić jak używać BBCode’a. Zamień wszystko, co ma wpisać użytkownik, na odpowiedni token (%spatrz niżej%s).',
+	'BBCODE_INVALID_TAG_NAME'	=> 'Wybrana nazwa znacznika już istnieje.',
+	'BBCODE_INVALID'			=> 'Ten znacznik ma nieprawidłową formę.',
+	'BBCODE_OPEN_ENDED_TAG'		=> 'Znacznik musi zawierać znak otwarcia i zamknięcia.',
+	'BBCODE_TAG'				=> 'Znacznik',
+	'BBCODE_TAG_TOO_LONG'		=> 'Nazwa znacznika jest za długa.',
+	'BBCODE_TAG_DEF_TOO_LONG'	=> 'Wprowadzona definicja znacznika jest za długa. Proszę skrócić definicję.',
+	'BBCODE_USAGE'				=> 'Dodaj/zmień znacznik BBCode',
+	'BBCODE_USAGE_EXAMPLE'		=> '[highlight={COLOR}]{TEXT}[/highlight]<br /><br />[font={SIMPLETEXT1}]{SIMPLETEXT2}[/font]',
+	'BBCODE_USAGE_EXPLAIN'		=> 'Tutaj można dodać, zmienić znacznik, a także zdefiniować jego działanie. Każdą zmienną wejściową można zamienić odpowiednim tokenem (%szobacz poniżej%s).',
 
 	'EXAMPLE'						=> 'Przykład:',
 	'EXAMPLES'						=> 'Przykłady:',
 
-	'HTML_REPLACEMENT'				=> 'Kod HTML',
-	'HTML_REPLACEMENT_EXAMPLE'		=> '&lt;span style="background-color: {COLOR};"&gt;{TEXT}&lt;/span&gt;<br /><br />&lt;span style="font-family: {SIMPLETEXT};"&gt;{TEXT}&lt;/span&gt;',
-	'HTML_REPLACEMENT_EXPLAIN'		=> 'Tutaj możesz zdefiniować kod HTML służący do zastąpienia tego BBCode’a. Nie zapomnij zastosować tokenów podanych w polu „Sposób użycia”!',
+	'HTML_REPLACEMENT'				=> 'Zamiennik HTML',
+	'HTML_REPLACEMENT_EXAMPLE'		=> '&lt;span style="background-color: {COLOR};"&gt;{TEXT}&lt;/span&gt;<br /><br />&lt;span style="font-family: {SIMPLETEXT1};"&gt;{SIMPLETEXT2}&lt;/span&gt;',
+	'HTML_REPLACEMENT_EXPLAIN'		=> 'Tutaj można zdefiniować domyślne zamienniki HTML. Proszę nie zapomnieć o tokenach użytych powyżej!',
 
 	'TOKEN'					=> 'Token',
 	'TOKENS'				=> 'Tokeny',
-	'TOKENS_EXPLAIN'		=> 'Tokeny powinny być używane w miejscach, gdzie użytkownik ma coś wpisać. BBCode zostanie rozpoznany tylko, jeśli w miejscach tokenów wpisany zostanie tekst odpowiadający ich definicji. Jeśli to konieczne, możesz numerować tokeny dodając liczbę pomiędzy ostatnią literę a nawias zamykający, np. {TEXT1}, {TEXT2}.<br /><br />W kodzie HTML możesz też używać wpisów językowych, w taki sposób: {L_<em>&lt;KLUCZ_WPISU&gt;</em>}, gdzie <em>&lt;KLUCZ_WPISU&gt;</em> to klucz wpisu, którego wartości chcesz użyć. Na przykład, {L_WROTE} zostanie wyświetlone jako „napisał(a)” lub tłumaczenie tego wpisu, zgodnie z językiem użytkownika.<br /><br /><strong>Zauważ, że w BBCode’ach możesz użyć tylko tokenów wyświetlonych poniżej.</strong>',
-	'TOKEN_DEFINITION'		=> 'Czym może być?',
-	'TOO_MANY_BBCODES'		=> 'Nie możesz utworzyć więcej BBCode’ów. Usuń co najmniej jeden i spróbuj ponownie.',
+	'TOKENS_EXPLAIN'		=> 'Tokeny są zamiennikami danych wejściowych użytkownika. Dane te będą uwierzytelnione tylko, jeśli są zgodne z odpowiednią definicją. Jeśli zachodzi potrzeba, można numerować je, dodając cyfrę jako ostatni znak w nawiasie, np. {TEXT1}, {TEXT2}.<br /><br />W zamiennikach HTML można także używać dowolnego ciągu znaków występującego w danym języku/katalogu, takiego jak {L_<em>&lt;STRINGNAME&gt;</em>}, gdzie <em>&lt;STRINGNAME&gt;</em> jest nazwą przetłumaczonego ciągu znaków, jaki chce się dodać. Na przykład: {L_WROTE} będzie wyświetlane jako „wrote” lub w wersji językowej odpowiedniej dla języka określonego przez użytkownika.<br /><br /><strong>Tylko tokeny znajdujące się poniżej mogą być użyte w znacznikach BBCode tworzonych przez użytkownika.</strong>',
+	'TOKEN_DEFINITION'		=> 'Co to może być?',
+	'TOO_MANY_BBCODES'		=> 'Nie można utworzyć więcej znaczników. Usuń jakiś znacznik i spróbuj ponownie.',
 
 	'tokens'	=>	array(
-		'TEXT'			=> 'Dowolny tekst, w tym znaki wszystkich języków, liczby itp. Nie powinieneś używać tego tokenu w treści tagów HTML. Zamiast niego użyj IDENTIFIERa, INTTEXTu lub SIMPLETEXTu.',
-		'SIMPLETEXT'	=> 'Znaki łacińskiego alfabetu (A-Z), liczby, spacje, przecinki, kropki, minusy, plusy, myślniki i podkreślniki',
-		'INTTEXT'		=> 'Znaki unikodu, liczby, spacje, przecinki, kropki, minusy, plusy, myślniki i podkreślniki',
-		'IDENTIFIER'	=> 'Znaki łacińskiego alfabetu (A-Z), liczby, myślniki i podkreślniki',
-		'NUMBER'		=> 'Dowolne cyfry',
-		'EMAIL'			=> 'Prawidłowy adres e-mail',
-		'URL'			=> 'Prawidłowy URL używający dowolnego protokołu (http, ftp itp., nie może być użyte do eksploitów javascript). Jeśli żaden protokół nie zostanie podany, do tekstu zostanie dodany „http://”.',
-		'LOCAL_URL'		=> 'Lokalny URL. Musi prowadzić od strony wyświetlającej wątek i nie może zawierać nazwy serwera czy protokołu.',
-		'COLOR'			=> 'Kolor HTML, może być albo w formie numerycznej <samp>#FF1234</samp> albo <a href="http://www.w3.org/TR/CSS21/syndata.html#value-def-color">nazwą koloru CSS</a>, taką jak <samp>fuchsia</samp> czy <samp>InactiveBorder</samp>'
+		'TEXT'			=> 'Dowolny tekst, włącznie z obcymi literami, cyframi itp. Nie powinno się używać tego tokena w znacznikach HTML. Zamiast tego można użyć IDENTIFIER, INTTEXT lub SIMPLETEXT.',
+		'SIMPLETEXT'	=> 'Litery alfabetu łacińskiego (A–Z), cyfry, spacje, przecinki, kropki, minus, plus, myślnik i podkreślnik',
+		'INTTEXT'		=> 'Litery Unicode, cyfry, spacje, przecinki, kropki, minus, plus, myślnik i podkreślnik i białe spacje.',
+		'IDENTIFIER'	=> 'Litery alfabetu łacińskiego (A–Z), cyfry, myślnik i podkreślnik',
+		'NUMBER'		=> 'Dowolne serie cyfr',
+		'EMAIL'			=> 'Aktywny adres e-mail',
+		'URL'			=> 'Aktywny adres URL używający dowolnego protokołu – http, ftp, itp. nie może być użyty do eksploitów. Jeśli nie wybrano protokółu, do ciągu znaków będzie dodawany prefiks „http://”.',
+		'LOCAL_URL'		=> 'Lokalny adres URL. Adres musi być powiązany ze stroną tematów i nie może zawierać nazwy serwera czy protokółu.',
+		'COLOR'			=> 'Kolor HTML może być wyrażony w formie numerycznej <samp>#FF1234</samp> lub jako słowa kluczowe kolorów określone w specyfikacji <a href="http://www.w3.org/TR/CSS21/syndata.html#value-def-color">CSS</a>, takie jak <samp>fuchsia</samp> lub <samp>InactiveBorder</samp>.'
 	)
 ));
 
-// Uśmieszki i ikony
+// Smilies and topic icons
 $lang = array_merge($lang, array(
-	'ACP_ICONS_EXPLAIN'		=> 'Tutaj możesz dodawać, usuwać i zmieniać ikony, które użytkownicy mogą ustawiać swoim wątkom, postom i prywatnym wiadomościom. Ikony te zazwyczaj są wyświetlane w pobliżu tytułów wątków na liście wątków i w pobliżu tytułów postów na liście postów. Możesz też zainstalować lub utworzyć pakiet ikon.',
-	'ACP_SMILIES_EXPLAIN'	=> 'Uśmieszki (emotikony) to zazwyczaj małe, czasami animowane obrazki, używane do wyrażania emocji lub uczuć. Tutaj możesz dodawać, usuwać oraz zmieniać uśmieszki, które użytkownicy mogą stosować w swoich postach i prywatnych wiadomościach. Możesz też zainstalować lub utworzyć pakiet uśmieszków.',
-	'ADD_SMILIES'			=> 'Dodaj wiele uśmieszków',
-	'ADD_SMILEY_CODE'		=> 'Dodaj dodatkowy kod uśmieszku',
-	'ADD_ICONS'				=> 'Dodaj wiele ikon',
+	'ACP_ICONS_EXPLAIN'		=> 'Tutaj można dodawać, edytować i usuwać ikony, jakie użytkownicy mogą dodawać do swoich tematów i postów. Ikony te zazwyczaj są wyświetlane za tytułami tematów na stronie forum lub tematów postów na stronie tematów. Można instalować i tworzyć nowe zestawy ikon.',
+	'ACP_SMILIES_EXPLAIN'	=> 'Emotikony są zazwyczaj małymi, czasami animowanymi obrazkami używanymi do wyrażania emocji bądź uczuć. Tutaj można dodawać, edytować i usuwać emotikony, jakie użytkownicy mogą dodawać do swoich postów i prywatnych wiadomości. Można także instalować i tworzyć nowe zestawy emotikon.',
+	'ADD_SMILIES'			=> 'Dodaj emotikony',
+	'ADD_SMILEY_CODE'		=> 'Dodaj kod dodatkowej emotikony',
+	'ADD_ICONS'				=> 'Dodaj ikony',
 	'AFTER_ICONS'			=> 'Po %s',
 	'AFTER_SMILIES'			=> 'Po %s',
 
 	'CODE'						=> 'Kod',
-	'CURRENT_ICONS'				=> 'Aktualne ikony',
-	'CURRENT_ICONS_EXPLAIN'		=> 'Wybierz, co chcesz zrobić z aktualnie zainstalowanymi ikonami.',
-	'CURRENT_SMILIES'			=> 'Aktualne uśmieszki',
-	'CURRENT_SMILIES_EXPLAIN'	=> 'Wybierz, co chcesz zrobić z aktualnie zainstalowanymi uśmieszkami.',
+	'CURRENT_ICONS'				=> 'Obecne ikony',
+	'CURRENT_ICONS_EXPLAIN'		=> 'Określ co zrobić z aktualnie zainstalowanymi ikonami.',
+	'CURRENT_SMILIES'			=> 'Obecne emotikony',
+	'CURRENT_SMILIES_EXPLAIN'	=> 'Określ co zrobić z aktualnie zainstalowanymi emotikonami.',
 
-	'DISPLAY_ON_POSTING'		=> 'Wyświetlaj na stronie pisania',
-	'DISPLAY_POSTING'			=> 'Na stronie pisania',
-	'DISPLAY_POSTING_NO'		=> 'Nie na stronie pisania',
+	'DISPLAY_ON_POSTING'		=> 'Wyświetlaj w oknie odpowiedzi',
+	'DISPLAY_POSTING'			=> 'W oknie odpowiedzi',
+	'DISPLAY_POSTING_NO'		=> 'Nie w oknie odpowiedzi',
 
 
 
-	'EDIT_ICONS'				=> 'Zmień ikony',
-	'EDIT_SMILIES'				=> 'Zmień uśmieszki',
+	'EDIT_ICONS'				=> 'Edytuj ikony',
+	'EDIT_SMILIES'				=> 'Edytuj emotikony',
 	'EMOTION'					=> 'Emocja',
-	'EXPORT_ICONS'				=> 'Wyeksportuj i pobierz icons.pak',
-	'EXPORT_ICONS_EXPLAIN'		=> '%sPo kliknięciu na ten link konfiguracja zainstalowanych ikon zostanie spakowana do pliku <samp>icons.pak</samp>, który, po pobraniu, może zostać użyty do utworzenia pliku <samp>.zip</samp> lub <samp>.tgz</samp>, zawierającego wszystkie ikony plus plik konfiguracyjny <samp>icons.pak</samp>%s.',
-	'EXPORT_SMILIES'			=> 'Wyeksportuj i pobierz smilies.pak',
-	'EXPORT_SMILIES_EXPLAIN'	=> '%sPo kliknięciu na ten link konfiguracja zainstalowanych uśmieszków zostanie spakowana do pliku <samp>smilies.pak</samp>, który, po pobraniu, może zostać użyty do utworzenia pliku <samp>.zip</samp> lub <samp>.tgz</samp>, zawierającego wszystkie uśmieszki plus plik konfiguracyjny <samp>smilies.pak</samp>%s.',
+	'EXPORT_ICONS'				=> 'Eksportuj/pobierz zestaw',
+	'EXPORT_ICONS_EXPLAIN'		=> '%sKliknięcie tego odnośnika spowoduje spakowanie konfiguracji zainstalowanych ikon do pliku <samp>icons.pak</samp>, który po pobraniu może być użyty do utworzenia archiwum <samp>.zip</samp> lub <samp>.tgz</samp> zawierającego wszystkie ikony i plik konfiguracyjny <samp>icons.pak</samp>%s.',
+	'EXPORT_SMILIES'			=> 'Eksportuj/pobierz zestaw',
+	'EXPORT_SMILIES_EXPLAIN'	=> '%sKliknięcie tego odnośnika spowoduje spakowanie konfiguracji zainstalowanych emotikon do pliku <samp>smilies.pak</samp>, który po pobraniu może być użyty do utworzenia archiwum <samp>.zip</samp> lub <samp>.tgz</samp> zawierającego wszystkie emotikony i plik konfiguracyjny <samp>smilies.pak</samp>%s.',
 
-	'FIRST'			=> 'Pierwszy',
+	'FIRST'			=> 'Pierwsza',
 
 	'ICONS_ADD'				=> 'Dodaj ikonę',
-	'ICONS_NONE_ADDED'		=> 'Nie dodano ikon.',
+	'ICONS_NONE_ADDED'		=> 'Nie dodano żadnych ikon.',
 	'ICONS_ONE_ADDED'		=> 'Ikona została dodana.',
 	'ICONS_ADDED'			=> 'Ikony zostały dodane.',
-	'ICONS_CONFIG'			=> 'Konfiguracja ikon(y)',
+	'ICONS_CONFIG'			=> 'Konfiguracja ikon',
 	'ICONS_DELETED'			=> 'Ikona została usunięta.',
-	'ICONS_EDIT'			=> 'Zmień ikonę',
-	'ICONS_ONE_EDITED'		=> 'Ikona została zmieniona.',
-	'ICONS_NONE_EDITED'		=> 'Nie zmieniono ikon.',
-	'ICONS_EDITED'			=> 'Ikony zostały zmienione.',
-	'ICONS_HEIGHT'			=> 'Wysokość ikony',
-	'ICONS_IMAGE'			=> 'Obrazek ikony',
-	'ICONS_IMPORTED'		=> 'Zainstalowano pakiet ikon.',
-	'ICONS_IMPORT_SUCCESS'	=> 'Zaimportowano pakiet ikon.',
-	'ICONS_LOCATION'		=> 'Lokacja ikony',
-	'ICONS_NOT_DISPLAYED'	=> 'Poniższe ikony nie są wyświetlane na stronie pisania',
-	'ICONS_ORDER'			=> 'Kolejność ikon',
-	'ICONS_URL'				=> 'Ikona',
-	'ICONS_WIDTH'			=> 'Szerokość ikony',
-	'IMPORT_ICONS'			=> 'Zainstaluj pakiet ikon',
-	'IMPORT_SMILIES'		=> 'Zainstaluj pakiet uśmieszków',
+	'ICONS_EDIT'			=> 'Edytuj ikonę',
+	'ICONS_ONE_EDITED'		=> 'Ikona została zaktualizowana.',
+	'ICONS_NONE_EDITED'		=> 'Ikony nie zostały zaktualizowane.',
+	'ICONS_EDITED'			=> 'Ikony zostały zaktualizowane.',
+	'ICONS_HEIGHT'			=> 'Wysokość',
+	'ICONS_IMAGE'			=> 'Obrazek',
+	'ICONS_IMPORTED'		=> 'Zestaw ikon został zainstalowany.',
+	'ICONS_IMPORT_SUCCESS'	=> 'Zestaw ikon został zaimportowany.',
+	'ICONS_LOCATION'		=> 'Lokalizacja',
+	'ICONS_NOT_DISPLAYED'	=> 'Następujące ikony nie są wyświetlane na stronie postów',
+	'ICONS_ORDER'			=> 'Kolejność',
+	'ICONS_URL'				=> 'Plik obrazka',
+	'ICONS_WIDTH'			=> 'Szerokość',
+	'IMPORT_ICONS'			=> 'Zainstaluj zestaw',
+	'IMPORT_SMILIES'		=> 'Zainstaluj zestaw',
 
-	'KEEP_ALL'			=> 'Zachowaj wszystkie',
+	'KEEP_ALL'			=> 'Utrzymaj wszystkie',
 
-	'MASS_ADD_SMILIES'	=> 'Dodaj wiele uśmieszków',
+	'MASS_ADD_SMILIES'	=> 'Dodaj wiele emotikon',
 
-	'NO_ICONS_ADD'		=> 'Nie ma żadnych ikon do dodania.',
-	'NO_ICONS_EDIT'		=> 'Nie ma żadnych ikon do modyfikacji.',
-	'NO_ICONS_EXPORT'	=> 'Nie ma żadnych ikon, z których można by utworzyć pakiet.',
-	'NO_ICONS_PAK'		=> 'Nie znaleziono pakietów ikon.',
-	'NO_SMILIES_ADD'	=> 'Nie ma żadnych uśmieszków do dodania.',
-	'NO_SMILIES_EDIT'	=> 'Nie ma żadnych uśmieszków do modyfikacji.',
-	'NO_SMILIES_EXPORT'	=> 'Nie ma żadnych uśmieszków, z których można by utworzyć pakiet.',
-	'NO_SMILIES_PAK'	=> 'Nie znaleziono pakietów uśmieszków.',
+	'NO_ICONS_ADD'		=> 'Nie ma ikon do dodania.',
+	'NO_ICONS_EDIT'		=> 'Nie ma ikon do modyfikowania.',
+	'NO_ICONS_EXPORT'	=> 'Nie ma ikon do utworzenia zestawu.',
+	'NO_ICONS_PAK'		=> 'Nie znaleziono zestawu ikon.',
+	'NO_SMILIES_ADD'	=> 'Nie ma emotikon do dodania.',
+	'NO_SMILIES_EDIT'	=> 'Nie ma emotikon do modyfikowania.',
+	'NO_SMILIES_EXPORT'	=> 'Nie ma emotikon do utworzenia zestawu.',
+	'NO_SMILIES_PAK'	=> 'Nie znaleziono zestawu emotikon.',
 
 	'PAK_FILE_NOT_READABLE'		=> 'Nie można odczytać pliku <samp>.pak</samp>.',
 
-	'REPLACE_MATCHES'	=> 'Zamień pasujące',
+	'REPLACE_MATCHES'	=> 'Zamień takie same',
 
-	'SELECT_PACKAGE'			=> 'Wybierz pakiet',
-	'SMILIES_ADD'				=> 'Dodaj uśmieszek',
-	'SMILIES_NONE_ADDED'		=> 'Nie dodano uśmieszków.',
-	'SMILIES_ONE_ADDED'			=> 'Uśmieszek został dodany.',
-	'SMILIES_ADDED'				=> 'Uśmieszki zostały dodane.',
-	'SMILIES_CODE'				=> 'Kod uśmieszka',
-	'SMILIES_CONFIG'			=> 'Konfiguracja uśmieszka/ów',
-	'SMILIES_DELETED'			=> 'Uśmieszek został usunięty.',
-	'SMILIES_EDIT'				=> 'Zmień uśmieszek',
-	'SMILIE_NO_CODE'			=> 'Uśmieszek „%s” został zignorowany, ponieważ nie podano jego kodu.',
-	'SMILIE_NO_EMOTION'			=> 'Uśmieszek „%s” został zignorowany, ponieważ nie podano emocji, jaką wyraża.',
-	'SMILIE_NO_FILE'			=> 'Uśmieszek „%s” został zignorowany, ponieważ nie znaleziono pliku.',
-	'SMILIES_ONE_EDITED'		=> 'Uśmieszek został zmieniony.',
-	'SMILIES_NONE_EDITED'		=> 'Nie zmieniono uśmieszków.',
-	'SMILIES_EDITED'			=> 'Uśmieszki zostały zmienione.',
+	'SELECT_PACKAGE'			=> 'Wybierz plik zestawu',
+	'SMILIES_ADD'				=> 'Dodaj emotikonę',
+	'SMILIES_NONE_ADDED'		=> 'Nie dodano emotikon.',
+	'SMILIES_ONE_ADDED'			=> 'Emotikona została dodana.',
+	'SMILIES_ADDED'				=> 'Emotikony zostały dodane.',
+	'SMILIES_CODE'				=> 'Kod',
+	'SMILIES_CONFIG'			=> 'Konfiguracja emotikon',
+	'SMILIES_DELETED'			=> 'Emotikona została usunięta.',
+	'SMILIES_EDIT'				=> 'Edytuj emotikonę',
+	'SMILIE_NO_CODE'			=> 'Emotikona „%s” została pominięta, ponieważ nie wprowadzono kodu.',
+	'SMILIE_NO_EMOTION'			=> 'Emotikona „%s” została pominięta, ponieważ nie wprowadzono opisu emocji.',
+	'SMILIE_NO_FILE'			=> 'Emotikona „%s” została pominięta, ponieważ nie ma pliku.',
+	'SMILIES_NONE_EDITED'		=> 'Emotikony nie zostały zaktualizowane.',
+	'SMILIES_ONE_EDITED'		=> 'Emotikona została zaktualizowana.',
+	'SMILIES_EDITED'			=> 'Emotikony zostały zaktualizowane.',
 	'SMILIES_EMOTION'			=> 'Emocja',
-	'SMILIES_HEIGHT'			=> 'Wysokość uśmieszka',
-	'SMILIES_IMAGE'				=> 'Obrazek uśmieszka',
-	'SMILIES_IMPORTED'			=> 'Zainstalowano pakiet uśmieszków.',
-	'SMILIES_IMPORT_SUCCESS'	=> 'Zaimportowano pakiet uśmieszków.',
-	'SMILIES_LOCATION'			=> 'Lokacja uśmieszka',
-	'SMILIES_NOT_DISPLAYED'		=> 'Poniższe uśmieszki nie są wyświetlane na stronie pisania',
-	'SMILIES_ORDER'				=> 'Kolejność uśmieszków',
-	'SMILIES_URL'				=> 'Uśmieszek',
-	'SMILIES_WIDTH'				=> 'Szerokość uśmieszka',
+	'SMILIES_HEIGHT'			=> 'Wys.',
+	'SMILIES_IMAGE'				=> 'Obrazek',
+	'SMILIES_IMPORTED'			=> 'Zainstalowano zestaw emotikon.',
+	'SMILIES_IMPORT_SUCCESS'	=> 'Zaimportowano zestaw emotikon.',
+	'SMILIES_LOCATION'			=> 'Lokalizacja',
+	'SMILIES_NOT_DISPLAYED'		=> 'Następujące emotikony nie są wyświetlane na stronie postów',
+	'SMILIES_ORDER'				=> 'Kolejność',
+	'SMILIES_URL'				=> 'Plik obrazka',
+	'SMILIES_WIDTH'				=> 'Szer.',
 
-	'TOO_MANY_SMILIES'			=> 'Osiągnięto limit %d uśmieszków.',
+	'TOO_MANY_SMILIES'			=> 'Osiągnięto limit %d emotikon.',
 
-	'WRONG_PAK_TYPE'	=> 'Wybrany pakiet nie zawiera odpowiednich danych.',
+	'WRONG_PAK_TYPE'	=> 'Wybrany zestaw nie zawiera stosownych danych.',
 ));
 
-// Cenzura słów
+// Word censors
 $lang = array_merge($lang, array(
-	'ACP_WORDS_EXPLAIN'		=> 'Tutaj możesz dodawać, usuwać i zmieniać cenzorowane automatycznie słowa. Oprócz tego, użytkownicy nie mogą rejestrować loginów zawierających te słowa. Możesz też używać *, np. *test* znajdzie słowo protestować, test* - testować, *test - protest.',
-	'ADD_WORD'				=> 'Dodaj nowe słowo',
+	'ACP_WORDS_EXPLAIN'		=> 'Tutaj można dodawać, edytować i usuwać słowa, które będą automatycznie cenzurowane na forach. Osoby rejestrujące się na forum mogą użyć tych słów w swoich nazwach użytkownika. Przy wprowadzaniu słów można używać wieloznacznika (*), np. tak zapisane słowo *test* będzie pasowało do „przetestować”, test* będzie pasowało do „testowanie”, a *test będzie pasowało do „atest”.',
+	'ADD_WORD'				=> 'Dodaj słowo',
 
-	'EDIT_WORD'		=> 'Zmień słowo',
-	'ENTER_WORD'	=> 'Musisz wpisać słowo i jego zamiennik.',
+	'EDIT_WORD'		=> 'Edytuj cenzurę',
+	'ENTER_WORD'	=> 'Należy wprowadzić słowo i jego zamiennik.',
 
-	'NO_WORD'	=> 'Nie wybrałeś słowa do zmiany.',
+	'NO_WORD'	=> 'Nie wybrano słów do edytowania.',
 
 	'REPLACEMENT'	=> 'Zamiennik',
 
-	'UPDATE_WORD'	=> 'Zmień słowo',
+	'UPDATE_WORD'	=> 'Aktualizuj cenzurę',
 
 	'WORD'				=> 'Słowo',
-	'WORD_ADDED'		=> 'Cenzurowane słowo zostało dodane.',
-	'WORD_REMOVED'		=> 'Cenzurowane słowo zostało usunięte.',
-	'WORD_UPDATED'		=> 'Cenzurowane słowo zostało zmienione.',
+	'WORD_ADDED'		=> 'Cenzura słowa została dodana.',
+	'WORD_REMOVED'		=> 'Wybrana cenzura została usunięta.',
+	'WORD_UPDATED'		=> 'Wybrana cenzura została zaktualizowana.',
 ));
 
-// Rangi
+// Ranks
 $lang = array_merge($lang, array(
-	'ACP_RANKS_EXPLAIN'		=> 'Tutaj możesz dodawać, usuwać i zmieniać rangi. Rangi mogą być zwykłe (nadawane wg liczby postów) lub specjalne (można je nadać przez zarządzanie użytkownikiem).',
+	'ACP_RANKS_EXPLAIN'		=> 'Tutaj można dodawać, edytować, przeglądać i usuwać rangi. Można także utworzyć rangi specjalne, które mogą być zastosowane do użytkownika z poziomu zarządzania użytkownikami.',
 	'ADD_RANK'				=> 'Dodaj rangę',
 
-	'MUST_SELECT_RANK'		=> 'Musisz wybrać rangę.',
+	'MUST_SELECT_RANK'		=> 'Należy wybrać rangę.',
 
-	'NO_ASSIGNED_RANK'		=> 'Nie posiada specjalnej rangi.',
-	'NO_RANK_TITLE'			=> 'Nie wybrałeś tytułu rangi.',
-	'NO_UPDATE_RANKS'		=> 'Ranga została usunięta. Mimo to, konta użytkowników posiadających tę rangę nie zostały zaktualizowane. Musisz ręcznie zresetować rangę tych kont.',
+	'NO_ASSIGNED_RANK'		=> 'Nie przydzielono rang specjalnych.',
+	'NO_RANK_TITLE'			=> 'Nie określono nazwy rangi.',
+	'NO_UPDATE_RANKS'		=> 'Ranga została usunięta, ale konta użytkowników używające tej rangi nie zostały zaktualizowane. Na tych kontach należy zresetować rangę ręcznie.',
 
 	'RANK_ADDED'			=> 'Ranga została dodana.',
 	'RANK_IMAGE'			=> 'Obrazek rangi',
-	'RANK_IMAGE_EXPLAIN'	=> 'Użyj tego pola aby wybrać mały obrazek wyświetlany przy użytkownikach posiadających tę rangę. Ścieżka prowadzi od katalogu głównego phpBB.',
-	'RANK_IMAGE_IN_USE'		=> '(w użyciu)',
+	'RANK_IMAGE_EXPLAIN'	=> 'Tutaj można zdefiniować mały obrazek skojarzony z tą rangą. Ścieżka do obrazka musi być relatywna do katalogu głównego phpBB.',
+	'RANK_IMAGE_IN_USE'		=> '(Używany)',
 	'RANK_MINIMUM'			=> 'Minimalna liczba postów',
 	'RANK_REMOVED'			=> 'Ranga została usunięta.',
-	'RANK_SPECIAL'			=> 'Ustaw jako rangę specjalną',
-	'RANK_TITLE'			=> 'Tytuł rangi',
-	'RANK_UPDATED'			=> 'Ranga została zmieniona.',
+	'RANK_SPECIAL'			=> 'Określ jako rangę specjalną',
+	'RANK_TITLE'			=> 'Nazwa rangi',
+	'RANK_UPDATED'			=> 'Ranga została zaktualizowana.',
 ));
 
-// Zabroń loginów
+// Disallow Usernames
 $lang = array_merge($lang, array(
-	'ACP_DISALLOW_EXPLAIN'	=> 'Tutaj możesz dodawać i usuwać nazwy użytkowników, których nie można używać. Zabronione nazwy użytkowników mogą zawierać *.',
-	'ADD_DISALLOW_EXPLAIN'	=> 'Możesz zabronić wielu nazw użytkownika naraz poprzez użycie *.',
-	'ADD_DISALLOW_TITLE'	=> 'Dodaj zabronioną nazwę użytkownika',
+	'ACP_DISALLOW_EXPLAIN'	=> 'Tutaj można zarządzać niedozwolonymi nazwami użytkownika. Zabronione nazwy użytkownika mogą zawierać wieloznacznik (*).',
+	'ADD_DISALLOW_EXPLAIN'	=> 'Można zabronić nazwy użytkownika, stosując wieloznacznik (*), który zastępuje każdy znak.',
+	'ADD_DISALLOW_TITLE'	=> 'Dodaj zabronioną nazwę',
 
-	'DELETE_DISALLOW_EXPLAIN'	=> 'Możesz usunąć zabronioną nazwę użytkownika wybierając ją z listy i klikając na „Wyślij”.',
-	'DELETE_DISALLOW_TITLE'		=> 'Usuń zabronioną nazwę użytkownika',
-	'DISALLOWED_ALREADY'		=> 'Podana nazwa użytkownika jest już zabroniona.',
-	'DISALLOWED_DELETED'		=> 'Zabroniona nazwa użytkownika została usunięta.',
-	'DISALLOW_SUCCESSFUL'		=> 'Zabroniona nazwa użytkownika została dodana.',
+	'DELETE_DISALLOW_EXPLAIN'	=> 'Można usunąć nazwę, wybierając ją z listy i naciskając przycisk „Wyślij”.',
+	'DELETE_DISALLOW_TITLE'		=> 'Usuń nazwę',
+	'DISALLOWED_ALREADY'		=> 'Wprowadzona nazwa jest już zabroniona.',
+	'DISALLOWED_DELETED'		=> 'Nazwa została usunięta.',
+	'DISALLOW_SUCCESSFUL'		=> 'Nazwa została dodana.',
 
-	'NO_DISALLOWED'				=> 'Nie ma zabronionych nazw użytkowników',
-	'NO_USERNAME_SPECIFIED'		=> 'Nie wybrałeś ani nie wpisałeś nazwy użytkownika, na której chcesz wykonać akcję.',
+	'NO_DISALLOWED'				=> 'Nie ma zabronionych nazw użytkownika',
+	'NO_USERNAME_SPECIFIED'		=> 'Nie wprowadzono lub nie wybrano nazwy użytkownika.',
 ));
 
-// Powody
+// Reasons
 $lang = array_merge($lang, array(
-	'ACP_REASONS_EXPLAIN'	=> 'Tutaj możesz zarządzać powodami używanymi w zgłoszeniach i odrzuceniach postów. Istnieje jeden domyślny powód (oznaczony *), którego usunąć nie możesz. Jest to spowodowane tym, że jest używany, gdy żaden inny powód nie pasuje.',
+	'ACP_REASONS_EXPLAIN'	=> 'Tutaj można zarządzać powodami używanymi w zgłoszeniach i wiadomościach informujących o niewyrażeniu zgody na publikację postu. Znajduje się tutaj jeden domyślny powód oznaczony gwiazdką (*), którego nie można usunąć. Jeśli nie podano żadnego innego powodu, ten powód jest podawany w wysyłanych wiadomościach.',
 	'ADD_NEW_REASON'		=> 'Dodaj powód',
-	'AVAILABLE_TITLES'		=> 'Dostępne przetłumaczone powody',
+	'AVAILABLE_TITLES'		=> 'Nazwy zlokalizowanych wersji powodu',
 
-	'IS_NOT_TRANSLATED'			=> 'Powód <strong>nie</strong> został przetłumaczony.',
-	'IS_NOT_TRANSLATED_EXPLAIN'	=> 'Powód <strong>nie</strong> został przetłumaczony. Jeśli chcesz podać przetłumaczoną formę, wybierz prawidłowy klucz z sekcji powodów zgłoszeń w plikach językowych.',
-	'IS_TRANSLATED'				=> 'Powód został przetłumaczony.',
-	'IS_TRANSLATED_EXPLAIN'		=> 'Powód został przetłumaczony. Jeśli podany tytuł jest na liście powodów zgłoszeń w plikach językowych, użyta zostanie przetłumaczona forma tytułu i opisu.',
+	'IS_NOT_TRANSLATED'			=> '<strong>Nie ma</strong> zlokalizowanej wersji powodu.',
+	'IS_NOT_TRANSLATED_EXPLAIN'	=> 'Powód zgłoszenia <strong>nie</strong> został zlokalizowany. Jeśli chcesz go zlokalizować, wybierz w sekcji pakietów językowych właściwe oznaczenie lokalizacji i plik.',
+	'IS_TRANSLATED'				=> 'Powód jest zlokalizowany.',
+	'IS_TRANSLATED_EXPLAIN'		=> 'Opis powodu zgłoszenia został zlokalizowany. Jeśli wprowadzona nazwa jest obecna w sekcji plików językowych, zostanie użyta zlokalizowana nazwa i opis.',
 
-	'NO_REASON'					=> 'Nie znaleziono powodu.',
-	'NO_REASON_INFO'			=> 'Musisz podać tytuł i opis dla tego powodu.',
-	'NO_REMOVE_DEFAULT_REASON'	=> 'Nie możesz usunąć domyślnego powodu „Inny”.',
+	'NO_REASON'					=> 'Nie można znaleźć powodu.',
+	'NO_REASON_INFO'			=> 'Należy określić nazwę i opis tego powodu.',
+	'NO_REMOVE_DEFAULT_REASON'	=> 'Nie można usunąć domyślnego powodu o nazwie „Inny”.',
 
-	'REASON_ADD'				=> 'Dodaj powód',
+	'REASON_ADD'				=> 'Dodaj powód zgłoszenia/odmowy',
 	'REASON_ADDED'				=> 'Powód został dodany.',
-	'REASON_ALREADY_EXIST'		=> 'Powód o takim tytule już istnieje, wybierz inny tytuł.',
+	'REASON_ALREADY_EXIST'		=> 'Powód o takiej nazwie już istnieje. Podaj inną nazwę.',
 	'REASON_DESCRIPTION'		=> 'Opis powodu',
-	'REASON_DESC_TRANSLATED'	=> 'Wyświetlany opis powodu',
-	'REASON_EDIT'				=> 'Zmień powód',
-	'REASON_EDIT_EXPLAIN'		=> 'Tutaj możesz dodać lub zmienić powód. Jeśli podany tytuł jest na liście powodów zgłoszeń w plikach językowych, użyta zostanie przetłumaczona forma tytułu i opisu zamiast tej podanej tutaj.',
+	'REASON_DESC_TRANSLATED'	=> 'Wyświetlany opis',
+	'REASON_EDIT'				=> 'Edytowanie powodu',
+	'REASON_EDIT_EXPLAIN'		=> 'Tutaj można dodać lub edytować powody. Jeśli powód jest przetłumaczony, zostanie użyta wersja zlokalizowana.',
 	'REASON_REMOVED'			=> 'Powód został usunięty.',
-	'REASON_TITLE'				=> 'Tytuł powodu',
-	'REASON_TITLE_TRANSLATED'	=> 'Wyświetlany tytuł powodu',
-	'REASON_UPDATED'			=> 'Powód został zmieniony.',
+	'REASON_TITLE'				=> 'Nazwa',
+	'REASON_TITLE_TRANSLATED'	=> 'Nazwa wyświetlana',
+	'REASON_UPDATED'			=> 'Powód został zaktualizowany.',
 
 	'USED_IN_REPORTS'		=> 'Używany w zgłoszeniach',
 ));

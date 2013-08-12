@@ -908,8 +908,7 @@ class auth
 	*/
 	function login($username, $password, $autologin = false, $viewonline = 1, $admin = 0)
 	{
-		//global $config, $db, $user, $phpbb_root_path, $phpEx;  //LPADLO COM
-    global $config, $db, $user, $phpbb_root_path, $phpEx, $db2, $dbLocal; //LPADLO CRE
+		global $config, $db, $user, $phpbb_root_path, $phpEx;
 
 		$method = trim(basename($config['auth_method']));
 		include_once($phpbb_root_path . 'includes/auth/auth_' . $method . '.' . $phpEx);
@@ -918,17 +917,6 @@ class auth
 		if (function_exists($method))
 		{
 			$login = $method($username, $password, $user->ip, $user->browser, $user->forwarded_for);
-
-
-      //LPADLO ADD
-      $db = $db2;
-      $loginRemote = $method($username, $password, $user->ip, $user->browser, $user->forwarded_for);
-      //logString('LoginRemote: '. $loginRemote['user_row']['user_id'] . ' Login: '.$username);
-      $db = $dbLocal;         
-      //LPADLO ADD END
-
-
-
 
 			// If the auth module wants us to create an empty profile do so and then treat the status as LOGIN_SUCCESS
 			if ($login['status'] == LOGIN_SUCCESS_CREATE_PROFILE)
@@ -982,12 +970,11 @@ class auth
 					$user->session_id = $_SID = '';
 				}
 
-        //$result = $user->session_create($login['user_row']['user_id'], $admin, $autologin, $viewonline); //LPADLO COM
-				$result = $user->session_create($login['user_row']['user_id'], $admin, $autologin, $viewonline, $loginRemote['user_row']['user_id']);     //LPADLO ADD
+				$result = $user->session_create($login['user_row']['user_id'], $admin, $autologin, $viewonline);
 
 				// Successful session creation
 				if ($result === true)
-				{   
+				{
 					// If admin re-authentication we remove the old session entry because a new one has been created...
 					if ($admin)
 					{

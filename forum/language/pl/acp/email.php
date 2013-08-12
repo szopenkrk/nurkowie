@@ -1,12 +1,13 @@
 <?php
-/**
+/** 
 *
 * acp_email [Polski]
 *
 * @package language
-* @copyright (c) 2006 - 2011 phpBB3.PL Group
+* @version $Id: email.php 8479 2008-03-29 00:22:48Z naderman $
+* @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
+* @Polish locale 8479 2011-05-16 18:19:11  Zespół Olympus.pl $
 */
 
 /**
@@ -22,9 +23,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// INFORMACJA
+// DEVELOPERS PLEASE NOTE
 //
-// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
+// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -36,33 +37,33 @@ if (empty($lang) || !is_array($lang))
 
 // Email settings
 $lang = array_merge($lang, array(
-	'ACP_MASS_EMAIL_EXPLAIN'		=> 'Ta strona daje Ci możliwość wysłania e-maila do wszystkich użytkowników Twojego forum lub wszystkich należących do wybranej grupy, <strong>mających włączoną opcję otrzymywania e-maili</strong>. Wg domyślnych ustawień, skrypt wysyła jeden e-mail do 50 odbiorców, przy większej liczbie odbiorców zostanie wysłane więcej e-maili. Jeżeli wysyłasz e-mail do większej grupy ludzi, to bądź cierpliwy i po kliknięciu na przycisk „Wyślij” nie przerywaj ładowania strony. To normalne, że masowe rozsyłanie e-maili trwa dłuższą chwilę. Zostaniesz powiadomiony, gdy skrypt zakończy rozsyłanie wiadomości.',
+	'ACP_MASS_EMAIL_EXPLAIN'		=> 'Tutaj możesz wysłać wiadomość e-mail do wszystkich użytkowników lub do wszystkich członków konkretnej grupy, która ma włączoną <strong>funkcję odbierania masowych wiadomości e-mail</strong>. Aby to osiągnąć e-mail zostanie wysłany na adres e-maila wykonawczego z ukrytą kopią (odbiorca nie będzie widział adresów innych odbiorców) wysłaną do wszystkich odbiorców. Domyślnie ustawionych jest 50 odbiorców. Wysłanie wiadomości do dużej liczby osób może potrwać dłuższą chwilę. Zachowaj cierpliwość i nie przerywaj tej operacji. Po jej zakończeniu zostanie wyświetlone powiadomienie.',
 	'ALL_USERS'						=> 'Wszyscy użytkownicy',
 
-	'COMPOSE'				=> 'Napisz',
+	'COMPOSE'				=> 'Utwórz wiadomość',
 
-	'EMAIL_SEND_ERROR'		=> 'Podczas wysyłania e-maila wystąpił przynajmniej jeden błąd. Zajrzyj do %slogu błędów%s, aby dowiedzieć się, co dokładnie się stało.',
+	'EMAIL_SEND_ERROR'		=> 'Podczas wysyłania wiadomości wystąpiły błędy. Aby zapoznać się ze szczegółami, proszę przejrzeć %sDziennik błędów%s.',
 	'EMAIL_SENT'			=> 'Wiadomość została wysłana.',
-	'EMAIL_SENT_QUEUE'		=> 'Wiadomość została dodana do kolejki wysyłania.',
+	'EMAIL_SENT_QUEUE'		=> 'Wiadomość ta oczekuje na wysłanie.',
 
-	'LOG_SESSION'			=> 'Zapisz sesję wysyłania e-maili w logu błędów',
+	'LOG_SESSION'			=> 'Zapisuj sesję mailową do raportu krytycznego',
 
-	'SEND_IMMEDIATELY'		=> 'Wyślij natychmiast',
+	'SEND_IMMEDIATELY'		=> 'Wyślij niezwłocznie',
 	'SEND_TO_GROUP'			=> 'Wyślij do grupy',
 	'SEND_TO_USERS'			=> 'Wyślij do użytkowników',
-	'SEND_TO_USERS_EXPLAIN'	=> 'Wpisanie nazw tutaj nadpisze wybór grupy zaznaczonej powyżej. Wpisz każdą nazwę użytkownika w osobnej linii.',
+	'SEND_TO_USERS_EXPLAIN'	=> 'Wprowadzenie tutaj nazw spowoduje zastąpienie wszystkich grup wybranych powyżej. Każdą nazwę użytkownika należy wprowadzić w osobnym wierszu.',
 
-	'MAIL_BANNED'			=> 'Wyślij do zbanowanych użytkowników',
-	'MAIL_BANNED_EXPLAIN'   => 'Wysyłając masowego e-maila do grupy możesz tutaj zaznaczyć czy zbanowani użytkownicy również powinni go otrzymać.',
+	'MAIL_BANNED'			=> 'Wysyłaj e-maile do zablokowanych użytkowników',
+	'MAIL_BANNED_EXPLAIN'	=> 'Tutaj można określić, czy wiadomość wysyłana do wszystkich członków grupy będzie także wysłana do zablokowanych użytkowników.',
 	'MAIL_HIGH_PRIORITY'	=> 'Wysoki',
 	'MAIL_LOW_PRIORITY'		=> 'Niski',
 	'MAIL_NORMAL_PRIORITY'	=> 'Normalny',
-	'MAIL_PRIORITY'			=> 'Priorytet wiadomości',
-	'MASS_MESSAGE'			=> 'Twoja wiadomość',
-	'MASS_MESSAGE_EXPLAIN'	=> 'Weź pod uwagę, że możesz użyć tylko zwykłego tekstu. Wszelki kod zostanie usunięty przed wysłaniem.',
+	'MAIL_PRIORITY'			=> 'Priorytet',
+	'MASS_MESSAGE'			=> 'Treść wiadomości',
+	'MASS_MESSAGE_EXPLAIN'	=> 'Treść wiadomości musi być wpisana zwykłym tekstem. Przed wysłaniem wiadomości wszystkie znaczniki zostaną usunięte.',
 
-	'NO_EMAIL_MESSAGE'		=> 'Musisz wpisać treść wiadomości.',
-	'NO_EMAIL_SUBJECT'		=> 'Musisz wpisać temat wiadomości.',
+	'NO_EMAIL_MESSAGE'		=> 'Należy wprowadzić treść wiadomości.',
+	'NO_EMAIL_SUBJECT'		=> 'Należy określić temat wiadomości.',
 ));
 
 ?>

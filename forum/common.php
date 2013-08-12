@@ -9,13 +9,6 @@
 * Minimum Requirement: PHP 4.3.3
 */
 
-        //LPADLO
-/**
- *
- *
- *  send_file_to_browser($attachment, $config['upload_path'], $display_cat);
-  */
-
 /**
 */
 if (!defined('IN_PHPBB'))
@@ -108,65 +101,14 @@ set_error_handler(defined('PHPBB_MSG_HANDLER') ? PHPBB_MSG_HANDLER : 'msg_handle
 $user		= new user();
 $auth		= new auth();
 $template	= new template();
-$cache		= new cache();    
+$cache		= new cache();
+$db			= new $sql_db();
 
-//------LPADLO CHANGE SECTION
-  $db			= new $sql_db();
-  
-  //ADD NEW
-   include($phpbb_root_path . 'includes/functions_remote.' . $phpEx); 
+// Connect to DB
+$db->sql_connect($dbhost, $dbuser, $dbpasswd, $dbname, $dbport, false, defined('PHPBB_DB_NEW_LINK') ? PHPBB_DB_NEW_LINK : false);
 
-  //Local config
-  $userLocal		= $user;
-  $authLocal		= $auth;
-  $cacheLocal		= $cache;    
-  $dbLocal			= new $sql_db();
-
-
-
-  //Remote config
-  $userRemote		= new user();
-  $authRemote		= new auth();
-  $cacheRemote		= new cache();    
-  $db2			= new $sql_db();
-
-
-
-
-  // Connect to DB
-  $dbLocal->sql_connect($dbhost, $dbuser, $dbpasswd, $dbname, $dbport, false, defined('PHPBB_DB_NEW_LINK') ? PHPBB_DB_NEW_LINK : false);
-  //$dbTest>sql_connect($dbhost, $dbuser, $dbpasswd, $dbnameTest, $dbport, false, defined('PHPBB_DB_NEW_LINK') ? PHPBB_DB_NEW_LINK : false);    
-  $db2->sql_connect($dbhost, $dbuser, $dbpasswd, $dbnameTest, $dbport, false, true);  //LPADLO ADD
-
-$forum_location	= request_var('location', 'L');//LPADLO ADD
-if ($forum_location == 'N') {
-  $forum_location_var = 'N';
-  $forum_location = 'L';
-}
-
-//$forum_location_var = $forum_location; 
-set_all_config($forum_location);
-//Start session
-
-//PROBA ROZPOCZECIA SESJI UZYTKOWNIKA ZDALNEGO
-//set_db('R'); 
-//$userRemote->session_begin();
-//$authRemote->acl($userRemote->data);
-//set_db($forum_location);
-/*
-if ($forum_location == 'R') {
-  $db=$db2;
-}  else {
-  $forum_location='L';
-  $db=$dbLocal;
-} */
-
-// $db2->sql_connect($dbhost2, $dbuser2, $dbpasswd2, $dbname2, $dbport2, false, true);
 // We do not need this any longer, unset for safety purposes
 unset($dbpasswd);
-unset($dbpasswd2);
-
-//------LPADLO CHANGE SECTION END
 
 // Grab global variables, re-cache if necessary
 $config = $cache->obtain_config();

@@ -4,9 +4,10 @@
 * viewtopic [Polski]
 *
 * @package language
-* @copyright (c) 2006 - 2011 phpBB3.PL Group
+* @version $Id: viewtopic.php 9972 2009-08-14 08:42:46Z Kellanved $
+* @copyright (c) 2005 phpBB Group
 * @license http://opensource.org/licenses/gpl-license.php GNU Public License
-*
+* @Polish locale 9972 2009-09-25 18:24:32 Zespół Olympus.pl $
 */
 
 /**
@@ -22,9 +23,9 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-// INFORMACJA
+// DEVELOPERS PLEASE NOTE
 //
-// Wszystkie pliki językowe powinny używać kodowania UTF-8 i nie powinny zawierać znaku BOM.
+// All language files should use UTF-8 as their encoding and the files must not contain a BOM.
 //
 // Placeholders can now contain order information, e.g. instead of
 // 'Page %s of %s' you can (and should) write 'Page %1$s of %2$s', this allows
@@ -36,61 +37,61 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'ATTACHMENT'						=> 'Załącznik',
-	'ATTACHMENT_FUNCTIONALITY_DISABLED'	=> 'Dodawanie załączników zostało wyłączone.',
+	'ATTACHMENT_FUNCTIONALITY_DISABLED'	=> 'Funkcje załączników zostały wyłączone.',
 
-	'BOOKMARK_ADDED'		=> 'Wątek został dodany do zakładek.',
-	'BOOKMARK_ERR'			=> 'Dodawanie wątku do zakładek nie powiodło się. Spróbuj ponownie.',
-	'BOOKMARK_REMOVED'		=> 'Wątek został usunięty z zakładek.',
-	'BOOKMARK_TOPIC'		=> 'Dodaj do zakładek',
-	'BOOKMARK_TOPIC_REMOVE'	=> 'Usuń z zakładek',
+	'BOOKMARK_ADDED'		=> 'Zakładka została dodana do tematu.',
+	'BOOKMARK_ERR'			=> 'Nie udało się dodać zakładki. Proszę spróbować ponownie.',
+	'BOOKMARK_REMOVED'		=> 'Zakładka została usunięta.',
+	'BOOKMARK_TOPIC'		=> 'Dodaj zakładkę',
+	'BOOKMARK_TOPIC_REMOVE'	=> 'Usuń zakładkę',
 	'BUMPED_BY'				=> 'Ostatnio przesunięty w górę %2$s przez: %1$s.',
-	'BUMP_TOPIC'			=> 'Przesuń w górę',
+	'BUMP_TOPIC'			=> 'Przesuń temat w górę',
 
 	'CODE'					=> 'Kod',
 	'COLLAPSE_QR'			=> 'Ukryj szybką odpowiedź',
 
-	'DELETE_TOPIC'			=> 'Usuń wątek',
-	'DOWNLOAD_NOTICE'		=> 'Nie masz wystarczających uprawnień, aby zobaczyć pliki załączone do tego postu.',
+	'DELETE_TOPIC'			=> 'Usuń temat',
+	'DOWNLOAD_NOTICE'		=> 'Nie masz wymaganych uprawnień, aby zobaczyć pliki załączone do tego postu.',
 
-	'EDITED_TIMES_TOTAL'	=> 'Ostatnio edytowano %2$s przez %1$s, łącznie edytowano %3$d razy',
-	'EDITED_TIME_TOTAL'		=> 'Ostatnio edytowano %2$s przez %1$s, łącznie edytowano %3$d raz',
-	'EMAIL_TOPIC'			=> 'Powiadom znajomego',
+	'EDITED_TIMES_TOTAL'	=> 'Ostatnio zmieniony %2$s przez %1$s, łącznie zmieniany %3$d razy',
+	'EDITED_TIME_TOTAL'		=> 'Ostatnio zmieniony %2$s przez %1$s, łącznie zmieniany %3$d raz',
+	'EMAIL_TOPIC'			=> 'Powiadom znajomego o tym temacie',
 	'ERROR_NO_ATTACHMENT'	=> 'Wybrany załącznik już nie istnieje',
 
 	'FILE_NOT_FOUND_404'	=> 'Plik <strong>%s</strong> nie istnieje.',
-	'FORK_TOPIC'			=> 'Kopiuj wątek',
+	'FORK_TOPIC'			=> 'Kopiuj temat',
 	'FULL_EDITOR'			=> 'Pełny edytor',
 
-	'LINKAGE_FORBIDDEN'		=> 'Nie masz uprawnień do przeglądania, pobierania lub linkowania z/do tej strony.',
-	'LOGIN_NOTIFY_TOPIC'	=> 'Zostałeś powiadomiony o tym wątku, zaloguj się, aby go przejrzeć.',
-	'LOGIN_VIEWTOPIC'		=> 'Aby przejrzeć ten wątek, musisz się zalogować.',
+	'LINKAGE_FORBIDDEN'		=> 'Nie masz uprawnień do przeglądania, pobierania lub wstawiania odnośników z/do tej strony.',
+	'LOGIN_NOTIFY_TOPIC'	=> 'Powiadomienie o tym temacie zostało ci dostarczone. Zaloguj się, aby go przejrzeć.',
+	'LOGIN_VIEWTOPIC'		=> 'Aby przejrzeć ten temat, musisz się zalogować.',
 
-	'MAKE_ANNOUNCE'				=> 'Zmień w ogłoszenie',
-	'MAKE_GLOBAL'				=> 'Zmień w ogłoszenie globalne',
-	'MAKE_NORMAL'				=> 'Zmień w zwykły wątek',
-	'MAKE_STICKY'				=> 'Przyklej',
-	'MAX_OPTIONS_SELECT'		=> 'Możesz wybrać maksymalnie <strong>%d</strong> opcji',
-	'MAX_OPTION_SELECT'			=> 'Możesz wybrać tylko <strong>jedną</strong> opcję',
+	'MAKE_ANNOUNCE'				=> 'Zmień na ogłoszenie',
+	'MAKE_GLOBAL'				=> 'Zmień na ogłosz. globalne',
+	'MAKE_NORMAL'				=> 'Zmień na zwykły temat',
+	'MAKE_STICKY'				=> 'Zmień na przyklejony',
+	'MAX_OPTIONS_SELECT'		=> 'Maksymalna liczba opcji do wybrania: <strong>%d</strong>',
+	'MAX_OPTION_SELECT'			=> 'Liczba opcji do wybrania: <strong>1</strong>',
 	'MISSING_INLINE_ATTACHMENT'	=> 'Załącznik <strong>%s</strong> nie jest już dostępny',
-	'MOVE_TOPIC'				=> 'Przenieś wątek',
+	'MOVE_TOPIC'				=> 'Przenieś temat',
 
-	'NO_ATTACHMENT_SELECTED'=> 'Nie wybrałeś załącznika do pobrania.',
-	'NO_NEWER_TOPICS'		=> 'Nie ma nowszych wątków w tym dziale.',
-	'NO_OLDER_TOPICS'		=> 'Nie ma starszych wątków w tym dziale.',
-	'NO_UNREAD_POSTS'		=> 'Nie ma nieprzeczytanych postów w tym dziale.',
-	'NO_VOTE_OPTION'		=> 'Musisz wybrać opcję, aby zagłosować.',
+	'NO_ATTACHMENT_SELECTED'=> 'Nie wybrano załącznika do pobrania lub przeglądania.',
+	'NO_NEWER_TOPICS'		=> 'Na tym forum nie ma nowszych tematów.',
+	'NO_OLDER_TOPICS'		=> 'Na tym forum nie ma starszych tematów.',
+	'NO_UNREAD_POSTS'		=> 'Na tym forum nie ma nowych nieprzeczytanych postów.',
+	'NO_VOTE_OPTION'		=> 'Aby zagłosować musisz wybrać opcję.',
 	'NO_VOTES'				=> 'Brak głosów',
 
-	'POLL_ENDED_AT'			=> 'Ankieta wygasła %s',
-	'POLL_RUN_TILL'			=> 'Ankieta wygaśnie %s',
-	'POLL_VOTED_OPTION'		=> 'Zagłosowałeś na tę opcję',
-	'PRINT_TOPIC'			=> 'Drukuj',
+	'POLL_ENDED_AT'			=> 'Czas głosowania minął %s',
+	'POLL_RUN_TILL'			=> 'Czas głosowania minie %s',
+	'POLL_VOTED_OPTION'		=> 'Oddano głos na tę opcję',
+	'PRINT_TOPIC'			=> 'Podgląd wydruku',
 
-	'QUICK_MOD'				=> 'Narzędzia',
+	'QUICK_MOD'				=> 'Moderowanie',
 	'QUICKREPLY'			=> 'Szybka odpowiedź',
 	'QUOTE'					=> 'Cytuj',
 
-	'REPLY_TO_TOPIC'		=> 'Odpowiedz w wątku',
+	'REPLY_TO_TOPIC'		=> 'Odpowiedz w temacie',
 	'RETURN_POST'			=> '%sPowrót do postu%s',
 
 	'SHOW_QR'				=> 'Szybka odpowiedź',
@@ -98,18 +99,19 @@ $lang = array_merge($lang, array(
 
 	'TOTAL_VOTES'			=> 'Liczba głosów',
 
-	'UNLOCK_TOPIC'			=> 'Odblokuj wątek',
+	'UNLOCK_TOPIC'			=> 'Odblokuj temat',
 
 	'VIEW_INFO'				=> 'Szczegóły postu',
-	'VIEW_NEXT_TOPIC'		=> 'Następny',
-	'VIEW_PREVIOUS_TOPIC'	=> 'Poprzedni',
+	'VIEW_NEXT_TOPIC'		=> 'Następny temat',
+	'VIEW_PREVIOUS_TOPIC'	=> 'Poprzedni temat',
 	'VIEW_RESULTS'			=> 'Pokaż wyniki',
 	'VIEW_TOPIC_POST'		=> 'Posty: 1',
 	'VIEW_TOPIC_POSTS'		=> 'Posty: %d',
-	'VIEW_UNREAD_POST'		=> 'Pokaż pierwszy nieprzeczytany post',
+	'VIEW_UNREAD_POST'		=> 'Pierwszy nieprzeczytany post',
 	'VISIT_WEBSITE'			=> 'WWW',
-	'VOTE_SUBMITTED'		=> 'Twój głos został zapisany.',
-	'VOTE_CONVERTED'		=> 'Zmiana głosów w przekonwertowanych ankietach nie jest możliwa.',
+	'VOTE_SUBMITTED'		=> 'Twój głos został zarejestrowany.',
+	'VOTE_CONVERTED'		=> 'W skonwertowanych ankietach nie ma możliwości zmiany oddanego głosu.',
+
 ));
 
 ?>
