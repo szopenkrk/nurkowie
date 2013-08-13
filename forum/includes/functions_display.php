@@ -1712,7 +1712,7 @@ function get_user_avatar($avatar, $avatar_type, $avatar_width, $avatar_height, $
 			{
 				return '';
 			}
-			$avatar_img = 'http://www.studioej.pl/testowo/forum2/forum/' . "download/file.$phpEx?avatar=";
+			$avatar_img = $phpbb_root_path . "download/file.$phpEx?avatar=";
 		break;
 
 		case AVATAR_GALLERY:
@@ -1720,7 +1720,7 @@ function get_user_avatar($avatar, $avatar_type, $avatar_width, $avatar_height, $
 			{
 				return '';
 			}
-			$avatar_img = 'http://www.studioej.pl/testowo/forum2/forum/' . $config['avatar_gallery_path'] . '/';
+			$avatar_img = $phpbb_root_path . $config['avatar_gallery_path'] . '/';
 		break;
 
 		case AVATAR_REMOTE:
