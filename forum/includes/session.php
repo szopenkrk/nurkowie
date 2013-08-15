@@ -441,7 +441,11 @@ class session
 							$result = $db->sql_query($sql);
 
 							$db->sql_return_on_error(false);
-
+              
+              //LPADLO ADD
+              $resultRemote = $db2->sql_query($sql);
+        		  //LPADLO ADD END
+                     
 							// If the database is not yet updated, there will be an error due to the session_forum_id
 							// @todo REMOVE for 3.0.2
 							if ($result === false)
@@ -451,6 +455,8 @@ class session
 								$sql = 'UPDATE ' . SESSIONS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sql_ary) . "
 									WHERE session_id = '" . $db->sql_escape($this->session_id) . "'";
 								$db->sql_query($sql);
+                $db2->sql_query($sql); //LPADLO ADD
+                
 							}
 
 							if ($this->data['user_id'] != ANONYMOUS && !empty($config['new_member_post_limit']) && $this->data['user_new'] && $config['new_member_post_limit'] <= $this->data['user_posts'])
@@ -602,6 +608,13 @@ class session
 			$this->data = $db->sql_fetchrow($result);
 			$db->sql_freeresult($result);
 			$bot = false;
+                                          
+      //LPADLO ADD
+        $result = $db2->sql_query($sql);
+  			$this->dataRemote = $db2->sql_fetchrow($result);
+  			$db2->sql_freeresult($result);
+      //LPADLO ADD END
+            
 		}
 		else if ($user_id !== false && !sizeof($this->data))
 		{
@@ -732,12 +745,21 @@ class session
 					$sql = 'UPDATE ' . SESSIONS_TABLE . ' SET ' . $db->sql_build_array('UPDATE', $sql_ary) . "
 						WHERE session_id = '" . $db->sql_escape($this->session_id) . "'";
 					$db->sql_query($sql);
+          
+        //LPADLO ADD
+        $db2->sql_query($sql);    		
+        //LPADLO ADD END
+          
 
 					// Update the last visit time
 					$sql = 'UPDATE ' . USERS_TABLE . '
 						SET user_lastvisit = ' . (int) $this->data['session_time'] . '
 						WHERE user_id = ' . (int) $this->data['user_id'];
 					$db->sql_query($sql);
+          
+        //LPADLO ADD
+        $db2->sql_query($sql);   		
+        //LPADLO ADD END
 				}
 
 				$SID = '?sid=';
@@ -748,6 +770,10 @@ class session
 			{
 				// If the ip and browser does not match make sure we only have one bot assigned to one session
 				$db->sql_query('DELETE FROM ' . SESSIONS_TABLE . ' WHERE session_user_id = ' . $this->data['user_id']);
+        
+        //LPADLO ADD
+        $db2->sql_query('DELETE FROM ' . SESSIONS_TABLE . ' WHERE session_user_id = ' . $this->dataRemote['user_id']);     
+        //LPADLO ADD END  
 			}
 		}
 
@@ -872,6 +898,14 @@ class session
 					SET user_form_salt = \'' . $db->sql_escape($this->data['user_form_salt']) . '\'
 					WHERE user_id = ' . (int) $this->data['user_id'];
 				$db->sql_query($sql);
+        
+      //LPADLO ADD
+        $sql = 'UPDATE ' . USERS_TABLE . '
+					SET user_form_salt = \'' . $db2->sql_escape($this->dataRemote['user_form_salt']) . '\'
+					WHERE user_id = ' . (int) $this->dataRemote['user_id'];
+				$db2->sql_query($sql);
+      //LPADLO ADD END            
+     
 			}
 		}
 		else
@@ -883,7 +917,14 @@ class session
 				SET user_lastvisit = ' . (int) $this->data['session_time'] . '
 				WHERE user_id = ' . (int) $this->data['user_id'];
 			$db->sql_query($sql);
-
+      
+      //LPADLO ADD
+      $sql = 'UPDATE ' . USERS_TABLE . '
+				SET user_lastvisit = ' . (int) $this->dataRemote['session_time'] . '
+				WHERE user_id = ' . (int) $this->dataRemote['user_id'];
+			$db2->sql_query($sql);
+      //LPADLO ADD END
+                        
 			$SID = '?sid=';
 			$_SID = '';
 		}
@@ -907,6 +948,14 @@ class session
 			WHERE session_id = '" . $db->sql_escape($this->session_id) . "'
 				AND session_user_id = " . (int) $this->data['user_id'];
 		$db->sql_query($sql);
+    
+    //LPADLO ADD
+    $sql = 'DELETE FROM ' . SESSIONS_TABLE . "
+			WHERE session_id = '" . $db2->sql_escape($this->session_id) . "'
+				AND session_user_id = " . (int) $this->dataRemote['user_id'];
+		$db2->sql_query($sql);
+    //LPADLO ADD END
+    
 
 		// Allow connecting logout with external auth method logout
 		$method = basename(trim($config['auth_method']));
@@ -930,6 +979,14 @@ class session
 				SET user_lastvisit = ' . (int) $this->data['session_time'] . '
 				WHERE user_id = ' . (int) $this->data['user_id'];
 			$db->sql_query($sql);
+      
+      //LPADLO ADD
+      $sql = 'UPDATE ' . USERS_TABLE . '
+				SET user_lastvisit = ' . (int) $this->dataRemote['session_time'] . '
+				WHERE user_id = ' . (int) $this->dataRemote['user_id'];
+			$db2->sql_query($sql);
+      //LPADLO ADD END
+           
 
 			if ($this->cookie_data['k'])
 			{
@@ -937,8 +994,15 @@ class session
 					WHERE user_id = ' . (int) $this->data['user_id'] . "
 						AND key_id = '" . $db->sql_escape(md5($this->cookie_data['k'])) . "'";
 				$db->sql_query($sql);
+        
+        //LPADLO ADD
+        $sql = 'DELETE FROM ' . SESSIONS_KEYS_TABLE . '
+					WHERE user_id = ' . (int) $this->dataRemote['user_id'] . "
+						AND key_id = '" . $db2->sql_escape(md5($this->cookie_data['k'])) . "'";
+				$db2->sql_query($sql);
+        //LPADLO ADD END
 			}
-
+      
 			// Reset the data array
 			$this->data = array();
 
@@ -948,6 +1012,17 @@ class session
 			$result = $db->sql_query($sql);
 			$this->data = $db->sql_fetchrow($result);
 			$db->sql_freeresult($result);
+      
+      //LPADLO ADD
+      $this->dataRemote = array();
+
+			$sql = 'SELECT *
+				FROM ' . USERS_TABLE . '
+				WHERE user_id = ' . ANONYMOUS;
+			$result = $db2->sql_query($sql);
+			$this->dataRemote = $db2->sql_fetchrow($result);
+			$db2->sql_freeresult($result);
+      //LPADLO ADD END
 		}
 
 		$cookie_expire = $this->time_now - 31536000;
@@ -994,13 +1069,13 @@ class session
 			WHERE session_user_id = ' . ANONYMOUS . '
 				AND session_time < ' . (int) ($this->time_now - $config['session_length']);
 		$db->sql_query($sql);
-
+   
 		// Get expired sessions, only most recent for each user
 		$sql = 'SELECT session_user_id, session_page, MAX(session_time) AS recent_time
 			FROM ' . SESSIONS_TABLE . '
 			WHERE session_time < ' . ($this->time_now - $config['session_length']) . '
 			GROUP BY session_user_id, session_page';
-		$result = $db->sql_query_limit($sql, $batch_size);
+		$result = $db->sql_query_limit($sql, $batch_size); 
 
 		$del_user_id = array();
 		$del_sessions = 0;
@@ -1406,18 +1481,28 @@ class session
 				SET ' . $db->sql_build_array('UPDATE', $sql_ary) . '
 				WHERE user_id = ' . (int) $user_id . "
 					AND key_id = '" . $db->sql_escape(md5($key)) . "'";
+      
+      //LPADLO ADD    
+      $sql2 = 'UPDATE ' . SESSIONS_KEYS_TABLE . '
+				SET ' . $db2->sql_build_array('UPDATE', $sql_ary) . '
+				WHERE user_id = ' . (int) dataRemote['user_id'] . "
+					AND key_id = '" . $db2->sql_escape(md5($key)) . "'";   
+      //LPADLO ADD END           
+          
 		}
 		else
 		{
 			$sql = 'INSERT INTO ' . SESSIONS_KEYS_TABLE . ' ' . $db->sql_build_array('INSERT', $sql_ary);
+      $sql2 = 'INSERT INTO ' . SESSIONS_KEYS_TABLE . ' ' . $db2->sql_build_array('INSERT', $sql_ary);
 		}
 		$db->sql_query($sql);
+    $db2->sql_query($sql2);
 
 		$this->cookie_data['k'] = $key_id;
 
 		return false;
 	}
-
+   //LPADLO COMMENT CONTINUE CHANGE HERE!!!!!!!!
 	/**
 	* Reset all login keys for the specified user
 	*
