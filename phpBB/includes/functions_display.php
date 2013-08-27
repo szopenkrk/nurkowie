@@ -1317,6 +1317,7 @@ function get_user_avatar($avatar, $avatar_type, $avatar_width, $avatar_height, $
 			{
 				return '';
 			}
+			//Mozliwe wprowadzenie zmieny do sciezki plików
 			$avatar_img = $phpbb_root_path . "download/file.$phpEx?avatar=";
 		break;
 
@@ -1325,6 +1326,7 @@ function get_user_avatar($avatar, $avatar_type, $avatar_width, $avatar_height, $
 			{
 				return '';
 			}
+			//Mozliwe wprowadzenie zmieny do sciezki plików
 			$avatar_img = $phpbb_root_path . $config['avatar_gallery_path'] . '/';
 		break;
 
